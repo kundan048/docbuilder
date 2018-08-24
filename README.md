@@ -30,5 +30,5 @@ Software Requirements -
 
 The development of this project surely prompts many new areas of investigation. The application can be enhanced further by adding the feature of user customized documents. Document auto generation can be added by web data extraction (web scraping) and user request. A rating mechanism can be devised to help users get the highest rated template of any document. Speech recognition APIs can be used to increase user convenience and speed of document generation.
 
-
-
+[Visit Website](https://docsbuilder.herokuapp.com/)
+![Image](https://docsbuilder.herokuapp.com/img/portfolio-3.jpg)
