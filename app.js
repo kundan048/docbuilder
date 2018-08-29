@@ -34,14 +34,28 @@ function isLoggedIn(req, res, next){
 	res.redirect("/login");
 }
 
+function isLoggedInForLoginPage(req, res, next){
+	if(req.isAuthenticated()) {
+		return next();
+	}
+	res.render("login", {title: "Login"});
+}
+
+function isLoggedInForRegisterPage(req, res, next){
+	if(req.isAuthenticated()) {
+		return next();
+	}
+	res.render("register", {title: "Register"});
+}
+
 // Routes
 
 app.get("/", function(req, res){
 	res.render("index",{title: "DocBuilder"});
 });
 
-app.get("/register", function(req, res){
-	res.render("register",{title: "Register"});
+app.get("/register", isLoggedInForRegisterPage, function(req, res){
+	res.render("private");
 });
 
 app.post("/register", function(req, res){
@@ -65,9 +79,13 @@ app.post("/register", function(req, res){
 	});	 
 });
 
-app.get("/login", function(req, res){
-	res.render("login",{title: "Login"});
+app.get("/login", isLoggedInForLoginPage,  function(req, res){
+	res.render("private");
 });
+
+// app.get("/login", function(req, res){
+// 	res.render("login",{title: "Login"});
+// });
 
 app.post("/login", passport.authenticate('local', {
 	successRedirect : "/private",
