@@ -5,7 +5,7 @@ var express			 		= require('express'),
 	LocalStrategy	 		= require('passport-local'),
 	passportLocalMongoose	= require('passport-local-mongoose'),
 	expressSession 			= require('express-session'),
-	User					= require('./models/user'),
+	User					= require('./models/user');
 	require("dotenv/config");
 
 mongoose.connect("process.env.CODE");
