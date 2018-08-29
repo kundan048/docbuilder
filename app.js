@@ -7,8 +7,9 @@ var express			 		= require('express'),
 	expressSession 			= require('express-session'),
 	User					= require('./models/user');
 	require("dotenv/config");
+	
 
-mongoose.connect("process.env.CODE");
+mongoose.connect(process.env.CODE);
 //mongoose.connect("mongodb://localhost/Document_help", { useNewUrlParser: true });
 
 var app = express();
