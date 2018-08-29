@@ -60,7 +60,7 @@ app.post("/register", function(req, res){
 			return res.redirect("/register",{title: "Register"});
 		}
 		passport.authenticate('local')(req, res, function(){
-			res.render("/private");
+			res.render("private");
 		});
 	});	 
 });
