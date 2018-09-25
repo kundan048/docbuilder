@@ -1,13 +1,25 @@
 <% include partials/header.ejs %>
 <% include partials/navbar.ejs %>
 
-<form action="/private" method="POST">
+<h3>value from database</h3>
+
+<br>
+<% user.application_t1_t1.forEach(function(appl){ %>
+	<p>Name - <%= appl.name %></p>
+	<p>School Name - <%= appl.school %></p>
+	<p>Address - <%= appl.address%></p>
+	<p>Date - <%= appl.date %></p>
+	<p>Reason - <%= appl.reason %></p>
+	<br>
+<% }) %>
+
+<!-- <form action="/private" method="POST">
 	<input type="text" name="application[name]" placeholder="Name">
 	<input type="text" name="application[school]" placeholder="School Name">
 	<input type="text" name="application[address]" placeholder="Address">
-	<input type="text" name="application[date]" placeholder="Date">
+	<input type="text" name="application[Date]" placeholder="Date">
 	<input type="text" name="application[reason]" placeholder="Reason for leave">
 	<input type="submit" name="" value="Submit">
-</form>
+</form> -->
 
 <% include partials/footer.ejs %>
