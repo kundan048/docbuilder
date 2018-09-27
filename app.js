@@ -14,8 +14,8 @@ var express			 		= require('express'),
 
 	
 
-//mongoose.connect(process.env.CODE);
-mongoose.connect("mongodb://localhost/Document_help", { useNewUrlParser: true });
+mongoose.connect(process.env.CODE);
+//mongoose.connect("mongodb://localhost/Document_help", { useNewUrlParser: true });
 
 var app = express();
 app.set("view engine", "ejs");
