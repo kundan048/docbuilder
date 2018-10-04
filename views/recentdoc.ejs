@@ -1,0 +1,90 @@
+<% include partials/home_header %>
+<% include partials/home_navbar %>
+	<main role="main">
+		<a class="btn btn-danger btn-outline-danger m-3" href="/homepage">Back</a>
+	<div class="container">
+		
+
+		<div class="bg-light">
+				<div class="row">
+					<div class="col-md-8 bg-light">
+						<div class="h2 text-center mb-5">Application for leave in School.</div>
+						
+						<p>To,</p>
+						<p>The Principal,</p>
+						<p><%= user.application_t1_t1[user.application_t1_t1.length-1].school %></p>
+						<p><%= user.application_t1_t1[user.application_t1_t1.length-1].address%></p>
+						<p>Date - <%= user.application_t1_t1[user.application_t1_t1.length-1].date %></p>
+						<p>Sir/Ma'am',</p>
+						<p>With due respect I beg to state that I am not in a position to attend the school as I am down with <span><%= user.application_t1_t1[user.application_t1_t1.length-1].reason %></span>. Since it is a communicable disease, I have been advised quarantine and a few days complete rest. Therefore kindly grant me leave for ten days</p>
+						<p>Thanking you,</p>
+						<p>Yours obediently,</p>
+						<p><%= user.application_t1_t1[user.application_t1_t1.length-1].name %></p>
+
+
+						<!-- <p>Name - <%= user.application_t1_t1[user.application_t1_t1.length-1].name %></p>
+						<p>School Name - <%= user.application_t1_t1[user.application_t1_t1.length-1].school %></p>
+						<p>Address - <%= user.application_t1_t1[user.application_t1_t1.length-1].address%></p>
+						<p>Date - <%= user.application_t1_t1[user.application_t1_t1.length-1].date %></p>
+						<p>Reason - <%= user.application_t1_t1[user.application_t1_t1.length-1].reason %></p>
+						<p>Committed - <%= user.application_t1_t1[user.application_t1_t1.length-1].committed %></p>
+						<br> -->
+						<form action="/download" method="GET">
+							<input class="btn btn-success btn-block btn-outline-success btn-lg mb-2" type="submit" value="Download in Docx format">
+						</form>
+						<input class="btn btn-success btn-block btn-outline-success btn-lg" type="button" value="New Application Form ">
+
+					</div>
+					<div class="col-md-4 bg-info">
+						<div class="h2 text-center text-primary">Recent Commits</div>
+						<% user.application_t1_t1.reverse().forEach(function(dates){ %>
+							<div class="bg-success">
+								<p>Name - <%= dates.name %></p>
+								<p>Reason - <%= dates.reason %></p>
+								<p>Committed - <%= moment( dates.committed).format('MMMM Do YYYY, h:mm:ss a') %></p>
+							</div>
+						<% }); %>
+					</div>
+				</div>
+
+		</div>
+	</div>
+
+</main>
+
+<footer class="text-muted">
+  <div class="container">
+    <p class="float-right">
+      <a href="#">Back to top</a>
+    </p>
+    
+  </div>
+</footer>
+
+
+
+	
+
+	
+
+
+
+
+<!-- <form action="/private" method="POST">
+	<input type="text" name="application[name]" placeholder="Name">
+	<input type="text" name="application[school]" placeholder="School Name">
+	<input type="text" name="application[address]" placeholder="Address">
+	<input type="text" name="application[Date]" placeholder="Date">
+	<input type="text" name="application[reason]" placeholder="Reason for leave">
+	<input type="submit" name="" value="Submit">
+</form> -->
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
+  </body>
+</html>

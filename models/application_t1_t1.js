@@ -5,7 +5,11 @@ var application_t1_t1Schema = mongoose.Schema({
 	school 		: String,
 	address 	: String,
 	date 		: String,
-	reason 		: String
+	reason 		: String,
+	committed 		: {
+	    type: Date,
+	    default: Date.now
+	}
 });
 
 module.exports = mongoose.model("Application_t1_t1", application_t1_t1Schema);

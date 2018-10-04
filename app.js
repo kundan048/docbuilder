@@ -9,6 +9,7 @@ var express			 		= require('express'),
 	officeClippy 			= require('office-clippy'),
 	docx 					= officeClippy.docx,
 	exporter 				= officeClippy.exporter,
+	moment					= require('moment'),
 	fs 						= require('fs');
 	require("dotenv/config");
 
@@ -138,67 +139,115 @@ app.get("/application", isLoggedIn, function(req, res){
 });
 
 app.post("/application", isLoggedIn, function(req, res){
-	
-})
-
-app.get('/download', isLoggedIn, function(req, res){
-	var doc = docx.create();
-	var to = docx.createText("To,").break();
-	var thePrincipal = docx.createText("The Principal,").break();
-	var schoolName = docx.createText(req.query.school_name + ",").break();
-	var Address = docx.createText(req.query.address + ",").break();
-	var date = docx.createText(req.query.date + ",").break();
-	var greeting = docx.createText("Sir/Ma'am',").break();
-	var paragraph = docx.createText("With due respect I beg to state that I am not in a position to attend the school as I am down with "+ req.query.reason +". Since it is a communicable disease, I have been advised quarantine and a few days complete rest. Therefore kindly grant me leave for ten days").break();
-	var thanku = docx.createText("Thanking you,").break();
-	var yoursobe = docx.createText("Yours obediently,").break();
-	var name = docx.createText(req.query.name).break();
-	var para2 = docx.createParagraph().addText(to).left().addText(thePrincipal).left().addText(schoolName).left().addText(Address).left().addText(date).left().addText(greeting).left().addText(paragraph).left().addText(thanku).left().addText(yoursobe).left().addText(name).left();
-	doc.addParagraph(para2);
-	exporter.express(res, doc, 'example');
-
-});
-
-app.get("/private", isLoggedIn, function(req,res){
-	res.render("private");
-});
-
-app.post("/private", isLoggedIn, function(req, res){
 	var application = req.body.application;
+	//console.log(application);
 	User.findById(req.user._id, function(err, user){
 		if(err) {
+			console.log("Something went wrong");
 			console.log(err);
-			res.redirect("/private");
-		} else {
+			res.redirect("/application");
+
+		}else {
+			console.log("ready to go");
 			Application_t1_t1.create(application, function(err, doc){
 				if(err){
+					console.log("goes wrong");
 					console.log(err);
-					res.redirect("/private");
-				} else {
+					res.redirect("/application");
+				}else{
 					doc.save();
-
 					user.application_t1_t1.push(doc);
 					user.save();
-					// console.log(user);
-					res.redirect("/private1");
+					res.redirect("/recentdoc");
 				}
 			});
 		}
-	});
+	}); 
 });
 
-app.get("/private1", isLoggedIn, function(req,res){
+app.get('/download', isLoggedIn, function(req, res){
 	User.findById(req.user._id).populate("application_t1_t1").exec(function(err, foundUser){
-		if(err) {
+		if(err){
 			console.log(err);
-			// req.flash("error", "Something went wrong! Please try again!");
-			res.redirect("/private");
+			res.redirect("/application");
 		} else {
-			// console.log(foundUser.application_t1_t1);
-			res.render("private1", {user : foundUser});
+			var downUser = foundUser.application_t1_t1[foundUser.application_t1_t1.length -1];
+			var doc = docx.create();
+			var to = docx.createText("To,").break();
+			var thePrincipal = docx.createText("The Principal,").break();
+			var schoolName = docx.createText(downUser.school + ",").break();
+			var Address = docx.createText(downUser.address + ",").break();
+			var date = docx.createText(downUser.date + ",").break();
+			var greeting = docx.createText("Sir/Ma'am',").break();
+			var paragraph = docx.createText("With due respect I beg to state that I am not in a position to attend the school as I am down with "+ downUser.reason +". Since it is a communicable disease, I have been advised quarantine and a few days complete rest. Therefore kindly grant me leave for ten days").break();
+			var thanku = docx.createText("Thanking you,").break();
+			var yoursobe = docx.createText("Yours obediently,").break();
+			var name = docx.createText(downUser.name).break();
+			var para2 = docx.createParagraph().addText(to).left().addText(thePrincipal).left().addText(schoolName).left().addText(Address).left().addText(date).left().addText(greeting).left().addText(paragraph).left().addText(thanku).left().addText(yoursobe).left().addText(name).left();
+			doc.addParagraph(para2);
+			exporter.express(res, doc, 'application');
 		}
 	});
+	
+
 });
+
+// app.get("/private", isLoggedIn, function(req,res){
+// 	res.render("private");
+// });
+
+// app.post("/private", isLoggedIn, function(req, res){
+// 	var application = req.body.application;
+// 	User.findById(req.user._id, function(err, user){
+// 		if(err) {
+// 			console.log(err);
+// 			res.redirect("/private");
+// 		} else {
+// 			Application_t1_t1.create(application, function(err, doc){
+// 				if(err){
+// 					console.log(err);
+// 					res.redirect("/private");
+// 				} else {
+// 					doc.save();
+
+// 					user.application_t1_t1.push(doc);
+// 					user.save();
+// 					// console.log(user);
+// 					res.redirect("/private1");
+// 				}
+// 			});
+// 		}
+// 	});
+// });
+
+app.get("/recentdoc", isLoggedIn, function(req, res){
+	User.findById(req.user._id).populate("application_t1_t1").exec(function(err, foundUser){
+		if(err){
+			console.log(err);
+			res.redirect("/application");
+		} else {
+			//console.log(foundUser);
+			if(foundUser.application_t1_t1.length == 0){
+				res.redirect("/application");
+			}else {
+				res.render("recentdoc", {user : foundUser, moment : moment});
+			}
+		}
+	}); 
+});
+ 
+// app.get("/private1", isLoggedIn, function(req,res){
+// 	User.findById(req.user._id).populate("application_t1_t1").exec(function(err, foundUser){
+// 		if(err) {
+// 			console.log(err);
+// 			// req.flash("error", "Something went wrong! Please try again!");
+// 			res.redirect("/private");
+// 		} else {
+// 			// console.log(foundUser.application_t1_t1);
+// 			res.render("private1", {user : foundUser});
+// 		}
+// 	});
+// });
 
 // Listening to the server
 
