@@ -1,0 +1,123 @@
+<% include partials/home_header %>
+  <% include partials/home_navbar %>
+<main role="main">
+	<d]iv class="container">
+		<a class="btn btn-danger btn-outline-danger m-3" href="/homepage">Back</a>
+
+		<div class="album py-5 bg-light">
+		<div class="container">
+			<div class="h2 text-center mb-5">Formal Vacation Request Letter</div>
+			<form action="/letter" method="post">
+				<div class="form-group row">
+			    <label for="name" class="col-sm-3 col-form-label">Full Name:</label>
+			    <div class="col-sm-9">
+			      <input class="form-control" type="text" name="leave[name]" id="name" placeholder="Tom Cruze" autocomplete="off">
+			    </div>
+			  </div>
+			  <div class="form-group row">
+			    <label for="address" class="col-sm-3 col-form-label">Designation:</label>
+			    <div class="col-sm-9">
+			      <input class="form-control" type="text" name="leave[designation]" id="address" placeholder="e.g. Assistant Professor" autocomplete="off">
+			    </div>
+			  </div>
+			  <div class="form-group row">
+			    <label class="col-sm-3 col-form-label">Address:</label>
+			    <div class="col-sm-9">
+			      <input class="form-control" type="text" name="leave[address]" placeholder="e.g. Street no. 3, Gole Market, New Delhi-110043" autocomplete="off">
+			    </div>
+			  </div>
+			  <div class="form-group row">
+			    <label for="date" class="col-sm-3 col-form-label">Date:</label>
+			    <div class="col-sm-9">
+			      <input class="form-control" type="date" name="leave[date]" id="date" placeholder="" autocomplete="off">
+			    </div>
+			  </div>
+
+			  <div class="form-group row">
+			    <label class="col-sm-3 col-form-label">Supervisor's First Name:</label>
+			    <div class="col-sm-9">
+			      <input class="form-control" type="text" name="leave[supervisor_first_name]" placeholder="John" autocomplete="off">
+			    </div>
+			  </div>
+
+			  <div class="form-group row">
+			    <label class="col-sm-3 col-form-label">Supervisor's Last Name:</label>
+			    <div class="col-sm-9">
+			      <input class="form-control" type="text" name="leave[supervisor_last_name]" placeholder="Doe" autocomplete="off">
+			    </div>
+			  </div>
+
+			  <div class="form-group row">
+			    <label class="col-sm-3 col-form-label">Supervisor's Designation:</label>
+			    <div class="col-sm-9">
+			      <input class="form-control" type="text" name="leave[supervisor_designation]" placeholder="e.g HOD(Cse)" autocomplete="off">
+			    </div>
+			  </div>
+
+			  <div class="form-group row">
+			    <label class="col-sm-3 col-form-label">Company Name:</label>
+			    <div class="col-sm-9">
+			      <input class="form-control" type="text" name="leave[company_name]" placeholder="e.g GBPEC" autocomplete="off">
+			    </div>
+			  </div>
+
+			  <div class="form-group row">
+			    <label class="col-sm-3 col-form-label">Company Address:</label>
+			    <div class="col-sm-9">
+			      <input class="form-control" type="text" name="leave[company_address]" placeholder="e.g Okhla phase-3, New Delhi" autocomplete="off">
+			    </div>
+			  </div>
+
+			  <div class="form-group row">
+			    <label class="col-sm-3 col-form-label">Start Date of Leave:</label>
+			    <div class="col-sm-9">
+			      <input class="form-control" type="date" name="leave[start_date]" placeholder="" autocomplete="off">
+			    </div>
+			  </div>
+
+			  <div class="form-group row">
+			    <label class="col-sm-3 col-form-label">End Date of Leave:</label>
+			    <div class="col-sm-9">
+			      <input class="form-control" type="date" name="leave[end_date]" placeholder="" autocomplete="off">
+			    </div>
+			  </div>
+			  <div class="form-group row">
+			    <div class="col-sm-12 mt-3">
+			      <input class="btn btn-block btn-success" type="submit" value="Save & Preview">
+			    </div>
+			   <!--  <div class="col-sm-6 mt-3">
+			      <a href="#" class="btn btn-block btn-success" type="button">Download Without Saving &rarr;</a>
+			    </div> -->
+			  </div>
+			  
+			</form>
+
+
+
+
+		</div>
+		</div>
+	</div>
+
+</main>
+
+<footer class="text-muted">
+  <div class="container">
+    <p class="float-right">
+      <a href="#">Back to top</a>
+    </p>
+    
+  </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
+
+
+<% include partials/footer %>

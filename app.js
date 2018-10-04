@@ -14,13 +14,14 @@ var express			 		= require('express'),
 	require("dotenv/config");
 
 	Application_t1_t1		= require('./models/application_t1_t1'),
+	Letter_t1_t1			= require('./models/letter_type1_template1'),
 	User					= require('./models/user');
 
 	// require("dotenv/config");
 	
 
-// mongoose.connect(process.env.CODE);
-mongoose.connect("mongodb://localhost/Document_help", { useNewUrlParser: true });
+ mongoose.connect(process.env.CODE);
+//mongoose.connect("mongodb://localhost/Document_help", { useNewUrlParser: true });
 
 var app = express();
 app.set("view engine", "ejs");
@@ -249,8 +250,53 @@ app.get("/recentdoc", isLoggedIn, function(req, res){
 // 	});
 // });
 
-// Listening to the server
 
+
+app.get("/letter", isLoggedIn, function(req,res){
+	res.render("letter");
+});
+
+app.post("/letter", isLoggedIn, function(req, res){
+	var leave_details = req.body.leave;
+	console.log(leave_details);
+	User.findById(req.user._id, function(err, user){
+		if(err) {
+			console.log("Something went wrong");
+			console.log(err);
+			res.redirect("/letter");
+		} else {
+			Letter_t1_t1.create(leave_details, function(err, doc){
+				if(err){
+					console.log("Something went wrong 2");
+					console.log(err);
+					res.redirect("/letter");
+				} else {
+					doc.save();
+
+					user.letter_t1_t1.push(doc);
+					user.save();
+					console.log(user);
+					res.redirect("/recentletter");
+				}
+			});
+		}
+	});
+});
+
+app.get("/recentletter", isLoggedIn, function(req,res){
+	User.findById(req.user._id).populate("letter_t1_t1").exec(function(err, foundUser){
+		if(err) {
+			console.log(err);
+			// req.flash("error", "Something went wrong! Please try again!");
+			res.redirect("/letter");
+		} else {
+			// console.log(foundUser.application_t1_t1);
+			res.render("recentletter", {user : foundUser});
+		}
+	}); 
+});
+
+// Listening to the server
 app.listen(process.env.PORT || 3000, function(){
     console.log(`Server is listening on 3000`);
 });
