@@ -14,7 +14,7 @@
 						<p>The Principal,</p>
 						<p><%= user.application_t1_t1[user.application_t1_t1.length-1].school %></p>
 						<p><%= user.application_t1_t1[user.application_t1_t1.length-1].address%></p>
-						<p>Date - <%= user.application_t1_t1[user.application_t1_t1.length-1].date %></p>
+						<p><%= moment(user.application_t1_t1[user.application_t1_t1.length-1].date).format("Do MMM YYYY") %></p>
 						<p>Sir/Ma'am',</p>
 						<p>With due respect I beg to state that I am not in a position to attend the school as I am down with <span><%= user.application_t1_t1[user.application_t1_t1.length-1].reason %></span>. Since it is a communicable disease, I have been advised quarantine and a few days complete rest. Therefore kindly grant me leave for ten days</p>
 						<p>Thanking you,</p>
@@ -32,7 +32,7 @@
 						<form action="/download" method="GET">
 							<input class="btn btn-success btn-block btn-outline-success btn-lg mb-2" type="submit" value="Download in Docx format">
 						</form>
-						<input class="btn btn-success btn-block btn-outline-success btn-lg" type="button" value="New Application Form ">
+						<a href="/application" class="btn btn-success btn-block btn-outline-success btn-lg">New Application</a>
 
 					</div>
 					<div class="col-md-4 bg-info">
@@ -41,7 +41,7 @@
 							<div class="bg-success">
 								<p>Name - <%= dates.name %></p>
 								<p>Reason - <%= dates.reason %></p>
-								<p>Committed - <%= moment( dates.committed).format('MMMM Do YYYY, h:mm:ss a') %></p>
+								<p>Last Saved - <%= moment( dates.committed).format('MMMM Do YYYY, h:mm:ss a') %></p>
 							</div>
 						<% }); %>
 					</div>
@@ -53,32 +53,13 @@
 </main>
 
 <footer class="text-muted">
-  <div class="container">
-    <p class="float-right">
-      <a href="#">Back to top</a>
-    </p>
-    
-  </div>
-</footer>
+      <div class="container">
+        <button onclick="topFunction()" id="goTop">Top</button>
+        
+      </div>
+    </footer>
 
-
-
-	
-
-	
-
-
-
-
-<!-- <form action="/private" method="POST">
-	<input type="text" name="application[name]" placeholder="Name">
-	<input type="text" name="application[school]" placeholder="School Name">
-	<input type="text" name="application[address]" placeholder="Address">
-	<input type="text" name="application[Date]" placeholder="Date">
-	<input type="text" name="application[reason]" placeholder="Reason for leave">
-	<input type="submit" name="" value="Submit">
-</form> -->
-<!-- Bootstrap core JavaScript
+    <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -86,5 +67,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
+
+
+
+
+
+    <script>
+      
+      window.onscroll = function() {
+        scrollFunction();
+      };
+      window.onload = function() {
+        scrollFunction();
+      };
+      function scrollFunction() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            document.getElementById("goTop").style.display = "block";
+        } else {
+            document.getElementById("goTop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
   </body>
 </html>

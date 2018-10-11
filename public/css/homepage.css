@@ -35,3 +35,60 @@ footer {
 footer p {
   margin-bottom: .25rem;
 }
+
+#goTop {
+  position: fixed;
+  right: 2%;
+  bottom: 2%;
+}
+
+#goTop:hover {
+  background-color: #000099;
+  color: #FFFFFF;
+}
+
+.dbAnchor {
+  position: relative;
+  background-color: blue;
+  padding: 0;
+  border-radius: 10px;
+}
+
+.dbAnchor .card {
+  border-radius: 10px;
+}
+
+.dbAnchor .card * {
+  border-radius: 10px;
+}
+
+.overLay {
+  position: absolute;
+  bottom: 0;  
+  left: 100%;
+  right: 0;
+  background-color: #34495e;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  transition: .5s ease;
+  opacity: .7;
+  border-radius: 10px;
+}
+
+.dbAnchor:hover .overLay {
+  width: 100%;
+  left: 0;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}

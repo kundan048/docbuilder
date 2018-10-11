@@ -1,81 +1,199 @@
 <% include partials/home_header %>
   <% include partials/home_navbar %>
 <main role="main">
-	<d]iv class="container">
 		<a class="btn btn-danger btn-outline-danger m-3" href="/homepage">Back</a>
-
-		<div class="album py-5 bg-light">
+		<div class="h2 text-center mb-5">Application for School Leave.</div>
 		<div class="container">
-			<div class="h2 text-center mb-5">Application for School Leave.</div>
-			<form action="/application" method="post">
-				<div class="form-group row">
-			    <label for="name" class="col-sm-2 col-form-label">Full Name:</label>
-			    <div class="col-sm-10">
-			      <input class="form-control" type="text" name="application[name]" id="name" placeholder="Tom Cruze" autocomplete="off">
-			    </div>
-			  </div>
-				<div class="form-group row">
-			    <label for="schoolname" class="col-sm-2 col-form-label">School Name:</label>
-			    <div class="col-sm-10">
-			      <input class="form-control" type="text" name="application[school]" id="schoolname" placeholder="Kendriya Vidyalaya" autocomplete="off">
-			    </div>
-			  </div>
-			  <div class="form-group row">
-			    <label for="address" class="col-sm-2 col-form-label">Address:</label>
-			    <div class="col-sm-10">
-			      <input class="form-control" type="text" name="application[address]" id="address" placeholder="e.g. Street no. 3, Gole Market, New Delhi-110043" autocomplete="off">
-			    </div>
-			  </div>
-			  <div class="form-group row">
-			    <label for="date" class="col-sm-2 col-form-label">Date:</label>
-			    <div class="col-sm-10">
-			      <input class="form-control" type="date" name="application[date]" id="date" placeholder="26/11/1997" autocomplete="off">
-			    </div>
-			  </div>
-			  <div class="form-group row">
-			    <label for="reason" class="col-sm-2 col-form-label">Reason:</label>
-			    <div class="col-sm-10">
-			      <input class="form-control" type="text" name="application[reason]" id="reason" placeholder="reason e.g chicken pox, fever" autocomplete="off">
-			    </div>
-			  </div>
-			  <div class="form-group row">
-			    <div class="col-sm-12 mt-3">
-			      <input class="btn btn-block btn-success" type="submit" value="Save & Preview">
-			    </div>
-			   <!--  <div class="col-sm-6 mt-3">
-			      <a href="#" class="btn btn-block btn-success" type="button">Download Without Saving &rarr;</a>
-			    </div> -->
-			  </div>
-			  
-			</form>
+			<div class="row">
+			<!-- first column starts -->
+
+			<div class="col-md-6 " style="border: 1px solid black; border-radius: 5px;">
+				<div class="album py-5">
+					<div class="container">
+						
+						<form action="/application" method="post">
+							<div class="form-group row">
+						    <label for="name" class="col-sm-2 col-form-label">Full Name:</label>
+						    <div class="col-sm-10">
+						      <input class="form-control" type="text" name="application[name]" id="name" placeholder="Tom Cruze" autocomplete="off">
+						    </div>
+						  </div>
+							<div class="form-group row">
+						    <label for="schoolname" class="col-sm-2 col-form-label">School Name:</label>
+						    <div class="col-sm-10">
+						      <input class="form-control" type="text" name="application[school]" id="schoolname" placeholder="Kendriya Vidyalaya" autocomplete="off">
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label for="address" class="col-sm-2 col-form-label">Address:</label>
+						    <div class="col-sm-10">
+						      <input class="form-control" type="text" name="application[address]" id="address" placeholder="e.g. Street no. 3, Gole Market, New Delhi-110043" autocomplete="off">
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label for="date" class="col-sm-2 col-form-label">Date:</label>
+						    <div class="col-sm-10">
+						      <input class="form-control" type="date" name="application[date]" id="date" placeholder="26/11/1997" autocomplete="off">
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label for="reason" class="col-sm-2 col-form-label">Reason:</label>
+						    <div class="col-sm-10">
+						      <input class="form-control" type="text" name="application[reason]" id="reason" placeholder="reason e.g chicken pox, fever" autocomplete="off">
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <div class="col-sm-12 mt-3">
+						      <input class="btn btn-block btn-success" type="submit" value="Save & Download">
+						    </div>
+						   <!--  <div class="col-sm-6 mt-3">
+						      <a href="#" class="btn btn-block btn-success" type="button">Download Without Saving &rarr;</a>
+						    </div> -->
+						  </div>
+						</form>
+					</div>
+				</div>
+			</div> 
+			<!-- first column ends -->
+			<div class="col-md-6" style="border: 1px solid black; border-radius: 5px;">
+				
+						
+					<p>To,</p>
+					<p>The Principal,</p>
+					<p id="schoolnamep"></p>
+					<p id="addressp"></p>
+					<p id="datep"></p>
+					<p>Sir/Ma'am',</p>
+					<p>With due respect I beg to state that I am not in a position to attend the school as I am down with <span id="reasonp"></span>. Since it is a communicable disease, I have been advised quarantine and a few days complete rest. Therefore kindly grant me leave for ten days</p>
+					<p>Thanking you,</p>
+					<p>Yours obediently,</p>
+					<p id="namep"></p>
 
 
-
-
+			</div>
 		</div>
 		</div>
-	</div>
 
 </main>
 
-<footer class="text-muted">
-  <div class="container">
-    <p class="float-right">
-      <a href="#">Back to top</a>
-    </p>
+
+ 	<footer class="text-muted">
+      <div class="container">
+        <button onclick="topFunction()" id="goTop">Top</button>
+        
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
+
+		<script>
+			$(document).ready(function(){
+				var name = $("#name");
+				var schoolname = $("#schoolname");
+				var address = $("#address");
+				var date = $("#date");
+				var reason = $("#reason");
+				var namep = $("#namep");
+				var schoolnamep = $("#schoolnamep");
+				var addressp = $("#addressp");
+				var reasonp = $("#reasonp");
+				var datep = $("#datep");
+				var monthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+				if(name.val() == ""){
+					namep.html("____");
+				}
+				if(schoolname.val() == ""){
+					schoolnamep.html("____");
+				}
+				if(address.val() == ""){
+					addressp.html("____");
+				}
+				if(date.val() == ""){
+					datep.html("____");
+				}
+				if(reason.val() == ""){
+					reasonp.html("____");
+				}
+
+				name.keyup(function(){
+					var namehere = name.val();
+					if(namehere.length == 0){
+						namep.html("____");
+					}else{
+						namep.html(namehere);
+					}
+				});
+				schoolname.keyup(function(){
+					var schoolnamehere = schoolname.val();
+					if(schoolnamehere.length == 0){
+						schoolnamep.html("____");
+					}else{
+						schoolnamep.html(schoolnamehere);
+					}
+				});
+				address.keyup(function(){
+					var addresshere = address.val();
+					if(addresshere.length == 0){
+						addressp.html("____");
+					}else{
+						addressp.html(addresshere);
+					}
+				});
+				date.mouseout(function(){
+					var datehere = date.val();
+					
+					if(datehere.length == 0){
+						datep.html("____");
+					}else{
+						var datehere = new Date(date.val());
+					  day = datehere.getDate();
+					  month = datehere.getMonth();
+					  year = datehere.getFullYear();
+					  var finaldate = day + " - " + monthName[month] + " - " + year;
+						datep.html(finaldate);
+					}
+				});
+
+				reason.keyup(function(){
+					var reasonhere = reason.val();
+					if(reasonhere.length == 0){
+						reasonp.html("____");
+					}else{
+						reasonp.html(reasonhere);
+					}
+				});
+			});
+		</script>
+
+
+		<!-- Scroll Top Button Script -->
+    <script>
     
-  </div>
-</footer>
+    window.onscroll = function() {scrollFunction()};
+    window.onload = function() {
+      scrollFunction()
+    };
+    function scrollFunction() {
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+          document.getElementById("goTop").style.display = "block";
+      } else {
+          document.getElementById("goTop").style.display = "none";
+      }
+    }
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"><\/script>')</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
-
-
-<% include partials/footer %>
-
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+  </body>
+</html>

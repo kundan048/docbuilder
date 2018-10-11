@@ -174,19 +174,20 @@ app.get('/download', isLoggedIn, function(req, res){
 		} else {
 			var downUser = foundUser.application_t1_t1[foundUser.application_t1_t1.length -1];
 			var doc = docx.create();
-			var to = docx.createText("To,").break();
-			var thePrincipal = docx.createText("The Principal,").break();
-			var schoolName = docx.createText(downUser.school + ",").break();
-			var Address = docx.createText(downUser.address + ",").break();
-			var date = docx.createText(downUser.date + ",").break();
-			var greeting = docx.createText("Sir/Ma'am',").break();
-			var paragraph = docx.createText("With due respect I beg to state that I am not in a position to attend the school as I am down with "+ downUser.reason +". Since it is a communicable disease, I have been advised quarantine and a few days complete rest. Therefore kindly grant me leave for ten days").break();
-			var thanku = docx.createText("Thanking you,").break();
-			var yoursobe = docx.createText("Yours obediently,").break();
-			var name = docx.createText(downUser.name).break();
+			var to = docx.createText("To,").break().break();
+			var thePrincipal = docx.createText("The Principal,").break().break();
+			var schoolName = docx.createText(downUser.school + ",").break().break();
+			var Address = docx.createText(downUser.address + ",").break().break();
+			var date = docx.createText(downUser.date + ",").break().break();
+			var greeting = docx.createText("Sir/Ma'am',").break().break();
+			var paragraph = docx.createText("With due respect I beg to state that I am not in a position to attend the school as I am down with "+ downUser.reason +". Since it is a communicable disease, I have been advised quarantine and a few days complete rest. Therefore kindly grant me leave for ten days").break().break();
+			var thanku = docx.createText("Thanking you,").break().break();
+			var yoursobe = docx.createText("Yours obediently,").break().break();
+			var name = docx.createText(downUser.name).break().break();
 			var para2 = docx.createParagraph().addText(to).left().addText(thePrincipal).left().addText(schoolName).left().addText(Address).left().addText(date).left().addText(greeting).left().addText(paragraph).left().addText(thanku).left().addText(yoursobe).left().addText(name).left();
 			doc.addParagraph(para2);
-			exporter.express(res, doc, 'application');
+			var docname = downUser.name + "_application";
+			exporter.express(res, doc, docname);
 		}
 	});
 	
@@ -294,6 +295,10 @@ app.get("/recentletter", isLoggedIn, function(req,res){
 			res.render("recentletter", {user : foundUser});
 		}
 	}); 
+});
+
+app.get("/applicationTypes", isLoggedIn, function(req, res){
+	res.render("application_types");
 });
 
 // Listening to the server
