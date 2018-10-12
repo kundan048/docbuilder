@@ -20,7 +20,7 @@ var express			 		= require('express'),
 	// require("dotenv/config");
 	
 
- mongoose.connect(process.env.CODE);
+ mongoose.connect(process.env.CODE, { useNewUrlParser: true });
 //mongoose.connect("mongodb://localhost/Document_help", { useNewUrlParser: true });
 
 var app = express();
@@ -166,6 +166,36 @@ app.post("/application", isLoggedIn, function(req, res){
 	}); 
 });
 
+
+app.get("/recentdoc", isLoggedIn, function(req, res){
+	User.findById(req.user._id).populate("application_t1_t1").exec(function(err, foundUser){
+		if(err){
+			console.log(err);
+			res.redirect("/application");
+		} else {
+			//console.log(foundUser);
+			if(foundUser.application_t1_t1.length == 0){
+				res.redirect("/application");
+			}else {
+				res.render("recentdoc", {user : foundUser, moment : moment, myid: 0});
+			}
+		}
+	}); 
+});
+
+app.get("/recentdoc/:id", isLoggedIn, function(req, res){
+	User.findById(req.user._id).populate("application_t1_t1").exec(function(err, foundUser){
+		if(err){
+			res.redirect("/application");
+		}else{
+			var item = foundUser.application_t1_t1.find(item => item.id === req.params.id);
+		//console.log(item);
+			//console.log(foundUser);
+			res.render("recentdoc", {user : foundUser, moment : moment, myid: item});
+		}
+	});
+});
+
 app.get('/download/:id', isLoggedIn, function(req, res){
 
 	var myid = req.params.id;
@@ -249,34 +279,6 @@ app.get('/download/:id', isLoggedIn, function(req, res){
 // 	});
 // });
 
-app.get("/recentdoc", isLoggedIn, function(req, res){
-	User.findById(req.user._id).populate("application_t1_t1").exec(function(err, foundUser){
-		if(err){
-			console.log(err);
-			res.redirect("/application");
-		} else {
-			//console.log(foundUser);
-			if(foundUser.application_t1_t1.length == 0){
-				res.redirect("/application");
-			}else {
-				res.render("recentdoc", {user : foundUser, moment : moment, myid: 0});
-			}
-		}
-	}); 
-});
-
-app.get("/recentdoc/:id", isLoggedIn, function(req, res){
-	User.findById(req.user._id).populate("application_t1_t1").exec(function(err, foundUser){
-		if(err){
-			res.redirect("/application");
-		}else{
-			var item = foundUser.application_t1_t1.find(item => item.id === req.params.id);
-		//console.log(item);
-			//console.log(foundUser);
-			res.render("recentdoc", {user : foundUser, moment : moment, myid: item});
-		}
-	});
-});
  
 // app.get("/private1", isLoggedIn, function(req,res){
 // 	User.findById(req.user._id).populate("application_t1_t1").exec(function(err, foundUser){
@@ -299,24 +301,24 @@ app.get("/letter", isLoggedIn, function(req,res){
 
 app.post("/letter", isLoggedIn, function(req, res){
 	var leave_details = req.body.leave;
-	console.log(leave_details);
+	//console.log(leave_details);
 	User.findById(req.user._id, function(err, user){
 		if(err) {
-			console.log("Something went wrong");
-			console.log(err);
+			//console.log("Something went wrong");
+			//console.log(err);
 			res.redirect("/letter");
 		} else {
 			Letter_t1_t1.create(leave_details, function(err, doc){
 				if(err){
-					console.log("Something went wrong 2");
-					console.log(err);
+					//console.log("Something went wrong 2");
+					//console.log(err);
 					res.redirect("/letter");
 				} else {
 					doc.save();
 
 					user.letter_t1_t1.push(doc);
 					user.save();
-					console.log(user);
+					//console.log(user);
 					res.redirect("/recentletter");
 				}
 			});
@@ -331,14 +333,22 @@ app.get("/recentletter", isLoggedIn, function(req,res){
 			// req.flash("error", "Something went wrong! Please try again!");
 			res.redirect("/letter");
 		} else {
-			// console.log(foundUser.application_t1_t1);
-			res.render("recentletter", {user : foundUser});
+			//console.log(foundUser);
+			if(foundUser.letter_t1_t1.length == 0){
+				res.redirect("/letter");
+			}else {
+				res.render("recentletter", {user : foundUser, moment : moment, myid: 0});
+			}
 		}
 	}); 
 });
 
 app.get("/applicationTypes", isLoggedIn, function(req, res){
 	res.render("application_types");
+});
+
+app.get("/letterTypes", isLoggedIn, function(req, res){
+	res.render("letter_types");
 });
 
 // Listening to the server

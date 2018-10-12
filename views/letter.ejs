@@ -1,101 +1,131 @@
 <% include partials/home_header %>
   <% include partials/home_navbar %>
 <main role="main">
-	<d]iv class="container">
 		<a class="btn btn-danger btn-outline-danger m-3" href="/homepage">Back</a>
+		<div class="h2 text-center mb-5">Formal Letter</div>
 
-		<div class="album py-5 bg-light">
-		<div class="container">
-			<div class="h2 text-center mb-5">Formal Vacation Request Letter</div>
-			<form action="/letter" method="post">
-				<div class="form-group row">
-			    <label for="name" class="col-sm-3 col-form-label">Full Name:</label>
-			    <div class="col-sm-9">
-			      <input class="form-control" type="text" name="leave[name]" id="name" placeholder="Tom Cruze" autocomplete="off">
-			    </div>
-			  </div>
-			  <div class="form-group row">
-			    <label for="address" class="col-sm-3 col-form-label">Designation:</label>
-			    <div class="col-sm-9">
-			      <input class="form-control" type="text" name="leave[designation]" id="address" placeholder="e.g. Assistant Professor" autocomplete="off">
-			    </div>
-			  </div>
-			  <div class="form-group row">
-			    <label class="col-sm-3 col-form-label">Address:</label>
-			    <div class="col-sm-9">
-			      <input class="form-control" type="text" name="leave[address]" placeholder="e.g. Street no. 3, Gole Market, New Delhi-110043" autocomplete="off">
-			    </div>
-			  </div>
-			  <div class="form-group row">
-			    <label for="date" class="col-sm-3 col-form-label">Date:</label>
-			    <div class="col-sm-9">
-			      <input class="form-control" type="date" name="leave[date]" id="date" placeholder="" autocomplete="off">
-			    </div>
-			  </div>
+		
+	<div class="container">
+		<div class="row">
+			<!-- first column starts -->
 
-			  <div class="form-group row">
-			    <label class="col-sm-3 col-form-label">Supervisor's First Name:</label>
-			    <div class="col-sm-9">
-			      <input class="form-control" type="text" name="leave[supervisor_first_name]" placeholder="John" autocomplete="off">
-			    </div>
-			  </div>
+			<div class="col-md-6 " style="border: 1px solid black; border-radius: 5px;">
+				<div class="album py-5">
+					<div class="container">
+						<form action="/letter" method="post">
+							<div class="form-group row">
+						    <label for="name" class="col-sm-3 col-form-label">Full Name:</label>
+						    <div class="col-sm-9">
+						      <input class="form-control" id="name" type="text" name="leave[name]" id="name" placeholder="Tom Cruze" autocomplete="off">
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label for="designation" class="col-sm-3 col-form-label">Designation:</label>
+						    <div class="col-sm-9">
+						      <input class="form-control"  type="text" name="leave[designation]" id="designation" placeholder="e.g. Assistant Professor" autocomplete="off">
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label class="col-sm-3 col-form-label">Address:</label>
+						    <div class="col-sm-9">
+						      <input class="form-control" id="address" type="text" name="leave[address]" placeholder="e.g. Street no. 3, Gole Market, New Delhi-110043" autocomplete="off">
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label for="date" class="col-sm-3 col-form-label">Date:</label>
+						    <div class="col-sm-9">
+						      <input class="form-control" type="date" name="leave[date]" id="date" placeholder="" autocomplete="off">
+						    </div>
+						  </div>
 
-			  <div class="form-group row">
-			    <label class="col-sm-3 col-form-label">Supervisor's Last Name:</label>
-			    <div class="col-sm-9">
-			      <input class="form-control" type="text" name="leave[supervisor_last_name]" placeholder="Doe" autocomplete="off">
-			    </div>
-			  </div>
+						  <div class="form-group row">
+						    <label class="col-sm-3 col-form-label">Supervisor's First Name:</label>
+						    <div class="col-sm-9">
+						      <input class="form-control" id="supervisorfirstname"  type="text" name="leave[supervisor_first_name]" placeholder="John" autocomplete="off">
+						    </div>
+						  </div>
 
-			  <div class="form-group row">
-			    <label class="col-sm-3 col-form-label">Supervisor's Designation:</label>
-			    <div class="col-sm-9">
-			      <input class="form-control" type="text" name="leave[supervisor_designation]" placeholder="e.g HOD(Cse)" autocomplete="off">
-			    </div>
-			  </div>
+						  <div class="form-group row">
+						    <label class="col-sm-3 col-form-label">Supervisor's Last Name:</label>
+						    <div class="col-sm-9">
+						      <input class="form-control" id="supervisorlastname" type="text" name="leave[supervisor_last_name]" placeholder="Doe" autocomplete="off">
+						    </div>
+						  </div>
 
-			  <div class="form-group row">
-			    <label class="col-sm-3 col-form-label">Company Name:</label>
-			    <div class="col-sm-9">
-			      <input class="form-control" type="text" name="leave[company_name]" placeholder="e.g GBPEC" autocomplete="off">
-			    </div>
-			  </div>
+						  <div class="form-group row">
+						    <label class="col-sm-3 col-form-label">Supervisor's Designation:</label>
+						    <div class="col-sm-9">
+						      <input class="form-control" id="supervisordesignation" type="text" name="leave[supervisor_designation]" placeholder="e.g HOD(Cse)" autocomplete="off">
+						    </div>
+						  </div>
 
-			  <div class="form-group row">
-			    <label class="col-sm-3 col-form-label">Company Address:</label>
-			    <div class="col-sm-9">
-			      <input class="form-control" type="text" name="leave[company_address]" placeholder="e.g Okhla phase-3, New Delhi" autocomplete="off">
-			    </div>
-			  </div>
+						  <div class="form-group row">
+						    <label class="col-sm-3 col-form-label">Company Name:</label>
+						    <div class="col-sm-9">
+						      <input class="form-control" id="companyname" type="text" name="leave[company_name]" placeholder="e.g GBPEC" autocomplete="off">
+						    </div>
+						  </div>
 
-			  <div class="form-group row">
-			    <label class="col-sm-3 col-form-label">Start Date of Leave:</label>
-			    <div class="col-sm-9">
-			      <input class="form-control" type="date" name="leave[start_date]" placeholder="" autocomplete="off">
-			    </div>
-			  </div>
+						  <div class="form-group row">
+						    <label class="col-sm-3 col-form-label">Company Address:</label>
+						    <div class="col-sm-9">
+						      <input class="form-control" id="companyaddress" type="text" name="leave[company_address]" placeholder="e.g Okhla phase-3, New Delhi" autocomplete="off">
+						    </div>
+						  </div>
 
-			  <div class="form-group row">
-			    <label class="col-sm-3 col-form-label">End Date of Leave:</label>
-			    <div class="col-sm-9">
-			      <input class="form-control" type="date" name="leave[end_date]" placeholder="" autocomplete="off">
-			    </div>
-			  </div>
-			  <div class="form-group row">
-			    <div class="col-sm-12 mt-3">
-			      <input class="btn btn-block btn-success" type="submit" value="Save & Preview">
-			    </div>
-			   <!--  <div class="col-sm-6 mt-3">
-			      <a href="#" class="btn btn-block btn-success" type="button">Download Without Saving &rarr;</a>
-			    </div> -->
-			  </div>
-			  
-			</form>
+						  <div class="form-group row">
+						    <label class="col-sm-3 col-form-label">Start Date of Leave:</label>
+						    <div class="col-sm-9">
+						      <input class="form-control" id="startdate" type="date" name="leave[start_date]" placeholder="" autocomplete="off">
+						    </div>
+						  </div>
+
+						  <div class="form-group row">
+						    <label class="col-sm-3 col-form-label">End Date of Leave:</label>
+						    <div class="col-sm-9">
+						      <input class="form-control" id="enddate" type="date" name="leave[end_date]" placeholder="" autocomplete="off">
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <div class="col-sm-12 mt-3">
+						      <input class="btn btn-block btn-success" type="submit" value="Save & Preview">
+						    </div>
+						   <!--  <div class="col-sm-6 mt-3">
+						      <a href="#" class="btn btn-block btn-success" type="button">Download Without Saving &rarr;</a>
+						    </div> -->
+						  </div>
+						  
+						</form>
+						
+					</div>
+				</div>
+			</div> 
+			<!-- first column ends -->
+			<div class="col-md-6" style="border: 1px solid black; border-radius: 5px;">
+				
+						
+					<br>
+						<p><span id="namep"></span>, <span id="designationp"></span></p>
+						<p id="addressp"></p>
+						<br>
+						<p id="datep"></p>
+						<br>
+						<p><span id="supervisorfirstnamep"></span> <span id="supervisorlastnamep"></span>, <span id="supervisordesignationp"></span></p>	
+						<p id="companynamep"></p>
+						<p id="companyaddressp"></p>
+						<br>
+						<p>Mr. or Ms. <span id="supervisorlastnamel"></span>:</p>
+						<br>
+						<p>I am writing to request your approval for vacation leave from <span id="startdatep"></span> through <span id="enddatep"></span>. I know how important it is to ensure that my work is handled during the time I am away. I will be happy to provide training assistance and support in advance of my vacation to the team members who will be helping in my absence, and will ensure that all projects are organized in a manner that will make it easy for progress to continue as needed during the time I am away.</p>
+
+						<p>Thank you for your consideration and support with this request. Please let me know of your decision at your earliest convenience so I can make travel arrangements.</p>
+						<br>
+						<p>Regards,</p>
+						<br>
+						<p id="namel"></p>
 
 
-
-
-		</div>
+			</div>
 		</div>
 	</div>
 
@@ -117,6 +147,191 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
 
+		<script>
+			$(document).ready(function(){
+				var name = $("#name");
+				var designation = $("#designation");
+				var address = $("#address");
+
+				var date = $("#date");
+
+				var supervisorfirstname = $("#supervisorfirstname");
+				var supervisorlastname = $("#supervisorlastname");
+				var supervisordesignation = $("#supervisordesignation");
+				var companyname = $("#companyname");
+				var companyaddress = $("#companyaddress");
+
+				var startdate = $("#startdate");
+				var enddate = $("#enddate");
+
+
+
+				var namep = $("#namep");
+				var namel = $("#namel");
+				var designationp = $("#designationp");
+				var addressp = $("#addressp");
+				var datep = $("#datep");
+				var supervisorfirstnamep = $("#supervisorfirstnamep");
+				var supervisorlastnamep = $("#supervisorlastnamep");
+				var supervisorlastnamel = $("#supervisorlastnamel");
+				var supervisordesignationp = $("#supervisordesignationp");
+				var companynamep = $("#companynamep");
+				var companyaddressp = $("#companyaddressp");
+				var startdatep = $("#startdatep");
+				var enddatep = $("#enddatep");
+				var monthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+				if(name.val() == ""){
+					namep.html("____");
+					namel.html("____");
+				}
+				if(designation.val() == ""){
+					designationp.html("____");
+				}
+				if(address.val() == ""){
+					addressp.html("____");
+				}
+				if(date.val() == ""){
+					datep.html("____");
+				}
+				if(supervisorfirstname.val() == ""){
+					supervisorfirstnamep.html("____");
+				}
+				if(supervisorlastname.val() == ""){
+					supervisorlastnamep.html("____");
+					supervisorlastnamel.html("____");
+				}
+				if(supervisordesignation.val() == ""){
+					supervisordesignationp.html("____");
+				}
+				if(companyname.val() == ""){
+					companynamep.html("____");
+				}
+				if(companyaddress.val() == ""){
+					companyaddressp.html("____");
+				}
+				if(startdate.val() == ""){
+					startdatep.html("____");
+				}
+				if(enddate.val() == ""){
+					enddatep.html("____");
+				}
+
+				name.keyup(function(){
+					var namehere = name.val();
+					if(namehere.length == 0){
+						namep.html("____");
+						namel.html("____");
+					}else{
+						namep.html(namehere);
+						namel.html(namehere);
+					}
+				});
+				designation.keyup(function(){
+					var designationhere = designation.val();
+					if(designationhere.length == 0){
+						designationp.html("____");
+					}else{
+						designationp.html(designationhere);
+					}
+				});
+				address.keyup(function(){
+					var addresshere = address.val();
+					if(addresshere.length == 0){
+						addressp.html("____");
+					}else{
+						addressp.html(addresshere);
+					}
+				});
+				date.mouseout(function(){
+					var datehere = date.val();
+					
+					if(datehere.length == 0){
+						datep.html("____");
+					}else{
+						var datehere = new Date(date.val());
+					  day = datehere.getDate();
+					  month = datehere.getMonth();
+					  year = datehere.getFullYear();
+					  var finaldate = day + " - " + monthName[month] + " - " + year;
+						datep.html(finaldate);
+					}
+				});
+
+				supervisorfirstname.keyup(function(){
+					var supervisorfirstnamehere = supervisorfirstname.val();
+					if(supervisorfirstnamehere.length == 0){
+						supervisorfirstnamep.html("____");
+					}else{
+						supervisorfirstnamep.html(supervisorfirstnamehere);
+					}
+				});
+				supervisorlastname.keyup(function(){
+					var supervisorlastnamehere = supervisorlastname.val();
+					if(supervisorlastnamehere.length == 0){
+						supervisorlastnamep.html("____");
+						supervisorlastnamel.html("____");
+					}else{
+						supervisorlastnamep.html(supervisorlastnamehere);
+						supervisorlastnamel.html(supervisorlastnamehere);
+					}
+				});
+				supervisordesignation.keyup(function(){
+					var supervisordesignationhere = supervisordesignation.val();
+					if(supervisordesignationhere.length == 0){
+						supervisordesignationp.html("____");
+					}else{
+						supervisordesignationp.html(supervisordesignationhere);
+					}
+				});
+				companyname.keyup(function(){
+					var companynamehere = companyname.val();
+					if(companynamehere.length == 0){
+						companynamep.html("____");
+					}else{
+						companynamep.html(companynamehere);
+					}
+				});
+				companyaddress.keyup(function(){
+					var companyaddresshere = companyaddress.val();
+					if(companyaddresshere.length == 0){
+						companyaddressp.html("____");
+					}else{
+						companyaddressp.html(companyaddresshere);
+					}
+				});
+				startdate.mouseout(function(){
+					var startdatehere = startdate.val();
+					
+					if(startdatehere.length == 0){
+						startdatep.html("____");
+					}else{
+						var startdatehere = new Date(startdate.val());
+					  day = startdatehere.getDate();
+					  month = startdatehere.getMonth();
+					  year = startdatehere.getFullYear();
+					  var finaldate = day + "/" + monthName[month] + "/" + year;
+						startdatep.html(finaldate);
+					}
+				});
+				enddate.mouseout(function(){
+					var enddatehere = enddate.val();
+					
+					if(enddatehere.length == 0){
+						enddatep.html("____");
+					}else{
+						var enddatehere = new Date(enddate.val());
+					  day = enddatehere.getDate();
+					  month = enddatehere.getMonth();
+					  year = enddatehere.getFullYear();
+					  var finaldate = day + "/" + monthName[month] + "/" + year;
+						enddatep.html(finaldate);
+					}
+				});
+				
+
+			});
+		</script>
 
 
 
