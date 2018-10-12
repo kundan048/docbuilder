@@ -1,0 +1,94 @@
+:root {
+  --jumbotron-padding-y: 3rem;
+}
+
+.jumbotron {
+  padding-top: var(--jumbotron-padding-y);
+  padding-bottom: var(--jumbotron-padding-y);
+  margin-bottom: 0;
+  background-color: #fff;
+}
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: calc(var(--jumbotron-padding-y) * 2);
+    padding-bottom: calc(var(--jumbotron-padding-y) * 2);
+  }
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
+}
+
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+footer p {
+  margin-bottom: .25rem;
+}
+
+#goTop {
+  position: fixed;
+  right: 2%;
+  bottom: 2%;
+}
+
+#goTop:hover {
+  background-color: #000099;
+  color: #FFFFFF;
+}
+
+.dbAnchor {
+  position: relative;
+  background-color: blue;
+  padding: 0;
+  border-radius: 10px;
+}
+
+.dbAnchor .card {
+  border-radius: 10px;
+}
+
+.dbAnchor .card * {
+  border-radius: 10px;
+}
+
+.overLay {
+  position: absolute;
+  bottom: 0;  
+  left: 100%;
+  right: 0;
+  background-color: #34495e;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  transition: .5s ease;
+  opacity: .7;
+  border-radius: 10px;
+}
+
+.dbAnchor:hover .overLay {
+  width: 100%;
+  left: 0;
+}
+
+.text {
+  color: white;
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}

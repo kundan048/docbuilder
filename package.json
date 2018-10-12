@@ -1,0 +1,44 @@
+{
+  "name": "docbuilder",
+  "version": "1.0.0",
+  "description": "Minor Project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "keywords": [
+    "Minor",
+    "project"
+  ],
+  "author": "Kundan, Anupam, Vipin, Ajay",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.1",
+    "body-parser": "^1.18.3",
+    "connect-flash": "^0.1.1",
+    "docx": "^4.1.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "fs": "0.0.1-security",
+    "moment": "^2.22.2",
+    "mongoose": "^5.3.1",
+    "nodemailer": "^4.6.8",
+    "office-clippy": "0.0.9",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^5.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kundan048/docbuilder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kundan048/docbuilder/issues"
+  },
+  "homepage": "https://github.com/kundan048/docbuilder#readme",
+  "devDependencies": {
+    "dotenv": "^6.1.0"
+  }
+}
