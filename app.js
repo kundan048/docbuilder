@@ -166,13 +166,16 @@ app.post("/application", isLoggedIn, function(req, res){
 	}); 
 });
 
-app.get('/download', isLoggedIn, function(req, res){
-	User.findById(req.user._id).populate("application_t1_t1").exec(function(err, foundUser){
+app.get('/download/:id', isLoggedIn, function(req, res){
+
+	var myid = req.params.id;
+	// console.log(myid);
+	Application_t1_t1.findById(myid, function(err, foundApplication){
 		if(err){
 			console.log(err);
 			res.redirect("/application");
 		} else {
-			var downUser = foundUser.application_t1_t1[foundUser.application_t1_t1.length -1];
+			var downUser = foundApplication;
 			var doc = docx.create();
 			var to = docx.createText("To,").break().break();
 			var thePrincipal = docx.createText("The Principal,").break().break();
@@ -190,6 +193,30 @@ app.get('/download', isLoggedIn, function(req, res){
 			exporter.express(res, doc, docname);
 		}
 	});
+
+	// User.findById(req.user._id).populate("application_t1_t1").exec(function(err, foundUser){
+	// 	if(err){
+	// 		console.log(err);
+	// 		res.redirect("/application");
+	// 	} else {
+	// 		var downUser = foundUser.application_t1_t1[foundUser.application_t1_t1.length -1];
+	// 		var doc = docx.create();
+	// 		var to = docx.createText("To,").break().break();
+	// 		var thePrincipal = docx.createText("The Principal,").break().break();
+	// 		var schoolName = docx.createText(downUser.school + ",").break().break();
+	// 		var Address = docx.createText(downUser.address + ",").break().break();
+	// 		var date = docx.createText(downUser.date + ",").break().break();
+	// 		var greeting = docx.createText("Sir/Ma'am',").break().break();
+	// 		var paragraph = docx.createText("With due respect I beg to state that I am not in a position to attend the school as I am down with "+ downUser.reason +". Since it is a communicable disease, I have been advised quarantine and a few days complete rest. Therefore kindly grant me leave for ten days").break().break();
+	// 		var thanku = docx.createText("Thanking you,").break().break();
+	// 		var yoursobe = docx.createText("Yours obediently,").break().break();
+	// 		var name = docx.createText(downUser.name).break().break();
+	// 		var para2 = docx.createParagraph().addText(to).left().addText(thePrincipal).left().addText(schoolName).left().addText(Address).left().addText(date).left().addText(greeting).left().addText(paragraph).left().addText(thanku).left().addText(yoursobe).left().addText(name).left();
+	// 		doc.addParagraph(para2);
+	// 		var docname = downUser.name + "_application";
+	// 		exporter.express(res, doc, docname);
+	// 	}
+	// });
 	
 
 });
@@ -232,10 +259,23 @@ app.get("/recentdoc", isLoggedIn, function(req, res){
 			if(foundUser.application_t1_t1.length == 0){
 				res.redirect("/application");
 			}else {
-				res.render("recentdoc", {user : foundUser, moment : moment});
+				res.render("recentdoc", {user : foundUser, moment : moment, myid: 0});
 			}
 		}
 	}); 
+});
+
+app.get("/recentdoc/:id", isLoggedIn, function(req, res){
+	User.findById(req.user._id).populate("application_t1_t1").exec(function(err, foundUser){
+		if(err){
+			res.redirect("/application");
+		}else{
+			var item = foundUser.application_t1_t1.find(item => item.id === req.params.id);
+		//console.log(item);
+			//console.log(foundUser);
+			res.render("recentdoc", {user : foundUser, moment : moment, myid: item});
+		}
+	});
 });
  
 // app.get("/private1", isLoggedIn, function(req,res){
