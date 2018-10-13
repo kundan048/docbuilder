@@ -3,7 +3,9 @@ var passportLocalMongoose = require("passport-local-mongoose");
 
 var userSchema = new mongoose.Schema({
 	name 				 : String,
-	username 			 : String,
+	username 			 : {type : String, unique : true, required : true},
+	resetPasswordToken	 : String,
+    resetPasswordExpires : Date,
 	password 			 : String,
 	application_t1_t1	 : [
 		{
@@ -11,6 +13,7 @@ var userSchema = new mongoose.Schema({
 			ref : "Application_t1_t1"
 		}
 	],
+	
 	letter_t1_t1		 : [
 		{
 			type : mongoose.Schema.Types.ObjectId,
