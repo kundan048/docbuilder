@@ -24,8 +24,8 @@ var express			 		= require('express'),
 	// require("dotenv/config");
 	
 
-mongoose.connect(process.env.CODE, { useNewUrlParser: true });
-//mongoose.connect("mongodb://localhost/Document_help", { useNewUrlParser: true });
+// mongoose.connect(process.env.CODE, { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/Document_help", { useNewUrlParser: true });
 
 var app = express();
 app.set("view engine", "ejs");
