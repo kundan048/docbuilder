@@ -44,13 +44,14 @@
 						<a href="/letter" class="btn btn-success btn-block btn-outline-success btn-lg">New Application</a>
 
 					</div>
-					<div class="col-md-4 bg-info">
+					<div class="col-md-4 bg-secondary">
 						<div class="h2 text-center text-primary">Recent Commits</div>
 						<% user.letter_t1_t1.reverse().forEach(function(dates){ %>
-							<div class="bg-success">
+							<div class="border p-1 m-1 border-white rounded text-center text-light">
 								<p>Name - <%= dates.name %></p>
 								<p>Date - <%= dates.date %></p>
-								<p>Committed - <%= moment( dates.committed).format('MMMM Do YYYY, h:mm:ss a') %></p>
+								<p>Last Saved - <%= moment( dates.committed).format('MMMM Do YYYY, h:mm:ss a') %></p>
+								<p><a class="btn btn-outline-dark disabled" href="#">See</a></p>
 							</div>
 						<% }); %>
 					</div>
