@@ -9,7 +9,7 @@
 <% } %>
 
 	<main role="main">
-		<a class="btn btn-danger btn-outline-danger m-3" href="/homepage">Back</a>
+		<a class="btn btn-danger btn-outline-danger m-3" href = "javascript:history.back()">Back</a>
 	<div class="container">
 		
 
@@ -22,9 +22,10 @@
 						<p>The Principal,</p>
 						<p><%= item.school %></p>
 						<p><%= item.address%></p>
+						
 						<p><%= moment(item.date).format("Do MMM YYYY") %></p>
 						<p>Sir/Ma'am',</p>
-						<p>With due respect I beg to state that I am not in a position to attend the school as I am down with <span><%= item.reason %></span>. Since it is a communicable disease, I have been advised quarantine and a few days complete rest. Therefore kindly grant me leave for ten days</p>
+						<p>With due respect I beg to state that I am not in a position to attend the school as I am down with <span><%= item.reason %></span>. Since it is a communicable disease, I have been advised quarantine and a few days complete rest. Therefore kindly grant me leave for <span><%= item.no_of_days %></span> days.</p>
 						<p>Thanking you,</p>
 						<p>Yours obediently,</p>
 						<p><%= item.name %></p>

@@ -151,15 +151,15 @@ app.post("/application", isLoggedIn, function(req, res){
 	User.findById(req.user._id, function(err, user){
 		if(err) {
 			console.log("Something went wrong");
-			console.log(err);
+			//console.log(err);
 			res.redirect("/application");
 
 		}else {
-			console.log("ready to go");
+			//console.log("ready to go");
 			Application_t1_t1.create(application, function(err, doc){
 				if(err){
-					console.log("goes wrong");
-					console.log(err);
+					//console.log("goes wrong");
+					//console.log(err);
 					res.redirect("/application");
 				}else{
 					doc.save();
@@ -176,7 +176,7 @@ app.post("/application", isLoggedIn, function(req, res){
 app.get("/recentdoc", isLoggedIn, function(req, res){
 	User.findById(req.user._id).populate("application_t1_t1").exec(function(err, foundUser){
 		if(err){
-			console.log(err);
+			//console.log(err);
 			res.redirect("/application");
 		} else {
 			//console.log(foundUser);
@@ -212,14 +212,15 @@ app.get('/download/:id', isLoggedIn, function(req, res){
 			res.redirect("/application");
 		} else {
 			var downUser = foundApplication;
+			var dateFormat = moment(downUser.date).format("Do MMM YYYY");
 			var doc = docx.create();
 			var to = docx.createText("To,").break().break();
 			var thePrincipal = docx.createText("The Principal,").break().break();
 			var schoolName = docx.createText(downUser.school + ",").break().break();
 			var Address = docx.createText(downUser.address + ",").break().break();
-			var date = docx.createText(downUser.date + ",").break().break();
+			var date = docx.createText(dateFormat + ",").break().break();
 			var greeting = docx.createText("Sir/Ma'am',").break().break();
-			var paragraph = docx.createText("With due respect I beg to state that I am not in a position to attend the school as I am down with "+ downUser.reason +". Since it is a communicable disease, I have been advised quarantine and a few days complete rest. Therefore kindly grant me leave for ten days").break().break();
+			var paragraph = docx.createText("With due respect I beg to state that I am not in a position to attend the school as I am down with "+ downUser.reason +". Since it is a communicable disease, I have been advised quarantine and a few days complete rest. Therefore kindly grant me leave for "+ downUser.no_of_days +" days.").break().break();
 			var thanku = docx.createText("Thanking you,").break().break();
 			var yoursobe = docx.createText("Yours obediently,").break().break();
 			var name = docx.createText(downUser.name).break().break();
@@ -341,6 +342,7 @@ app.get("/recentletter", isLoggedIn, function(req,res){
 		} else {
 			//console.log(foundUser);
 			if(foundUser.letter_t1_t1.length == 0){
+				
 				res.redirect("/letter");
 			}else {
 				res.render("recentletter", {user : foundUser, moment : moment, myid: 0});

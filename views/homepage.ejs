@@ -4,14 +4,15 @@
     <main role="main">
 
       <div class="album py-5 bg-light">
-            <div class="container">
+            <div class="container text-center">
+              
               <div class="h2 text-center mb-5">Document Type</div>
               <div class="row">
                 <div class="col-md-4 mb-4">
                   <div class="dbAnchor">
                     <a href="/applicationTypes">
                       <div class="card">
-                        <img class="card-img-top" src="img/portfolio-3.jpg" alt="Application Image">
+                        <img  style="max-height: 14em;" class="card-img-top" src="img/application.jpg" alt="Application Image">
                         <div class="card-body">
                           <p class="card-text">Application Templates</p>
                         </div>
@@ -38,7 +39,7 @@
                   <div class="dbAnchor">
                     <a href="/letterTypes">
                       <div class="card">
-                        <img class="card-img-top" src="img/portfolio-3.jpg" alt="Letter Image">
+                        <img style="max-height: 13.5em;" class="card-img-top" src="img/portfolio-3.jpg" alt="Letter Image">
                         <div class="card-body">
                           <p class="card-text">Letter Templates</p>
                         </div>
@@ -64,7 +65,7 @@
                   <div class="dbAnchor">
                     <a href="#">
                       <div class="card">
-                        <img class="card-img-top" src="img/portfolio-3.jpg" alt="Other Docs Image">
+                        <img style="max-height: 13.5em;" class="card-img-top" src="img/other_documents.jpg" alt="Other Docs Image">
                         <div class="card-body">
                           <p class="card-text">Other Formats</p>
                         </div>
@@ -97,22 +98,22 @@
           <div class="row">
             <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" src="img/portfolio-3.jpg" alt="Card image cap">
+                <img style="max-height: 14em;" class="card-img-top" src="img/sick_leave.jpg" alt="Card image cap">
                 <div class="card-body">
-                  <p class="card-text">Application to Principal for leave.</p>
+                  <p class="card-text">Application for Sick Leave in School</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <a type="button" class="btn btn-sm btn-outline-secondary" href="/recentdoc">View</a>
                       <a type="button" class="btn btn-sm btn-outline-secondary" href="/application">Use</a>
                     </div>
-                    <small class="text-muted">9 times opened</small>
+                    <small class="text-muted"><%= DocsUser.application_t1_t1.length %> applications</small>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" src="img/portfolio-3.jpg" alt="Card image cap">
+                <img style="max-height: 13.5rem;" class="card-img-top" src="img/letter2.jpg" alt="Card image cap">
                 <div class="card-body">
                   <p class="card-text">Letter Template.</p>
                   <div class="d-flex justify-content-between align-items-center">
@@ -120,7 +121,7 @@
                       <a type="button" class="btn btn-sm btn-outline-secondary" href="/recentletter">View</a>
                       <a type="button" class="btn btn-sm btn-outline-secondary" href="/letter">Use</a>
                     </div>
-                    <small class="text-muted">9 times opened</small>
+                    <small class="text-muted"><%= DocsUser.letter_t1_t1.length %> letters</small>
                   </div>
                 </div>
               </div>

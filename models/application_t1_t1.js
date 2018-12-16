@@ -6,6 +6,7 @@ var application_t1_t1Schema = mongoose.Schema({
 	address 	: String,
 	date 		: String,
 	reason 		: String,
+	no_of_days  : String,
 	committed 		: {
 	    type: Date,
 	    default: Date.now

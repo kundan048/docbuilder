@@ -1,51 +1,55 @@
 <% include partials/home_header %>
   <% include partials/home_navbar %>
 <main role="main">
-		<a class="btn btn-danger btn-outline-danger m-3" href="/homepage">Back</a>
+		<a class="btn btn-danger btn-outline-danger m-3" href = "javascript:history.back()">Back</a>
+		<a class="btn btn-primary btn-outline-primary m-3" href = "/recentdoc">Recent Applications</a>
 		<div class="h2 text-center mb-5">Application for School Leave.</div>
 		<div class="container">
 			<div class="row">
 			<!-- first column starts -->
 
-			<div class="col-md-6 " style="border: 1px solid black; border-radius: 5px;">
-				<div class="album py-5">
+			<div class="col-md-6 " style="border: 1px solid black; border-right: none; border-radius: 5px;">
+				<div class="album py-2">
 					<div class="container">
 						
 						<form action="/application" method="post">
-							<div class="form-group row">
-						    <label for="name" class="col-sm-2 col-form-label">Full Name:</label>
-						    <div class="col-sm-10">
-						      <input class="form-control" type="text" name="application[name]" id="name" placeholder="Tom Cruze" autocomplete="off">
-						    </div>
+							
+							<div class="form-group kkmain">
+						    
+						    <input class="kki form-control" type="text" name="application[name]" id="name" unselectable="on" autocomplete="off" required>
+						    <label for="name" class="kkl col-form-label">Full Name</label>
 						  </div>
-							<div class="form-group row">
-						    <label for="schoolname" class="col-sm-2 col-form-label">School Name:</label>
-						    <div class="col-sm-10">
-						      <input class="form-control" type="text" name="application[school]" id="schoolname" placeholder="Kendriya Vidyalaya" autocomplete="off">
-						    </div>
+							<div class="form-group kkmain">
+						    
+						      <input class="kki form-control" type="text" name="application[school]" id="schoolname" autocomplete="off" required>
+									<label for="schoolname" class="kkl col-form-label">School Name</label>
+							</div>
+						  <div class="form-group kkmain">
+						      <input class="kki form-control" type="text" name="application[address]" id="address" autocomplete="off" required>
+									<label for="address" class="kkl col-form-label">Address</label>
 						  </div>
-						  <div class="form-group row">
-						    <label for="address" class="col-sm-2 col-form-label">Address:</label>
-						    <div class="col-sm-10">
-						      <input class="form-control" type="text" name="application[address]" id="address" placeholder="e.g. Street no. 3, Gole Market, New Delhi-110043" autocomplete="off">
-						    </div>
+						  <div class="form-group kkmain">
+						    
+						      <input class="kki form-control" type="date" name="application[date]" id="date" autocomplete="off" required>
+									<!-- <label for="date" class="kkl col-form-label">Date</label> -->
 						  </div>
-						  <div class="form-group row">
-						    <label for="date" class="col-sm-2 col-form-label">Date:</label>
-						    <div class="col-sm-10">
-						      <input class="form-control" type="date" name="application[date]" id="date" placeholder="26/11/1997" autocomplete="off">
-						    </div>
-						  </div>
-						  <div class="form-group row">
-						    <label for="reason" class="col-sm-2 col-form-label">Reason:</label>
-						    <div class="col-sm-10">
-						      <input class="form-control" type="text" name="application[reason]" id="reason" placeholder="reason e.g chicken pox, fever" autocomplete="off">
-						    </div>
+						  <div class="form-group kkmain">
+						    
+						      <input class="kki form-control" type="text" name="application[reason]" id="reason" autocomplete="off" required>
+									<label for="reason" class="kkl col-form-label">Reason</label>
+							</div>
+							<div class="form-group kkmain">
+						    
+						      <input class="kki form-control" type="text" name="application[no_of_days]" id="no_of_days" maxlength="2" autocomplete="off" required>
+									<label for="no_of_days" class="kkl col-form-label">No. of Days</label>
 						  </div>
 						  <div class="form-group row">
 						    <div class="col-sm-12 mt-3">
-						      <input class="btn btn-block btn-success" type="submit" value="Save & Download">
-						    </div>
+						      <input class="btn btn-block btn-outline-success" type="submit" value="Save & Download">
+								</div>
+								<!-- <div class="col-sm-12 mt-3">
+										<a class="btn btn-block btn-primary" href="/recentdoc">Recent documents</a>
+								</div> -->
 						   <!--  <div class="col-sm-6 mt-3">
 						      <a href="#" class="btn btn-block btn-success" type="button">Download Without Saving &rarr;</a>
 						    </div> -->
@@ -55,7 +59,7 @@
 				</div>
 			</div> 
 			<!-- first column ends -->
-			<div class="col-md-6" style="border: 1px solid black; border-radius: 5px;">
+			<div class="col-md-6 py-4" style="border: 1px solid black; border-radius: 5px;">
 				
 						
 					<p>To,</p>
@@ -64,7 +68,7 @@
 					<p id="addressp"></p>
 					<p id="datep"></p>
 					<p>Sir/Ma'am',</p>
-					<p>With due respect I beg to state that I am not in a position to attend the school as I am down with <span id="reasonp"></span>. Since it is a communicable disease, I have been advised quarantine and a few days complete rest. Therefore kindly grant me leave for ten days</p>
+					<p>With due respect I beg to state that I am not in a position to attend the school as I am down with <span id="reasonp"></span>. Since it is a communicable disease, I have been advised quarantine and a few days complete rest. Therefore kindly grant me leave for <span id="no_of_daysp"></span> days</p>
 					<p>Thanking you,</p>
 					<p>Yours obediently,</p>
 					<p id="namep"></p>
@@ -94,16 +98,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
 
 		<script>
+			$( document ).ready(function() {
+				$(".kki").each(function() { 
+					if ($(this).val() != "") {
+						$(this).parent().addClass("animation");
+					}
+				});
+			});
+
+			//Add animation when input is focused
+			$(".kki").focus(function(){
+				$(this).parent().addClass("animation animation-color");
+			});
+
+			//Remove animation(s) when input is no longer focused
+			$(".kki").focusout(function(){
+				if($(this).val() === "")
+					$(this).parent().removeClass("animation");
+				$(this).parent().removeClass("animation-color");
+			})
+		</script>
+
+		<script>
 			$(document).ready(function(){
 				var name = $("#name");
 				var schoolname = $("#schoolname");
 				var address = $("#address");
 				var date = $("#date");
 				var reason = $("#reason");
+				var no_of_days = $("#no_of_days");
 				var namep = $("#namep");
 				var schoolnamep = $("#schoolnamep");
 				var addressp = $("#addressp");
 				var reasonp = $("#reasonp");
+				var no_of_daysp = $("#no_of_daysp");
 				var datep = $("#datep");
 				var monthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -121,6 +149,9 @@
 				}
 				if(reason.val() == ""){
 					reasonp.html("____");
+				}
+				if(no_of_days.val() == ""){
+					no_of_daysp.html("____");
 				}
 
 				name.keyup(function(){
@@ -168,6 +199,16 @@
 						reasonp.html("____");
 					}else{
 						reasonp.html(reasonhere);
+					}
+				});
+
+
+				no_of_days.keyup(function(){
+					var no_of_days_here = no_of_days.val();
+					if(no_of_days_here.length == 0){
+						no_of_daysp.html("____");
+					}else{
+						no_of_daysp.html(no_of_days_here);
 					}
 				});
 			});
