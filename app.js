@@ -25,6 +25,7 @@ var express			 		= require('express'),
 	
 
  mongoose.connect(process.env.CODE, { useNewUrlParser: true });
+ mongoose.set('useCreateIndex', true);
  //mongoose.connect("mongodb://localhost/Document_help", { useNewUrlParser: true });
 
 var app = express();
@@ -34,10 +35,14 @@ app.use(bodyParser.urlencoded({extended : true}));
 app.use(flash());
 
 app.use(expressSession({
-	secret : "Anything",
-	resave : false,
-	saveUninitialized : false
-}));
+		secret : "Anything",
+		resave : false,
+		saveUninitialized : false,
+		cookie : {
+			maxAge : 2600000000
+		}
+	})
+);
 
 
 app.use(passport.initialize());
