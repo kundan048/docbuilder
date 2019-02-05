@@ -41,7 +41,7 @@
 						<p>Reason - <%= user.application_t1_t1[user.application_t1_t1.length-1].reason %></p>
 						<p>Committed - <%= user.application_t1_t1[user.application_t1_t1.length-1].committed %></p>
 						<br> -->
-						<form action="/download/<%= item._id %>" method="GET">
+						<form action="/application/download/<%= item._id %>" method="GET">
 							<input class="btn btn-success btn-block btn-outline-success btn-lg mb-2" type="submit" value="Download in Docx format">
 							<input class="btn btn-success btn-block btn-outline-primary btn-lg mb-2" type="button" onclick="print_this('hello')" value="Download in Pdf">
 						</form>
@@ -55,7 +55,7 @@
 								<p>Name - <%= dates.name %></p>
 								<p>Reason - <%= dates.reason %></p>
 								<p>Last Saved - <%= moment( dates.committed).format('MMMM Do YYYY, h:mm:ss a') %></p>
-								<p><a class="btn btn-outline-dark" href="/recentdoc/<%= dates._id %>">See</a></p>
+								<p><a class="btn btn-outline-dark" href="/application/recentdoc/<%= dates._id %>">See</a></p>
 							</div>
 						<% }); %>
 					</div>
