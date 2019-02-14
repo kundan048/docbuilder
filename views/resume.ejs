@@ -6,12 +6,22 @@
         color: #485460 !important;
       }
   </style>
+
+    <script>
+        function printContent(el){
+            var restorepage = document.body.innerHTML;
+            var printcontent = document.getElementById(el).innerHTML;
+            document.body.innerHTML = printcontent;
+            window.print();
+            document.body.innerHTML = restorepage;
+        }
+    </script>
   <% include partials/home_navbar %>
 <a class="btn btn-danger btn-outline-danger m-3" href = "javascript:history.back()">Back</a>
-
+<button class="btn btn-outline-primary" onclick="printContent('download_pdf')">Print Resume</button>
 <!-- <hr class="prettyline"> -->
 <div class="container">
-    <div class="container bg-light">
+    <div id="download_pdf" class="container bg-light">
         <section id="resume_head">
             <div class="row">
                 <div class="col-md-12">

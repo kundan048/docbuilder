@@ -12,29 +12,37 @@ var {isLoggedIn} = require('../../helpers/auth');
 var {filterData} = require('../../transformer/resume/resume_transformer');
 
 router.get("/resumeFormats", isLoggedIn, function(req, res){
-	res.render("resume_formats");
+	User.findById(req.user._id).populate("resume").exec(function(err, user) {
+		if(err) {
+			res.redirect("/otherFormats");
+		} else {
+			res.render("resume_formats", { user: user});
+		}
+	});
 });
 
 router.get("/resume", isLoggedIn, function(req, res) {
-	Resume.findOne().sort({_id: -1}).exec(function(err, resume) {
+	User.findById(req.user._id).populate("resume").exec(function(err, user) {
 		if(err){
 			//console.log(err);
 			res.redirect("/otherFormats/resumeFormats");
 		} else {
-			if(resume != null) {
-				res.render("resume", {resume: resume});
+			if(user.resume.length > 0) {
+				var item = user.resume[user.resume.length - 1];
+				// console.log(item);
+				res.render("resume", {resume: item});
 			} else {
 				res.redirect("/otherFormats/resumeFormats");
 			}
 		}
-	}); 
-	
-})
+	});
+});
 
 router.post("/resumeFormats", isLoggedIn, function(req, res){
 	var finalData = filterData(req.body);
 	User.findById(req.user._id, function(err, user){
 		if(err) {
+			console.log("user not found");
 			res.redirect("/resumeFormats");
 		} else {
 			Resume.create(finalData, function(err, data) {
@@ -43,6 +51,8 @@ router.post("/resumeFormats", isLoggedIn, function(req, res){
 					res.redirect("/otherFormats/resumeFormats");
 				} else {
 					data.save();
+					user.resume.push(data);
+					user.save();
 					res.redirect("/otherFormats/resume");
 				}
 			})

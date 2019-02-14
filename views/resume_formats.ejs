@@ -9,7 +9,12 @@
     <div class="row m-4">
       <div class="col-md-4 mb-4">
         <div class="dbAnchor" data-toggle="modal" data-target="#exampleModal">
-          <a class="resume-form" href="#animatedModal">
+          <!-- <a class="resume-form" href="#animatedModal"> -->
+            <% if(user.resume.length > 0) { %>
+            <a href="/otherFormats/resume">
+          <% } else { %>
+            <a class="resume-form" href="#animatedModal">
+          <% } %>
             <div class="card">
               <img style="max-height: 14em;" class="card-img-top" src="/img/sick_leave.jpg" alt="Resume 1">
               <div class="card-body">
