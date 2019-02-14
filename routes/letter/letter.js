@@ -32,7 +32,7 @@ router.post("/letter", isLoggedIn, function(req, res){
 					user.letter_t1_t1.push(doc);
 					user.save();
 					//console.log(user);
-					res.redirect("/recentletter");
+					res.redirect("/letter/recentletter");
 				}
 			});
 		}

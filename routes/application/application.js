@@ -32,7 +32,7 @@ router.post("/application", isLoggedIn, function(req, res){
 					doc.save();
 					user.application_t1_t1.push(doc);
 					user.save();
-					res.redirect("/recentdoc");
+					res.redirect("/application/recentdoc");
 				}
 			});
 		}

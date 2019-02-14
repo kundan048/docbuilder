@@ -117,49 +117,6 @@ app.use('/', logout);
 
 app.use('/', notfound);
 
-
-// app.get("/private", isLoggedIn, function(req,res){
-// 	res.render("private");
-// });
-
-// app.post("/private", isLoggedIn, function(req, res){
-// 	var application = req.body.application;
-// 	User.findById(req.user._id, function(err, user){
-// 		if(err) {
-// 			console.log(err);
-// 			res.redirect("/private");
-// 		} else {
-// 			Application_t1_t1.create(application, function(err, doc){
-// 				if(err){
-// 					console.log(err);
-// 					res.redirect("/private");
-// 				} else {
-// 					doc.save();
-
-// 					user.application_t1_t1.push(doc);
-// 					user.save();
-// 					// console.log(user);
-// 					res.redirect("/private1");
-// 				}
-// 			});
-// 		}
-// 	});
-// });
-
- 
-// app.get("/private1", isLoggedIn, function(req,res){
-// 	User.findById(req.user._id).populate("application_t1_t1").exec(function(err, foundUser){
-// 		if(err) {
-// 			console.log(err);
-// 			// req.flash("error", "Something went wrong! Please try again!");
-// 			res.redirect("/private");
-// 		} else {
-// 			// console.log(foundUser.application_t1_t1);
-// 			res.render("private1", {user : foundUser});
-// 		}
-// 	});
-// });
-
 // Listening to the server
 app.listen(process.env.PORT || 3000, function(){
     console.log(`Server is listening on 3000`);

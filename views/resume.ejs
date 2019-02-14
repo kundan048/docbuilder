@@ -1,0 +1,223 @@
+<% include partials/home_header %>
+  <link rel="stylesheet" href="/css/resume.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
+  <style>
+      .text-primary {
+        color: #485460 !important;
+      }
+  </style>
+
+    <script>
+        function printContent(el){
+            var restorepage = document.body.innerHTML;
+            var printcontent = document.getElementById(el).innerHTML;
+            document.body.innerHTML = printcontent;
+            window.print();
+            document.body.innerHTML = restorepage;
+        }
+    </script>
+  <% include partials/home_navbar %>
+<a class="btn btn-danger btn-outline-danger m-3" href = "javascript:history.back()">Back</a>
+<button class="btn btn-outline-primary" onclick="printContent('download_pdf')">Print Resume</button>
+<!-- <hr class="prettyline"> -->
+<div class="container">
+    <div id="download_pdf" class="container bg-light">
+        <section id="resume_head">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="h1 text-uppercase font-weight-bold">
+                        <span style="color: #004d80;"><%= resume.fullname %></span>
+                        <span class="h4 text-capitalize">(<%= resume.designation %>)</span>
+                    </div>
+                    <div class="h3">
+                        <span><%= resume.mobile %></span> | <span><%= resume.email %></span>
+                    </div>
+                    <div class="h5">
+                        <%= resume.address %>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- <hr> -->
+        <br>
+        <section id="resume_career">
+            <div class="row">
+                <div class="col-md-12 h2 font-weight-bold text-info">
+                    <span>Career Objective</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="h5">
+                        <%= resume.careeroverview %>
+                    </span>
+                </div>
+            </div>
+        </section>
+        <!-- <hr> -->
+        <br>
+        <section id="resume_education">
+            <div class="row">
+                <div class="col-md-12 h2 font-weight-bold text-info">
+                    <span>Education</span>
+                </div>
+            </div>
+            <% resume.degree.forEach(function(degree) { %>
+                <div class="row">
+                    <div class="col-md-12 h4 text-primary">
+                        <span class="font-weight-bold"><%= degree.institution %></span>
+                        <span class="h5">(<%= degree.passingyear %>)</span>
+                    </div>
+                    <div class="col-md-12 h5">
+                        <span><%= degree.degree %></span>
+                    </div>
+                    <div class="col-md-12 h5">
+                        <span><%= degree.details %></span>
+                    </div>
+                </div>
+                <hr>
+            <% }); %>
+            
+        </section>
+        <section id="resume_project">
+            <div class="row">
+                <div class="col-md-12 h2 font-weight-bold text-info">
+                    <span>Projects</span>
+                </div>
+            </div>
+            <% resume.project.forEach(function(project) { %>
+                <div class="row">
+                    <div class="col-md-12 h4 text-primary">
+                        <span class="font-weight-bold"><%= project.title %></span>
+                    </div>
+                    <div class="col-md-12 h5">
+                        <span><%= project.organization %></span>
+                    </div>
+                    <div class="col-md-12 h5">
+                        <span>
+                            <%= project.details %>
+                        </span>
+                    </div>
+                </div>
+                <hr>
+            <% }) %>
+        </section>
+        <% if(resume.experience.length > 0) { %>
+            <section id="resume_experience">
+                <div class="row">
+                    <div class="col-md-12 h2 font-weight-bold text-info">
+                        <span>Experience</span>
+                    </div>
+                </div>
+                <% resume.experience.forEach(function(experience) { %>
+                    <div class="row">
+                        <div class="col-md-12 h4 text-primary">
+                            <span class="font-weight-bold"><%= experience.title %></span>
+                        </div>
+                        <div class="col-md-12 h5">
+                            <span><%= experience.organization %></span>
+                        </div>
+                        <div class="col-md-12 h5">
+                            <span>
+                                <%= experience.details %>
+                            </span>
+                        </div>
+                    </div>
+                    <hr>
+                <% }) %>
+            </section>
+        <% } %>
+        <section id="resume_skill">
+            <div class="row">
+                <div class="col-md-12 h2 font-weight-bold text-info">
+                    <span>Skills</span>
+                </div>
+            </div>
+            <div class="row">
+                <% resume.skill.forEach(function(skill) { %>
+                    <div class="col-md-2 h4">
+                        <span class="btn border border-primary font-weight-bold w-100">
+                            <%= skill %>
+                        </span>
+                    </div>
+                <% }) %>
+                
+            </div>
+            <hr>
+        </section>
+    </div>
+
+</div>
+<!-- <hr class="prettyline"> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <footer class="text-muted">
+      <div class="container">
+        <button onclick="topFunction()" id="goTop">Top</button>
+        
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
+    <script src="/js/animatedModal.js"></script>
+
+    <script>
+      $(".resume-form").animatedModal({
+        animatedIn: 'lightSpeedIn',
+        animatedOut: 'bounceOut'
+      });
+    </script>
+
+
+
+    <script>
+      
+      window.onscroll = function() {scrollFunction()};
+      window.onload = function() {
+        scrollFunction()
+      };
+      function scrollFunction() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            document.getElementById("goTop").style.display = "block";
+        } else {
+            document.getElementById("goTop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+
+
+  </body>
+</html>
