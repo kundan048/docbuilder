@@ -3,18 +3,19 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
   <% include partials/home_navbar %>
 <a class="btn btn-danger btn-outline-danger m-3" href = "javascript:history.back()">Back</a>
+<a class="btn btn-primary btn-outline-primary m-3" href = "/otherFormats/resume">Recent Resumes</a>
 <hr class="prettyline">
 
   <div class="container text-center">
     <div class="row m-4">
       <div class="col-md-4 mb-4">
         <div class="dbAnchor" data-toggle="modal" data-target="#exampleModal">
-          <!-- <a class="resume-form" href="#animatedModal"> -->
-            <% if(user.resume.length > 0) { %>
+          <a class="resume-form" href="#animatedModal">
+            <!-- <% if(user.resume.length > 0) { %>
             <a href="/otherFormats/resume">
           <% } else { %>
             <a class="resume-form" href="#animatedModal">
-          <% } %>
+          <% } %> -->
             <div class="card">
               <img style="max-height: 14em;" class="card-img-top" src="/img/sick_leave.jpg" alt="Resume 1">
               <div class="card-body">

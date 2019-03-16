@@ -9,7 +9,7 @@ var express			 		= require('express'),
 	require("dotenv/config");
 
 // Connect MongoDB
-mongoose.connect(process.env.CODE, { useNewUrlParser: true });
+mongoose.connect(process.env.CODE || "mongodb://localhost/Document_help", { useNewUrlParser: true });
 mongoose.set('useCreateIndex', true);
 // mongoose.connect("mongodb://localhost/Document_help", { useNewUrlParser: true });
 
@@ -34,6 +34,7 @@ var recentletter = require('./routes/letter/recentletter');
 //otherFormats section
 var otherFormats = require('./routes/otherformats/otherFormats');
 var resumeFormats = require('./routes/otherformats/resumeFormats');
+var cardsFormats = require('./routes/otherformats/cardsFormats');
 
 //Auth
 var forgot = require('./routes/auth/forgot');
@@ -108,6 +109,7 @@ app.use('/letter', recentletter);
 // Other Format section
 app.use('/', otherFormats);
 app.use('/otherFormats', resumeFormats);
+app.use('/otherFormats', cardsFormats);
 
 // Auth
 app.use('/', forgot);
