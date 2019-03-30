@@ -221,6 +221,9 @@
 <script>
     var data = JSON.parse($('#variableJSON').text());
     $('#variableJSON').remove();
+    for(let i = 0; i < data.length; i++){
+            data[i]['committed'] = data[i]['committed'];
+    }
     $(document).ready(function() {
         $("#grid").kendoGrid({
             dataSource: {
@@ -258,11 +261,11 @@
             columns: [
                 { field: "name", title: "Name"},
                 { field: "address", title: "Address" },
-                { field: "date", title: "Date" },
+                { field: "date", title: "Date", template: "#= kendo.toString(kendo.parseDate(date, 'yyyy-MM-dd'), 'dd-MM-yyyy') #" },
                 { field: "school", title: "School" },
                 { field: "reason", title: "Reason"},
                 { field: "no_of_days", title: "No of Days"},
-                { field: "committed", title: "Committed"}
+                { field: "committed", title: "Committed", template: "#= kendo.toString(kendo.parseDate(committed, 'yyyy-MM-dd'), 'dd-MM-yyyy') #"}
             ]
         });
     });
@@ -309,15 +312,15 @@
             columns: [
                 { field: "name", title: "Name"},
                 { field: "address", title: "Address", hidden: "true"},
-                { field: "date", title: "Date" },
+                { field: "date", title: "Date", template: "#= kendo.toString(kendo.parseDate(date, 'yyyy-MM-dd'), 'dd-MM-yyyy') #"},
                 { field: "designation", title: "Designation", hidden: "true" },
                 { field: "supervisor_first_name", title: "Supervisor First Name", hidden: "true" },
                 { field: "supervisor_last_name", title: "Supervisor Last Name", hidden: "true" },
                 { field: "supervisor_designation", title: "Supervisor Designation", hidden: "true" },
                 { field: "company_name", title: "Company name" },
                 { field: "company_address", title: "Company_Address", hidden: "true" },
-                { field: "start_date", title: "Start Date" },
-                { field: "end_date", title: "End Date" }
+                { field: "start_date", title: "Start Date", template: "#= kendo.toString(kendo.parseDate(start_date, 'yyyy-MM-dd'), 'dd-MM-yyyy') #" },
+                { field: "end_date", title: "End Date", template: "#= kendo.toString(kendo.parseDate(end_date, 'yyyy-MM-dd'), 'dd-MM-yyyy') #" }
             ]
         });
     });
