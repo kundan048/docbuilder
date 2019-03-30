@@ -15,7 +15,6 @@ mongoose.set('useCreateIndex', true);
 
 var app = express();
 
-
 //Load routes
 var landingpage = require('./routes/landingpage');
 var login = require('./routes/login');

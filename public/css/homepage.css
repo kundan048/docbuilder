@@ -148,4 +148,8 @@ footer p {
   outline-style: none;
 }
 
+#grid, #lettergrid {
+  font-size: 12px;
+}
+
 
