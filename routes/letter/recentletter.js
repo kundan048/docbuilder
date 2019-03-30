@@ -27,4 +27,17 @@ router.get("/recentletter", isLoggedIn, function(req,res){
 	}); 
 });
 
+router.get("/recentletter/:id", isLoggedIn, function(req, res){
+	User.findById(req.user._id).populate("letter_t1_t1").exec(function(err, foundUser){
+		if(err){
+			res.redirect("/letter");
+		}else{
+			var item = foundUser.letter_t1_t1.find(item => item.id === req.params.id);
+		//console.log(item);
+			//console.log(foundUser);
+			res.render("recentletter", {user : foundUser, moment : moment, myid: item});
+		}
+	});
+});
+
 module.exports = router;

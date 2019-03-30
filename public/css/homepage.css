@@ -152,4 +152,18 @@ footer p {
   font-size: 12px;
 }
 
+.right-section {
+  background-color: lightgray;
+  color: black;
+}
+
+.right-section .section-heading {
+  color: black;
+}
+
+.right-section .section-box {
+  line-height: 0.8;
+
+}
+
 

@@ -11,7 +11,11 @@ var letter_type1_template1Schema = mongoose.Schema({
 	company_name			: String,
 	company_address			: String,
 	start_date				: String,
-	end_date				: String
+	end_date				: String,
+	committed 				: {
+	    type: Date,
+	    default: Date.now
+	}
 });
 
 module.exports = mongoose.model("Letter_type1_template1", letter_type1_template1Schema);

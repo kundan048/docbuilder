@@ -51,20 +51,20 @@
 							</div>
 						</div>
 						<form action="/download" method="GET">
-							<input class="btn btn-success btn-block btn-outline-success btn-lg mb-2" type="submit" value="Download in Docx format" disabled>
-							<input class="btn btn-success btn-block btn-outline-primary btn-lg mb-2" type="button" onclick="printContent('hello')" value="Download in Pdf">
+							<input class="btn btn-success btn-block btn-outline-dark btn-lg mb-2" type="submit" value="Download in Docx format" disabled>
+							<input class="btn btn-success btn-block btn-outline-dark btn-lg mb-2" type="button" onclick="printContent('hello')" value="Download in Pdf">
 						</form>
-						<a href="/letter" class="btn btn-success btn-block btn-outline-success btn-lg">New Application</a>
+						<a href="/letter" class="btn btn-success btn-block btn-outline-dark btn-lg">New Application</a>
 
 					</div>
-					<div class="col-md-4 bg-secondary">
-						<div class="h2 text-center text-primary">Recent Commits</div>
+					<div class="col-md-4 right-section">
+						<div class="h2 text-center section-heading p-3">Recent Commits</div>
 						<% user.letter_t1_t1.reverse().forEach(function(dates){ %>
-							<div class="border p-1 m-1 border-white rounded text-center text-light">
+							<div class="border pt-3 m-1 border-dark rounded text-center text-dark section-box">
 								<p>Name - <%= dates.name %></p>
 								<p>Date - <%= dates.date %></p>
-								<p>Last Saved - <%= moment( dates.committed).format('MMMM Do YYYY, h:mm:ss a') %></p>
-								<p><a class="btn btn-outline-dark disabled" href="#">See</a></p>
+								<p>Last Saved - <%= moment(dates.committed).format('MMMM Do YYYY, h:mm:ss a') %></p>
+								<p><a class="btn btn-outline-dark" href="/letter/recentletter/<%= dates._id %>">See</a></p>
 							</div>
 						<% }); %>
 					</div>
