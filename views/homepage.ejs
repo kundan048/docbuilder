@@ -3,10 +3,10 @@
 <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.1.220/styles/kendo.material.min.css" />
 <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.1.220/styles/kendo.material.mobile.min.css" />
 <!-- <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2019.1.220/styles/kendo.common.min.css"> -->
-<link rel="stylesheet" href="http://kendo.cdn.telerik.com/2019.1.220/styles/kendo.blueopal.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.1.220/styles/kendo.blueopal.min.css" />
 
     <script src="http://kendo.cdn.telerik.com/2019.1.220/js/jquery.min.js"></script>
-    <script src="http://kendo.cdn.telerik.com/2019.1.220/js/kendo.all.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2019.1.220/js/kendo.all.min.js"></script>
     <script>
         if (typeof jQuery == "undefined") {
             // fallback to local jQuery
@@ -247,7 +247,6 @@
             tooltip: true,
             reorderable: true,
             resizable: true,
-            groupable: true,
             pageable: {
                 input: true,
                 numeric: false,
@@ -293,12 +292,19 @@
                 },
                 pageSize: 5
             },
+            tooltip: true,
             scrollable: true,
             sortable: true,
             filterable: true,
+            tooltip: true,
+            reorderable: true,
+            resizable: true,
             pageable: {
                 input: true,
-                numeric: false
+                numeric: false,
+                refresh: true,
+                pageSizes: true,
+                buttonCount: 5
             },
             columns: [
                 { field: "name", title: "Name"},
