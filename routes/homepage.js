@@ -21,7 +21,6 @@ router.get("/homepage", isLoggedIn,async function(req, res){
 			}
 		})
 	});
-	console.log(application);
 	res.render("homepage",{userApplication : application.application_t1_t1, userLetter : application.letter_t1_t1} );
 });
 
