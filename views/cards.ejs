@@ -22,52 +22,56 @@
 <!-- <hr class="prettyline"> -->
 <div class="container">
     <div class="row">
-      <div class="col-md-6">
-        <div id="download_pdf" class="bg-info" >
-            <div>
-              <section>
-                  College Details
-                <div>
-                College Name: <%= cards.collegename %>
+      <div class="col-md-12">
+        <div id="download_pdf" class="card-container">
+          <section class="student-id" >
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-2" style="padding: 0px; height: 20px;">
+                  <img style="height: 50px; width: 50px; border-radius: 5px;" class="" src="<%= cards.logoimage %>" alt="">
                 </div>
-                <div>
-                College address: <%= cards.collegeaddress %>
+                <div class="col-sm-10">
+                  <div><%= cards.collegename %></div>
+                  <div><%= cards.collegeaddress %></div>
+                  <div><%= cards.collegenumber %></div>
                 </div>
-                <div>
-                College No.: <%= cards.collegenumber %>
-                </div>
-                <div>
-                 <img width="200px" height="200px" class="float-right img-thumbnail" src="<%= cards.logoimage %>" alt="">
-                </div>
-              </section>
-              <section>
-                Student Details
-                <div>
-                Student Name: <%= cards.studentname %>
-                </div>
-                <div>
-                Student address: <%= cards.address %>
+              </div>  
+              <hr>
+              <div class="text-center">STUDENT ID CARD</div>
+              <div class="row">
+                
+                <div class="col-sm-8" style="line-height: 1.7">
+                  <div>Name: <%= cards.studentname %></div>
+                  <div>Roll no.: <%= cards.rollnumber %></div>
+                  <div>Branch <%= cards.branch %></div>
+                  <div>Mobile: <%= cards.studentmobile %></div>
                 </div> 
-                <div>
-                Student Roll no.: <%= cards.rollnumber %>
+                <div class="col-sm-4" >
+                  <img style="height: 80px; width: 70px; border-radius: 5px;" class="" src="<%= cards.image %>" alt="">
                 </div> 
-                <div>
-                Student Branch <%= cards.branch %>
-                </div>
-                <div>
-                Student Mobile: <%= cards.studentmobile %>
-                </div>
-                <div>
-                Joining Date: <%= cards.yrofjoining %>
-                </div>
-                <div>
-                Valid Upto: <%= cards.validupto %>
-                </div>
-                <div>
-                  <img width="200px" height="200px" class="img-thumbnail float-right" src="<%= cards.image %>" alt="">
-                </div>
-              </section>
+              </div>
             </div>
+            
+            
+          </section>
+
+          <section class="student-id">
+            <div class="container-fluid">
+              
+              <div class="row">
+                <div class="col-sm-12"  style="line-height: 1.7">
+                  <div class="text-center">OTHER DETAILS</div>
+                  <hr>
+                  <div>Address: <%= cards.address %></div>
+                  <div>Joining Date: <%= cards.yrofjoining %></div>
+                  <div>Valid Upto: <%= cards.validupto %></div>
+                </div>
+              </div>
+            </div>
+            
+            
+          </section>
+          
         </div>
       </div>
     </div>
