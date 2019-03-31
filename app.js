@@ -5,13 +5,14 @@ var express			 		= require('express'),
 	LocalStrategy	 		= require('passport-local'),
 	expressSession 			= require('express-session'),
 	flash					= require('connect-flash'),
-	User					= require('./models/user');
+	User					= require('./models/user'),
+	methodOverride 			= require("method-override");
 	require("dotenv/config");
 
 // Connect MongoDB
-mongoose.connect(process.env.CODE || "mongodb://localhost/Document_help", { useNewUrlParser: true });
+// mongoose.connect(process.env.CODE || "mongodb://localhost/Document_help", { useNewUrlParser: true });
 mongoose.set('useCreateIndex', true);
-// mongoose.connect("mongodb://localhost/Document_help", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/Document_help", { useNewUrlParser: true });
 
 var app = express();
 
@@ -25,6 +26,8 @@ var homepage = require('./routes/homepage');
 var application = require('./routes/application/application');
 var application_recentdoc = require('./routes/application/recentdoc');
 var application_download = require('./routes/application/download');
+var application_edit = require('./routes/application/edit');
+
 
 //letter section
 var letter = require('./routes/letter/letter');
@@ -48,6 +51,9 @@ app.set("view engine", "ejs");
 
 //Static files middleware
 app.use(express.static("public"));
+
+//Update method override
+app.use(methodOverride("_method"));
 
 //BodyParser middleware
 app.use(bodyParser.urlencoded({extended : true}));
@@ -98,6 +104,7 @@ app.use('/', homepage);
 
 // Application section
 app.use('/', application);
+app.use('/application', application_edit);
 app.use('/application', application_recentdoc);
 app.use('/application', application_download);
 
@@ -119,6 +126,6 @@ app.use('/', logout);
 app.use('/', notfound);
 
 // Listening to the server
-app.listen(process.env.PORT || 3000, function(){
+app.listen(process.env.PORT || 3030, function(){
     console.log(`Server is listening on 3000`);
 });

@@ -64,7 +64,10 @@
 								<p>Name - <%= dates.name %></p>
 								<p>Reason - <%= dates.reason %></p>
 								<p>Last Saved - <%= moment( dates.committed).format('MMMM Do YYYY, h:mm:ss a') %></p>
-								<p><a class="btn btn-outline-dark btn-sm" href="/application/recentdoc/<%= dates._id %>">See</a></p>
+								<p>
+									<a class="btn btn-outline-dark btn-sm" href="/application/recentdoc/<%= dates._id %>">See</a>
+									<a class="btn btn-outline-dark btn-sm" href="/application/<%= dates._id %>/edit">Edit</a>
+								</p>
 							</div>
 						<% }); %>
 					</div>
