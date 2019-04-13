@@ -2,25 +2,27 @@
 <link rel="stylesheet" href="../../css/suggestions.css">
 <link rel="stylesheet" href="../../css/homepage.css">
 
- <% include ../partials/home_navbar %>
+  <% include ../partials/home_navbar %>
 <main role="main">
 		<a class="btn btn-danger btn-outline-danger m-3" href = "javascript:history.back()">Back</a>
 		<a class="btn btn-primary btn-outline-primary m-3" href = "/application/recentdoc">Recent Applications</a>
 		<div class="h2 text-center mb-5">Application for School Leave.</div>
 		
 		<div class="container">
-
-			<% result.Sheet1.forEach(function(val, index){ %>
-				<% if(index > 0){ %>
-					<%= val.A %>
-					<br>
-				<% } %>	
-			<% }) %>
-			<br>
 			
       <div class="container">
         <button onclick="topFunction()" id="goTop">Top</button>
-        
+
+        <!-- Uploading file for Bulk Generator -->
+        <form ref='uploadForm' id='uploadForm' class="form-signin" action="/otherFormats/bulkVisitingCards" 
+			method="POST"
+			encType="multipart/form-data">
+	        
+			   <input type="file" name="uploaded_file">
+			   <!-- <input type="text" name="fileName"> -->
+
+		       <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Upload</button>
+	    </form>
       </div>
     </footer>
 
