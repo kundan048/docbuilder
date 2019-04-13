@@ -1,304 +1,316 @@
 <% include partials/home_header %>
 <link rel="stylesheet" href="/css/suggestions.css">
-  <% include partials/home_navbar %>
+<% include partials/home_navbar %>
 <main role="main">
-		<a class="btn btn-danger btn-outline-danger m-3" href = "javascript:history.back()">Back</a>
-		<a class="btn btn-primary btn-outline-primary m-3" href = "application/recentdoc">Recent Applications</a>
-		<div class="h2 text-center mb-5">Application for School Leave.</div>
-		
-		<div class="container">
-			<div class="row">
-			<!-- first column starts -->
+    <a class="btn btn-danger btn-outline-danger m-3" href="javascript:history.back()">Back</a>
+    <a class="btn btn-primary btn-outline-primary m-3" href="application/recentdoc">Recent Applications</a>
+    <div class="h2 text-center mb-5">Application for School Leave.</div>
 
-			<div class="col-md-6 " style="border: 1px solid black; border-right: none; border-radius: 5px;">
-				<div class="album py-2">
-					<div class="container">
-						
-						<form action="/application" method="post">
-							
-							<div class="form-group kkmain">
-						    
-						    <input class="kki form-control" type="text" name="application[name]" id="name" unselectable="on" autocomplete="off" required>
-						    <label for="name" class="kkl col-form-label">Full Name</label>
-						  </div>
-							<div class="form-group kkmain">
-						    
-						      <input class="kki form-control" type="text" name="application[school]" id="schoolname" autocomplete="off" required>
-									<label for="schoolname" class="kkl col-form-label">School Name</label>
-							</div>
-						  <div class="form-group kkmain">
-						      <input class="kki form-control" type="text" name="application[address]" id="address" autocomplete="off" required>
-									<label for="address" class="kkl col-form-label">Address</label>
-						  </div>
-						  <div class="form-group kkmain">
-						    
-						      <input class="kki form-control" type="date" name="application[date]" id="date" autocomplete="off" required>
-									<!-- <label for="date" class="kkl col-form-label">Date</label> -->
-						  </div>
-						  <div class="form-group kkmain">
-						    
-						      <input class="kki form-control" type="text" name="application[reason]" id="reason" autocomplete="off" required>
-									<label for="reason" class="kkl col-form-label">Reason</label>
-							</div>
-							<div class="form-group kkmain">
-						    
-						      <input class="kki form-control" type="text" name="application[no_of_days]" id="no_of_days" maxlength="2" autocomplete="off" required>
-									<label for="no_of_days" class="kkl col-form-label">No. of Days</label>
-						  </div>
-						  <div class="form-group row">
-						    <div class="col-sm-12 mt-3">
-						      <input class="btn btn-block btn-outline-success" type="submit" value="Save & Download">
-								</div>
-								<!-- <div class="col-sm-12 mt-3">
-										<a class="btn btn-block btn-primary" href="/application/recentdoc">Recent documents</a>
-								</div> -->
-						   <!--  <div class="col-sm-6 mt-3">
-						      <a href="#" class="btn btn-block btn-success" type="button">Download Without Saving &rarr;</a>
-						    </div> -->
-						  </div>
-						</form>
-					</div>
-				</div>
-			</div> 
-			<!-- first column ends -->
-			<div class="col-md-6 py-4" style="border: 1px solid black; border-radius: 5px;">
-				
-						
-					<p>To,</p>
-					<p>The Principal,</p>
-					<p id="schoolnamep"></p>
-					<p id="addressp"></p>
-					<p id="datep"></p>
-					<p>Sir/Ma'am',</p>
-					<p>With due respect I beg to state that I am not in a position to attend the school as I am down with <span id="reasonp"></span>. Since it is a communicable disease, I have been advised quarantine and a few days complete rest. Therefore kindly grant me leave for <span id="no_of_daysp"></span> days</p>
-					<p>Thanking you,</p>
-					<p>Yours obediently,</p>
-					<p id="namep"></p>
+    <div class="container">
+        <div class="row">
+            <!-- first column starts -->
+
+            <div class="col-md-6 " style="border: 1px solid black; border-right: none; border-radius: 5px;">
+                <div class="album py-2">
+                    <div class="container">
+
+                        <form action="/application" method="post">
+
+                            <div class="form-group kkmain">
+
+                                <input class="kki form-control" type="text" name="application[name]" id="name"
+                                       unselectable="on" autocomplete="off" required>
+                                <label for="name" class="kkl col-form-label">Full Name</label>
+                            </div>
+                            <div class="form-group kkmain">
+
+                                <input class="kki form-control" type="text" name="application[school]" id="schoolname"
+                                       autocomplete="off" required>
+                                <label for="schoolname" class="kkl col-form-label">School Name</label>
+                            </div>
+                            <div class="form-group kkmain">
+                                <input class="kki form-control" type="text" name="application[address]" id="address"
+                                       autocomplete="off" required>
+                                <label for="address" class="kkl col-form-label">Address</label>
+                            </div>
+                            <div class="form-group kkmain">
+
+                                <input class="kki form-control" type="date" name="application[date]" id="date"
+                                       autocomplete="off" required>
+                                <!-- <label for="date" class="kkl col-form-label">Date</label> -->
+                            </div>
+                            <div class="form-group kkmain">
+
+                                <input class="kki form-control" type="text" name="application[reason]" id="reason"
+                                       autocomplete="off" required>
+                                <label for="reason" class="kkl col-form-label">Reason</label>
+                            </div>
+                            <div class="form-group kkmain">
+
+                                <input class="kki form-control" type="text" name="application[no_of_days]"
+                                       id="no_of_days" maxlength="2" autocomplete="off" required>
+                                <label for="no_of_days" class="kkl col-form-label">No. of Days</label>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12 mt-3">
+                                    <input class="btn btn-block btn-outline-success" type="submit"
+                                           value="Save & Download">
+                                </div>
+                                <!-- <div class="col-sm-12 mt-3">
+                                        <a class="btn btn-block btn-primary" href="/application/recentdoc">Recent documents</a>
+                                </div> -->
+                                <!--  <div class="col-sm-6 mt-3">
+                                   <a href="#" class="btn btn-block btn-success" type="button">Download Without Saving &rarr;</a>
+                                 </div> -->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- first column ends -->
+            <div class="col-md-6 py-4" style="border: 1px solid black; border-radius: 5px;">
 
 
-			</div>
-		</div>
-		</div>
+                <p>To,</p>
+                <p>The Principal,</p>
+                <p id="schoolnamep"></p>
+                <p id="addressp"></p>
+                <p id="datep"></p>
+                <p>Sir/Ma'am',</p>
+                <p>With due respect I beg to state that I am not in a position to attend the school as I am down with
+                    <span id="reasonp"></span>. Since it is a communicable disease, I have been advised quarantine and a
+                    few days complete rest. Therefore kindly grant me leave for <span id="no_of_daysp"></span> days</p>
+                <p>Thanking you,</p>
+                <p>Yours obediently,</p>
+                <p id="namep"></p>
 
-		<span id='data' hidden>
+
+            </div>
+        </div>
+    </div>
+
+    <span id='data' hidden>
         <%= JSON.stringify(data.application_t1_t1); %>
     </span>
 
 </main>
 
 
- 	<footer class="text-muted">
-      <div class="container">
+<footer class="text-muted">
+    <div class="container">
         <button onclick="topFunction()" id="goTop">Top</button>
-        
-      </div>
-    </footer>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script>window.jQuery || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"><\/script>')</script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
-		<script src="/js/suggestions.js"></script>
+    </div>
+</footer>
 
-		<script>
-			$(document).ready(function() {
-				var data = JSON.parse($('#data').text());
-				$('#data').remove();
-				var i;
-				for(i = 0; i < data.length; i++){
-					// console.log(data[i]['schoolname']);
-						data[i].schoolname = data[i]['school'];
-						delete data[i].school;
-				}
-				let name = document.getElementById("name")
-				let schoolname = document.getElementById("schoolname");
-				let address = document.getElementById("address");
-				let reason = document.getElementById("reason");
-				let no_of_days = document.getElementById("no_of_days");
-					
-				let namehead = new Suggestions(name, data, {
-					minLength: 1, // Number of characters typed into an input to trigger suggestions.
-					limit: 3 //  Max number of results to display. 
-				})
-				
-				namehead.getItemValue = function(item) {
-					return item.name
-				}
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
+<script src="/js/suggestions.js"></script>
 
-				let schoolnamehead = new Suggestions(schoolname, data, {
-					minLength: 1, // Number of characters typed into an input to trigger suggestions.
-					limit: 3 //  Max number of results to display. 
-				})
-				
-				schoolnamehead.getItemValue = function(item) {
-					return item.schoolname
-				}
+<script>
+    $(document).ready(function () {
+        var data = JSON.parse($('#data').text());
+        $('#data').remove();
+        var i;
+        for (i = 0; i < data.length; i++) {
+            // console.log(data[i]['schoolname']);
+            data[i].schoolname = data[i]['school'];
+            delete data[i].school;
+        }
+        let name = document.getElementById("name")
+        let schoolname = document.getElementById("schoolname");
+        let address = document.getElementById("address");
+        let reason = document.getElementById("reason");
+        let no_of_days = document.getElementById("no_of_days");
 
-				let addresshead = new Suggestions(address, data, {
-					minLength: 1, // Number of characters typed into an input to trigger suggestions.
-					limit: 3 //  Max number of results to display. 
-				})
-				
-				addresshead.getItemValue = function(item) {
-					return item.address
-				}
+        let namehead = new Suggestions(name, data, {
+            minLength: 1, // Number of characters typed into an input to trigger suggestions.
+            limit: 3 //  Max number of results to display.
+        })
 
-				let reasonhead = new Suggestions(reason, data, {
-					minLength: 1, // Number of characters typed into an input to trigger suggestions.
-					limit: 3 //  Max number of results to display. 
-				})
-				
-				reasonhead.getItemValue = function(item) {
-					return item.reason
-				}
+        namehead.getItemValue = function (item) {
+            return item.name
+        }
 
-				let no_of_dayshead = new Suggestions(no_of_days, data, {
-					minLength: 1, // Number of characters typed into an input to trigger suggestions.
-					limit: 3 //  Max number of results to display. 
-				})
-				
-				no_of_dayshead.getItemValue = function(item) {
-					return item.no_of_days
-				}
-	
-			})
-		</script>
+        let schoolnamehead = new Suggestions(schoolname, data, {
+            minLength: 1, // Number of characters typed into an input to trigger suggestions.
+            limit: 3 //  Max number of results to display.
+        })
 
-		<script>
-			$( document ).ready(function() {
-				$(".kki").each(function() { 
-					if ($(this).val() != "") {
-						$(this).parent().addClass("animation");
-					}
-				});
-			});
+        schoolnamehead.getItemValue = function (item) {
+            return item.schoolname
+        }
 
-			//Add animation when input is focused
-			$(".kki").focus(function(){
-				$(this).parent().addClass("animation animation-color");
-			});
+        let addresshead = new Suggestions(address, data, {
+            minLength: 1, // Number of characters typed into an input to trigger suggestions.
+            limit: 3 //  Max number of results to display.
+        })
 
-			//Remove animation(s) when input is no longer focused
-			$(".kki").focusout(function(){
-				if($(this).val() === "")
-					$(this).parent().removeClass("animation");
-				$(this).parent().removeClass("animation-color");
-			})
-		</script>
+        addresshead.getItemValue = function (item) {
+            return item.address
+        }
 
-		<script>
-			$(document).ready(function(){
-				var name = $("#name");
-				var schoolname = $("#schoolname");
-				var address = $("#address");
-				var date = $("#date");
-				var reason = $("#reason");
-				var no_of_days = $("#no_of_days");
-				var namep = $("#namep");
-				var schoolnamep = $("#schoolnamep");
-				var addressp = $("#addressp");
-				var reasonp = $("#reasonp");
-				var no_of_daysp = $("#no_of_daysp");
-				var datep = $("#datep");
-				var monthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        let reasonhead = new Suggestions(reason, data, {
+            minLength: 1, // Number of characters typed into an input to trigger suggestions.
+            limit: 3 //  Max number of results to display.
+        })
 
-				if(name.val() == ""){
-					namep.html("____");
-				}
-				if(schoolname.val() == ""){
-					schoolnamep.html("____");
-				}
-				if(address.val() == ""){
-					addressp.html("____");
-				}
-				if(date.val() == ""){
-					datep.html("____");
-				}
-				if(reason.val() == ""){
-					reasonp.html("____");
-				}
-				if(no_of_days.val() == ""){
-					no_of_daysp.html("____");
-				}
+        reasonhead.getItemValue = function (item) {
+            return item.reason
+        }
 
-				name.on('keyup mouseup focus mouseleave change', function(e) {
-					var namehere = name.val();
-					if(namehere.length == 0){
-						namep.html("____");
-					}else{
-						namep.html(namehere);
-					}
-				})
-				schoolname.on('keyup mouseup focus mouseleave change', function(e) {
-					var schoolnamehere = schoolname.val();
-					if(schoolnamehere.length == 0){
-						schoolnamep.html("____");
-					}else{
-						schoolnamep.html(schoolnamehere);
-					}
-				});
-				address.on('keyup mouseup focus mouseleave change', function(e) {
-					var addresshere = address.val();
-					if(addresshere.length == 0){
-						addressp.html("____");
-					}else{
-						addressp.html(addresshere);
-					}
-				});
-				date.on('keyup mouseup focus mouseleave mouseout change', function(e) {
-					var datehere = date.val();
-					
-					if(datehere.length == 0){
-						datep.html("____");
-					}else{
-						var datehere = new Date(date.val());
-					  day = datehere.getDate();
-					  month = datehere.getMonth();
-					  year = datehere.getFullYear();
-					  var finaldate = day + " - " + monthName[month] + " - " + year;
-						datep.html(finaldate);
-					}
-				});
+        let no_of_dayshead = new Suggestions(no_of_days, data, {
+            minLength: 1, // Number of characters typed into an input to trigger suggestions.
+            limit: 3 //  Max number of results to display.
+        })
 
-				reason.on('keyup mouseup focus mouseleave change', function(e) {
-					var reasonhere = reason.val();
-					if(reasonhere.length == 0){
-						reasonp.html("____");
-					}else{
-						reasonp.html(reasonhere);
-					}
-				});
+        no_of_dayshead.getItemValue = function (item) {
+            return item.no_of_days
+        }
 
+    })
+</script>
 
-				no_of_days.on('keyup mouseup focus mouseleave change', function(e) {
-					var no_of_days_here = no_of_days.val();
-					if(no_of_days_here.length == 0){
-						no_of_daysp.html("____");
-					}else{
-						no_of_daysp.html(no_of_days_here);
-					}
-				});
-			});
-		</script>
+<script>
+    $(document).ready(function () {
+        $(".kki").each(function () {
+            if ($(this).val() != "") {
+                $(this).parent().addClass("animation");
+            }
+        });
+    });
+
+    //Add animation when input is focused
+    $(".kki").focus(function () {
+        $(this).parent().addClass("animation animation-color");
+    });
+
+    //Remove animation(s) when input is no longer focused
+    $(".kki").focusout(function () {
+        if ($(this).val() === "")
+            $(this).parent().removeClass("animation");
+        $(this).parent().removeClass("animation-color");
+    })
+</script>
+
+<script>
+    $(document).ready(function () {
+        var name = $("#name");
+        var schoolname = $("#schoolname");
+        var address = $("#address");
+        var date = $("#date");
+        var reason = $("#reason");
+        var no_of_days = $("#no_of_days");
+        var namep = $("#namep");
+        var schoolnamep = $("#schoolnamep");
+        var addressp = $("#addressp");
+        var reasonp = $("#reasonp");
+        var no_of_daysp = $("#no_of_daysp");
+        var datep = $("#datep");
+        var monthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        if (name.val() == "") {
+            namep.html("____");
+        }
+        if (schoolname.val() == "") {
+            schoolnamep.html("____");
+        }
+        if (address.val() == "") {
+            addressp.html("____");
+        }
+        if (date.val() == "") {
+            datep.html("____");
+        }
+        if (reason.val() == "") {
+            reasonp.html("____");
+        }
+        if (no_of_days.val() == "") {
+            no_of_daysp.html("____");
+        }
+
+        name.on('keyup mouseup focus mouseleave change', function (e) {
+            var namehere = name.val();
+            if (namehere.length == 0) {
+                namep.html("____");
+            } else {
+                namep.html(namehere);
+            }
+        })
+        schoolname.on('keyup mouseup focus mouseleave change', function (e) {
+            var schoolnamehere = schoolname.val();
+            if (schoolnamehere.length == 0) {
+                schoolnamep.html("____");
+            } else {
+                schoolnamep.html(schoolnamehere);
+            }
+        });
+        address.on('keyup mouseup focus mouseleave change', function (e) {
+            var addresshere = address.val();
+            if (addresshere.length == 0) {
+                addressp.html("____");
+            } else {
+                addressp.html(addresshere);
+            }
+        });
+        date.on('keyup mouseup focus mouseleave mouseout change', function (e) {
+            var datehere = date.val();
+
+            if (datehere.length == 0) {
+                datep.html("____");
+            } else {
+                var datehere = new Date(date.val());
+                day = datehere.getDate();
+                month = datehere.getMonth();
+                year = datehere.getFullYear();
+                var finaldate = day + " - " + monthName[month] + " - " + year;
+                datep.html(finaldate);
+            }
+        });
+
+        reason.on('keyup mouseup focus mouseleave change', function (e) {
+            var reasonhere = reason.val();
+            if (reasonhere.length == 0) {
+                reasonp.html("____");
+            } else {
+                reasonp.html(reasonhere);
+            }
+        });
 
 
-		<!-- Scroll Top Button Script -->
-    <script>
-    
-    window.onscroll = function() {scrollFunction()};
-    window.onload = function() {
-      scrollFunction()
+        no_of_days.on('keyup mouseup focus mouseleave change', function (e) {
+            var no_of_days_here = no_of_days.val();
+            if (no_of_days_here.length == 0) {
+                no_of_daysp.html("____");
+            } else {
+                no_of_daysp.html(no_of_days_here);
+            }
+        });
+    });
+</script>
+
+
+<!-- Scroll Top Button Script -->
+<script>
+
+    window.onscroll = function () {
+        scrollFunction()
     };
+    window.onload = function () {
+        scrollFunction()
+    };
+
     function scrollFunction() {
-      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-          document.getElementById("goTop").style.display = "block";
-      } else {
-          document.getElementById("goTop").style.display = "none";
-      }
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            document.getElementById("goTop").style.display = "block";
+        } else {
+            document.getElementById("goTop").style.display = "none";
+        }
     }
 
     // When the user clicks on the button, scroll to the top of the document
@@ -306,6 +318,6 @@
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     }
-    </script>
-  </body>
+</script>
+</body>
 </html>
