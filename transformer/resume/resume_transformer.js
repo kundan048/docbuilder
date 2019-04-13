@@ -6,20 +6,20 @@ module.exports = {
         finalData['experience'] = [];
         for (var key in data) {
             if (data.hasOwnProperty(key)) {
-                
-                if(key == 'first_degree') {
+
+                if (key == 'first_degree') {
                     finalData.degree.push(data[key]);
-                } else if(key == 'second_degree') {
+                } else if (key == 'second_degree') {
                     finalData.degree.push(data[key]);
-                } else if(key == 'third_degree') {
+                } else if (key == 'third_degree') {
                     finalData.degree.push(data[key]);
-                } else if(key == 'first_project') {
+                } else if (key == 'first_project') {
                     finalData.project.push(data[key]);
-                } else if(key == 'second_project') {
+                } else if (key == 'second_project') {
                     finalData.project.push(data[key]);
-                } else if(key == 'first_experience') {
+                } else if (key == 'first_experience') {
                     finalData.experience.push(data[key]);
-                } else if(key == 'second_experience') {
+                } else if (key == 'second_experience') {
                     finalData.experience.push(data[key]);
                 } else {
                     finalData[key] = data[key];

@@ -1,138 +1,124 @@
 <% include partials/home_header %>
-  <link rel="stylesheet" href="/css/card.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
-  <style>
-      .text-primary {
+<link rel="stylesheet" href="/css/card.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
+<style>
+    .text-primary {
         color: #485460 !important;
-      }
-  </style>
+    }
+</style>
 
-    <script>
-        function printContent(el){
-            var restorepage = document.body.innerHTML;
-            var printcontent = document.getElementById(el).innerHTML;
-            document.body.innerHTML = printcontent;
-            window.print();
-            document.body.innerHTML = restorepage;
-        }
-    </script>
-  <% include partials/home_navbar %>
-<a class="btn btn-danger btn-outline-danger m-3" href = "javascript:history.back()">Back</a>
+<script>
+    function printContent(el) {
+        var restorepage = document.body.innerHTML;
+        var printcontent = document.getElementById(el).innerHTML;
+        document.body.innerHTML = printcontent;
+        window.print();
+        document.body.innerHTML = restorepage;
+    }
+</script>
+<% include partials/home_navbar %>
+<a class="btn btn-danger btn-outline-danger m-3" href="javascript:history.back()">Back</a>
 <button class="btn btn-outline-primary" onclick="printContent('download_pdf')">Print Card</button>
 <!-- <hr class="prettyline"> -->
 <div class="container">
     <div class="row">
-      <div class="col-md-12">
-        <div id="download_pdf" class="card-container">
-          <section class="student-id" >
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-sm-2" style="padding: 0px; height: 20px;">
-                  <img style="height: 50px; width: 50px; border-radius: 5px;" class="" src="<%= cards.logoimage %>" alt="">
-                </div>
-                <div class="col-sm-10">
-                  <div><%= cards.collegename %></div>
-                  <div><%= cards.collegeaddress %></div>
-                  <div><%= cards.collegenumber %></div>
-                </div>
-              </div>  
-              <hr>
-              <div class="text-center">STUDENT ID CARD</div>
-              <div class="row">
-                
-                <div class="col-sm-8" style="line-height: 1.7">
-                  <div>Name: <%= cards.studentname %></div>
-                  <div>Roll no.: <%= cards.rollnumber %></div>
-                  <div>Branch <%= cards.branch %></div>
-                  <div>Mobile: <%= cards.studentmobile %></div>
-                </div> 
-                <div class="col-sm-4" >
-                  <img style="height: 80px; width: 70px; border-radius: 5px;" class="" src="<%= cards.image %>" alt="">
-                </div> 
-              </div>
-            </div>
-            
-            
-          </section>
+        <div class="col-md-12">
+            <div id="download_pdf" class="card-container">
+                <section class="student-id">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-2" style="padding: 0px; height: 20px;">
+                                <img style="height: 50px; width: 50px; border-radius: 5px;" class=""
+                                     src="<%= cards.logoimage %>" alt="">
+                            </div>
+                            <div class="col-sm-10">
+                                <div><%= cards.collegename %></div>
+                                <div><%= cards.collegeaddress %></div>
+                                <div><%= cards.collegenumber %></div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="text-center">STUDENT ID CARD</div>
+                        <div class="row">
 
-          <section class="student-id">
-            <div class="container-fluid">
-              
-              <div class="row">
-                <div class="col-sm-12"  style="line-height: 1.7">
-                  <div class="text-center">OTHER DETAILS</div>
-                  <hr>
-                  <div>Address: <%= cards.address %></div>
-                  <div>Joining Date: <%= cards.yrofjoining %></div>
-                  <div>Valid Upto: <%= cards.validupto %></div>
-                </div>
-              </div>
+                            <div class="col-sm-8" style="line-height: 1.7">
+                                <div>Name: <%= cards.studentname %></div>
+                                <div>Roll no.: <%= cards.rollnumber %></div>
+                                <div>Branch <%= cards.branch %></div>
+                                <div>Mobile: <%= cards.studentmobile %></div>
+                            </div>
+                            <div class="col-sm-4">
+                                <img style="height: 80px; width: 70px; border-radius: 5px;" class=""
+                                     src="<%= cards.image %>" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </section>
+
+                <section class="student-id">
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="col-sm-12" style="line-height: 1.7">
+                                <div class="text-center">OTHER DETAILS</div>
+                                <hr>
+                                <div>Address: <%= cards.address %></div>
+                                <div>Joining Date: <%= cards.yrofjoining %></div>
+                                <div>Valid Upto: <%= cards.validupto %></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </section>
+
             </div>
-            
-            
-          </section>
-          
         </div>
-      </div>
     </div>
 
 </div>
 <!-- <hr class="prettyline"> -->
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <footer class="text-muted">
-      <div class="container">
+<footer class="text-muted">
+    <div class="container">
         <button onclick="topFunction()" id="goTop">Top</button>
-        
-      </div>
-    </footer>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"><\/script>')</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
-    <script src="/js/animatedModal.js"></script>
+    </div>
+</footer>
 
-    <script>
-      $(".resume-form").animatedModal({
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
+<script src="/js/animatedModal.js"></script>
+
+<script>
+    $(".resume-form").animatedModal({
         animatedIn: 'lightSpeedIn',
         animatedOut: 'bounceOut'
-      });
-    </script>
+    });
+</script>
 
 
+<script>
 
-    <script>
-      
-      window.onscroll = function() {scrollFunction()};
-      window.onload = function() {
+    window.onscroll = function () {
         scrollFunction()
-      };
-      function scrollFunction() {
+    };
+    window.onload = function () {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
         if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
             document.getElementById("goTop").style.display = "block";
         } else {
@@ -145,8 +131,8 @@
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     }
-    </script>
+</script>
 
 
-  </body>
+</body>
 </html>

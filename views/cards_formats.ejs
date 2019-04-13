@@ -1,59 +1,60 @@
 <% include partials/home_header %>
-  <link rel="stylesheet" href="/css/resume.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
-  <% include partials/home_navbar %>
-<a class="btn btn-danger btn-outline-danger m-3" href = "javascript:history.back()">Back</a>
-<a class="btn btn-primary btn-outline-primary m-3" href = "/otherFormats/cards">Recent Cards</a>
+<link rel="stylesheet" href="/css/resume.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
+<% include partials/home_navbar %>
+<a class="btn btn-danger btn-outline-danger m-3" href="javascript:history.back()">Back</a>
+<a class="btn btn-primary btn-outline-primary m-3" href="/otherFormats/cards">Recent Cards</a>
 <hr class="prettyline">
 
-  <div class="container text-center">
+<div class="container text-center">
     <div class="row m-4">
-      <div class="col-md-4 mb-4">
-        <div class="dbAnchor" data-toggle="modal" data-target="#exampleModal">
-          <!-- <a class="resume-form" href="#animatedModal"> -->
-            <a class="resume-form" href="#animatedModal">
-            <div class="card">
-              <img style="max-height: 14em;" class="card-img-top" src="/img/sick_leave.jpg" alt="School Id">
-              <div class="card-body">
-                <p class="card-text">School Id</p>
-              </div>
+        <div class="col-md-4 mb-4">
+            <div class="dbAnchor" data-toggle="modal" data-target="#exampleModal">
+                <!-- <a class="resume-form" href="#animatedModal"> -->
+                <a class="resume-form" href="#animatedModal">
+                    <div class="card">
+                        <img style="max-height: 14em;" class="card-img-top" src="/img/sick_leave.jpg" alt="School Id">
+                        <div class="card-body">
+                            <p class="card-text">School Id</p>
+                        </div>
+                    </div>
+                    <div class="overLay">
+                        <div class="text">Cards</div>
+                    </div>
+                </a>
             </div>
-            <div class="overLay">
-              <div class="text">Cards</div>
-            </div>
-          </a>
         </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="dbAnchor">
-          <a>
-            <div class="card">
-              <img style="max-height: 14em;" class="card-img-top" src="/img/application_form.jpg" alt="Card 2">
-              <div class="card-body">
-                <p class="card-text">Card 2</p>
-              </div>
+        <div class="col-md-4 mb-4">
+            <div class="dbAnchor">
+                <a href="bulkVisitingCards">
+                    <div class="card">
+                        <img style="max-height: 14em;" class="card-img-top" src="/img/application_form.jpg"
+                             alt="Card 2">
+                        <div class="card-body">
+                            <p class="card-text">Bulk Visiting Card</p>
+                        </div>
+                    </div>
+                    <div class="overLay">
+                        <div class="text">In Progress</div>
+                    </div>
+                </a>
             </div>
-            <div class="overLay">
-              <div class="text">Coming Soon!</div>
-            </div>
-          </a>
         </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="dbAnchor">
-          <a class="resume-form" href="#animatedModal">
-            <div class="card">
-              <img style="max-height: 14em;" class="card-img-top" src="/img/general_leave.jpg" alt="Card 3">
-              <div class="card-body">
-                <p class="card-text">Card 3</p>
-              </div>
+        <div class="col-md-4 mb-4">
+            <div class="dbAnchor">
+                <a class="resume-form" href="#animatedModal">
+                    <div class="card">
+                        <img style="max-height: 14em;" class="card-img-top" src="/img/general_leave.jpg" alt="Card 3">
+                        <div class="card-body">
+                            <p class="card-text">Card 3</p>
+                        </div>
+                    </div>
+                    <div class="overLay">
+                        <div class="text">Coming Soon!</div>
+                    </div>
+                </a>
             </div>
-            <div class="overLay">
-              <div class="text">Coming Soon!</div>
-            </div>
-          </a>
         </div>
-      </div>
     </div>
 
     <!--Call your modal-->
@@ -61,246 +62,280 @@
 
     <div id="animatedModal">
         <!--THIS IS IMPORTANT! to close the modal, the class name has to match the name given on the ID  class="close-animatedModal" -->
-        <div class="close-animatedModal"><i class="fa fa-close"></i></div>  
+        <div class="close-animatedModal"><i class="fa fa-close"></i></div>
         <div class="modal-content container">
-          <div class="container">
-              <div class="container"><h2>Enter Details</h2></div>
-              <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                <li class="nav-item">
-                  <a class="nav-link active" id="pills-college-tab" data-toggle="pill" href="#pills-college" role="tab" aria-controls="pills-college" aria-selected="true">School/College Details</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="pills-student-tab" data-toggle="pill" href="#pills-student" role="tab" aria-controls="pills-student" aria-selected="false">Student Details</a>
-                </li>
-              </ul>
-              <form action="/otherFormats/cardsFormats" method="post"  enctype="multipart/form-data">
-                <!-- college tab -->
-                <div class="tab-content m-5" id="pills-tabContent">
-                  <div class="tab-pane fade show active" id="pills-college" role="tabpanel" aria-labelledby="pills-college-tab">
-                    <div class="form-row mb-3">
-                      <div class="col-md-12">
-                        <div class="input-group form-row">
-                          <div class="input-group-prepend col-md-2">
-                            <span class="input-group-text w-100" id="inputGroupPrepend2">College Name</span>
-                          </div>
-                          <div class="col-md-10">
-                            <input type="text" name="collegename" class="form-control" id="id_collegename" placeholder="Enter College Name" aria-describedby="inputGroupPrepend2" required>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-row mb-3">
-                      <div class="col-md-12">
-                        <div class="input-group form-row">
-                          <div class="input-group-prepend col-md-2">
-                            <span class="input-group-text w-100" id="inputGroupPrepend2">College Address</span>
-                          </div>
-                          <div class="col-md-10">
-                            <input type="text" name="collegeaddress" class="form-control" id="id_collegeaddress" placeholder="College Address" aria-describedby="inputGroupPrepend2" required>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-row mb-3">
-                      <div class="col-md-12">
-                        <div class="input-group form-row">
-                          <div class="input-group-prepend col-md-2">
-                            <span class="input-group-text w-100" id="inputGroupPrepend2">Phone Number</span>
-                          </div>
-                          <div class="col-md-10">
-                            <input type="text" name="collegenumber" class="form-control" id="id_collegenumber" placeholder="01125XXXXXX" aria-describedby="inputGroupPrepend2" required>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-row mb-3">
-                      <div class="col-md-12">
-                        <div class="input-group form-row">
-                          <div class="input-group-prepend col-md-2">
-                            <span class="input-group-text w-100" id="inputGroupPrepend2">College Logo</span>
-                          </div>
-                          <div class="col-md 10">
-                            <input type="file" class="form-control" name="photos" id="id_logoimage" placeholder="" aria-describedby="inputGroupPrepend2">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-row mb-3">
-                        <a class="btn btn-primary text-white btnNext" >Next</a>
-                    </div>
-                  </div>
-                  <!-- Student tab -->
-                  <div class="tab-pane fade" id="pills-student" role="tabpanel" aria-labelledby="pills-student-tab">
-                    <div class="form-row mb-3">
-                      <div class="col-md-12">
-                        <div class="input-group form-row">
-                          <div class="input-group-prepend col-md-2">
-                            <span class="input-group-text w-100" id="inputGroupPrepend2">Student Name</span>
-                          </div>
-                          <div class="col-md-10">
-                            <input type="text" name="studentname" class="form-control" id="id_studentname" placeholder="Enter Student Name" aria-describedby="inputGroupPrepend2" required>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- <div class="form-row mb-3">
-                      <div class="col-md-12">
-                        <div class="input-group form-row">
-                          <div class="input-group-prepend col-md-2">
-                            <span class="input-group-text w-100" id="inputGroupPrepend2">Email Id</span>
-                          </div>
-                          <div class="col-md-10">
-                            <input type="email" class="form-control" name="email" id="id_email" placeholder="Enter email Id" aria-describedby="inputGroupPrepend2" required>
-                          </div>
-                        </div>
-                      </div>
-                    </div> -->
-                    <div class="form-row mb-3">
-                      <div class="col-md-6">
-                        <div class="input-group form-row">
-                          <div class="input-group-prepend col-md-4">
-                            <span class="input-group-text w-100" id="inputGroupPrepend2">Roll No.</span>
-                          </div>
-                          <div class="col-md-8">
-                            <input type="text" class="form-control" name="rollnumber" id="id_rollnumber" placeholder="Enter Roll number" aria-describedby="inputGroupPrepend2" required>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="input-group form-row">
-                          <div class="input-group-prepend col-md-4">
-                            <span class="input-group-text w-100" id="inputGroupPrepend2">Branch</span>
-                          </div>
-                          <div class="col-md-8">
-                            <input type="text" class="form-control" name="branch" id="id_branch" placeholder="Branch" aria-describedby="inputGroupPrepend2" required>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-row mb-3">
-                      <div class="col-md-12">
-                        <div class="input-group form-row">
-                          <div class="input-group-prepend col-md-2">
-                            <span class="input-group-text w-100" id="inputGroupPrepend2">Mobile</span>
-                          </div>
-                          <div class="col-md-10">
-                            <input type="text" class="form-control" name="studentmobile" id="id_studentmobile" placeholder="Enter mobile number" aria-describedby="inputGroupPrepend2" required>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-row mb-3">
-                        <div class="col-md-6">
-                          <div class="input-group form-row">
-                            <div class="input-group-prepend col-md-4">
-                              <span class="input-group-text w-100" id="inputGroupPrepend2">Yr. of Joining</span>
+            <div class="container">
+                <div class="container"><h2>Enter Details</h2></div>
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="pills-college-tab" data-toggle="pill" href="#pills-college"
+                           role="tab" aria-controls="pills-college" aria-selected="true">School/College Details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-student-tab" data-toggle="pill" href="#pills-student" role="tab"
+                           aria-controls="pills-student" aria-selected="false">Student Details</a>
+                    </li>
+                </ul>
+                <form action="/otherFormats/cardsFormats" method="post" enctype="multipart/form-data">
+                    <!-- college tab -->
+                    <div class="tab-content m-5" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-college" role="tabpanel"
+                             aria-labelledby="pills-college-tab">
+                            <div class="form-row mb-3">
+                                <div class="col-md-12">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-2">
+                                            <span class="input-group-text w-100"
+                                                  id="inputGroupPrepend2">College Name</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" name="collegename" class="form-control"
+                                                   id="id_collegename" placeholder="Enter College Name"
+                                                   aria-describedby="inputGroupPrepend2" required>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-8">
-                              <input type="text" class="form-control" name="yrofjoining" id="id_yrofjoining" placeholder="Joining date" aria-describedby="inputGroupPrepend2">
+                            <div class="form-row mb-3">
+                                <div class="col-md-12">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-2">
+                                            <span class="input-group-text w-100"
+                                                  id="inputGroupPrepend2">College Address</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" name="collegeaddress" class="form-control"
+                                                   id="id_collegeaddress" placeholder="College Address"
+                                                   aria-describedby="inputGroupPrepend2" required>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="input-group form-row">
-                            <div class="input-group-prepend col-md-4">
-                              <span class="input-group-text w-100" id="inputGroupPrepend2">Valid Upto</span>
+                            <div class="form-row mb-3">
+                                <div class="col-md-12">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-2">
+                                            <span class="input-group-text w-100"
+                                                  id="inputGroupPrepend2">Phone Number</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" name="collegenumber" class="form-control"
+                                                   id="id_collegenumber" placeholder="01125XXXXXX"
+                                                   aria-describedby="inputGroupPrepend2" required>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-8">
-                              <input type="text" class="form-control" name="validupto" id="id_validupto" placeholder="Valid upto date" aria-describedby="inputGroupPrepend2">
+                            <div class="form-row mb-3">
+                                <div class="col-md-12">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-2">
+                                            <span class="input-group-text w-100"
+                                                  id="inputGroupPrepend2">College Logo</span>
+                                        </div>
+                                        <div class="col-md 10">
+                                            <input type="file" class="form-control" name="photos" id="id_logoimage"
+                                                   placeholder="" aria-describedby="inputGroupPrepend2">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                          </div>
+                            <div class="form-row mb-3">
+                                <a class="btn btn-primary text-white btnNext">Next</a>
+                            </div>
+                        </div>
+                        <!-- Student tab -->
+                        <div class="tab-pane fade" id="pills-student" role="tabpanel"
+                             aria-labelledby="pills-student-tab">
+                            <div class="form-row mb-3">
+                                <div class="col-md-12">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-2">
+                                            <span class="input-group-text w-100"
+                                                  id="inputGroupPrepend2">Student Name</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" name="studentname" class="form-control"
+                                                   id="id_studentname" placeholder="Enter Student Name"
+                                                   aria-describedby="inputGroupPrepend2" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="form-row mb-3">
+                              <div class="col-md-12">
+                                <div class="input-group form-row">
+                                  <div class="input-group-prepend col-md-2">
+                                    <span class="input-group-text w-100" id="inputGroupPrepend2">Email Id</span>
+                                  </div>
+                                  <div class="col-md-10">
+                                    <input type="email" class="form-control" name="email" id="id_email" placeholder="Enter email Id" aria-describedby="inputGroupPrepend2" required>
+                                  </div>
+                                </div>
+                              </div>
+                            </div> -->
+                            <div class="form-row mb-3">
+                                <div class="col-md-6">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-4">
+                                            <span class="input-group-text w-100" id="inputGroupPrepend2">Roll No.</span>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" name="rollnumber" id="id_rollnumber"
+                                                   placeholder="Enter Roll number" aria-describedby="inputGroupPrepend2"
+                                                   required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-4">
+                                            <span class="input-group-text w-100" id="inputGroupPrepend2">Branch</span>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" name="branch" id="id_branch"
+                                                   placeholder="Branch" aria-describedby="inputGroupPrepend2" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row mb-3">
+                                <div class="col-md-12">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-2">
+                                            <span class="input-group-text w-100" id="inputGroupPrepend2">Mobile</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" name="studentmobile"
+                                                   id="id_studentmobile" placeholder="Enter mobile number"
+                                                   aria-describedby="inputGroupPrepend2" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row mb-3">
+                                <div class="col-md-6">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-4">
+                                            <span class="input-group-text w-100"
+                                                  id="inputGroupPrepend2">Yr. of Joining</span>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" name="yrofjoining"
+                                                   id="id_yrofjoining" placeholder="Joining date"
+                                                   aria-describedby="inputGroupPrepend2">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-4">
+                                            <span class="input-group-text w-100"
+                                                  id="inputGroupPrepend2">Valid Upto</span>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" name="validupto" id="id_validupto"
+                                                   placeholder="Valid upto date" aria-describedby="inputGroupPrepend2">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row mb-3">
+                                <div class="col-md-12">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-2">
+                                            <span class="input-group-text w-100"
+                                                  id="inputGroupPrepend2">Student Photo</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="file" class="form-control" name="photos" id="id_image"
+                                                   placeholder="" aria-describedby="inputGroupPrepend2">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row mb-3">
+                                <div class="col-md-12">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-2">
+                                            <span class="input-group-text w-100" id="inputGroupPrepend2">Address</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" name="address" id="id_address"
+                                                      placeholder="Enter your full address"
+                                                      aria-describedby="inputGroupPrepend2" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row mb-3">
+                                <fiv class="float-left">
+                                    <a class="btn btn-primary text-white btnPrevious mr-3">Previous</a>
+                                </fiv>
+                                <div class="float-right">
+                                    <input class="btn btn-success" type="submit" value="Submit">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-row mb-3">
-                      <div class="col-md-12">
-                        <div class="input-group form-row">
-                          <div class="input-group-prepend col-md-2">
-                            <span class="input-group-text w-100" id="inputGroupPrepend2">Student Photo</span>
-                          </div>
-                          <div class="col-md-10">
-                            <input type="file" class="form-control" name="photos" id="id_image" placeholder="" aria-describedby="inputGroupPrepend2">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-row mb-3">
-                      <div class="col-md-12">
-                        <div class="input-group form-row">
-                          <div class="input-group-prepend col-md-2">
-                            <span class="input-group-text w-100" id="inputGroupPrepend2">Address</span>
-                          </div>
-                          <div class="col-md-10">
-                            <textarea class="form-control" name="address" id="id_address" placeholder="Enter your full address" aria-describedby="inputGroupPrepend2" required></textarea>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-row mb-3">
-                        <fiv class="float-left">
-                            <a class="btn btn-primary text-white btnPrevious mr-3" >Previous</a>
-                        </fiv>
-                        <div class="float-right">
-                            <input class="btn btn-success" type="submit" value="Submit">
-                        </div>
-                    </div>
-                  </div>
-                </div>
-              </form>
-          </div>
+                </form>
+            </div>
         </div>
     </div>
     <!-- Modal ends -->
 
 
+</div>
+<hr class="prettyline">
 
 
-  </div>
-  <hr class="prettyline">
-
-
-  <footer class="text-muted">
-      <div class="container">
+<footer class="text-muted">
+    <div class="container">
         <button onclick="topFunction()" id="goTop">Top</button>
-        
-      </div>
-    </footer>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"><\/script>')</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
-    <script src="/js/animatedModal.js"></script>
+    </div>
+</footer>
 
-    <script>
-      $(".resume-form").animatedModal({
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
+<script src="/js/animatedModal.js"></script>
+
+<script>
+    $(".resume-form").animatedModal({
         animatedIn: 'lightSpeedIn',
         animatedOut: 'bounceOut'
-      });
-    </script>
+    });
+</script>
 
-    <script>
-        $('.btnNext').click(function() {
-          $('.nav-pills .active').parent().next('li').find('a').trigger('click');
-        });
+<script>
+    $('.btnNext').click(function () {
+        $('.nav-pills .active').parent().next('li').find('a').trigger('click');
+    });
 
-        $('.btnPrevious').click(function() {
-          $('.nav-pills .active').parent().prev('li').find('a').trigger('click');
-        });  
-    </script>
+    $('.btnPrevious').click(function () {
+        $('.nav-pills .active').parent().prev('li').find('a').trigger('click');
+    });
+</script>
 
 
+<script>
 
-    <script>
-      
-      window.onscroll = function() {scrollFunction()};
-      window.onload = function() {
+    window.onscroll = function () {
         scrollFunction()
-      };
-      function scrollFunction() {
+    };
+    window.onload = function () {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
         if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
             document.getElementById("goTop").style.display = "block";
         } else {
@@ -313,6 +348,6 @@
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     }
-    </script>
-  </body>
+</script>
+</body>
 </html>
