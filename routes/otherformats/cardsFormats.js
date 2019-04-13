@@ -29,16 +29,16 @@ const storage = multer.diskStorage({
 // Init Upload
 const upload = multer({
     storage: storage,
-    limits:{
+    limits: {
         fileSize: 1000000
     },
-    fileFilter: function(req, file, cb){
+    fileFilter: function (req, file, cb) {
         checkFileType(file, cb);
     }
-}).array('photos',2);
+}).array('photos', 2);
 
 // Check file type
-function checkFileType(file, cb){
+function checkFileType(file, cb) {
     // Allowed ext
     const filetypes = /jpeg|jpg|png|gif/;
     // Check ext
@@ -46,9 +46,9 @@ function checkFileType(file, cb){
     //Check mime
     const mimetype = filetypes.test(file.mimetype);
 
-    if(mimetype && extname) {
+    if (mimetype && extname) {
         return cb(null, true);
-    }else {
+    } else {
         cb('Error: Images Only');
     }
 
@@ -56,51 +56,51 @@ function checkFileType(file, cb){
 
 ///////////// =====>
 
-router.get("/cardsFormats", isLoggedIn, function(req, res){
-	res.render('cards_formats');
+router.get("/cardsFormats", isLoggedIn, function (req, res) {
+    res.render('cards_formats');
 });
 
-router.get("/cards", isLoggedIn, function(req, res) {
-	StudentCard.findOne({ "createdby": req.user._id}).sort({ _id: -1 }).exec(function(err, card) {
-		if(err){
-			console.log(err);
-			res.redirect("/otherFormats/cardsFormats");
-		} else {
-			if(card) {
-				res.render("cards", {cards : card});
-			} else {
-				res.redirect("/otherFormats/cardsFormats");
-			}
-		}
-	});
+router.get("/cards", isLoggedIn, function (req, res) {
+    StudentCard.findOne({"createdby": req.user._id}).sort({_id: -1}).exec(function (err, card) {
+        if (err) {
+            console.log(err);
+            res.redirect("/otherFormats/cardsFormats");
+        } else {
+            if (card) {
+                res.render("cards", {cards: card});
+            } else {
+                res.redirect("/otherFormats/cardsFormats");
+            }
+        }
+    });
 });
 
-router.post("/cardsFormats", isLoggedIn, function(req, res){
-	
+router.post("/cardsFormats", isLoggedIn, function (req, res) {
 
-	upload(req, res, async function (err) {
-	    if (err instanceof multer.MulterError) {
-	      // A Multer error occurred when uploading.
-	    } else if (err) {
-	      // An unknown error occurred when uploading.
-	    }
-	    var finalData = req.body;
-		finalData['createdby'] = req.user._id;
-		const collegeLogo = await cloudinary.v2.uploader.upload(req.files[0].path);
-		const studentImage = await cloudinary.v2.uploader.upload(req.files[1].path);
-	    finalData['logoimage'] = collegeLogo.url;
-	    finalData['image'] = studentImage.url;
-	    StudentCard.create(finalData, function(err, data) {
-			if(err) {
-				console.log(err);
-				res.redirect("/otherFormats/cardsFormats");
-			} else {
-				data.save();
-				res.redirect("/otherFormats/cards");
-			}
-		})
-	  })
-	
+
+    upload(req, res, async function (err) {
+        if (err instanceof multer.MulterError) {
+            // A Multer error occurred when uploading.
+        } else if (err) {
+            // An unknown error occurred when uploading.
+        }
+        var finalData = req.body;
+        finalData['createdby'] = req.user._id;
+        const collegeLogo = await cloudinary.v2.uploader.upload(req.files[0].path);
+        const studentImage = await cloudinary.v2.uploader.upload(req.files[1].path);
+        finalData['logoimage'] = collegeLogo.url;
+        finalData['image'] = studentImage.url;
+        StudentCard.create(finalData, function (err, data) {
+            if (err) {
+                console.log(err);
+                res.redirect("/otherFormats/cardsFormats");
+            } else {
+                data.save();
+                res.redirect("/otherFormats/cards");
+            }
+        })
+    })
+
 
 });
 module.exports = router;

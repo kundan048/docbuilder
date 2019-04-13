@@ -1,6 +1,6 @@
 <% include partials/home_header %>
 <script>
-    function printContent(el){
+    function printContent(el) {
         var restorepage = document.body.innerHTML;
         var printcontent = document.getElementById(el).innerHTML;
         document.body.innerHTML = printcontent;
@@ -9,101 +9,110 @@
     }
 </script>
 <% include partials/home_navbar %>
-
 <% var item; %>
 <% if(myid == 0){ %>
-<%	item = user.letter_t1_t1[user.letter_t1_t1.length-1];%>
+    <% item = user.letter_t1_t1[user.letter_t1_t1.length - 1]; %>
 <% }else{ %>
-<%	item = myid %>
+    <% item = myid %>
 <% } %>
-	<main role="main">
-		<a class="btn btn-danger btn-outline-danger m-3" href="/homepage">Back</a>
-		
-	<div class="container">
-		
+<main role="main">
+    <a class="btn btn-danger btn-outline-danger m-3" href="/homepage">Back</a>
 
-		<div class="bg-light">
-				<div class="row">
-					<div class="col-md-8 bg-light">
-						<div class="h2 text-center mb-5">Letter</div>
-						
-						
-						<div id="hello">
-							<div class="pl-5 pr-5 pt-3">
-								<p><%= item.name +", "+ item.designation %></p>
-								<p><%= item.address %></p>
+    <div class="container">
 
-								<p><%= item.date %></p>
 
-								<p><%= item.supervisor_first_name +" "+ item.supervisor_last_name +", " + item.supervisor_designation %></p>
-								<p><%= item.company_name %></p>
-								<p><%= item.company_address %></p>
+        <div class="bg-light">
+            <div class="row">
+                <div class="col-md-8 bg-light">
+                    <div class="h2 text-center mb-5">Letter</div>
 
-								<p>Mr. or Ms. <%= item.supervisor_last_name %>:</p>
 
-								<p>I am writing to request your approval for vacation leave from <span><%= item.start_date %></span> through <span><%= item.end_date %></span>. I know how important it is to ensure that my work is handled during the time I am away. I will be happy to provide training assistance and support in advance of my vacation to the team members who will be helping in my absence, and will ensure that all projects are organized in a manner that will make it easy for progress to continue as needed during the time I am away.</p>
+                    <div id="hello">
+                        <div class="pl-5 pr-5 pt-3">
+                            <p><%= item.name + ", " + item.designation %></p>
+                            <p><%= item.address %></p>
 
-								<p>Thank you for your consideration and support with this request. Please let me know of your decision at your earliest convenience so I can make travel arrangements.</p>
+                            <p><%= item.date %></p>
 
-								<p>Regards,</p>
+                            <p><%= item.supervisor_first_name + " " + item.supervisor_last_name + ", " + item.supervisor_designation %></p>
+                            <p><%= item.company_name %></p>
+                            <p><%= item.company_address %></p>
 
-								<p><%= item.name %></p>
-							</div>
-						</div>
-						<form action="/download" method="GET">
-							<input class="btn btn-success btn-block btn-outline-dark btn-lg mb-2" type="submit" value="Download in Docx format" disabled>
-							<input class="btn btn-success btn-block btn-outline-dark btn-lg mb-2" type="button" onclick="printContent('hello')" value="Download in Pdf">
-						</form>
-						<a href="/letter" class="btn btn-success btn-block btn-outline-dark btn-lg">New Application</a>
+                            <p>Mr. or Ms. <%= item.supervisor_last_name %>:</p>
 
-					</div>
-					<div class="col-md-4 right-section">
-						<div class="h2 text-center section-heading p-3">Recent Commits</div>
-						<% user.letter_t1_t1.reverse().forEach(function(dates){ %>
-							<div class="border pt-3 m-1 border-dark rounded text-center text-dark section-box">
-								<p>Name - <%= dates.name %></p>
-								<p>Date - <%= dates.date %></p>
-								<p>Last Saved - <%= moment(dates.committed).format('MMMM Do YYYY, h:mm:ss a') %></p>
-								<p><a class="btn btn-outline-dark" href="/letter/recentletter/<%= dates._id %>">See</a></p>
-							</div>
-						<% }); %>
-					</div>
-				</div>
+                            <p>I am writing to request your approval for vacation leave from
+                                <span><%= item.start_date %></span> through <span><%= item.end_date %></span>. I know
+                                how important it is to ensure that my work is handled during the time I am away. I will
+                                be happy to provide training assistance and support in advance of my vacation to the
+                                team members who will be helping in my absence, and will ensure that all projects are
+                                organized in a manner that will make it easy for progress to continue as needed during
+                                the time I am away.</p>
 
-		</div>
-	</div>
+                            <p>Thank you for your consideration and support with this request. Please let me know of
+                                your decision at your earliest convenience so I can make travel arrangements.</p>
+
+                            <p>Regards,</p>
+
+                            <p><%= item.name %></p>
+                        </div>
+                    </div>
+                    <form action="/download" method="GET">
+                        <input class="btn btn-success btn-block btn-outline-dark btn-lg mb-2" type="submit"
+                               value="Download in Docx format" disabled>
+                        <input class="btn btn-success btn-block btn-outline-dark btn-lg mb-2" type="button"
+                               onclick="printContent('hello')" value="Download in Pdf">
+                    </form>
+                    <a href="/letter" class="btn btn-success btn-block btn-outline-dark btn-lg">New Application</a>
+
+                </div>
+                <div class="col-md-4 right-section">
+                    <div class="h2 text-center section-heading p-3">Recent Commits</div>
+                    <% user.letter_t1_t1.reverse().forEach(function(dates){ %>
+                        <div class="border pt-3 m-1 border-dark rounded text-center text-dark section-box">
+                            <p>Name - <%= dates.name %></p>
+                            <p>Date - <%= dates.date %></p>
+                            <p>Last Saved - <%= moment(dates.committed).format('MMMM Do YYYY, h:mm:ss a') %></p>
+                            <p><a class="btn btn-outline-dark" href="/letter/recentletter/<%= dates._id %>">See</a></p>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 </main>
 
-	<footer class="text-muted">
-      <div class="container">
+<footer class="text-muted">
+    <div class="container">
         <button onclick="topFunction()" id="goTop">Top</button>
-        
-      </div>
-    </footer>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"><\/script>')</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
-	<script src="js/app.js"></script>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
+<script src="js/app.js"></script>
 
 
+<script>
 
-
-    <script>
-      
-      window.onscroll = function() {
+    window.onscroll = function () {
         scrollFunction();
-      };
-      window.onload = function() {
+    };
+    window.onload = function () {
         scrollFunction();
-      };
-      function scrollFunction() {
+    };
+
+    function scrollFunction() {
         if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
             document.getElementById("goTop").style.display = "block";
         } else {
@@ -116,6 +125,6 @@
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     }
-    </script>
-  </body>
+</script>
+</body>
 </html>

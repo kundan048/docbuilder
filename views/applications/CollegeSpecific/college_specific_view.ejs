@@ -1,0 +1,206 @@
+<% include ../../partials/home_header %>
+
+<link rel="stylesheet" href="../../../css/application.css">
+
+<% include ../../partials/home_navbar %>
+<a class="btn btn-danger btn-outline-danger m-3" href="javascript:history.back()">Back</a>
+<a class="btn btn-primary btn-outline-primary m-3" href="/application/collegerecent">Recent College Specific</a>
+<div class="container text-center">
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action">G.B. Pant Engineering College Oficial Leave
+            Application</a>
+    </div>
+    <div class="container application-form">
+        <div id="download_it">
+            <div class="row">
+                <div class="col-md-12 office-copy">
+                    <div>Office Copy</div>
+                </div>
+                <div class="col-md-12 form-heading">
+                    <div>Govt. of NCT of Delhi</div>
+                    <div>G. B. Pant Govt. Engineering College, Okhla Phase III, Delhi – 110020</div>
+                    <div>Leave Application Form</div>
+                    <br>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-2">Name: <%= data.name %></div>
+                        <div></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">Designation: <%= data.designation %></div>
+                        <!--<div class="col-md-4"><input type="text" name="application[designation]"></div>-->
+                        <div class="col-md-6">Department: <%= data.department %></div>
+                        <!--<div class="col-md-4"><input type="text" name="application[department]"></div>-->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">Nature of Leave applied for: <%= data.nature_of_leave %></div>
+                        <!--<div class="col-md-2"><input type="text" name="application[nature_of_leave]"></div>-->
+                        <div class="col-md-2">From: <%= data.from %></div>
+                        <!--<div class="col-md-1"><input type="text" name="application[from]"></div>-->
+                        <div class="col-md-2">To: <%= data.to %></div>
+                        <!--<div class="col-md-1"><input type="text" name="application[to]"></div>-->
+                        <div class="col-md-3">No. of Days: <%= data.no_of_days %></div>
+                        <!--<div class="col-md-1"><input type="text" name="application[no_of_days]"></div>-->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">Grounds (if Comp. Off) : <%= data.grounds %></div>
+                        <!--<div class="col-md-9"><input type="text" name="application[grounds]"></div>-->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">Reason: <%= data.reason %></div>
+                        <!--<div class="col-md-10"><input type="text" name="application[reason]"></div>-->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">Address during Leave (If station leave required)
+                            : <%= data.address_during_leave %></div>
+                        <!--<div class="col-md-7"><input type="text" name="application[address_during_leave]"></div>-->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Signature of Applicant with Date:</div>
+                        <div class="col-md-8">.....................................................</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Forwarding Authority / HOD:</div>
+                        <div class="col-md-8">.....................................................</div>
+                    </div>
+                    <br>
+                    <br>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12 office-copy">
+                    (Bioimetric Incharge Copy)
+                </div>
+                <div class="col-md-12 form-heading">
+                    <div>Govt. of NCT of Delhi</div>
+                    <div>G. B. Pant Govt. Engineering College, Okhla Phase III, Delhi – 110020</div>
+                    <div>Leave Application Form</div>
+                    <br>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">Name: <%= data.biometric_name %></div>
+                        <!--<div class="col-md-10"><input type="text" name="application[biometric_name]"></div>-->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">Biometric ID: <%= data.biometric_id %></div>
+                        <!--<div class="col-md-4"><input type="text" name="application[biometric_id]"></div>-->
+                        <div class="col-md-6">Dept.: <%= data.biometric_department %></div>
+                        <!--<div class="col-md-4"><input type="text" name="application[biometric_department]"></div>-->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">Nature of Leave applied for: <%= data.biometric_nature_of_leave %></div>
+                        <!--<div class="col-md-2"><input type="text" name="application[biometric_nature_of_leave]"></div>-->
+                        <div class="col-md-2">From: <%= data.biometric_from %></div>
+                        <!--<div class="col-md-1"><input type="text" name="application[biometric_from]"></div>-->
+                        <div class="col-md-2">To: <%= data.biometric_to %></div>
+                        <!--<div class="col-md-1"><input type="text" name="application[biometric_to]"></div>-->
+                        <div class="col-md-3">No. of Days: <%= data.biometric_no_of_days %></div>
+                        <!--<div class="col-md-1"><input type="text" name="application[biometric_no_of_days]"></div>-->
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">Signature of Applicant with Date:</div>
+                        <div class="col-md-8">.....................................................</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Forwarding Authority / HOD:</div>
+                        <div class="col-md-8">.....................................................</div>
+                    </div>
+
+                    <br>
+                    <br>
+                    <br>
+
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <input type="button" class="btn btn-success" onclick="printContent('download_it')" value="Download PDF">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="text-muted">
+    <div class="container">
+        <button onclick="topFunction()" id="goTop">Top</button>
+
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
+
+<script>
+    function printContent(el) {
+        var restorepage = document.body.innerHTML;
+        var printcontent = document.getElementById(el).innerHTML;
+        document.body.innerHTML = printcontent;
+        window.print();
+        document.body.innerHTML = restorepage;
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $(".kki").each(function () {
+            if ($(this).val() != "") {
+                $(this).parent().addClass("animation");
+            }
+        });
+    });
+
+    //Add animation when input is focused
+    $(".kki").focus(function () {
+        $(this).parent().addClass("animation animation-color");
+    });
+
+    //Remove animation(s) when input is no longer focused
+    $(".kki").focusout(function () {
+        if ($(this).val() === "")
+            $(this).parent().removeClass("animation");
+        $(this).parent().removeClass("animation-color");
+    })
+</script>
+
+
+<script>
+
+    window.onscroll = function () {
+        scrollFunction()
+    };
+    window.onload = function () {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            document.getElementById("goTop").style.display = "block";
+        } else {
+            document.getElementById("goTop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+</body>
+</html>

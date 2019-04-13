@@ -1,17 +1,17 @@
-var express			 		= require('express'),
-	mongoose		 		= require('mongoose'),
-	bodyParser		 		= require('body-parser'),
-	passport		 		= require('passport'),
-	LocalStrategy	 		= require('passport-local'),
-	expressSession 			= require('express-session'),
-	fileUpload 				= require('express-fileupload'),
-	flash					= require('connect-flash'),
-	User					= require('./models/user'),
-	methodOverride 			= require("method-override");
-	require("dotenv/config");
+var express = require('express'),
+    mongoose = require('mongoose'),
+    bodyParser = require('body-parser'),
+    passport = require('passport'),
+    LocalStrategy = require('passport-local'),
+    expressSession = require('express-session'),
+    fileUpload = require('express-fileupload'),
+    flash = require('connect-flash'),
+    User = require('./models/user'),
+    methodOverride = require("method-override");
+require("dotenv/config");
 
 // Connect MongoDB
-mongoose.connect(process.env.CODE || "mongodb://localhost/Document_help", { useNewUrlParser: true });
+mongoose.connect(process.env.CODE || "mongodb://localhost/Document_help", {useNewUrlParser: true});
 mongoose.set('useCreateIndex', true);
 // mongoose.connect("mongodb://localhost/Document_help", { useNewUrlParser: true });
 
@@ -60,20 +60,20 @@ app.use(express.static("public"));
 app.use(methodOverride("_method"));
 
 //BodyParser middleware
-app.use(bodyParser.urlencoded({extended : true}));
+app.use(bodyParser.urlencoded({extended: true}));
 
 //Flash message middleware
 app.use(flash());
 
 //Express session middleware
 app.use(expressSession({
-		secret : "Anything",
-		resave : false,
-		saveUninitialized : false,
-		cookie : {
-			maxAge : 2600000000
-		}
-	})
+        secret: "Anything",
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            maxAge: 2600000000
+        }
+    })
 );
 
 // Express-fileUpload (For uploading files)
@@ -89,11 +89,11 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 //User session middleware
-app.use(function(req, res, next){
-	res.locals.DocsUser 	= req.user;
-	res.locals.error 		= req.flash("error");
-	res.locals.success	    = req.flash("success");
-	next();
+app.use(function (req, res, next) {
+    res.locals.DocsUser = req.user;
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
+    next();
 });
 
 // user session middleware
@@ -135,6 +135,6 @@ app.use('/', logout);
 app.use('/', notfound);
 
 // Listening to the server
-app.listen(process.env.PORT || 3030, function(){
+app.listen(process.env.PORT || 3030, function () {
     console.log(`Server is listening on 3030`);
 });

@@ -1,21 +1,21 @@
 <% include partials/home_header %>
-<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.1.220/styles/kendo.common-material.min.css" />
-<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.1.220/styles/kendo.material.min.css" />
-<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.1.220/styles/kendo.material.mobile.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.1.220/styles/kendo.common-material.min.css"/>
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.1.220/styles/kendo.material.min.css"/>
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.1.220/styles/kendo.material.mobile.min.css"/>
 <!-- <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2019.1.220/styles/kendo.common.min.css"> -->
-<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.1.220/styles/kendo.blueopal.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.1.220/styles/kendo.blueopal.min.css"/>
 
-    <script src="http://kendo.cdn.telerik.com/2019.1.220/js/jquery.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2019.1.220/js/kendo.all.min.js"></script>
-    <script>
-        if (typeof jQuery == "undefined") {
-            // fallback to local jQuery
-            document.write(decodeURIComponent('%3Cscript src="/path/to/local/jquery.min.js" %3E%3C/script%3E'));
-        }
-    </script>
+<script src="http://kendo.cdn.telerik.com/2019.1.220/js/jquery.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2019.1.220/js/kendo.all.min.js"></script>
+<script>
+    if (typeof jQuery == "undefined") {
+        // fallback to local jQuery
+        document.write(decodeURIComponent('%3Cscript src="/path/to/local/jquery.min.js" %3E%3C/script%3E'));
+    }
+</script>
 
-    <script src="http://kendo.cdn.telerik.com/2019.1.220/js/kendo.all.min.js"></script>
-    
+<script src="http://kendo.cdn.telerik.com/2019.1.220/js/kendo.all.min.js"></script>
+
 <% include partials/home_navbar %>
 
 <main role="main">
@@ -161,11 +161,11 @@
         </div>
     </div>
     <div class="album py-5 bg-light">
-            <div class="container">
-                <div class="h2 text-center mb-5">Letter Data</div>
-                <div id="lettergrid"></div>
-            </div>
+        <div class="container">
+            <div class="h2 text-center mb-5">Letter Data</div>
+            <div id="lettergrid"></div>
         </div>
+    </div>
     <span id='variableJSON' hidden>
         <%= JSON.stringify(userApplication); %>
     </span>
@@ -194,7 +194,6 @@
 <script src="https://kendo.cdn.telerik.com/2019.1.220/js/kendo.all.min.js"></script>
 
 
-
 <script>
 
     window.onscroll = function () {
@@ -221,23 +220,23 @@
 <script>
     var data = JSON.parse($('#variableJSON').text());
     $('#variableJSON').remove();
-    for(let i = 0; i < data.length; i++){
-            data[i]['committed'] = data[i]['committed'];
+    for (let i = 0; i < data.length; i++) {
+        data[i]['committed'] = data[i]['committed'];
     }
-    $(document).ready(function() {
+    $(document).ready(function () {
         $("#grid").kendoGrid({
             dataSource: {
                 data: data,
                 schema: {
                     model: {
                         fields: {
-                            Name: { type: "string" },
-                            address: { type: "string" },
-                            date: { type: "string" },
-                            school: { type: "string" },
-                            reason: { type: "string" },
-                            no_of_days: { type: "string" },
-                            committed: { type: "string"}
+                            Name: {type: "string"},
+                            address: {type: "string"},
+                            date: {type: "string"},
+                            school: {type: "string"},
+                            reason: {type: "string"},
+                            no_of_days: {type: "string"},
+                            committed: {type: "string"}
                         }
                     }
                 },
@@ -259,37 +258,45 @@
             },
             // editable: "incell",
             columns: [
-                { field: "name", title: "Name"},
-                { field: "address", title: "Address" },
-                { field: "date", title: "Date", template: "#= kendo.toString(kendo.parseDate(date, 'yyyy-MM-dd'), 'dd-MM-yyyy') #" },
-                { field: "school", title: "School" },
-                { field: "reason", title: "Reason"},
-                { field: "no_of_days", title: "No of Days"},
-                { field: "committed", title: "Committed", template: "#= kendo.toString(kendo.parseDate(committed, 'yyyy-MM-dd'), 'dd-MM-yyyy') #"}
+                {field: "name", title: "Name"},
+                {field: "address", title: "Address"},
+                {
+                    field: "date",
+                    title: "Date",
+                    template: "#= kendo.toString(kendo.parseDate(date, 'yyyy-MM-dd'), 'dd-MM-yyyy') #"
+                },
+                {field: "school", title: "School"},
+                {field: "reason", title: "Reason"},
+                {field: "no_of_days", title: "No of Days"},
+                {
+                    field: "committed",
+                    title: "Committed",
+                    template: "#= kendo.toString(kendo.parseDate(committed, 'yyyy-MM-dd'), 'dd-MM-yyyy') #"
+                }
             ]
         });
     });
 
     var letterdata = JSON.parse($('#lettervariableJSON').text());
     $('#lettervariableJSON').remove();
-    $(document).ready(function() {
+    $(document).ready(function () {
         $("#lettergrid").kendoGrid({
             dataSource: {
                 data: letterdata,
                 schema: {
                     model: {
                         fields: {
-                            name: { type: "string" },
-                            address: { type: "string"},
-                            date: { type: "string" },
-                            designation: { type: "string" },
-                            supervisor_first_name: { type: "string" },
-                            supervisor_last_name: { type: "string" },
-                            supervisor_designation: { type: "string" },
-                            company_name: { type: "string"},
-                            company_address: { type: "string"},
-                            start_date: { type: "string" },
-                            end_date: { type: "string" }
+                            name: {type: "string"},
+                            address: {type: "string"},
+                            date: {type: "string"},
+                            designation: {type: "string"},
+                            supervisor_first_name: {type: "string"},
+                            supervisor_last_name: {type: "string"},
+                            supervisor_designation: {type: "string"},
+                            company_name: {type: "string"},
+                            company_address: {type: "string"},
+                            start_date: {type: "string"},
+                            end_date: {type: "string"}
                         }
                     }
                 },
@@ -310,21 +317,33 @@
                 buttonCount: 5
             },
             columns: [
-                { field: "name", title: "Name"},
-                { field: "address", title: "Address", hidden: "true"},
-                { field: "date", title: "Date", template: "#= kendo.toString(kendo.parseDate(date, 'yyyy-MM-dd'), 'dd-MM-yyyy') #"},
-                { field: "designation", title: "Designation", hidden: "true" },
-                { field: "supervisor_first_name", title: "Supervisor First Name", hidden: "true" },
-                { field: "supervisor_last_name", title: "Supervisor Last Name", hidden: "true" },
-                { field: "supervisor_designation", title: "Supervisor Designation", hidden: "true" },
-                { field: "company_name", title: "Company name" },
-                { field: "company_address", title: "Company_Address", hidden: "true" },
-                { field: "start_date", title: "Start Date", template: "#= kendo.toString(kendo.parseDate(start_date, 'yyyy-MM-dd'), 'dd-MM-yyyy') #" },
-                { field: "end_date", title: "End Date", template: "#= kendo.toString(kendo.parseDate(end_date, 'yyyy-MM-dd'), 'dd-MM-yyyy') #" }
+                {field: "name", title: "Name"},
+                {field: "address", title: "Address", hidden: "true"},
+                {
+                    field: "date",
+                    title: "Date",
+                    template: "#= kendo.toString(kendo.parseDate(date, 'yyyy-MM-dd'), 'dd-MM-yyyy') #"
+                },
+                {field: "designation", title: "Designation", hidden: "true"},
+                {field: "supervisor_first_name", title: "Supervisor First Name", hidden: "true"},
+                {field: "supervisor_last_name", title: "Supervisor Last Name", hidden: "true"},
+                {field: "supervisor_designation", title: "Supervisor Designation", hidden: "true"},
+                {field: "company_name", title: "Company name"},
+                {field: "company_address", title: "Company_Address", hidden: "true"},
+                {
+                    field: "start_date",
+                    title: "Start Date",
+                    template: "#= kendo.toString(kendo.parseDate(start_date, 'yyyy-MM-dd'), 'dd-MM-yyyy') #"
+                },
+                {
+                    field: "end_date",
+                    title: "End Date",
+                    template: "#= kendo.toString(kendo.parseDate(end_date, 'yyyy-MM-dd'), 'dd-MM-yyyy') #"
+                }
             ]
         });
     });
-    
+
 </script>
 </body>
 </html>
