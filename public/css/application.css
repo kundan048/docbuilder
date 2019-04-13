@@ -1,0 +1,19 @@
+.application-form {
+    line-height: 2.2;
+    font-weight: 900;
+    text-align: left;
+}
+.application-form .office-copy {
+    text-align: right;
+    font-size: 10px;
+}
+.application-form .form-heading {
+    text-align: center;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 1.6;
+}
+.application-form input {
+    width: 100%;
+    height: 30px;
+}

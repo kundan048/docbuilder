@@ -28,6 +28,8 @@ var application = require('./routes/application/application');
 var application_recentdoc = require('./routes/application/recentdoc');
 var application_download = require('./routes/application/download');
 var application_edit = require('./routes/application/edit');
+//college specific section
+let college_specific = require('./routes/application/CollegeSpecific/collegeSpecific');
 
 
 //letter section
@@ -112,6 +114,7 @@ app.use('/', application);
 app.use('/application', application_edit);
 app.use('/application', application_recentdoc);
 app.use('/application', application_download);
+app.use('/application', college_specific);
 
 // Letter section
 app.use('/', letter);
