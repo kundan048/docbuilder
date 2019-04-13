@@ -4,6 +4,7 @@ var express			 		= require('express'),
 	passport		 		= require('passport'),
 	LocalStrategy	 		= require('passport-local'),
 	expressSession 			= require('express-session'),
+	fileUpload 				= require('express-fileupload'),
 	flash					= require('connect-flash'),
 	User					= require('./models/user'),
 	methodOverride 			= require("method-override");
@@ -39,6 +40,7 @@ var recentletter = require('./routes/letter/recentletter');
 var otherFormats = require('./routes/otherformats/otherFormats');
 var resumeFormats = require('./routes/otherformats/resumeFormats');
 var cardsFormats = require('./routes/otherformats/cardsFormats');
+var bulkVisitingCards = require('./routes/otherFormats/bulkVisitingCards');
 
 //Auth
 var forgot = require('./routes/auth/forgot');
@@ -73,6 +75,9 @@ app.use(expressSession({
 		}
 	})
 );
+
+// Express-fileUpload (For uploading files)
+app.use(fileUpload());
 
 //Passport middleware
 app.use(passport.initialize());
@@ -119,6 +124,7 @@ app.use('/letter', recentletter);
 app.use('/', otherFormats);
 app.use('/otherFormats', resumeFormats);
 app.use('/otherFormats', cardsFormats);
+app.use('/otherFormats', bulkVisitingCards);
 
 // Auth
 app.use('/', forgot);
@@ -130,5 +136,5 @@ app.use('/', notfound);
 
 // Listening to the server
 app.listen(process.env.PORT || 3030, function(){
-    console.log(`Server is listening on 3000`);
+    console.log(`Server is listening on 3030`);
 });
