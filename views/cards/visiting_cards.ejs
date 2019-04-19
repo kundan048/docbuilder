@@ -20,6 +20,8 @@
 <link rel="stylesheet" href="../../css/suggestions.css">
 <link rel="stylesheet" href="../../css/homepage.css">
 
+<link rel="stylesheet" href="../../css/card.css">
+
 <% include ../partials/home_navbar %>
 <main role="main">
     <a class="btn btn-danger btn-outline-danger m-3" href="javascript:history.back()">Back</a>
@@ -27,16 +29,61 @@
     <div class="h2 text-center mb-5">Uploaded Data</div>
 
     <div class="container">
+
+        <div class="container">
+            <div class="row">
+                <div class="text-center">Sample Card</div>
+                <div class="col-md-12">
+                    <div id="download_pdf" class="card-container">
+                        <section class="student-id">
+                            <div class="container-fluid studs">
+                                <div class="left">
+                                    <div class="h5"><%= result[0].name %></div>
+                                    <div class="h6"><%= result[0].designation %></div>
+                                    <div class="company"><%= result[0].organization %></div>
+                                </div>
+
+                                <div class="right">
+                                    <div class="mobile"><%= result[0].contact_number %></div>
+                                    <div class="address"><%= result[0].address %></div>
+                                </div>
+
+                            </div>
+
+
+                        </section>
+
+                        <br>
+                        <br>
+                        <br>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
         <div id="grid"></div>
+
+        <br>
+        <br>
+        <input type="button" class="btn btn-success" value="Download All">
 
         <div class="container">
             <button onclick="topFunction()" id="goTop">Top</button>
 
         </div>
+        <br>
+        <br>
+        <br>
 
         <span id='variableJSON' hidden>
             <%= JSON.stringify(result); %>
         </span>
+    </div>
+</main>
 
         <!-- Bootstrap core JavaScript
         ================================================== -->
