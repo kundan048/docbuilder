@@ -22,11 +22,13 @@ router.post("/register", function (req, res) {
 
     User.register(newUser, password, function (err, user) {
         if (err) {
+            req.flash("error", err.message);
             console.log("Something went wrong!");
             console.log(err);
             return res.redirect("/register", {title: "Register"});
         }
         passport.authenticate('local')(req, res, function () {
+            req.flash("success", "Welcome to Doc Builder! " + user.username);
             res.redirect("/homepage");
         });
     });

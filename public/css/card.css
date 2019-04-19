@@ -1,0 +1,25 @@
+
+.company {
+    font-size: 14px;
+}
+
+.mobile {
+    font-size: 14px;
+}
+
+.address {
+    font-size: 14px;
+}
+
+
+.studs {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.studs .right {
+    line-height: 1.4;
+    padding-bottom: 10px;
+}

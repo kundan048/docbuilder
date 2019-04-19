@@ -16,7 +16,8 @@ router.get("/login", isLoggedInForLoginPage, function (req, res) {
 
 router.post("/login", passport.authenticate('local', {
     successRedirect: "/homepage",
-    failureRedirect: "/login"
+    failureRedirect: "/login",
+    failureFlash : true
 }), function (req, res) {
 });
 
