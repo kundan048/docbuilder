@@ -23,7 +23,7 @@
 
         <div class="bg-light">
             <div class="row">
-                <div class="col-md-8 bg-light">
+                <div class="col-md-8 bg-light left-section">
                     <div class="h2 text-center mb-5">Letter</div>
 
 
@@ -57,12 +57,10 @@
                         </div>
                     </div>
                     <form action="/download" method="GET">
-                        <input class="btn btn-success btn-block btn-outline-dark btn-lg mb-2" type="submit"
-                               value="Download in Docx format" disabled>
-                        <input class="btn btn-success btn-block btn-outline-dark btn-lg mb-2" type="button"
-                               onclick="printContent('hello')" value="Download in Pdf">
+                        <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="submit" disabled><i class="fa fa-file-download"></i>&nbsp;Download Docx</button>
+                        <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="button" onclick="printContent('hello')"><i class="fa fa-print"></i>&nbsp;Download Pdf</button>
                     </form>
-                    <a href="/letter" class="btn btn-success btn-block btn-outline-dark btn-lg">New Application</a>
+                    <a href="/letter" class="btn btn-success btn-outline-dark btn-sm mb-2">New Application</a>
 
                 </div>
                 <div class="col-md-4 right-section">

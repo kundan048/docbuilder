@@ -23,7 +23,7 @@
 
         <div class="    ">
             <div class="row">
-                <div class="col-md-8 bg-light">
+                <div class="col-md-8 bg-light pb-2 left-section">
 
                     <div class="h2 text-center mb-5 pt-5">Application for leave in School.</div>
                     <div id="hello">
@@ -53,12 +53,10 @@
 						<p>Committed - <%= user.application_t1_t1[user.application_t1_t1.length - 1].committed %></p>
 						<br> -->
                     <form action="/application/download/<%= item._id %>" method="GET">
-                        <input class="btn btn-success btn-block btn-outline-dark btn-lg mb-2" type="submit"
-                               value="Download in Docx format">
-                        <input class="btn btn-success btn-block btn-outline-dark btn-lg mb-2" type="button"
-                               onclick="printContent('hello')" value="Download in Pdf">
+                        <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="submit"><i class="fa fa-file-download"></i>&nbsp;Download Docx</button>
+                        <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="button"onclick="printContent('hello')"><i class="fa fa-print"></i>&nbsp;Download Pdf</button>
                     </form>
-                    <a href="/application" class="btn btn-success btn-block btn-outline-dark btn-lg">New Application</a>
+                    <a href="/application" class="btn btn-success btn-outline-dark btn-sm mb-2">New Application</a>
 
                 </div>
                 <div class="col-md-4 right-section">

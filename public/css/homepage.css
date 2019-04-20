@@ -140,8 +140,26 @@ footer p {
   font-size: 12px;
 }
 
+.left-section form {
+  display: inline;
+}
+
+.left-section a {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.left-section form button {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.left-section form button i {
+  height: 100%;
+}
+
 .right-section {
-  background: linear-gradient(180deg, #d1d8e0, #778ca3 );
+  background: linear-gradient(180deg, #d6dde6, #b6cde6 );
   color: black;
   height: 100vh;
   overflow-y: scroll;
@@ -172,6 +190,7 @@ footer p {
   font-size: 14px;
   font-weight: 500;
   text-transform: capitalize;
+  margin-bottom: 3px;
 }
 
 .right-section hr {
