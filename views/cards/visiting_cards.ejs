@@ -85,61 +85,54 @@
     </div>
 </main>
 
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"><\/script>')</script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
-        <script src="https://kendo.cdn.telerik.com/2019.1.220/js/kendo.all.min.js"></script>
-        <script src="/js/suggestions.js"></script>
-        <script>
-            var data = JSON.parse($('#variableJSON').text());
-            $('#variableJSON').remove();
-            $(document).ready(function () {
-                $("#grid").kendoGrid({
-                    dataSource: {
-                        data: data,
-                        schema: {
-                            model: {
-                                fields: {
-                                    name: {type: "string"},
-                                    organization: {type: "string"},
-                                    designation: {type: "string"},
-                                    contact_number: {type: "string"},
-                                    address: {type: "string"},
-                                }
-                            }
-                        },
-                        pageSize: 10
-                    },
-                    tooltip: true,
-                    scrollable: true,
-                    sortable: true,
-                    filterable: true,
-                    tooltip: true,
-                    reorderable: true,
-                    resizable: true,
-                    pageable: {
-                        input: true,
-                        numeric: false,
-                        refresh: true,
-                        pageSizes: true,
-                        buttonCount: 5
-                    },
-                    // editable: "incell",
-                    columns: [
-                        {field: "name", title: "Name"},
-                        {field: "organization", title: "Organization"},
-                        {field: "designation", title: "Designation"},
-                        {field: "contact_number", title: "Mobile"},
-                        {field: "address", title: "Address"},
-                    ]
-                });
-            });
-        </script>
+<% include ../partials/footer_script %>
 
-        </body>
-        </html>
+<script src="https://kendo.cdn.telerik.com/2019.1.220/js/kendo.all.min.js"></script>
+<script>
+    var data = JSON.parse($('#variableJSON').text());
+    $('#variableJSON').remove();
+    $(document).ready(function () {
+        $("#grid").kendoGrid({
+            dataSource: {
+                data: data,
+                schema: {
+                    model: {
+                        fields: {
+                            name: {type: "string"},
+                            organization: {type: "string"},
+                            designation: {type: "string"},
+                            contact_number: {type: "string"},
+                            address: {type: "string"},
+                        }
+                    }
+                },
+                pageSize: 10
+            },
+            tooltip: true,
+            scrollable: true,
+            sortable: true,
+            filterable: true,
+            tooltip: true,
+            reorderable: true,
+            resizable: true,
+            pageable: {
+                input: true,
+                numeric: false,
+                refresh: true,
+                pageSizes: true,
+                buttonCount: 5
+            },
+            // editable: "incell",
+            columns: [
+                {field: "name", title: "Name"},
+                {field: "organization", title: "Organization"},
+                {field: "designation", title: "Designation"},
+                {field: "contact_number", title: "Mobile"},
+                {field: "address", title: "Address"},
+            ]
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -40,19 +40,7 @@
                             </div>
                         </a>
                     </div>
-                    <!-- <div class="card mb-4 shadow-sm">
-                      <img class="card-img-top" src="img/portfolio-3.jpg" alt="Card image cap">
-                      <div class="card-body">
-                        <p class="card-text">Application Formats</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                          <div class="btn-group">
-                            <a type="button" class="btn btn-sm btn-outline-secondary" href="/applicationTypes">Use</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div> -->
                 </div>
-
                 <div class="col-md-4 mb-4">
                     <div class="dbAnchor">
                         <a href="/letterTypes">
@@ -68,17 +56,6 @@
                             </div>
                         </a>
                     </div>
-                    <!-- <div class="card mb-4 shadow-sm">
-                      <img class="card-img-top" src="img/portfolio-3.jpg" alt="Card image cap">
-                      <div class="card-body">
-                        <p class="card-text">Letter Formats</p>
-                          <div class="d-flex justify-content-between align-items-center">
-                          <div class="btn-group">
-                            <a type="button" class="btn btn-sm btn-outline-secondary" href="/letterTypes">Use</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div> -->
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="dbAnchor">
@@ -95,20 +72,7 @@
                             </div>
                         </a>
                     </div>
-                    <!-- <div class="card mb-4 shadow-sm">
-                      <img class="card-img-top" src="img/portfolio-3.jpg" alt="Card image cap">
-                      <div class="card-body">
-                        <p class="card-text">Other Documents</p>
-                          <div class="d-flex justify-content-between align-items-center">
-                          <div class="btn-group">
-                            <a type="button" class="btn btn-sm btn-outline-secondary" href="/#">Use</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div> -->
                 </div>
-
-
             </div>
         </div>
     </div>
@@ -176,47 +140,9 @@
 
 </main>
 
-<footer class="text-muted">
-    <div class="container">
-        <button onclick="topFunction()" id="goTop">Top</button>
-
-    </div>
-</footer>
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"><\/script>')</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
+<% include partials/footer_script %>
 <script src="https://kendo.cdn.telerik.com/2019.1.220/js/kendo.all.min.js"></script>
 
-
-<script>
-
-    window.onscroll = function () {
-        scrollFunction();
-    };
-    window.onload = function () {
-        scrollFunction();
-    };
-
-    function scrollFunction() {
-        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-            document.getElementById("goTop").style.display = "block";
-        } else {
-            document.getElementById("goTop").style.display = "none";
-        }
-    }
-
-    // When the user clicks on the button, scroll to the top of the document
-    function topFunction() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-    }
-</script>
 <script>
     var data = JSON.parse($('#variableJSON').text());
     $('#variableJSON').remove();

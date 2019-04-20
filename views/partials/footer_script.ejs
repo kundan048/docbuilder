@@ -1,0 +1,49 @@
+<footer class="text-muted">
+    <div class="container">
+        <button onclick="topFunction()" id="goTop">Top</button>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
+<script src="/js/suggestions.js"></script>
+<script src="/js/animatedModal.js"></script>
+
+<script>
+
+    window.onscroll = function () {
+        scrollFunction()
+    };
+    window.onload = function () {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            document.getElementById("goTop").style.display = "block";
+        } else {
+            document.getElementById("goTop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        // document.body.scrollTop = 0;
+        // document.documentElement.scrollTop = 0;
+        $('html, body').animate({scrollTop:0}, 500, 'swing');
+    }
+</script>
+
+
+<script>
+    $(".resume-form").animatedModal({
+        animatedIn: 'lightSpeedIn',
+        animatedOut: 'bounceOut'
+    });
+</script>

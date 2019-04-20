@@ -42,17 +42,6 @@ footer p {
   margin-bottom: .25rem;
 }
 
-#goTop {
-  position: fixed;
-  right: 2%;
-  bottom: 2%;
-}
-
-#goTop:hover {
-  background-color: #000099;
-  color: #FFFFFF;
-}
-
 .dbAnchor {
   position: relative;
   background-color: blue;
@@ -166,8 +155,6 @@ footer p {
 
 }
 
-
-
 .student-id {
   height: 200px;
   width: 320px;
@@ -176,6 +163,24 @@ footer p {
   border: 1px solid black;
   margin: 10px auto;
 
+}
+
+footer #goTop {
+  border: 1px solid #dfe6e9;
+  border-radius: 100%;
+  padding: 10px;
+  background-color: #f1f2f6;
+  position: fixed;
+  right: 2%;
+  bottom: 2%;
+}
+
+#goTop:hover {
+  background-color: #ced6e0;
+}
+
+#goTop:active #goTop:link #goTop:focus {
+  border: none;
 }
 
 
