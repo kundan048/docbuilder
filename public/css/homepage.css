@@ -2,7 +2,6 @@
   --jumbotron-padding-y: 3rem;
 }
 
-
 .jumbotron {
   padding-top: var(--jumbotron-padding-y);
   padding-bottom: var(--jumbotron-padding-y);
@@ -142,8 +141,10 @@ footer p {
 }
 
 .right-section {
-  background-color: lightgray;
+  background: linear-gradient(180deg, #d1d8e0, #778ca3 );
   color: black;
+  height: 100vh;
+  overflow-y: scroll;
 }
 
 .right-section .section-heading {
@@ -151,8 +152,30 @@ footer p {
 }
 
 .right-section .section-box {
-  line-height: 0.8;
+  line-height: 1.4;
+  text-align: center;
 
+}
+
+.right-section .section-box .file-date {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.right-section .section-box .file-reason {
+  font-style: italic;
+  font-size: 14px;
+  text-transform: lowercase;
+}
+
+.right-section .section-box .file-name {
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.right-section hr {
+  margin: 0px;
 }
 
 .student-id {

@@ -21,7 +21,7 @@
     <div class="container">
 
 
-        <div class="bg-light">
+        <div class="    ">
             <div class="row">
                 <div class="col-md-8 bg-light">
 
@@ -63,17 +63,19 @@
                 </div>
                 <div class="col-md-4 right-section">
                     <div class="h2 text-center section-heading p-3">Recent Commits</div>
+                    <hr>
                     <% user.application_t1_t1.reverse().forEach(function(dates){ %>
-                        <div class="border pt-3 m-1 border-dark rounded text-center text-dark section-box">
-                            <p>Name - <%= dates.name %></p>
-                            <p>Reason - <%= dates.reason %></p>
-                            <p>Last Saved - <%= moment(dates.committed).format('MMMM Do YYYY, h:mm:ss a') %></p>
+                        <div class="pt-3 m-1 rounded text-dark section-box">
+                            <div class="file-date"><%= moment(dates.committed).format('MMMM DD, h:mm a'); %></div>
+                            <div class="file-reason">Reason: <%= dates.reason %></div>
+                            <div class="file-name"><%= dates.name %></div>
                             <p>
-                                <a class="btn btn-outline-dark btn-sm" href="/application/recentdoc/<%= dates._id %>">See</a>
-                                <a class="btn btn-outline-dark btn-sm"
+                                <a class="btn btn-outline-dark btn-sm pl-4 pr-4" href="/application/recentdoc/<%= dates._id %>">See</a>
+                                <a class="btn btn-outline-info btn-sm pl-4 pr-4"
                                    href="/application/<%= dates._id %>/edit">Edit</a>
                             </p>
                         </div>
+                        <hr>
                     <% }); %>
                 </div>
             </div>
