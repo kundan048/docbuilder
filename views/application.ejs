@@ -18,37 +18,33 @@
 
                             <div class="form-group kkmain">
 
-                                <input class="kki form-control" type="text" name="application[name]" id="name"
-                                       unselectable="on" autocomplete="off" required>
+                                <input class="kki form-control" type="text" name="application[name]" id="name" pattern=".{3,}" required title="Name must be atleast three characters!"
+                                unselectable="on" autocomplete="off">
                                 <label for="name" class="kkl col-form-label">Full Name</label>
                             </div>
                             <div class="form-group kkmain">
 
-                                <input class="kki form-control" type="text" name="application[school]" id="schoolname"
-                                       autocomplete="off" required>
+                                <input class="kki form-control" type="text" name="application[school]" id="schoolname" pattern=".{3,}" required title="Name of the school must be atleast three characters!" autocomplete="off" required>
                                 <label for="schoolname" class="kkl col-form-label">School Name</label>
                             </div>
                             <div class="form-group kkmain">
-                                <input class="kki form-control" type="text" name="application[address]" id="address"
-                                       autocomplete="off" required>
+                                <input class="kki form-control" type="text" name="application[address]" id="address" pattern=".{3,}" required title="Address must be atleast three characters!" autocomplete="off" required>
                                 <label for="address" class="kkl col-form-label">Address</label>
                             </div>
                             <div class="form-group kkmain">
 
-                                <input class="kki form-control" type="date" name="application[date]" id="date"
+                                <input class="kki form-control" type="date" min="2010-10-01" max="2025-10-20" name="application[date]" id="date"
                                        autocomplete="off" required>
                                 <!-- <label for="date" class="kkl col-form-label">Date</label> -->
                             </div>
                             <div class="form-group kkmain">
 
-                                <input class="kki form-control" type="text" name="application[reason]" id="reason"
-                                       autocomplete="off" required>
+                                <input class="kki form-control" type="text" name="application[reason]" id="reason" pattern=".{3,}" required title="Reason must be atleast three characters!" autocomplete="off" required>
                                 <label for="reason" class="kkl col-form-label">Reason</label>
                             </div>
                             <div class="form-group kkmain">
 
-                                <input class="kki form-control" type="text" name="application[no_of_days]"
-                                       id="no_of_days" maxlength="2" autocomplete="off" required>
+                                <input class="kki form-control" type="number" min="1" max="50" name="application[no_of_days]" id="no_of_days" maxlength="2" autocomplete="off" required>
                                 <label for="no_of_days" class="kkl col-form-label">No. of Days</label>
                             </div>
                             <div class="form-group row">
