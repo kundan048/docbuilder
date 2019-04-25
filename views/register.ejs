@@ -24,12 +24,12 @@
 
                         <div class="form-label-group">
                             <input type="password" name="password" id="inputPassword" class="form-control"
-                                   placeholder="Password" required>
+                                   placeholder="Password" pattern=".{8,}"   required title="Password must be atleast eight characters!" required>
                             <label for="inputPassword">Password</label>
                         </div>
 
                         <div class="form-label-group">
-                            <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Password"
+                            <input type="password" name="confirmPassword" id="inputConfirmPassword" class="form-control" placeholder="Password"
                                    required>
                             <label for="inputConfirmPassword">Confirm password</label>
                         </div>
