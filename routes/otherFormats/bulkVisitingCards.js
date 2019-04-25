@@ -1,6 +1,45 @@
 var express = require('express');
 var router = express.Router();
-var fileUpload = require('express-fileupload')
+var multer = require('multer');
+var path = require('path');
+
+
+//////////////  =======> multer
+// Set Storage Engine
+const storage = multer.diskStorage({
+    destination: './public/files',
+    filename: function(req, file, cb){
+        cb(null, req.user._id + 'sample' + path.extname(file.originalname));
+    }
+})
+
+// Init Upload
+const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1000000
+    },
+    fileFilter: function (req, file, cb) {
+        checkFileType(file, cb);
+    }
+});
+
+// Check file type
+function checkFileType(file, cb) {
+    // Allowed ext
+    // console.log(file);
+    const filetypes = /xlsx/;
+    // Check ext
+    const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+
+
+    if (extname) {
+        return cb(null, true);
+    } else {
+        cb('Error: Excel file Only');
+    }
+
+}
 
 // Load Helpers
 var {isLoggedIn} = require('../../helpers/auth');
@@ -11,17 +50,15 @@ router.get("/bulkVisitingCards", isLoggedIn, function (req, res) {
     res.render("./cards/bulkVisitingCards");
 });
 
-router.post('/bulkVisitingCards', function (req, res) {
+router.post('/bulkVisitingCards', upload.single('uploaded_file'), function (req, res) {
 
     // console.log(req.files);
-    // console.log(req.files.uploaded_file); // the uploaded file object
+    // console.log("----",req.file); // the uploaded file object
 
-    var uploaded_file = req.files.uploaded_file;
+    var uploaded_file = req.file.uploaded_file;
     // var fileName = req.body.fileName;
     // console.log(fileName)
     // uploaded_file.mv('public/'+ fileName +'.xlsx');
-
-    uploaded_file.mv('public/files/' + req.user._id + 'sample' + '.xlsx')
     res.redirect('/otherformats/visiting_cards');
 });
 
