@@ -12,6 +12,8 @@
 
         <div class="container">
 
+            <a href="bulkVisitingCards/download" class="btn btn-lg btn-success text-uppercase mb-5">Download Sample file</a>
+
             <!-- Uploading file for Bulk Generator -->
             <form ref='uploadForm' id='uploadForm' class="form-signin" action="/otherFormats/bulkVisitingCards"
                   method="POST"
@@ -20,13 +22,13 @@
                 <input type="file" name="uploaded_file">
                 <!-- <input type="text" name="fileName"> -->
 
-                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Upload</button>
+                <button class="btn btn-lg btn-primary btn-block text-uppercase mt-3" type="submit">Upload</button>
             </form>
         </div>
     </div>
  </main>
 
  <% include ../partials/footer_script %>
-        
+
 </body>
 </html>

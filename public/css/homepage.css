@@ -58,7 +58,7 @@ footer p {
 
 .overLay {
   position: absolute;
-  bottom: 0;  
+  bottom: 0;
   left: 100%;
   right: 0;
   background-color: #34495e;
@@ -195,16 +195,6 @@ footer p {
 
 .right-section hr {
   margin: 0px;
-}
-
-.student-id {
-  height: 200px;
-  width: 320px;
-  font-size: 10px;
-  padding: 10px;
-  border: 1px solid black;
-  margin: 10px auto;
-
 }
 
 footer #goTop {

@@ -38,13 +38,13 @@
                         <section class="student-id">
                             <div class="container-fluid studs">
                                 <div class="left">
-                                    <div class="h5">Name - <%= result[1].name %></div>
-                                    <div class="h6">Organization - <%= result[1].organization %></div>
-                                    <div class="company"><%= result[1].designation %></div>
+                                    <div class="h5">Name - <%= result[0].name %></div>
+                                    <div class="h6">Organization - <%= result[0].organization %></div>
+                                    <div class="company"><%= result[0].designation %></div>
                                 </div>
                                 <div class="right">
-                                    <div class="mobile"><%= result[1].contact_number %></div>
-                                    <div class="address"><%= result[1].address %></div>
+                                    <div class="mobile"><%= result[0].contact_number %></div>
+                                    <div class="address"><%= result[0].address %></div>
                                 </div>
                             </div>
                         </section>
@@ -72,14 +72,14 @@
 
 
 <!-- Hidden content to activate printing of all the data simultaneously -->
-    
+
     <% sample_data.forEach(function(item){ %>
         <div class="container" style="display : none;">
             <div class="row">
                 <div class="col-md-12">
-                    <div id="download_pdf" class="card-container">
+                    <div id="download_pdf" class="card-container printMe">
                         <section class="student-id">
-                            <div class="container-fluid studs printMe">
+                            <div class="container-fluid studs ">
                                 <div class="left">
                                     <div class="h5">Name - <%= item.name %></div>
                                     <div class="h6">Organization - <%= item.organization %></div>

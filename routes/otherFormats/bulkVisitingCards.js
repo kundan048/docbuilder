@@ -50,6 +50,10 @@ router.get("/bulkVisitingCards", isLoggedIn, function (req, res) {
     res.render("./cards/bulkVisitingCards");
 });
 
+router.get("/bulkVisitingCards/download", isLoggedIn, function (req, res) {
+    res.download('./public/files/sample.xlsx');
+});
+
 router.post('/bulkVisitingCards', upload.single('uploaded_file'), function (req, res) {
 
     // console.log(req.files);
@@ -92,8 +96,10 @@ router.get("/visiting_cards", isLoggedIn, async function (req, res) {
         address, ...rest
     }));
 
+    const data = newArrayOfObj.slice(1);
+
     // console.log(newArrayOfObj);
-    res.render("cards/visiting_cards", {result: newArrayOfObj});
+    res.render("cards/visiting_cards", {result: data});
 });
 
 module.exports = router;
