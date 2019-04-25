@@ -4,7 +4,6 @@ var express = require('express'),
     passport = require('passport'),
     LocalStrategy = require('passport-local'),
     expressSession = require('express-session'),
-    fileUpload = require('express-fileupload'),
     flash = require('connect-flash'),
     User = require('./models/user'),
     methodOverride = require("method-override");
@@ -77,7 +76,7 @@ app.use(expressSession({
 );
 
 // Express-fileUpload (For uploading files)
-app.use(fileUpload());
+// app.use(fileUpload());
 
 //Passport middleware
 app.use(passport.initialize());
