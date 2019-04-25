@@ -18,88 +18,74 @@
                             <div class="form-group row">
                                 <label for="name" class="col-sm-3 col-form-label">Full Name:</label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" id="name" type="text" name="leave[name]" id="name"
-                                           placeholder="Tom Cruze" autocomplete="off">
+                                    <input class="form-control" id="name" type="text" name="leave[name]" id="name" pattern=".{3,}" required title="Name must be atleast three characters!" placeholder="Tom Cruze" autocomplete="off">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="designation" class="col-sm-3 col-form-label">Designation:</label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" type="text" name="leave[designation]" id="designation"
-                                           placeholder="e.g. Assistant Professor" autocomplete="off">
+                                    <input class="form-control" type="text" name="leave[designation]" id="designation" pattern=".{3,}" required title="Designation must be atleast three characters!" placeholder="e.g. Assistant Professor" autocomplete="off">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Address:</label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" id="address" type="text" name="leave[address]"
-                                           placeholder="e.g. Street no. 3, Gole Market, New Delhi-110043"
-                                           autocomplete="off">
+                                    <input class="form-control" id="address" type="text" name="leave[address]" pattern=".{3,}" required title="Address must be atleast three characters!"placeholder="e.g. Street no. 3, Gole Market, New Delhi-110043" autocomplete="off">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="date" class="col-sm-3 col-form-label">Date:</label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" type="date" name="leave[date]" id="date" placeholder=""
-                                           autocomplete="off">
+                                    <input class="form-control" type="date" name="leave[date]" id="date" placeholder="" autocomplete="off" min="2010-10-01" max="2025-10-20">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Supervisor's First Name:</label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" id="supervisorfirstname" type="text"
-                                           name="leave[supervisor_first_name]" placeholder="John" autocomplete="off">
+                                    <input class="form-control" id="supervisorfirstname" type="text" pattern=".{3,}" required title="Must be atleast three characters!" name="leave[supervisor_first_name]" placeholder="John" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Supervisor's Last Name:</label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" id="supervisorlastname" type="text"
-                                           name="leave[supervisor_last_name]" placeholder="Doe" autocomplete="off">
+                                    <input class="form-control" id="supervisorlastname" type="text" pattern=".{3,}" required title="Must be atleast three characters!" name="leave[supervisor_last_name]" placeholder="Doe" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Supervisor's Designation:</label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" id="supervisordesignation" type="text"
-                                           name="leave[supervisor_designation]" placeholder="e.g HOD(Cse)"
-                                           autocomplete="off">
+                                    <input class="form-control" id="supervisordesignation" type="text" pattern=".{3,}" required title="Must be atleast three characters!" name="leave[supervisor_designation]" placeholder="e.g HOD(Cse)" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Company Name:</label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" id="companyname" type="text" name="leave[company_name]"
-                                           placeholder="e.g GBPEC" autocomplete="off">
+                                    <input class="form-control" id="companyname" type="text" name="leave[company_name]" pattern=".{3,}" required title="Must be atleast three characters!" placeholder="e.g GBPEC" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Company Address:</label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" id="companyaddress" type="text"
-                                           name="leave[company_address]" placeholder="e.g Okhla phase-3, New Delhi"
-                                           autocomplete="off">
+                                    <input class="form-control" id="companyaddress" type="text" pattern=".{3,}" required title="Must be atleast three characters!" name="leave[company_address]" placeholder="e.g Okhla phase-3, New Delhi" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Start Date of Leave:</label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" id="startdate" type="date" name="leave[start_date]"
-                                           placeholder="" autocomplete="off">
+                                    <input class="form-control" id="startdate" type="date" name="leave[start_date]" min="2010-10-01" max="2025-10-20" placeholder="" autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">End Date of Leave:</label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" id="enddate" type="date" name="leave[end_date]"
-                                           placeholder="" autocomplete="off">
+                                    <input class="form-control" id="enddate" type="date" name="leave[end_date]" min="2010-10-01" max="2025-10-20" placeholder="" autocomplete="off">
                                 </div>
                             </div>
                             <div class="form-group row">
