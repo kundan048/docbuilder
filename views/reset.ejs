@@ -28,8 +28,7 @@
                 <legend>Reset Password</legend>
                 <div class="form-group">
                     <label for="password">New Password</label>
-                    <input type="password" name="password" value="" placeholder="New password" autofocus="autofocus"
-                           class="form-control"/>
+                    <input type="password" name="password" pattern=".{8,}" required title="Password must be atleast eight characters!" value="" placeholder="New password" autofocus="autofocus" class="form-control"/>
                 </div>
                 <div class="form-group">
                     <label for="confirm">Confirm Password</label>
