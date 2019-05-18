@@ -22,6 +22,7 @@ router.get("/resumeFormats", isLoggedIn, function (req, res) {
 });
 
 router.get("/resume", isLoggedIn, function (req, res) {
+    console.log(req.query.rank);
     User.findById(req.user._id).populate("resume").exec(function (err, user) {
         if (err) {
             //console.log(err);
@@ -30,7 +31,14 @@ router.get("/resume", isLoggedIn, function (req, res) {
             if (user.resume.length > 0) {
                 var item = user.resume[user.resume.length - 1];
                 // console.log(item);
-                res.render("resume", {resume: item});
+                var resumeName = "resume_first";
+                var rank = 1;
+                if (req.query.rank == 2) {
+                    resumeName = "resume_second";
+                } else if (req.query.rank == 3 ) {
+                    resumeName = "resume_third";
+                }
+                res.render(resumeName, {resume: item});
             } else {
                 res.redirect("/otherFormats/resumeFormats");
             }
