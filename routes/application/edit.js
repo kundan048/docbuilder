@@ -11,7 +11,7 @@ var {isLoggedIn} = require('../../helpers/auth');
 
 router.get("/:id/edit", isLoggedIn, function (req, res) {
 
-    Application_t1_t1.findById(req.params.id, async function (err, foundApplicaiton) {
+    Application_t1_t1.findById(req.params.id, async function (err, foundApplication) {
         if (err) {
             console.log(err);
             res.redirect("/application");
@@ -25,7 +25,7 @@ router.get("/:id/edit", isLoggedIn, function (req, res) {
                 }
             })
         });
-        res.render("applications/edit", {data: application, application: foundApplicaiton});
+        res.render("applications/edit", {data: application, application: foundApplication});
     })
 })
 

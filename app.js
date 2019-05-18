@@ -34,6 +34,7 @@ let college_specific = require('./routes/application/CollegeSpecific/collegeSpec
 //letter section
 var letter = require('./routes/letter/letter');
 var recentletter = require('./routes/letter/recentletter');
+var letter_edit = require('./routes/letter/edit');
 
 //otherFormats section
 var otherFormats = require('./routes/otherformats/otherFormats');
@@ -118,6 +119,7 @@ app.use('/application', college_specific);
 // Letter section
 app.use('/', letter);
 app.use('/letter', recentletter);
+app.use('/letter', letter_edit);
 
 // Other Format section
 app.use('/', otherFormats);
