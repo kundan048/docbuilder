@@ -71,7 +71,15 @@
                             <div class="file-date"><%= moment(dates.committed).format('MMMM DD, h:mm a'); %></div>
                             <div class="file-reason">Leave Date: <%= dates.date %></div>
                             <div class="file-name"><%= dates.name %></div>
-                            <p><a class="btn btn-outline-dark btn-sm pl-4 pr-4" href="/letter/recentletter/<%= dates._id %>">See</a></p>
+                            <p>
+                                <a class="btn btn-outline-dark btn-sm pl-4 pr-4" href="/letter/recentletter/<%= dates._id %>">See</a>
+                                <a class="btn btn-outline-info btn-sm pl-4 pr-4"
+                                href="/letter/<%= dates._id %>/edit">Edit</a>
+                                <form action="/letter/<%= dates._id %>/delete?_method=DELETE" method="POST">
+                                <button class="btn btn-outline-info btn-sm pl-4 pr-4"
+                                >Delete </button>
+                                </form>  
+                            </p>
                         </div>
                         <hr>
                     <% }); %>
