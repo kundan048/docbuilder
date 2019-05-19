@@ -31,35 +31,40 @@
     <div class="container">
 
         <div class="container">
+            <div class="text-center h4">Sample Cards</div>
             <div class="row">
-                <div class="text-center">Sample Card</div>
-                <div class="col-md-12">
-                    <div id="download_pdf" class="card-container">
-                        <section class="student-id">
-                            <div class="container-fluid studs">
-                                <div class="left">
-                                    <div class="h5">Name - <%= result[0].name %></div>
-                                    <div class="h6">Organization - <%= result[0].organization %></div>
-                                    <div class="company"><%= result[0].designation %></div>
-                                </div>
-                                <div class="right">
-                                    <div class="mobile"><%= result[0].contact_number %></div>
-                                    <div class="address"><%= result[0].address %></div>
-                                </div>
-                            </div>
-                        </section>
-                        <br>
-                        <br>
-                        <br>
-
+                <div class="col-md-4">
+                    <section class="student-id">
+                        <div class="container-fluid">
+                            <img src="../../img/cards/first.jpeg" style="height: 180px; width: 260px;" alt="Sample">
+                        </div>
+                    </section>
+                    <div class="text-center">
+                        <a href="/otherFormats/download/first" class="btn btn-outline-primary">Download It</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <section class="student-id">
+                        <div class="container-fluid">
+                            <img src="../../img/cards/second.jpeg" style="height: 180px; width: 260px;" alt="Sample">
+                        </div>
+                    </section>
+                    <div class="text-center">
+                        <a href="/otherFormats/download/second" class="btn btn-outline-primary">Download It</a>
                     </div>
                 </div>
             </div>
         </div>
+        <br>
+        <br>
+        <br>
+        <div class="text-center h3">
+            Uploaded List
+        </div>
         <div id="grid"></div>
         <br>
         <br>
-        <a href="/otherFormats/download/docsbuilder" class="btn btn-success"> Download All</a>
+        <!--<a href="/otherFormats/download/docsbuilder" class="btn btn-success"> Download All</a>-->
         <!--<input type="button" onclick="printDivMain()" class="btn btn-success" value="Download All">-->
         <br>
         <br>

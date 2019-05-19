@@ -105,7 +105,7 @@ router.get("/visiting_cards", isLoggedIn, async function (req, res) {
     res.render("cards/visiting_cards", {result: data});
 });
 
-router.get("/download/docsbuilder", isLoggedIn, async function (req, res) {
+router.get("/download/first", isLoggedIn, async function (req, res) {
     var archive = archiver('zip');
 
     const result = await excelToJson({
@@ -157,9 +157,82 @@ router.get("/download/docsbuilder", isLoggedIn, async function (req, res) {
 
         doc.fontSize(12)
             .moveDown()
-            .text(`${user.address}`, { align: 'justify' } )
+            .text(`${user.address}`, { align: 'left' } )
 
         // doc.pipe(fs.createWriteStream('output1.pdf'));
+        archive
+            .append(doc, { name: `${user.name}.pdf` });
+        doc.end();
+    });
+
+    archive.pipe(res);
+    archive.finalize(function(err, bytes) {
+        if (err) {
+            throw err;
+        }
+
+        console.log(bytes + ' total bytes');
+    });
+});
+
+router.get("/download/second", isLoggedIn, async function (req, res) {
+    var archive = archiver('zip');
+
+    const result = await excelToJson({
+        sourceFile: './public/files/' + req.user._id + 'sample.xlsx'
+    });
+
+    const newArrayOfObj = result.Sheet1.map(({A: name, B: organization, C: designation, D: contact_number, E: address, ...rest}) => ({
+        name,
+        organization,
+        designation,
+        contact_number,
+        address, ...rest
+    }));
+
+    const data = newArrayOfObj.slice(1);
+// Create a document
+    data.forEach(function (user) {
+        const doc = new PDFDocument({
+            layout: 'landscape',
+            size: [180, 270],
+            margins: {
+                top: 10,
+                bottom: 10,
+                left: 10,
+                right: 10
+            }
+
+        });
+
+        doc.lineCap('round')
+            .moveTo(10, 0)
+            .lineTo(10, 180)
+            .lineWidth(25)
+            .fillAndStroke("#4B9EDA", "#4B9EDA");
+
+        doc.fontSize(16)
+            .fillColor('#4B9EDA')
+            .text(`${user.organization}`, 30, 25);
+
+
+        doc.lineCap('round')
+            .moveTo(30, 50)
+            .lineTo(260, 50)
+            .lineWidth(3)
+            .stroke();
+
+        doc.fontSize(14)
+            .moveDown()
+            .fillColor('black')
+            .text(`${user.name}`, { align: 'left' })
+            .fontSize(12)
+            .text(`${user.designation}`, { align: 'left' })
+            .moveDown()
+            .moveDown()
+            .text(`${user.contact_number}`, { align: 'left' })
+            .text(`${user.address}`, { align: 'left' } );
+
         archive
             .append(doc, { name: `${user.name}.pdf` });
         doc.end();
