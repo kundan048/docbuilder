@@ -24,6 +24,12 @@ var userSchema = new mongoose.Schema({
 			type : mongoose.Schema.Types.ObjectId,
 			ref  : "Resume"
 		}
+	],
+	letter_2 : [
+		{
+			type : mongoose.Schema.Types.ObjectId,
+			ref : "Letter_2"
+		}
 	]
 }); 
  
