@@ -36,19 +36,23 @@
 
                             <p><%= item.date %></p>
 
-                            <p><%= item.student_name%></p>
+                            <p><%= item.student_name %></p>
                             <p><%= item.duration %></p>
                             <p>collegename, applied_college_name, duration, email - </p>
                             <p><%= item.college_name %></p>
-                            <p><%=item.applied_college_name %>/p>
-                            <p><%=item.duration %></p>
-                            <p><%=item.email%></p>
+                            <p><%= item.applied_college_name %></p>
+                            <p><%= item.duration %></p>
+                            <p><%= item.email %></p>
 
                         </div>
                     </div>
                     <form action="/download" method="GET">
-                        <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="submit" disabled><i class="fa fa-file-download"></i>&nbsp;Download Docx</button>
-                        <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="button" onclick="printContent('hello')"><i class="fa fa-print"></i>&nbsp;Download Pdf</button>
+                        <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="submit" disabled><i
+                                    class="fa fa-file-download"></i>&nbsp;Download Docx
+                        </button>
+                        <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="button"
+                                onclick="printContent('hello')"><i class="fa fa-print"></i>&nbsp;Download Pdf
+                        </button>
                     </form>
                     <a href="/letter" class="btn btn-success btn-outline-dark btn-sm mb-2">New Application</a>
 
@@ -62,13 +66,14 @@
                             <div class="file-reason">Date: <%= dates.date %></div>
                             <div class="file-name"><%= dates.name %></div>
                             <p>
-                                <a class="btn btn-outline-dark btn-sm pl-4 pr-4" href="/letter_2/recentletter_2/<%= dates._id %>">See</a>
+                                <a class="btn btn-outline-dark btn-sm pl-4 pr-4"
+                                   href="/letter_2/recentletter_2/<%= dates._id %>">See</a>
                                 <a class="btn btn-outline-info btn-sm pl-4 pr-4"
-                                href="/letter/<%= dates._id %>/edit_2">Edit</a>
-                                <form action="/letter/<%= dates._id %>/delete_2?_method=DELETE" method="POST">
-                                <button class="btn btn-outline-info btn-sm pl-4 pr-4"
-                                >Delete </button>
-                                </form>  
+                                   href="/letter/<%= dates._id %>/edit_2">Edit</a>
+                            <form action="/letter/<%= dates._id %>/delete_2?_method=DELETE" method="POST">
+                                <button class="btn btn-outline-info btn-sm pl-4 pr-4">Delete
+                                </button>
+                            </form>
                             </p>
                         </div>
                         <hr>

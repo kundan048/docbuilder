@@ -99,7 +99,7 @@
                 <br>
                 <p id="datep"></p>
                 <br>
-                
+
                 <p id="namep"></p>
                 <p id="college_addressp"></p>
                 <br>
@@ -133,11 +133,13 @@
         var name = $("#name");
         var designation = $("#designation");
         var address = $("#address");
-
+        var student_name = $("#student_name");
+        var college_name = $("#college_name");
         var date = $("#date");
-
-        var companyname = $("#companyname");
+        var duration = $("#duration");
+        var email = $("#email");
         var college_address = $("#college_address");
+        var applied_college_name = $("#applied_college_name");
 
 
         var namep = $("#namep");
@@ -150,12 +152,12 @@
         var designationl = $("#designationl");
         var addressp = $("#addressp");
         var durationp = $("#durationp");
-        var applied_college_namep = $("#applied_college_name");
+        var applied_college_namep = $("#applied_college_namep");
         var datep = $("#datep");
-        var emailp = $(#emailp);
-        
+        var emailp = $("#emailp");
+
         var college_addressp = $("#college_addressp");
-    
+
         var monthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
         if (name.val() == "") {
@@ -187,8 +189,8 @@
         if (date.val() == "") {
             datep.html("____");
         }
-    
-        
+
+
         if (college_address.val() == "") {
             college_addressp.html("____");
         }
@@ -223,7 +225,7 @@
             if (college_namehere.length == 0) {
                 college_namep.html("____");
             } else {
-                college_namep.html(namehere);
+                college_namep.html(college_namehere);
             }
         });
 
@@ -268,7 +270,7 @@
             if (durationhere.length == 0) {
                 durationp.html("____");
             } else {
-                durationp.html(namehere);
+                durationp.html(durationhere);
             }
         });
         date.mouseout(function () {
