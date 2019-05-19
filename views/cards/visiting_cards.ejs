@@ -59,76 +59,21 @@
         <div id="grid"></div>
         <br>
         <br>
-        <input type="button" onclick="printDivMain()" class="btn btn-success" value="Download All">
+        <a href="/otherFormats/download/docsbuilder" class="btn btn-success"> Download All</a>
+        <!--<input type="button" onclick="printDivMain()" class="btn btn-success" value="Download All">-->
         <br>
         <br>
         <br>
 
-        <% var sample_data = result %>
         <span id='variableJSON' hidden>
             <%= JSON.stringify(result); %>
         </span>
     </div>
 
 
-<!-- Hidden content to activate printing of all the data simultaneously -->
-
-    <% sample_data.forEach(function(item){ %>
-        <div class="container" style="display : none;">
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="download_pdf" class="card-container printMe">
-                        <section class="student-id">
-                            <div class="container-fluid studs ">
-                                <div class="left">
-                                    <div class="h5">Name - <%= item.name %></div>
-                                    <div class="h6">Organization - <%= item.organization %></div>
-                                    <div class="company"><%= item.designation %></div>
-                                </div>
-                                <div class="right">
-                                    <div class="mobile"><%= item.contact_number %></div>
-                                    <div class="address"><%= item.address %></div>
-                                </div>
-                            </div>
-                        </section>
-                        <br>
-                        <br>
-                        <br>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    <% }) %>
-
 </main>
 
 <% include ../partials/footer_script %>
-
-<script>
-        function printDivMain() {
-            console.log("fdkh");
-            var divsToPrint = document.getElementsByClassName('printMe'), n;
-
-            for (n = 0; n < divsToPrint.length; n++) {
-                printDiv(divsToPrint[n]);
-            }
-            function printDiv(div){
-                // var printContents = document.getElementById(divName).innerHTML;
-                // var originalContents = document.body.innerHTML;
-                // document.body.innerHTML = printContents;
-                // window.print();
-                // document.body.innerHTML = originalContents;
-
-                var newWin = window.open('', 'win');
-                newWin.document.write(div.innerHTML);
-                newWin.location.reload();
-                newWin.focus();
-                newWin.print();
-                newWin.close();
-            }
-        }
-</script>
 
 <script src="https://kendo.cdn.telerik.com/2019.1.220/js/kendo.all.min.js"></script>
 <script>

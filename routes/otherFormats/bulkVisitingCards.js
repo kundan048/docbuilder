@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 var multer = require('multer');
 var path = require('path');
+const PDFDocument = require('pdfkit');
+var fs = require('fs');
+var archiver = require('archiver');
 
 
 //////////////  =======> multer
@@ -100,6 +103,76 @@ router.get("/visiting_cards", isLoggedIn, async function (req, res) {
 
     // console.log(newArrayOfObj);
     res.render("cards/visiting_cards", {result: data});
+});
+
+router.get("/download/docsbuilder", isLoggedIn, async function (req, res) {
+    var archive = archiver('zip');
+
+    const result = await excelToJson({
+        sourceFile: './public/files/' + req.user._id + 'sample.xlsx'
+    });
+
+    const newArrayOfObj = result.Sheet1.map(({A: name, B: organization, C: designation, D: contact_number, E: address, ...rest}) => ({
+        name,
+        organization,
+        designation,
+        contact_number,
+        address, ...rest
+    }));
+
+    const data = newArrayOfObj.slice(1);
+// Create a document
+    data.forEach(function (user) {
+        const doc = new PDFDocument({
+            layout: 'landscape',
+            size: [180, 270],
+            margins: {
+                top: 10,
+                bottom: 10,
+                left: 10,
+                right: 10
+            }
+
+        });
+
+
+        doc.fontSize(16)
+            .fillColor('#35567B')
+            .text(`${user.organization}`, 10, 20)
+            .moveDown()
+            .moveDown()
+            .fontSize(14)
+            .text(`${user.name}`, { align: 'right' })
+            .fontSize(10)
+            .fillColor('black')
+            .text(`${user.designation}`, { align: 'right' })
+            .text(`${user.contact_number}`, { align: 'right' });
+
+
+        doc.lineCap('round')
+            .moveTo(10, 120)
+            .lineTo(260, 120)
+            .lineWidth(3)
+            .stroke();
+
+        doc.fontSize(12)
+            .moveDown()
+            .text(`${user.address}`, { align: 'justify' } )
+
+        // doc.pipe(fs.createWriteStream('output1.pdf'));
+        archive
+            .append(doc, { name: `${user.name}.pdf` });
+        doc.end();
+    });
+
+    archive.pipe(res);
+    archive.finalize(function(err, bytes) {
+        if (err) {
+            throw err;
+        }
+
+        console.log(bytes + ' total bytes');
+    });
 });
 
 module.exports = router;

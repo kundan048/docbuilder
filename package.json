@@ -14,6 +14,7 @@
   "author": "Kundan, Anupam, Vipin, Ajay",
   "license": "ISC",
   "dependencies": {
+    "archiver": "^3.0.0",
     "async": "^2.6.1",
     "body-parser": "^1.18.3",
     "cloudinary": "^1.13.2",
