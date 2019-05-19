@@ -68,9 +68,13 @@
                             <div class="file-reason">Reason: <%= dates.reason %></div>
                             <div class="file-name"><%= dates.name %></div>
                             <p>
-                                <a class="btn btn-outline-dark btn-sm pl-4 pr-4" href="/application/recentdoc/<%= dates._id %>">See</a>
+                                <a class="btn btn-outline-dark btn-sm pl-4 pr-4" href="/application/recentdoc/<%= dates._id %>">See </a>
                                 <a class="btn btn-outline-info btn-sm pl-4 pr-4"
-                                   href="/application/<%= dates._id %>/edit">Edit</a>
+                                href="/application/<%= dates._id %>/edit">Edit </a>
+                                <form action="/application/<%= dates._id %>/delete?_method=DELETE" method="POST">
+                                    <button class="btn btn-outline-info btn-sm pl-4 pr-4"
+                                    >Delete </button>
+                                </form>    
                             </p>
                         </div>
                         <hr>
