@@ -1,0 +1,87 @@
+<% include partials/home_header %>
+<script>
+    function printContent(el) {
+        var restorepage = document.body.innerHTML;
+        var printcontent = document.getElementById(el).innerHTML;
+        document.body.innerHTML = printcontent;
+        window.print();
+        document.body.innerHTML = restorepage;
+    }
+</script>
+<% include partials/home_navbar %>
+<% var item; %>
+<% if(myid == 0){ %>
+    <% item = user.letter_2[user.letter_2.length - 1]; %>
+<% }else{ %>
+    <% item = myid %>
+<% } %>
+<main role="main">
+    <a class="btn btn-danger btn-outline-danger m-3" href="/homepage">Back</a>
+
+    <div class="container">
+
+
+        <div class="bg-light">
+            <div class="row">
+                <div class="col-md-8 bg-light left-section">
+                    <div class="h2 text-center mb-5">Letter</div>
+
+
+                    <div id="hello">
+                        <div class="pl-5 pr-5 pt-3">
+                            <p>Name, Deisgnation, address, date - </p>
+                            <br>
+                            <p><%= item.name + ", " + item.designation %></p>
+                            <p><%= item.address %></p>
+
+                            <p><%= item.date %></p>
+
+                            <p><%= item.student_name%></p>
+                            <p><%= item.duration %></p>
+                            <p>collegename, applied_college_name, duration, email - </p>
+                            <p><%= item.college_name %></p>
+                            <p><%=item.applied_college_name %>/p>
+                            <p><%=item.duration %></p>
+                            <p><%=item.email%></p>
+
+                        </div>
+                    </div>
+                    <form action="/download" method="GET">
+                        <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="submit" disabled><i class="fa fa-file-download"></i>&nbsp;Download Docx</button>
+                        <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="button" onclick="printContent('hello')"><i class="fa fa-print"></i>&nbsp;Download Pdf</button>
+                    </form>
+                    <a href="/letter" class="btn btn-success btn-outline-dark btn-sm mb-2">New Application</a>
+
+                </div>
+                <div class="col-md-4 right-section">
+                    <div class="h2 text-center section-heading p-3">Recent Commits</div>
+                    <hr>
+                    <% user.letter_2.reverse().forEach(function(dates){ %>
+                        <div class="pt-3 m-1 rounded text-center text-dark section-box">
+                            <div class="file-date"><%= moment(dates.committed).format('MMMM DD, h:mm a'); %></div>
+                            <div class="file-reason">Date: <%= dates.date %></div>
+                            <div class="file-name"><%= dates.name %></div>
+                            <p>
+                                <a class="btn btn-outline-dark btn-sm pl-4 pr-4" href="/letter_2/recentletter_2/<%= dates._id %>">See</a>
+                                <a class="btn btn-outline-info btn-sm pl-4 pr-4"
+                                href="/letter/<%= dates._id %>/edit_2">Edit</a>
+                                <form action="/letter/<%= dates._id %>/delete_2?_method=DELETE" method="POST">
+                                <button class="btn btn-outline-info btn-sm pl-4 pr-4"
+                                >Delete </button>
+                                </form>  
+                            </p>
+                        </div>
+                        <hr>
+                    <% }); %>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+<% include partials/footer_script %>
+
+</body>
+</html>

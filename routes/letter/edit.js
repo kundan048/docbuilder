@@ -37,7 +37,7 @@ router.put("/:id", isLoggedIn, function (req, res) {
             console.log(err);
             res.redirect("/letter");
         } else {
-            res.redirect("/letter/recentdoc/" + req.params.id);
+            res.redirect("/letter/recentletter/" + req.params.id);
         }
     });
 });

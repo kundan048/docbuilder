@@ -34,9 +34,13 @@ let college_specific = require('./routes/application/CollegeSpecific/collegeSpec
 
 //letter section
 var letter = require('./routes/letter/letter');
+var letter_2 = require('./routes/letter/letter_2');
 var recentletter = require('./routes/letter/recentletter');
+var recentletter_2 = require('./routes/letter/recentletter_2');
 var letter_edit = require('./routes/letter/edit');
+var letter_edit_2 = require('./routes/letter/edit_2');
 var letter_delete = require('./routes/letter/delete');
+var letter_delete_2 = require('./routes/letter/delete_2');
 
 //otherFormats section
 var otherFormats = require('./routes/otherformats/otherFormats');
@@ -124,6 +128,12 @@ app.use('/', letter);
 app.use('/letter', recentletter);
 app.use('/letter', letter_edit);
 app.use('/letter', letter_delete);
+
+app.use('/', letter_2);
+app.use('/letter', recentletter_2);
+app.use('/letter', letter_edit_2);
+app.use('/letter', letter_delete_2);
+
 
 // Other Format section
 app.use('/', otherFormats);

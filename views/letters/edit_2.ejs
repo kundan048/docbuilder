@@ -1,0 +1,302 @@
+<% include ../partials/home_header %>
+<% include ../partials/home_navbar %>
+
+<main role="main">
+    <a class="btn btn-danger btn-outline-danger m-3" href="javascript:history.back()">Back</a>
+    <a class="btn btn-primary btn-outline-primary m-3" href="/letter/recentletter_2">Recent References</a>
+    <div class="h2 text-center mb-5">Formal Letter</div>
+
+
+    <div class="container">
+        <div class="row">
+            <!-- first column starts -->
+
+            <div class="col-md-6 " style="border: 1px solid black; border-radius: 5px;">
+                <div class="album py-5">
+                    <div class="container">
+                        <form action="/letter_2" method="post">
+                            <div class="form-group row">
+                                <label for="name" class="col-sm-3 col-form-label">Your Name:</label>
+                                <div class="col-sm-9">
+                                    <input value="<%= letter.name %>" class="form-control" id="name" type="text" name="reference[name]" id="name" pattern=".{3,}" required title="Name must be atleast three characters!" placeholder="Tom Cruze" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="designation" class="col-sm-3 col-form-label">Designation:</label>
+                                <div class="col-sm-9">
+                                    <input value="<%= letter.designation %>" class="form-control" type="text" name="reference[designation]" id="designation" pattern=".{3,}" required title="Designation must be atleast three characters!" placeholder="e.g. Assistant Professor" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="designation" class="col-sm-3 col-form-label">College Name:</label>
+                                <div class="col-sm-9">
+                                    <input value="<%= letter.college_name %>" class="form-control" type="text" name="reference[college_name]" id="college_name" pattern=".{3,}" required title="College name must be atleast three characters!" placeholder="e.g. Caltech" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">College Address:</label>
+                                <div class="col-sm-9">
+                                    <input value="<%= letter.address %>" class="form-control" id="college_address" type="text" name="reference[College_address]" pattern=".{3,}" required title="College address must be atleast three characters!"placeholder="e.g. Street no. 3, Gole Market, New Delhi-110043" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="date" class="col-sm-3 col-form-label">Date:</label>
+                                <div class="col-sm-9">
+                                    <input value="<%= letter.date %>" class="form-control" type="date" name="reference[date]" id="date" placeholder="" autocomplete="off" min="2010-10-01" max="2025-10-20">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Student's Name:</label>
+                                <div class="col-sm-9">
+                                    <input value="<%= letter.student_name %>" class="form-control" id="student_name" type="text" name="reference[student_name]" pattern=".{3,}" required title="Must be atleast three characters!" placeholder="e.g GBPEC" autocomplete="off">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Applied College Name</label>
+                                <div class="col-sm-9">
+                                    <input value="<%= letter.applied_college_name %>" class="form-control" id="applied_college_name" type="text" pattern=".{3,}" required title="Must be atleast three characters!" name="reference[applied_college_name]" placeholder="e.g Okhla phase-3, New Delhi" autocomplete="off">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Duration of Knowing the student</label>
+                                <div class="col-sm-9">
+                                    <input value="<%= letter.duration %>" class="form-control" id="duration" type="text" pattern=".{3,}" required title="Must be atleast three characters!" name="reference[duration]" placeholder="e.g Five Years" autocomplete="off">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">email</label>
+                                <div class="col-sm-9">
+                                    <input value="<%= letter.email %>" class="form-control" id="email" type="text" pattern=".{3,}" required title="Must be atleast three characters!" name="reference[email]" placeholder="e.g abc@mno.com" autocomplete="off">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-12 mt-3">
+                                    <input class="btn btn-block btn-success" type="submit" value="Save & Preview">
+                                </div>
+                                <!--  <div class="col-sm-6 mt-3">
+                                   <a href="#" class="btn btn-block btn-success" type="button">Download Without Saving &rarr;</a>
+                                 </div> -->
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <!-- first column ends -->
+            <div class="col-md-6" style="border: 1px solid black; border-radius: 5px;">
+
+
+                <br>
+                <p><span id="college_namep"></span></p>
+                <p><span id="namep"></span>, <span id="designationp"></span></p>
+                <p id="addressp"></p>
+                <br>
+                <p id="datep"></p>
+                <br>
+                
+                <p id="namep"></p>
+                <p id="college_addressp"></p>
+                <br>
+                <p>Mr. or Ms.</span>:</p>
+                <br>
+                <p>To Whom It May Concern:</p>
+                    <br>
+
+                <p> I am writing this reference at the request of <span id="student_namep"></span>, who is applying for admission at <span id="applied_college_namep"></span>. I have known him for <span id="durationp"></span> in my capacity as a professor at <span id="college_namep1"></span>></span>. [Student] took [Course Name] course from me and earned superior grades in those classes. Based on his grades, attendance, and class participation, I’d rate his academic performance in my class as exceptional.</p>
+
+                <p><span id="student_namep1"></span> has a number of strengths. He is always interested in helping others. He is also a very fast learner. </p>
+                <br>
+                <p>In conclusion, I would highly recommend <span id="student_namep2"></span>. If his performance in my class is any indication of how he’d perform in future, he will be an extremely positive addition to your institute. If you need any additional information, feel free to contact me. You can email me at <span id="emailp"></span>.</p>
+                <p>Sincerely,</p>
+                <br>
+                <p id="namel"></p>
+                <br>
+                <p id="designationl"></p>
+
+
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<% include ../partials/footer_script %>
+
+<script>
+    $(document).ready(function () {
+        var name = $("#name");
+        var designation = $("#designation");
+        var address = $("#address");
+
+        var date = $("#date");
+
+        var companyname = $("#companyname");
+        var college_address = $("#college_address");
+
+
+        var namep = $("#namep");
+        var namel = $("#namel");
+        var student_namep = $("#student_namep");
+        var student_namep1 = $("#student_namep1");
+        var student_namep2 = $("#student_namep2");
+        var college_namep = $("#college_namep");
+        var designationp = $("#designationp");
+        var designationl = $("#designationl");
+        var addressp = $("#addressp");
+        var durationp = $("#durationp");
+        var applied_college_namep = $("#applied_college_name");
+        var datep = $("#datep");
+        var emailp = $(#emailp);
+        
+        var college_addressp = $("#college_addressp");
+    
+        var monthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        if (name.val() == "") {
+            namep.html("____");
+            namel.html("____");
+        }
+        if (student_name.val() == "") {
+            student_namep.html("____");
+            student_namep1.html("____");
+            student_namep2.html("____");
+        }
+        if (college_name.val() == "") {
+            college_namep.html("____");
+        }
+        if (applied_college_name.val() == "") {
+            applied_college_namep.html("____");
+        }
+
+        if (designation.val() == "") {
+            designationp.html("____");
+            designationl.html("____");
+        }
+        if (address.val() == "") {
+            addressp.html("____");
+        }
+        if (duration.val() == "") {
+            durationp.html("____");
+        }
+        if (date.val() == "") {
+            datep.html("____");
+        }
+    
+        
+        if (college_address.val() == "") {
+            college_addressp.html("____");
+        }
+        if(email.val() == ""){
+            emailp.html("____")
+        }
+
+        name.keyup(function () {
+            var namehere = name.val();
+            if (namehere.length == 0) {
+                namep.html("____");
+                namel.html("____");
+            } else {
+                namep.html(namehere);
+                namel.html(namehere);
+            }
+        });
+        student_name.keyup(function () {
+            var student_namehere = student_name.val();
+            if (student_namehere.length == 0) {
+                student_namep.html("____");
+                student_namep1.html("____");
+                student_namep2.html("____");
+            } else {
+                student_namep.html(student_namehere);
+                student_namep1.html(student_namehere);
+                student_namep2.html(student_namehere);
+            }
+        });
+        college_name.keyup(function () {
+            var college_namehere = college_name.val();
+            if (college_namehere.length == 0) {
+                college_namep.html("____");
+            } else {
+                college_namep.html(namehere);
+            }
+        });
+
+        email.keyup(function () {
+            var emailhere = email.val();
+            if (emailhere.length == 0) {
+                emailp.html("____");
+            } else {
+                emailp.html(emailhere);
+            }
+        });
+
+        applied_college_name.keyup(function () {
+            var applied_college_namehere = applied_college_name.val();
+            if (applied_college_namehere.length == 0) {
+                applied_college_namep.html("____");
+            } else {
+                applied_college_namep.html(applied_college_namehere);
+            }
+        });
+
+        designation.keyup(function () {
+            var designationhere = designation.val();
+            if (designationhere.length == 0) {
+                designationp.html("____");
+                designationl.html("____");
+            } else {
+                designationp.html(designationhere);
+                designationl.html(designationhere);
+            }
+        });
+        address.keyup(function () {
+            var addresshere = address.val();
+            if (addresshere.length == 0) {
+                addressp.html("____");
+            } else {
+                addressp.html(addresshere);
+            }
+        });
+        duration.keyup(function () {
+            var durationhere = duration.val();
+            if (durationhere.length == 0) {
+                durationp.html("____");
+            } else {
+                durationp.html(namehere);
+            }
+        });
+        date.mouseout(function () {
+            var datehere = date.val();
+
+            if (datehere.length == 0) {
+                datep.html("____");
+            } else {
+                var datehere = new Date(date.val());
+                day = datehere.getDate();
+                month = datehere.getMonth();
+                year = datehere.getFullYear();
+                var finaldate = day + " - " + monthName[month] + " - " + year;
+                datep.html(finaldate);
+            }
+        });
+
+        college_address.keyup(function () {
+            var college_addresshere = college_address.val();
+            if (college_addresshere.length == 0) {
+                college_addressp.html("____");
+            } else {
+                college_addressp.html(college_addresshere);
+            }
+        });
+
+    });
+</script>
+
+</body>
+</html>
