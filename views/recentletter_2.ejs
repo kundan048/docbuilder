@@ -29,21 +29,17 @@
 
                     <div id="hello">
                         <div class="pl-5 pr-5 pt-3">
-                            <p>Name, Deisgnation, address, date - </p>
-                            <br>
+                            <p><%= item.college_name %></p>
                             <p><%= item.name + ", " + item.designation %></p>
                             <p><%= item.address %></p>
-
                             <p><%= item.date %></p>
-
-                            <p><%= item.student_name %></p>
-                            <p><%= item.duration %></p>
-                            <p>collegename, applied_college_name, duration, email - </p>
-                            <p><%= item.college_name %></p>
-                            <p><%= item.applied_college_name %></p>
-                            <p><%= item.duration %></p>
-                            <p><%= item.email %></p>
-
+                            <p>To Whom It May Concern:</p>
+                            <p> I am writing this reference at the request of <span><%= item.student_name %></span>, who is applying for admission at <span><%= item.applied_college_name %></span>. I have known him for <span><%= item.duration %></span> in my capacity as a professor at <span><%= item.college_name %></span>. <span><%= item.student_name %></span> took <span><%= item.course_name %></span> course from me and earned superior grades in those classes. Based on his grades, attendance, and class participation, I’d rate his academic performance in my class as exceptional.</p>
+                            <p><span><%= item.student_name %></span> has a number of strengths. He is always interested in helping others. He is also a very fast learner. </p>
+                            <p>In conclusion, I would highly recommend <span><%= item.student_name %></span>. If his performance in my class is any indication of how he’d perform in future, he will be an extremely positive addition to your institute. If you need any additional information, feel free to contact me. You can email me at <span><%= item.email %></span>.</p>
+                            <p>Sincerely,</p>
+                            <p><%= item.name %></p>
+                            <p><%= item.designation %></p>
                         </div>
                     </div>
                     <form action="/download" method="GET">

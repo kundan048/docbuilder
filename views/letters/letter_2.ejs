@@ -54,6 +54,13 @@
                             </div>
 
                             <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Course Name</label>
+                                <div class="col-sm-9">
+                                    <input class="form-control" id="course_name" type="text" pattern=".{3,}" required title="Must be atleast three characters!" name="reference[course_name]" placeholder="Computer Science Engineering" autocomplete="off">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Applied College Name</label>
                                 <div class="col-sm-9">
                                     <input class="form-control" id="applied_college_name" type="text" pattern=".{3,}" required title="Must be atleast three characters!" name="reference[applied_college_name]" placeholder="e.g Okhla phase-3, New Delhi" autocomplete="off">
@@ -96,29 +103,17 @@
                 <p><span id="college_namep"></span></p>
                 <p><span id="namep"></span>, <span id="designationp"></span></p>
                 <p id="addressp"></p>
-                <br>
                 <p id="datep"></p>
-                <br>
-
                 <p id="namep"></p>
                 <p id="college_addressp"></p>
                 <br>
-                <p>Mr. or Ms.</span>:</p>
-                <br>
                 <p>To Whom It May Concern:</p>
-                    <br>
-
-                <p> I am writing this reference at the request of <span id="student_namep"></span>, who is applying for admission at <span id="applied_college_namep"></span>. I have known him for <span id="durationp"></span> in my capacity as a professor at <span id="college_namep1"></span>></span>. [Student] took [Course Name] course from me and earned superior grades in those classes. Based on his grades, attendance, and class participation, I’d rate his academic performance in my class as exceptional.</p>
-
+                <p> I am writing this reference at the request of <span id="student_namep"></span>, who is applying for admission at <span id="applied_college_namep"></span>. I have known him for <span id="durationp"></span> in my capacity as a professor at <span id="college_namep1"></span>. <span id="student_namep3"></span> took <span id="course_namep"></span> course from me and earned superior grades in those classes. Based on his grades, attendance, and class participation, I’d rate his academic performance in my class as exceptional.</p>
                 <p><span id="student_namep1"></span> has a number of strengths. He is always interested in helping others. He is also a very fast learner. </p>
-                <br>
                 <p>In conclusion, I would highly recommend <span id="student_namep2"></span>. If his performance in my class is any indication of how he’d perform in future, he will be an extremely positive addition to your institute. If you need any additional information, feel free to contact me. You can email me at <span id="emailp"></span>.</p>
                 <p>Sincerely,</p>
-                <br>
                 <p id="namel"></p>
-                <br>
                 <p id="designationl"></p>
-
 
             </div>
         </div>
@@ -140,12 +135,17 @@
         var email = $("#email");
         var college_address = $("#college_address");
         var applied_college_name = $("#applied_college_name");
+        var course_name = $("#course_name");
+
+
         var namep = $("#namep");
         var namel = $("#namel");
         var student_namep = $("#student_namep");
         var student_namep1 = $("#student_namep1");
         var student_namep2 = $("#student_namep2");
+        var student_namep3 = $("#student_namep3");
         var college_namep = $("#college_namep");
+        var course_namep = $("#course_namep");
         var designationp = $("#designationp");
         var designationl = $("#designationl");
         var addressp = $("#addressp");
@@ -163,9 +163,13 @@
             student_namep.html("____");
             student_namep1.html("____");
             student_namep2.html("____");
+            student_namep3.html("____");
         }
         if (college_name.val() == "") {
             college_namep.html("____");
+        }
+        if (course_name.val() == "") {
+            course_namep.html("____");
         }
         if (applied_college_name.val() == "") {
             applied_college_namep.html("____");
@@ -205,10 +209,12 @@
                 student_namep.html("____");
                 student_namep1.html("____");
                 student_namep2.html("____");
+                student_namep3.html("____");
             } else {
                 student_namep.html(student_namehere);
                 student_namep1.html(student_namehere);
                 student_namep2.html(student_namehere);
+                student_namep3.html(student_namehere);
             }
         });
         college_name.keyup(function () {
@@ -217,6 +223,14 @@
                 college_namep.html("____");
             } else {
                 college_namep.html(college_namehere);
+            }
+        });
+        course_name.keyup(function () {
+            var course_namehere = course_name.val();
+            if (course_namehere.length == 0) {
+                course_namep.html("____");
+            } else {
+                course_namep.html(course_namehere);
             }
         });
         email.keyup(function () {

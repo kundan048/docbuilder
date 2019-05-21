@@ -6,7 +6,7 @@ var letter_2Schema = mongoose.Schema({
 	address 				: String,
 	date 					: String,
 	college_name            : String,
-	
+	course_name				: String,
 	student_name			: String,
 	applied_college_name    : String,
 	duration				: String,

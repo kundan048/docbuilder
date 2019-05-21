@@ -17,7 +17,7 @@ router.get("/recentletter_3", isLoggedIn, function (req, res) {
             res.redirect("/letter_3");
         } else {
             //console.log(foundUser);
-            if (foundUser.letter_2.length == 0) {
+            if (foundUser.letter_3.length == 0) {
 
                 res.redirect("/letter_3");
             } else {
