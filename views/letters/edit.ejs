@@ -211,7 +211,7 @@
             enddatep.html("____");
         }
 
-        name.keyup(function () {
+        name.on('keyup mouseup focus mouseleave change onload', function () {
             var namehere = name.val();
             if (namehere.length == 0) {
                 namep.html("____");
@@ -221,7 +221,7 @@
                 namel.html(namehere);
             }
         });
-        designation.keyup(function () {
+        designation.on('keyup mouseup focus mouseleave change onload', function () {
             var designationhere = designation.val();
             if (designationhere.length == 0) {
                 designationp.html("____");
@@ -229,7 +229,7 @@
                 designationp.html(designationhere);
             }
         });
-        address.keyup(function () {
+        address.on('keyup mouseup focus mouseleave change onload', function () {
             var addresshere = address.val();
             if (addresshere.length == 0) {
                 addressp.html("____");
@@ -237,7 +237,7 @@
                 addressp.html(addresshere);
             }
         });
-        date.mouseout(function () {
+        date.on('keyup mouseup focus mouseleave change onload', function () {
             var datehere = date.val();
 
             if (datehere.length == 0) {
@@ -252,7 +252,7 @@
             }
         });
 
-        supervisorfirstname.keyup(function () {
+        supervisorfirstname.on('keyup mouseup focus mouseleave change onload', function () {
             var supervisorfirstnamehere = supervisorfirstname.val();
             if (supervisorfirstnamehere.length == 0) {
                 supervisorfirstnamep.html("____");
@@ -260,7 +260,7 @@
                 supervisorfirstnamep.html(supervisorfirstnamehere);
             }
         });
-        supervisorlastname.keyup(function () {
+        supervisorlastname.on('keyup mouseup focus mouseleave change onload', function () {
             var supervisorlastnamehere = supervisorlastname.val();
             if (supervisorlastnamehere.length == 0) {
                 supervisorlastnamep.html("____");
@@ -270,7 +270,7 @@
                 supervisorlastnamel.html(supervisorlastnamehere);
             }
         });
-        supervisordesignation.keyup(function () {
+        supervisordesignation.on('keyup mouseup focus mouseleave change onload', function () {
             var supervisordesignationhere = supervisordesignation.val();
             if (supervisordesignationhere.length == 0) {
                 supervisordesignationp.html("____");
@@ -278,7 +278,7 @@
                 supervisordesignationp.html(supervisordesignationhere);
             }
         });
-        companyname.keyup(function () {
+        companyname.on('keyup mouseup focus mouseleave change onload', function () {
             var companynamehere = companyname.val();
             if (companynamehere.length == 0) {
                 companynamep.html("____");
@@ -286,7 +286,7 @@
                 companynamep.html(companynamehere);
             }
         });
-        companyaddress.keyup(function () {
+        companyaddress.on('keyup mouseup focus mouseleave change onload', function () {
             var companyaddresshere = companyaddress.val();
             if (companyaddresshere.length == 0) {
                 companyaddressp.html("____");
@@ -294,7 +294,7 @@
                 companyaddressp.html(companyaddresshere);
             }
         });
-        startdate.mouseout(function () {
+        startdate.on('keyup mouseup focus mouseleave change onload', function () {
             var startdatehere = startdate.val();
 
             if (startdatehere.length == 0) {
@@ -308,7 +308,7 @@
                 startdatep.html(finaldate);
             }
         });
-        enddate.mouseout(function () {
+        enddate.on('keyup mouseup focus mouseleave change onload', function () {
             var enddatehere = enddate.val();
 
             if (enddatehere.length == 0) {

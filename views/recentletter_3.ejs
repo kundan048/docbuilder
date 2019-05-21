@@ -29,22 +29,38 @@
 
                     <div id="hello">
                         <div class="pl-5 pr-5 pt-3">
-                            <p>Name, Deisgnation, candidate_name, date, job_location - </p>
-                            <br>
-                            <p><%= item.name %> , <%= item.designation %></p>
-                            <p><%= item.candidate_name %></p>
-                            <p><%= item.candidate_name %></p>
-                            <p><%= item.date %></p>
-                            <p><%= item.job_location %></p>
 
-                            <p>company_name, joining_date, first_pay_date, job_title, supervisor, end_date, package - </p>
-                            <p><%= item.company %></p>
-                            <p><%= item.joining_date %></p>
-                            <p><%= item.first_pay_date %></p>
-                            <p><%= item.jobtitle %></p>
-                            <p><%= item.supervisor %></p>
-                            <p><%= item.end_date %></p>
-                            <p><%= item.package %></p>
+                            <p><span><%= item.name %></span>,</p>
+                            <p><span><%= item.designation %></span></p>
+                            <p><span><%= item.company %></span></p>
+                            <br>
+                            <p><span><%= item.date %></span></p>
+                            <br>
+
+                            <p>Dear <span><%= item.candidate_name %></span>:</p>
+                            <br>
+                            <p><span><%= item.company_name %></span> is excited to bring you on board as <span><%= item.job_title %></span>.</p>
+                            <p>
+                                We’re just a few formalities away from getting down to work. Please take the time to review our offer. It includes important details about your compensation, benefits and the terms and conditions of your anticipated employment with <span><%= item.company %></span>.
+                            </p>
+                            <br>
+                            <p><span><%= item.company %></span> is offering a full time position for you as <span><%= item.job_title %></span>, reporting to immediate <span><%= item.supervisor %></span>  starting on <span><%= item.joining_date %></span> at <span><%= item.job_location %></span>.</p>
+                            <br>
+
+                            <p>In this position, <span><%= item.company %></span> is offering to start you at a pay rate of Rs. <span><%= item.package %></span> per annum. You will be paid on a monthly basis, starting <span><%= item.first_pay_date %></span>.</p>
+
+                            <br>
+
+                            <p>As an employee of <span><%= item.company %></span> you will be eligible for health insurance, stock plans and dental insurance.</p>
+                            <br>
+                            <p>
+                                Please indicate your agreement with these terms and accept this offer by signing and dating this agreement on or before <span><%= item.end_date %></span>.
+                            </p>
+
+                            <p>Regards,</p>
+                            <br>
+                            <p><span><%= item.name %></span></p>
+                            <p><span><%= item.designation %></span></p>
 
                         </div>
                     </div>

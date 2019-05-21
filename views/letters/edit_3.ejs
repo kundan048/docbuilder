@@ -4,7 +4,7 @@
 <main role="main">
     <a class="btn btn-danger btn-outline-danger m-3" href="javascript:history.back()">Back</a>
     <a class="btn btn-primary btn-outline-primary m-3" href="/letter/recentletter_3">Recent Offer Letters</a>
-    <div class="h2 text-center mb-5">Formal Letter</div>
+    <div class="h2 text-center mb-5">Offer Letter</div>
 
 
     <div class="container">
@@ -96,7 +96,7 @@
                                 </div>
                             </div>
 
-                            
+
                             <div class="form-group row">
                                 <div class="col-sm-12 mt-3">
                                     <input class="btn btn-block btn-success" type="submit" value="Save & Preview">
@@ -122,7 +122,7 @@
                 <br>
                 <p id="datep"></p>
                 <br>
-                
+
                 <p>Dear <span id="candidatenamep"></span>:</p>
                 <br>
                 <p><span id="companyp1"></span> is excited to bring you on board as <span id="jobtittle"></span>.</p>
@@ -164,7 +164,7 @@
         var designation = $("#designation");
         var date = $("#date");
         var supervisorname = $("#supervisorname");
-        var firstpayday = $("#firstpayday");
+        var firstpaydate = $("#firstpaydate");
         var joiningdate = $("#joiningdate");
         var company = $("#company");
         var joblocation = $("#joblocation");
@@ -213,16 +213,16 @@
         if (supervisorname.val() == "") {
             supervisornamep.html("____");
         }
-        
+
         if (company.val() == "") {
             companyp.html("____");
-            company.html("____");
-            company.html("____");
-            company.html("____");
-            company.html("____");
-            company.html("____");
+            companyp1.html("____");
+            companyp2.html("____");
+            companyp3.html("____");
+            companyp4.html("____");
+            companyp5.html("____");
         }
-        
+
         if (package.val() == "") {
             packagep.html("____");
         }
@@ -242,7 +242,7 @@
             enddatep.html("____");
         }
 
-        name.keyup(function () {
+        name.on('keyup mouseup focus mouseleave change onload', function () {
             var namehere = name.val();
             if (namehere.length == 0) {
                 namep.html("____");
@@ -253,7 +253,7 @@
             }
         });
 
-        candidatename.keyup(function () {
+        candidatename.on('keyup mouseup focus mouseleave change onload', function () {
             var candidatenamehere = candidatename.val();
             if (candidatenamehere.length == 0) {
                 candidatenamep.html("____");
@@ -262,7 +262,7 @@
             }
         });
 
-        designation.keyup(function () {
+        designation.on('keyup mouseup focus mouseleave change onload', function () {
             var designationhere = designation.val();
             if (designationhere.length == 0) {
                 designationp.html("____");
@@ -273,7 +273,7 @@
             }
         });
 
-        package.keyup(function () {
+        package.on('keyup mouseup focus mouseleave change onload', function () {
             var packagehere = package.val();
             if (packagehere.length == 0) {
                 packagep.html("____");
@@ -282,7 +282,7 @@
             }
         });
 
-        jobtitle.keyup(function () {
+        jobtitle.on('keyup mouseup focus mouseleave change onload', function () {
             var jobtitlehere = jobtitle.val();
             if (jobtitlehere.length == 0) {
                 jobtitlep.html("____");
@@ -291,7 +291,7 @@
             }
         });
 
-        joblocation.keyup(function () {
+        joblocation.on('keyup mouseup focus mouseleave change onload', function () {
             var joblocationhere = joblocation.val();
             if (joblocationhere.length == 0) {
                 joblocationp.html("____");
@@ -299,8 +299,8 @@
                 joblocationp.html(joblocationhere);
             }
         });
-        
-        date.mouseout(function () {
+
+        date.on('keyup mouseup focus mouseleave mouseout change onload', function () {
             var datehere = date.val();
 
             if (datehere.length == 0) {
@@ -315,7 +315,7 @@
             }
         });
 
-        supervisorname.keyup(function () {
+        supervisorname.on('keyup mouseup focus mouseleave change onload', function () {
             var supervisornamehere = supervisorname.val();
             if (supervisornamehere.length == 0) {
                 supervisornamep.html("____");
@@ -323,8 +323,8 @@
                 supervisornamep.html(supervisornamehere);
             }
         });
-        
-        company.keyup(function () {
+
+        company.on('keyup mouseup focus mouseleave change onload', function () {
             var companyhere = company.val();
             if (companyhere.length == 0) {
                 companyp.html("____");
@@ -342,7 +342,7 @@
                 companyp5.html(companyhere);
             }
         });
-        joiningdate.mouseout(function () {
+        joiningdate.on('keyup mouseup mouseout focus mouseleave change onload', function () {
             var joiningdatehere = joiningdate.val();
 
             if (joiningdatehere.length == 0) {
@@ -356,7 +356,7 @@
                 joiningdatep.html(finaldate);
             }
         });
-        firstpaydate.mouseout(function () {
+        firstpaydate.on('keyup mouseup focus mouseleave change onload', function () {
             var firstpaydatehere = firstpaydate.val();
 
             if (firstpaydatehere.length == 0) {
@@ -370,7 +370,7 @@
                 firstpaydatep.html(finaldate);
             }
         });
-        enddate.mouseout(function () {
+        enddate.on('keyup mouseup focus mouseleave change onload', function () {
             var enddatehere = enddate.val();
 
             if (enddatehere.length == 0) {
