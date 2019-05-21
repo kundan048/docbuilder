@@ -1,0 +1,393 @@
+<% include ../partials/home_header %>
+<% include ../partials/home_navbar %>
+
+<main role="main">
+    <a class="btn btn-danger btn-outline-danger m-3" href="javascript:history.back()">Back</a>
+    <a class="btn btn-primary btn-outline-primary m-3" href="/letter/recentletter_3">Recent Offer Letters</a>
+    <div class="h2 text-center mb-5">Formal Letter</div>
+
+
+    <div class="container">
+        <div class="row">
+            <!-- first column starts -->
+
+            <div class="col-md-6 " style="border: 1px solid black; border-radius: 5px;">
+                <div class="album py-5">
+                    <div class="container">
+                        <form action="/letter_3" method="post">
+                            <div class="form-group row">
+                                <label for="name" class="col-sm-3 col-form-label">Full Name:</label>
+                                <div class="col-sm-9">
+                                    <input value="<%= letter.name %>" class="form-control" id="name" type="text" name="offer[name]" id="name" pattern=".{3,}" required title="Name must be atleast three characters!" placeholder="Tom Cruze" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="designation" class="col-sm-3 col-form-label">Designation:</label>
+                                <div class="col-sm-9">
+                                    <input value="<%= letter.designation %>" class="form-control" type="text" name="offer[designation]" id="designation" pattern=".{3,}" required title="Designation must be atleast three characters!" placeholder="e.g. Area Manager" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Company Name:</label>
+                                <div class="col-sm-9">
+                                    <input value="<%= letter.company_name %>" class="form-control" id="companyname" type="text" name="offer[company_name]" pattern=".{3,}" required title="Name of the company must be atleast three characters!"placeholder="e.g. ABC Corporations" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="date" class="col-sm-3 col-form-label">Date:</label>
+                                <div class="col-sm-9">
+                                    <input value="<%= letter.date %>" class="form-control" type="date" name="offer[date]" id="date" placeholder="" autocomplete="off" min="2010-10-01" max="2025-10-20">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Candidates's Full Name:</label>
+                                <div class="col-sm-9">
+                                    <input value="<%= letter.candidate_name %>" class="form-control" id="candidatename" type="text" pattern=".{3,}" required title="Must be atleast three characters!" name="offer[candidate_name]" placeholder="John Doe" autocomplete="off">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Job Title:</label>
+                                <div class="col-sm-9">
+                                    <input value="<%= letter.job_title %>" class="form-control" id="jobtitle" type="text" pattern=".{3,}" required title="Must be atleast three characters!" name="offer[job_title]" placeholder="Software Developer" autocomplete="off">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Package:</label>
+                                <div class="col-sm-9">
+                                    <input value="<%= letter.package %>" class="form-control" id="package" type="text" pattern=".{3,}" required  name="offer[package]" placeholder="500000" autocomplete="off">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Supervisor's Name:</label>
+                                <div class="col-sm-9">
+                                    <input value="<%= letter.supervisor %>" class="form-control" id="supervisorname" type="text" pattern=".{3,}" required title="Must be atleast three characters!" name="offer[supervisor]" placeholder="John Doe" autocomplete="off">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Location of Job:</label>
+                                <div class="col-sm-9">
+                                    <input value="<%= letter.job_location %>" class="form-control" id="joblocation" type="text" pattern=".{3,}" required title="Must be atleast three characters!" name="offer[job_location]" placeholder="eg. New Delhi" autocomplete="off">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="date" class="col-sm-3 col-form-label">Date Of joining:</label>
+                                <div class="col-sm-9">
+                                    <input value="<%= letter.joining_date %>" class="form-control" type="date" name="offer[joining_date]" id="joiningdate" placeholder="" autocomplete="off" min="2010-10-01" max="2025-10-20">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="date" class="col-sm-3 col-form-label">Date Of First Payment:</label>
+                                <div class="col-sm-9">
+                                    <input value="<%= letter.first_pay_date %>" class="form-control" type="date" name="offer[first_pay_date]" id="firstpaydate" placeholder="" autocomplete="off" min="2010-10-01" max="2025-10-20">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="date" class="col-sm-3 col-form-label">Offer Expiration Date:</label>
+                                <div class="col-sm-9">
+                                    <input value="<%= letter.end_date %>" class="form-control" type="date" name="offer[end_date]" id="enddate" placeholder="" autocomplete="off" min="2010-10-01" max="2025-10-20">
+                                </div>
+                            </div>
+
+                            
+                            <div class="form-group row">
+                                <div class="col-sm-12 mt-3">
+                                    <input class="btn btn-block btn-success" type="submit" value="Save & Preview">
+                                </div>
+                                <!--  <div class="col-sm-6 mt-3">
+                                   <a href="#" class="btn btn-block btn-success" type="button">Download Without Saving &rarr;</a>
+                                 </div> -->
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <!-- first column ends -->
+            <div class="col-md-6" style="border: 1px solid black; border-radius: 5px;">
+
+
+                <br>
+                <p><span id="namep"></span>,</p>
+                <p><span id="designationp"></span></p>
+                <p id="companyp"></p>
+                <br>
+                <p id="datep"></p>
+                <br>
+                
+                <p>Dear <span id="candidatenamep"></span>:</p>
+                <br>
+                <p><span id="companyp1"></span> is excited to bring you on board as <span id="jobtittle"></span>.</p>
+                <p>
+                    We’re just a few formalities away from getting down to work. Please take the time to review our offer. It includes important details about your compensation, benefits and the terms and conditions of your anticipated employment with <span id="companyp2"></span>.
+                </p>
+                <br>
+                <p><span id="companyp3"></span> is offering a full time position for you as <span id="jobtitlep"></span>, reporting to immediate <span id="supervisornamep"></span>  starting on <span id="joiningdatep"></span> at <span id="joblocationp"></span>.</p>
+                <br>
+
+                <p>In this position, <span id="companyp4"></span> is offering to start you at a pay rate of Rs. <span id="packagep"></span> per annum. You will be paid on a monthly basis, starting <span id="firstpaydayp"></span>.</p>
+
+                <br>
+
+                <p>As an employee of <span id="companyp5"></span> you will be eligible for health insurance, stock plans and dental insurance.</p>
+                <br>
+                <p>
+                    Please indicate your agreement with these terms and accept this offer by signing and dating this agreement on or before <span id="enddatep"></span>.
+                </p>
+
+                <p>Regards,</p>
+                <br>
+                <p id="namel"></p>
+                <p id="designationl"></p>
+
+
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<% include ../partials/footer_script %>
+
+<script>
+    $(document).ready(function () {
+        var name = $("#name");
+        var candidatename = $("#candidatename");
+        var designation = $("#designation");
+        var date = $("#date");
+        var supervisorname = $("#supervisorname");
+        var firstpayday = $("#firstpayday");
+        var joiningdate = $("#joiningdate");
+        var company = $("#company");
+        var joblocation = $("#joblocation");
+        var package = $("#package");
+        var jobtitle = $("#jobtitle");
+        var enddate = $("#enddate");
+
+
+        var namep = $("#namep");
+        var namel = $("#namel");
+        var candidatenamep = $("#candidatenamep");
+        var designationp = $("#designationp");
+        var designationl = $("#designationl");
+        var datep = $("#datep");
+        var firstpaydatep = $("#firstpaydatep");
+        var joiningdatep = $("#joiningdatep");
+        var supervisornamep = $("#supervisornamep");
+        var joblocationp = $("#joblocationp");
+        var jobtitlep = $("#jobtitlep");
+        var packagep = $("#packagep");
+        var companyp = $("#companyp");
+        var companyp1 = $("#companyp1");
+        var companyp2 = $("#companyp2");
+        var companyp3 = $("#companyp3");
+        var companyp4 = $("#companyp4");
+        var companyp5 = $("#companyp5");
+        var enddatep = $("#enddatep");
+
+
+        var monthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        if (name.val() == "") {
+            namep.html("____");
+            namel.html("____");
+        }
+        if (designation.val() == "") {
+            designationp.html("____");
+            designationp.html("____");
+        }
+        if (candidatename.val() == "") {
+            candidatenamep.html("____");
+        }
+        if (date.val() == "") {
+            datep.html("____");
+        }
+        if (supervisorname.val() == "") {
+            supervisornamep.html("____");
+        }
+        
+        if (company.val() == "") {
+            companyp.html("____");
+            company.html("____");
+            company.html("____");
+            company.html("____");
+            company.html("____");
+            company.html("____");
+        }
+        
+        if (package.val() == "") {
+            packagep.html("____");
+        }
+        if (jobtitle.val() == "") {
+            jobtitlep.html("____");
+        }
+        if (joblocation.val() == "") {
+           joblocationp.html("____");
+        }
+        if (joiningdate.val() == "") {
+            joiningdatep.html("____");
+        }
+        if (firstpaydate.val() == "") {
+            firstpaydatep.html("____");
+        }
+        if (enddate.val() == "") {
+            enddatep.html("____");
+        }
+
+        name.keyup(function () {
+            var namehere = name.val();
+            if (namehere.length == 0) {
+                namep.html("____");
+                namel.html("____");
+            } else {
+                namep.html(namehere);
+                namel.html(namehere);
+            }
+        });
+
+        candidatename.keyup(function () {
+            var candidatenamehere = candidatename.val();
+            if (candidatenamehere.length == 0) {
+                candidatenamep.html("____");
+            } else {
+                candidatenamep.html(candidatenamehere);
+            }
+        });
+
+        designation.keyup(function () {
+            var designationhere = designation.val();
+            if (designationhere.length == 0) {
+                designationp.html("____");
+                designationl.html("____");
+            } else {
+                designationp.html(designationhere);
+                designationl.html(designationhere);
+            }
+        });
+
+        package.keyup(function () {
+            var packagehere = package.val();
+            if (packagehere.length == 0) {
+                packagep.html("____");
+            } else {
+                packagep.html(packagehere);
+            }
+        });
+
+        jobtitle.keyup(function () {
+            var jobtitlehere = jobtitle.val();
+            if (jobtitlehere.length == 0) {
+                jobtitlep.html("____");
+            } else {
+                jobtitlep.html(jobtitlehere);
+            }
+        });
+
+        joblocation.keyup(function () {
+            var joblocationhere = joblocation.val();
+            if (joblocationhere.length == 0) {
+                joblocationp.html("____");
+            } else {
+                joblocationp.html(joblocationhere);
+            }
+        });
+        
+        date.mouseout(function () {
+            var datehere = date.val();
+
+            if (datehere.length == 0) {
+                datep.html("____");
+            } else {
+                var datehere = new Date(date.val());
+                day = datehere.getDate();
+                month = datehere.getMonth();
+                year = datehere.getFullYear();
+                var finaldate = day + " - " + monthName[month] + " - " + year;
+                datep.html(finaldate);
+            }
+        });
+
+        supervisorname.keyup(function () {
+            var supervisornamehere = supervisorname.val();
+            if (supervisornamehere.length == 0) {
+                supervisornamep.html("____");
+            } else {
+                supervisornamep.html(supervisornamehere);
+            }
+        });
+        
+        company.keyup(function () {
+            var companyhere = company.val();
+            if (companyhere.length == 0) {
+                companyp.html("____");
+                companyp1.html("____");
+                companyp2.html("____");
+                companyp3.html("____");
+                companyp4.html("____");
+                companyp5.html("____");
+            } else {
+                companyp.html(companyhere);
+                companyp1.html(companyhere);
+                companyp2.html(companyhere);
+                companyp3.html(companyhere);
+                companyp4.html(companyhere);
+                companyp5.html(companyhere);
+            }
+        });
+        joiningdate.mouseout(function () {
+            var joiningdatehere = joiningdate.val();
+
+            if (joiningdatehere.length == 0) {
+                joiningdatep.html("____");
+            } else {
+                var joiningdatehere = new Date(joiningdate.val());
+                day = joiningdatehere.getDate();
+                month = joiningdatehere.getMonth();
+                year = joiningdatehere.getFullYear();
+                var finaldate = day + "/" + monthName[month] + "/" + year;
+                joiningdatep.html(finaldate);
+            }
+        });
+        firstpaydate.mouseout(function () {
+            var firstpaydatehere = firstpaydate.val();
+
+            if (firstpaydatehere.length == 0) {
+                firstpaydatep.html("____");
+            } else {
+                var firstpaydatehere = new Date(firstpaydate.val());
+                day = firstpaydatehere.getDate();
+                month = firstpaydatehere.getMonth();
+                year = firstpaydatehere.getFullYear();
+                var finaldate = day + "/" + monthName[month] + "/" + year;
+                firstpaydatep.html(finaldate);
+            }
+        });
+        enddate.mouseout(function () {
+            var enddatehere = enddate.val();
+
+            if (enddatehere.length == 0) {
+                enddatep.html("____");
+            } else {
+                var enddatehere = new Date(enddate.val());
+                day = enddatehere.getDate();
+                month = enddatehere.getMonth();
+                year = enddatehere.getFullYear();
+                var finaldate = day + "/" + monthName[month] + "/" + year;
+                enddatep.html(finaldate);
+            }
+        });
+
+
+    });
+</script>
+
+</body>
+</html>

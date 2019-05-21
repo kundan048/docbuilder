@@ -25,10 +25,16 @@ var userSchema = new mongoose.Schema({
 			ref  : "Resume"
 		}
 	],
-	letter_2 : [
+	letter_2 			: [
 		{
 			type : mongoose.Schema.Types.ObjectId,
 			ref : "Letter_2"
+		}
+	],
+	letter_3 			: [
+		{
+			type : mongoose.Schema.Types.ObjectId,
+			ref : "Letter_3"
 		}
 	]
 }); 

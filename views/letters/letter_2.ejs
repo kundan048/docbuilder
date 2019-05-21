@@ -140,8 +140,6 @@
         var email = $("#email");
         var college_address = $("#college_address");
         var applied_college_name = $("#applied_college_name");
-
-
         var namep = $("#namep");
         var namel = $("#namel");
         var student_namep = $("#student_namep");
@@ -155,11 +153,8 @@
         var applied_college_namep = $("#applied_college_namep");
         var datep = $("#datep");
         var emailp = $("#emailp");
-
         var college_addressp = $("#college_addressp");
-
         var monthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
         if (name.val() == "") {
             namep.html("____");
             namel.html("____");
@@ -175,7 +170,6 @@
         if (applied_college_name.val() == "") {
             applied_college_namep.html("____");
         }
-
         if (designation.val() == "") {
             designationp.html("____");
             designationl.html("____");
@@ -189,15 +183,12 @@
         if (date.val() == "") {
             datep.html("____");
         }
-
-
         if (college_address.val() == "") {
             college_addressp.html("____");
         }
         if(email.val() == ""){
             emailp.html("____")
         }
-
         name.keyup(function () {
             var namehere = name.val();
             if (namehere.length == 0) {
@@ -228,7 +219,6 @@
                 college_namep.html(college_namehere);
             }
         });
-
         email.keyup(function () {
             var emailhere = email.val();
             if (emailhere.length == 0) {
@@ -237,7 +227,6 @@
                 emailp.html(emailhere);
             }
         });
-
         applied_college_name.keyup(function () {
             var applied_college_namehere = applied_college_name.val();
             if (applied_college_namehere.length == 0) {
@@ -246,7 +235,6 @@
                 applied_college_namep.html(applied_college_namehere);
             }
         });
-
         designation.keyup(function () {
             var designationhere = designation.val();
             if (designationhere.length == 0) {
@@ -275,7 +263,6 @@
         });
         date.mouseout(function () {
             var datehere = date.val();
-
             if (datehere.length == 0) {
                 datep.html("____");
             } else {
@@ -287,7 +274,6 @@
                 datep.html(finaldate);
             }
         });
-
         college_address.keyup(function () {
             var college_addresshere = college_address.val();
             if (college_addresshere.length == 0) {
@@ -296,7 +282,6 @@
                 college_addressp.html(college_addresshere);
             }
         });
-
     });
 </script>
 

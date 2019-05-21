@@ -32,7 +32,7 @@ router.get("/recentletter_2/:id", isLoggedIn, function (req, res) {
         if (err) {
             res.redirect("/letter_2");
         } else {
-            var item = foundUser.letter_t1_t1.find(item => item.id === req.params.id);
+            var item = foundUser.letter_2.find(item => item.id === req.params.id);
             //console.log(item);
             //console.log(foundUser);
             res.render("recentletter_2", {user: foundUser, moment: moment, myid: item});

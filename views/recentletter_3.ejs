@@ -11,7 +11,7 @@
 <% include partials/home_navbar %>
 <% var item; %>
 <% if(myid == 0){ %>
-    <% item = user.letter_2[user.letter_2.length - 1]; %>
+    <% item = user.letter_3[user.letter_3.length - 1]; %>
 <% }else{ %>
     <% item = myid %>
 <% } %>
@@ -29,20 +29,22 @@
 
                     <div id="hello">
                         <div class="pl-5 pr-5 pt-3">
-                            <p>Name, Deisgnation, address, date - </p>
+                            <p>Name, Deisgnation, candidate_name, date, job_location - </p>
                             <br>
-                            <p><%= item.name + ", " + item.designation %></p>
-                            <p><%= item.address %></p>
-
+                            <p><%= item.name %> , <%= item.designation %></p>
+                            <p><%= item.candidate_name %></p>
+                            <p><%= item.candidate_name %></p>
                             <p><%= item.date %></p>
+                            <p><%= item.job_location %></p>
 
-                            <p><%= item.student_name %></p>
-                            <p><%= item.duration %></p>
-                            <p>collegename, applied_college_name, duration, email - </p>
-                            <p><%= item.college_name %></p>
-                            <p><%= item.applied_college_name %></p>
-                            <p><%= item.duration %></p>
-                            <p><%= item.email %></p>
+                            <p>company_name, joining_date, first_pay_date, job_title, supervisor, end_date, package - </p>
+                            <p><%= item.company %></p>
+                            <p><%= item.joining_date %></p>
+                            <p><%= item.first_pay_date %></p>
+                            <p><%= item.jobtitle %></p>
+                            <p><%= item.supervisor %></p>
+                            <p><%= item.end_date %></p>
+                            <p><%= item.package %></p> 
 
                         </div>
                     </div>
@@ -54,23 +56,23 @@
                                 onclick="printContent('hello')"><i class="fa fa-print"></i>&nbsp;Download Pdf
                         </button>
                     </form>
-                    <a href="/letter_2" class="btn btn-success btn-outline-dark btn-sm mb-2">New Application</a>
+                    <a href="/letter_3" class="btn btn-success btn-outline-dark btn-sm mb-2">New Application</a>
 
                 </div>
                 <div class="col-md-4 right-section">
                     <div class="h2 text-center section-heading p-3">Recent Commits</div>
                     <hr>
-                    <% user.letter_2.reverse().forEach(function(dates){ %>
+                    <% user.letter_3.reverse().forEach(function(dates){ %>
                         <div class="pt-3 m-1 rounded text-center text-dark section-box">
                             <div class="file-date"><%= moment(dates.committed).format('MMMM DD, h:mm a'); %></div>
                             <div class="file-reason">Date: <%= dates.date %></div>
                             <div class="file-name"><%= dates.name %></div>
                             <p>
                                 <a class="btn btn-outline-dark btn-sm pl-4 pr-4"
-                                   href="/letter/recentletter_2/<%= dates._id %>">See</a>
+                                   href="/letter/recentletter_3/<%= dates._id %>">See</a>
                                 <a class="btn btn-outline-info btn-sm pl-4 pr-4"
-                                   href="/letter/<%= dates._id %>/edit_2">Edit</a>
-                            <form action="/letter/<%= dates._id %>/delete_2?_method=DELETE" method="POST">
+                                   href="/letter/<%= dates._id %>/edit_3">Edit</a>
+                            <form action="/letter/<%= dates._id %>/delete_3?_method=DELETE" method="POST">
                                 <button class="btn btn-outline-info btn-sm pl-4 pr-4">Delete
                                 </button>
                             </form>
