@@ -45,6 +45,7 @@ var letter_edit_3 = require('./routes/letter/edit_3');
 var letter_delete = require('./routes/letter/delete');
 var letter_delete_2 = require('./routes/letter/delete_2');
 var letter_delete_3 = require('./routes/letter/delete_3');
+var letter_download = require('./routes/letter/download');
 
 //otherFormats section
 var otherFormats = require('./routes/otherformats/otherFormats');
@@ -132,6 +133,7 @@ app.use('/', letter);
 app.use('/letter', recentletter);
 app.use('/letter', letter_edit);
 app.use('/letter', letter_delete);
+app.use('/letter', letter_download);
 
 app.use('/', letter_2);
 app.use('/letter', recentletter_2);

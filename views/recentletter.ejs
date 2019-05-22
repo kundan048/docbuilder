@@ -56,8 +56,8 @@
                             <p><%= item.name %></p>
                         </div>
                     </div>
-                    <form action="/download" method="GET">
-                        <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="submit" disabled><i class="fa fa-file-download"></i>&nbsp;Download Docx</button>
+                    <form action="/letter/download/<%= item._id %>" method="GET">
+                        <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="submit"><i class="fa fa-file-download"></i>&nbsp;Download Docx</button>
                         <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="button" onclick="printContent('hello')"><i class="fa fa-print"></i>&nbsp;Download Pdf</button>
                     </form>
                     <a href="/letter" class="btn btn-success btn-outline-dark btn-sm mb-2">New Application</a>
