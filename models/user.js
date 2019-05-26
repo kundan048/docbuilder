@@ -19,6 +19,12 @@ var userSchema = new mongoose.Schema({
 			ref : "Application_2"
 		}
 	],
+	application_3 		: [
+		{
+			type : mongoose.Schema.Types.ObjectId,
+			ref : "Application_3"
+		}
+	],
 	letter_t1_t1		 : [
 		{
 			type : mongoose.Schema.Types.ObjectId,
