@@ -11,7 +11,7 @@
 <% include ../partials/home_navbar %>
 <% var item; %>
 <% if(myid == 0){ %>
-    <% item = user.application_2[user.application_2.length - 1]; %>
+    <% item = user.application_3[user.application_3.length - 1]; %>
 <% }else{ %>
     <% item = myid %>
 <% } %>
@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-md-8 bg-light pb-2 left-section">
 
-                    <div class="h2 text-center mb-5 pt-5">Maternity leave application</div>
+                    <div class="h2 text-center mb-5 pt-5">Paternity leave application</div>
                     <div id="hello">
                         <div class="pl-5 pr-5 pt-3">
                             <p>To</p>
@@ -37,8 +37,11 @@
                             <br>
                             <p>Subject : <%= item.subject %>.</p>
                             <p>Sir/Ma'am',</p>
+
+                            <p>This is to inform you that my wife is in her final stages of pregnancy and is due to deliver by the end of this month.</p>
+                            <p>She has been facing some minor complications and has been unwell for the past few days. As we do not have parental support at this time, I need to stay with her until she delivers, and for the next few weeks after delivery.</p>
                             <p>
-                                My purpose of writing this email is to apply for maternity leave as mentioned in our organization’s policy for female employees. I want to avail the leaves for a period of <%= item.no_of_weeks %> weeks, with effect from <%= item.start_date %> to  <%= item.end_date %>. I hope that this request will be sanctioned.
+                                I, therefore, request you for paternity leave for a period of <%= item.no_of_weeks %> weeks, with effect from <%= item.start_date %> to  <%= item.end_date %>. I hope that this request will be sanctioned.
                             </p>
                             <p>
                                 As I will be away for a considerably long period, I have entrusted <%= item.colleague_name %> with my responsibilities and duties. In the case of an unmanageable emergency, please contact me at <%= item.email %>.
@@ -50,26 +53,26 @@
                     </div>
 
                     
-                    <form action="/application/download_2/<%= item._id %>" method="GET">
+                    <form action="/application/download_3/<%= item._id %>" method="GET">
                         <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="submit"><i class="fa fa-file-download"></i>&nbsp;Download Docx</button>
                         <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="button"onclick="printContent('hello')"><i class="fa fa-print"></i>&nbsp;Download Pdf</button>
                     </form>
-                    <a href="/application_2" class="btn btn-success btn-outline-dark btn-sm mb-2">New Application</a>
+                    <a href="/application_3" class="btn btn-success btn-outline-dark btn-sm mb-2">New Application</a>
 
                 </div>
                 <div class="col-md-4 right-section">
                     <div class="h2 text-center section-heading p-3">Recent Commits</div>
                     <hr>
-                    <% user.application_2.reverse().forEach(function(dates){ %>
+                    <% user.application_3.reverse().forEach(function(dates){ %>
                         <div class="pt-3 m-1 rounded text-dark section-box">
                             <div class="file-date"><%= moment(dates.committed).format('MMMM DD, h:mm a'); %></div>
                             <!-- <div class="file-reason">Name : <%= dates.name %></div> -->
                             <div class="file-name"><%= dates.name %></div>
                             <p>
-                                <a class="btn btn-outline-dark btn-sm pl-4 pr-4" href="/application/recentdoc_2/<%= dates._id %>">See </a>
+                                <a class="btn btn-outline-dark btn-sm pl-4 pr-4" href="/application/recentdoc_3/<%= dates._id %>">See </a>
                                 <a class="btn btn-outline-info btn-sm pl-4 pr-4"
-                                href="/application/<%= dates._id %>/edit_2">Edit </a>
-                                <form action="/application/<%= dates._id %>/delete_2?_method=DELETE" method="POST">
+                                href="/application/<%= dates._id %>/edit_3">Edit </a>
+                                <form action="/application/<%= dates._id %>/delete_3?_method=DELETE" method="POST">
                                     <button class="btn btn-outline-info btn-sm pl-4 pr-4"
                                     >Delete </button>
                                 </form>    

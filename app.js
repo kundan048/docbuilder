@@ -25,13 +25,19 @@ var homepage = require('./routes/homepage');
 //application section
 var application = require('./routes/application/application');
 var application_2 = require('./routes/application/application_2');
+var application_3 = require('./routes/application/application_3');
 var application_recentdoc = require('./routes/application/recentdoc');
 var recentdoc_2 = require('./routes/application/recentdoc_2');
+var recentdoc_3 = require('./routes/application/recentdoc_3');
 var application_download = require('./routes/application/download');
+var application_download_2 = require('./routes/application/download_2');
+var application_download_3 = require('./routes/application/download_3');
 var application_edit = require('./routes/application/edit');
 var application_edit_2 = require('./routes/application/edit_2');
+var application_edit_3 = require('./routes/application/edit_3');
 var application_delete = require('./routes/application/delete');
-var application_delete_2 = require('./routes/application/delete_2')
+var application_delete_2 = require('./routes/application/delete_2');
+var application_delete_3 = require('./routes/application/delete_3')
 
 //college specific section
 let college_specific = require('./routes/application/CollegeSpecific/collegeSpecific');
@@ -133,12 +139,17 @@ app.use('/application', application_delete)
 app.use('/application', application_download);
 app.use('/application', college_specific);
 
-
 app.use('/', application_2);
 app.use('/application', recentdoc_2);
 app.use('/application', application_edit_2);
 app.use('/application', application_delete_2);
+app.use('/application', application_download_2);
 
+app.use('/', application_3);
+app.use('/application', recentdoc_3);
+app.use('/application', application_edit_3);
+app.use('/application', application_delete_3);
+app.use('/application', application_download_3);
 
 // Letter section
 app.use('/', letter);
