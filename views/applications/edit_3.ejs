@@ -3,8 +3,8 @@
 <% include ../partials/home_navbar %>
 <main role="main">
     <a class="btn btn-danger btn-outline-danger m-3" href="javascript:history.back()">Back</a>
-    <a class="btn btn-primary btn-outline-primary m-3" href="/application/recentdoc_2">Recent Maternity Leave Applications</a>
-    <div class="h2 text-center mb-5">Application for Maternity Leave.</div>
+    <a class="btn btn-primary btn-outline-primary m-3" href="/application/recentdoc_2">Recent Paternity Leave Applications</a>
+    <div class="h2 text-center mb-5">Application for Paternity Leave.</div>
 
     <div class="container">
         <div class="row">
@@ -24,7 +24,7 @@
                             </div>
                             <div class="form-group kkmain">
 
-                                <input value="<%= application.email %>" class="kki form-control" type="text" name="application[email]" id="email" pattern=".{3,}" type="email" required unselectable="on" autocomplete="off">
+                                <input value="<%= application.email %>" class="kki form-control" name="application[email]" id="email" type="email" required unselectable="on" autocomplete="off">
                                 <label for="email" class="kkl col-form-label">Email Id</label>
                             </div>
                             <div class="form-group kkmain">

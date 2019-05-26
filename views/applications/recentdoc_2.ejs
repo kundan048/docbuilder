@@ -28,20 +28,30 @@
                     <div class="h2 text-center mb-5 pt-5">Maternity leave application</div>
                     <div id="hello">
                         <div class="pl-5 pr-5 pt-3">
-                            <p>Name, company, manager, colleague, date</p>
+                            <p>To</p>
+                            <p><%= item.manager_name %></p>
+                            <p> Regional manager,</p>
+                            <p><%= item.company_name %></p>
+                            <br>
                             <p><%= moment(item.date).format("Do MMM YYYY") %></p>
-                            
-                            <p><%= item.name %>,  <%= item.company_name %>, <%= item.manager_name %> <%= item.colleague_name %> <%= item.date %></p>
-
-                            <p>No. of weeks, start date, end date, sunject, email </p>
-                            <p><%= item.no_of_weeks %>,  <%= item.start_date %>, <%= item.end_date %> <%= item.subject %> <%= item.email %></p>
+                            <br>
+                            <p>Subject : <%= item.subject %>.</p>
+                            <p>Sir/Ma'am',</p>
+                            <p>
+                                My purpose of writing this email is to apply for maternity leave as mentioned in our organization’s policy for female employees. I want to avail the leaves for a period of <%= item.no_of_weeks %> weeks, with effect from <%= item.start_date %> to  <%= item.end_date %>. I hope that this request will be sanctioned.
+                            </p>
+                            <p>
+                                As I will be away for a considerably long period, I have entrusted <%= item.colleague_name %> with my responsibilities and duties. In the case of an unmanageable emergency, please contact me at <%= item.email %>.
+                            </p>
+                            <p>Sincerely</p>
+                            <p><%= item.name %></p>
                         </div>
 
                     </div>
 
                     
                     <form action="/application/download_2/<%= item._id %>" method="GET">
-                        <button class="btn btn-success btn-outline-dark btn-sm mb-2" disabled type="submit"><i class="fa fa-file-download"></i>&nbsp;Download Docx</button>
+                        <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="submit"><i class="fa fa-file-download"></i>&nbsp;Download Docx</button>
                         <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="button"onclick="printContent('hello')"><i class="fa fa-print"></i>&nbsp;Download Pdf</button>
                     </form>
                     <a href="/application_2" class="btn btn-success btn-outline-dark btn-sm mb-2">New Application</a>

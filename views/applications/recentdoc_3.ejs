@@ -25,23 +25,36 @@
             <div class="row">
                 <div class="col-md-8 bg-light pb-2 left-section">
 
-                    <div class="h2 text-center mb-5 pt-5">Maternity leave application</div>
+                    <div class="h2 text-center mb-5 pt-5">Paternity leave application</div>
                     <div id="hello">
                         <div class="pl-5 pr-5 pt-3">
-                            <p>Name, company, manager, colleague, date</p>
+                            <p>To</p>
+                            <p><%= item.manager_name %></p>
+                            <p> Regional manager,</p>
+                            <p><%= item.company_name %></p>
+                            <br>
                             <p><%= moment(item.date).format("Do MMM YYYY") %></p>
-                            
-                            <p><%= item.name %>,  <%= item.company_name %>, <%= item.manager_name %> <%= item.colleague_name %> <%= item.date %></p>
+                            <br>
+                            <p>Subject : <%= item.subject %>.</p>
+                            <p>Sir/Ma'am',</p>
 
-                            <p>No. of weeks, start date, end date, sunject, email </p>
-                            <p><%= item.no_of_weeks %>,  <%= item.start_date %>, <%= item.end_date %> <%= item.subject %> <%= item.email %></p>
+                            <p>This is to inform you that my wife is in her final stages of pregnancy and is due to deliver by the end of this month.</p>
+                            <p>She has been facing some minor complications and has been unwell for the past few days. As we do not have parental support at this time, I need to stay with her until she delivers, and for the next few weeks after delivery.</p>
+                            <p>
+                                I, therefore, request you for paternity leave for a period of <%= item.no_of_weeks %> weeks, with effect from <%= item.start_date %> to  <%= item.end_date %>. I hope that this request will be sanctioned.
+                            </p>
+                            <p>
+                                As I will be away for a considerably long period, I have entrusted <%= item.colleague_name %> with my responsibilities and duties. In the case of an unmanageable emergency, please contact me at <%= item.email %>.
+                            </p>
+                            <p>Sincerely</p>
+                            <p><%= item.name %></p>
                         </div>
 
                     </div>
 
                     
                     <form action="/application/download_3/<%= item._id %>" method="GET">
-                        <button class="btn btn-success btn-outline-dark btn-sm mb-2" disabled type="submit"><i class="fa fa-file-download"></i>&nbsp;Download Docx</button>
+                        <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="submit"><i class="fa fa-file-download"></i>&nbsp;Download Docx</button>
                         <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="button"onclick="printContent('hello')"><i class="fa fa-print"></i>&nbsp;Download Pdf</button>
                     </form>
                     <a href="/application_3" class="btn btn-success btn-outline-dark btn-sm mb-2">New Application</a>
