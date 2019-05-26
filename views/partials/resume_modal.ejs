@@ -30,225 +30,451 @@
                        aria-controls="pills-skills" aria-selected="false">Skills</a>
                 </li>
             </ul>
-            <form action="/otherFormats/resumeFormats" method="post">
-                <!-- About tab -->
-                <div class="tab-content m-5" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-about" role="tabpanel"
-                         aria-labelledby="pills-about-tab">
-                        <div class="form-row mb-3">
-                            <!-- <label class="col-md-2 mt-2" for="fullname">FULLNAME: </label> -->
-                            <div class="col-md-12">
-                                <div class="input-group form-row">
-                                    <div class="input-group-prepend col-md-2">
+            <% if(user.resume.length == 0) { %>
+                <form action="/otherFormats/resumeFormats" method="post">
+                    <!-- About tab -->
+                    <div class="tab-content m-5" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-about" role="tabpanel"
+                             aria-labelledby="pills-about-tab">
+                            <div class="form-row mb-3">
+                                <!-- <label class="col-md-2 mt-2" for="fullname">FULLNAME: </label> -->
+                                <div class="col-md-12">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-2">
                                             <span class="input-group-text w-100"
-                                                  id="inputGroupPrepend2">Full Name</span>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <input type="text" name="fullname" class="form-control" id="id_fullname"
-                                               placeholder="Enter fullname here"
-                                               aria-describedby="inputGroupPrepend2" required>
+                                                  id="inputGroupPrepend2">Full Name gekki</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" name="fullname" class="form-control" id="id_fullname"
+                                                   placeholder="Enter fullname here"
+                                                   aria-describedby="inputGroupPrepend2" required>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-row mb-3">
-                            <!-- <label class="col-md-2 mt-2" for="designation">DESIGNATION: </label> -->
-                            <div class="col-md-12">
-                                <div class="input-group form-row">
-                                    <div class="input-group-prepend col-md-2">
+                            <div class="form-row mb-3">
+                                <!-- <label class="col-md-2 mt-2" for="designation">DESIGNATION: </label> -->
+                                <div class="col-md-12">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-2">
                                             <span class="input-group-text w-100"
                                                   id="inputGroupPrepend2">Designation</span>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <input type="text" name="designation" class="form-control"
-                                               id="id_designation" placeholder="e.g. Student"
-                                               aria-describedby="inputGroupPrepend2" required>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" name="designation" class="form-control"
+                                                   id="id_designation" placeholder="e.g. Student"
+                                                   aria-describedby="inputGroupPrepend2" required>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-row mb-3">
-                            <!-- <label class="col-md-2 mt-2" for="aboutyou">ABOUT YOU: </label> -->
-                            <div class="col-md-12">
-                                <div class="input-group form-row">
-                                    <div class="input-group-prepend col-md-2">
+                            <div class="form-row mb-3">
+                                <!-- <label class="col-md-2 mt-2" for="aboutyou">ABOUT YOU: </label> -->
+                                <div class="col-md-12">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-2">
                                             <span class="input-group-text w-100"
                                                   id="inputGroupPrepend2">About You</span>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <input type="text" name="aboutyou" class="form-control" id="id_aboutyou"
-                                               placeholder="e.g. I am a web developer."
-                                               aria-describedby="inputGroupPrepend2" required>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" name="aboutyou" class="form-control" id="id_aboutyou"
+                                                   placeholder="e.g. I am a web developer."
+                                                   aria-describedby="inputGroupPrepend2" required>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-row mb-3">
-                            <!-- <label class="col-md-2 mt-2" for="careeroverview">CAREER OVERVIEW: </label> -->
-                            <div class="col-md-12">
-                                <div class="input-group form-row">
-                                    <div class="input-group-prepend col-md-2">
-                                        <span class="input-group-text w-100" id="inputGroupPrepend2">Carrier Overview</span>
-                                    </div>
-                                    <div class="col-md 10">
+                            <div class="form-row mb-3">
+                                <!-- <label class="col-md-2 mt-2" for="careeroverview">CAREER OVERVIEW: </label> -->
+                                <div class="col-md-12">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-2">
+                                            <span class="input-group-text w-100" id="inputGroupPrepend2">Carrier Overview</span>
+                                        </div>
+                                        <div class="col-md 10">
                                             <textarea class="form-control" name="careeroverview" id="id_careeroverview"
                                                       placeholder="Enter Your Career Objective or Overview"
                                                       aria-describedby="inputGroupPrepend2"></textarea>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-row mb-3">
+                                <a class="btn btn-primary text-white btnNext">Next</a>
+                            </div>
                         </div>
-                        <div class="form-row mb-3">
-                            <a class="btn btn-primary text-white btnNext">Next</a>
-                        </div>
-                    </div>
-                    <!-- Contact tab -->
-                    <div class="tab-pane fade" id="pills-contact" role="tabpanel"
-                         aria-labelledby="pills-contact-tab">
-                        <div class="form-row mb-3">
-                            <!-- <label class="col-md-2 mt-2" for="email">EMAIL ID: </label> -->
-                            <div class="col-md-12">
-                                <div class="input-group form-row">
-                                    <div class="input-group-prepend col-md-2">
-                                        <span class="input-group-text w-100" id="inputGroupPrepend2">Email Id</span>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <input type="email" class="form-control" name="email" id="id_email"
-                                               placeholder="Enter email Id" aria-describedby="inputGroupPrepend2"
-                                               required>
+                        <!-- Contact tab -->
+                        <div class="tab-pane fade" id="pills-contact" role="tabpanel"
+                             aria-labelledby="pills-contact-tab">
+                            <div class="form-row mb-3">
+                                <!-- <label class="col-md-2 mt-2" for="email">EMAIL ID: </label> -->
+                                <div class="col-md-12">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-2">
+                                            <span class="input-group-text w-100" id="inputGroupPrepend2">Email Id</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="email" class="form-control" name="email" id="id_email"
+                                                   placeholder="Enter email Id" aria-describedby="inputGroupPrepend2"
+                                                   required>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-row mb-3">
-                            <!-- <label class="col-md-2 mt-2" for="mobile">Mobile: </label> -->
-                            <div class="col-md-12">
-                                <div class="input-group form-row">
-                                    <div class="input-group-prepend col-md-2">
-                                        <span class="input-group-text w-100" id="inputGroupPrepend2">Mobile</span>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <input type="text" class="form-control" name="mobile" id="id_mobile"
-                                               placeholder="Enter mobile number"
-                                               aria-describedby="inputGroupPrepend2" required>
+                            <div class="form-row mb-3">
+                                <!-- <label class="col-md-2 mt-2" for="mobile">Mobile: </label> -->
+                                <div class="col-md-12">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-2">
+                                            <span class="input-group-text w-100" id="inputGroupPrepend2">Mobile</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" name="mobile" id="id_mobile"
+                                                   placeholder="Enter mobile number"
+                                                   aria-describedby="inputGroupPrepend2" required>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-row mb-3">
-                            <!-- <label class="col-md-2 mt-2" for="linkedin">LINKEDIN ID: </label> -->
-                            <div class="col-md-12">
-                                <div class="input-group form-row">
-                                    <div class="input-group-prepend col-md-2">
+                            <div class="form-row mb-3">
+                                <!-- <label class="col-md-2 mt-2" for="linkedin">LINKEDIN ID: </label> -->
+                                <div class="col-md-12">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-2">
                                             <span class="input-group-text w-100"
                                                   id="inputGroupPrepend2">Linkedin Id</span>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <input type="text" class="form-control" name="linkedin" id="id_linkedin"
-                                               placeholder="Enter your linkedin id"
-                                               aria-describedby="inputGroupPrepend2">
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" name="linkedin" id="id_linkedin"
+                                                   placeholder="Enter your linkedin id"
+                                                   aria-describedby="inputGroupPrepend2">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-row mb-3">
-                            <!-- <label class="col-md-2 mt-2" for="address">ADDRESS: </label> -->
-                            <div class="col-md-12">
-                                <div class="input-group form-row">
-                                    <div class="input-group-prepend col-md-2">
-                                        <span class="input-group-text w-100" id="inputGroupPrepend2">Address</span>
-                                    </div>
-                                    <div class="col-md-10">
+                            <div class="form-row mb-3">
+                                <!-- <label class="col-md-2 mt-2" for="address">ADDRESS: </label> -->
+                                <div class="col-md-12">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-2">
+                                            <span class="input-group-text w-100" id="inputGroupPrepend2">Address</span>
+                                        </div>
+                                        <div class="col-md-10">
                                             <textarea class="form-control" name="address" id="id_address"
                                                       placeholder="Enter your full address"
                                                       aria-describedby="inputGroupPrepend2" required></textarea>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-row mb-3">
-                            <a class="btn btn-primary text-white btnPrevious mr-3">Previous</a>
-                            <a class="btn btn-primary text-white btnNext">Next</a>
-                        </div>
-                    </div>
-                    <!-- Education tab -->
-                    <div class="tab-pane fade" id="pills-education" role="tabpanel"
-                         aria-labelledby="pills-education-tab">
-                        <div id="education_field"></div>
-                        <div class="row mb-3">
-                            <div class="col-md-8 text-left"></div>
-                            <div class="col-md-2">
-                                <a class="btn btn-block btn-secondary mb-3" href="#" id="education_add">Add More</a>
-                            </div>
-                            <div class="col-md-2">
-                                <a class="btn btn-block btn-danger mb-3" href="#" id="education_remove">Remove</a>
-                            </div>
-                        </div>
-                        <div class="form-row mb-3">
-                            <a class="btn btn-primary text-white btnPrevious mr-3">Previous</a>
-                            <a class="btn btn-primary text-white btnNext">Next</a>
-                        </div>
-                    </div>
-                    <!-- Project tab -->
-                    <div class="tab-pane fade" id="pills-project" role="tabpanel"
-                         aria-labelledby="pills-project-tab">
-                        <div id="project_field"></div>
-                        <div class="row mb-3">
-                            <div class="col-md-8 text-left"></div>
-                            <div class="col-md-2">
-                                <a class="btn btn-block btn-secondary mb-3" href="#" id="project_add">Add More</a>
-                            </div>
-                            <div class="col-md-2">
-                                <a class="btn btn-block btn-danger mb-3" href="#" id="project_remove">Remove</a>
-                            </div>
-                        </div>
-                        <div class="form-row mb-3">
-                            <a class="btn btn-primary text-white btnPrevious mr-3">Previous</a>
-                            <a class="btn btn-primary text-white btnNext">Next</a>
-                        </div>
-                    </div>
-                    <!-- Experience tab -->
-                    <div class="tab-pane fade" id="pills-experience" role="tabpanel"
-                         aria-labelledby="pills-experience-tab">
-                        <div id="experience_field"></div>
-                        <div class="row mb-3">
-                            <div class="col-md-8 text-left"></div>
-                            <div class="col-md-2">
-                                <a class="btn btn-block btn-secondary mb-3" href="#" id="experience_add">Add
-                                    More</a>
-                            </div>
-                            <div class="col-md-2">
-                                <a class="btn btn-block btn-danger mb-3" href="#" id="experience_remove">Remove</a>
-                            </div>
-                        </div>
-                        <div class="form-row mb-3">
-                            <a class="btn btn-primary text-white btnPrevious mr-3">Previous</a>
-                            <a class="btn btn-primary text-white btnNext">Next</a>
-                        </div>
-                    </div>
-                    <!-- Skills tab -->
-                    <div class="tab-pane fade" id="pills-skills" role="tabpanel" aria-labelledby="pills-skills-tab">
-                        <div id="skill_field"></div>
-                        <div class="row mb-3">
-                            <div class="col-md-8 text-left"></div>
-                            <div class="col-md-2">
-                                <a class="btn btn-block btn-secondary mb-3" href="#" id="skill_add">Add More</a>
-                            </div>
-                            <div class="col-md-2">
-                                <a class="btn btn-block btn-danger mb-3" href="#" id="skill_remove">Remove</a>
-                            </div>
-                        </div>
-                        <div class="form-row mb-3">
-                            <fiv class="float-left">
+                            <div class="form-row mb-3">
                                 <a class="btn btn-primary text-white btnPrevious mr-3">Previous</a>
-                            </fiv>
-                            <div class="float-right">
-                                <input class="btn btn-success" type="submit" value="Submit">
+                                <a class="btn btn-primary text-white btnNext">Next</a>
+                            </div>
+                        </div>
+                        <!-- Education tab -->
+                        <div class="tab-pane fade" id="pills-education" role="tabpanel"
+                             aria-labelledby="pills-education-tab">
+                            <div id="education_field"></div>
+                            <div class="row mb-3">
+                                <div class="col-md-8 text-left"></div>
+                                <div class="col-md-2">
+                                    <a class="btn btn-block btn-secondary mb-3" href="#" id="education_add">Add More</a>
+                                </div>
+                                <div class="col-md-2">
+                                    <a class="btn btn-block btn-danger mb-3" href="#" id="education_remove">Remove</a>
+                                </div>
+                            </div>
+                            <div class="form-row mb-3">
+                                <a class="btn btn-primary text-white btnPrevious mr-3">Previous</a>
+                                <a class="btn btn-primary text-white btnNext">Next</a>
+                            </div>
+                        </div>
+                        <!-- Project tab -->
+                        <div class="tab-pane fade" id="pills-project" role="tabpanel"
+                             aria-labelledby="pills-project-tab">
+                            <div id="project_field"></div>
+                            <div class="row mb-3">
+                                <div class="col-md-8 text-left"></div>
+                                <div class="col-md-2">
+                                    <a class="btn btn-block btn-secondary mb-3" href="#" id="project_add">Add More</a>
+                                </div>
+                                <div class="col-md-2">
+                                    <a class="btn btn-block btn-danger mb-3" href="#" id="project_remove">Remove</a>
+                                </div>
+                            </div>
+                            <div class="form-row mb-3">
+                                <a class="btn btn-primary text-white btnPrevious mr-3">Previous</a>
+                                <a class="btn btn-primary text-white btnNext">Next</a>
+                            </div>
+                        </div>
+                        <!-- Experience tab -->
+                        <div class="tab-pane fade" id="pills-experience" role="tabpanel"
+                             aria-labelledby="pills-experience-tab">
+                            <div id="experience_field"></div>
+                            <div class="row mb-3">
+                                <div class="col-md-8 text-left"></div>
+                                <div class="col-md-2">
+                                    <a class="btn btn-block btn-secondary mb-3" href="#" id="experience_add">Add
+                                        More</a>
+                                </div>
+                                <div class="col-md-2">
+                                    <a class="btn btn-block btn-danger mb-3" href="#" id="experience_remove">Remove</a>
+                                </div>
+                            </div>
+                            <div class="form-row mb-3">
+                                <a class="btn btn-primary text-white btnPrevious mr-3">Previous</a>
+                                <a class="btn btn-primary text-white btnNext">Next</a>
+                            </div>
+                        </div>
+                        <!-- Skills tab -->
+                        <div class="tab-pane fade" id="pills-skills" role="tabpanel" aria-labelledby="pills-skills-tab">
+                            <div id="skill_field"></div>
+                            <div class="row mb-3">
+                                <div class="col-md-8 text-left"></div>
+                                <div class="col-md-2">
+                                    <a class="btn btn-block btn-secondary mb-3" href="#" id="skill_add">Add More</a>
+                                </div>
+                                <div class="col-md-2">
+                                    <a class="btn btn-block btn-danger mb-3" href="#" id="skill_remove">Remove</a>
+                                </div>
+                            </div>
+                            <div class="form-row mb-3">
+                                <fiv class="float-left">
+                                    <a class="btn btn-primary text-white btnPrevious mr-3">Previous</a>
+                                </fiv>
+                                <div class="float-right">
+                                    <input class="btn btn-success" type="submit" value="Submit">
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            <% } else { %>
+
+
+
+                <form action="/otherFormats/resumeFormats/<%= user.resume[user.resume.length - 1]._id %>?_method=PUT" method="post">
+                    <!-- About tab -->
+                    <% var myresume = user.resume[user.resume.length - 1]; %>
+                    <div class="tab-content m-5" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-about" role="tabpanel"
+                             aria-labelledby="pills-about-tab">
+                            <div class="form-row mb-3">
+                                <!-- <label class="col-md-2 mt-2" for="fullname">FULLNAME: </label> -->
+                                <div class="col-md-12">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-2">
+                                            <span class="input-group-text w-100"
+                                                  id="inputGroupPrepend2">Full Name</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input value="<%= myresume.fullname %>" type="text" name="fullname" class="form-control" id="id_fullname"
+                                                   placeholder="Enter fullname here"
+                                                   aria-describedby="inputGroupPrepend2" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row mb-3">
+                                <!-- <label class="col-md-2 mt-2" for="designation">DESIGNATION: </label> -->
+                                <div class="col-md-12">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-2">
+                                            <span class="input-group-text w-100"
+                                                  id="inputGroupPrepend2">Designation</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input value="<%= myresume.designation %>" type="text" name="designation" class="form-control"
+                                                   id="id_designation" placeholder="e.g. Student"
+                                                   aria-describedby="inputGroupPrepend2" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row mb-3">
+                                <!-- <label class="col-md-2 mt-2" for="aboutyou">ABOUT YOU: </label> -->
+                                <div class="col-md-12">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-2">
+                                            <span class="input-group-text w-100"
+                                                  id="inputGroupPrepend2">About You</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input value="<%= myresume.aboutyou %>" type="text" name="aboutyou" class="form-control" id="id_aboutyou"
+                                                   placeholder="e.g. I am a web developer."
+                                                   aria-describedby="inputGroupPrepend2" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row mb-3">
+                                <!-- <label class="col-md-2 mt-2" for="careeroverview">CAREER OVERVIEW: </label> -->
+                                <div class="col-md-12">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-2">
+                                            <span class="input-group-text w-100" id="inputGroupPrepend2">Carrier Overview</span>
+                                        </div>
+                                        <div class="col-md 10">
+                                            <textarea class="form-control" name="careeroverview" id="id_careeroverview"
+                                                      placeholder="Enter Your Career Objective or Overview"
+                                                      aria-describedby="inputGroupPrepend2"><%= myresume.careeroverview %></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row mb-3">
+                                <a class="btn btn-primary text-white btnNext">Next</a>
+                            </div>
+                        </div>
+                        <!-- Contact tab -->
+                        <div class="tab-pane fade" id="pills-contact" role="tabpanel"
+                             aria-labelledby="pills-contact-tab">
+                            <div class="form-row mb-3">
+                                <!-- <label class="col-md-2 mt-2" for="email">EMAIL ID: </label> -->
+                                <div class="col-md-12">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-2">
+                                            <span class="input-group-text w-100" id="inputGroupPrepend2">Email Id</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input value="<%= myresume.email %>" type="email" class="form-control" name="email" id="id_email"
+                                                   placeholder="Enter email Id" aria-describedby="inputGroupPrepend2"
+                                                   required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row mb-3">
+                                <!-- <label class="col-md-2 mt-2" for="mobile">Mobile: </label> -->
+                                <div class="col-md-12">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-2">
+                                            <span class="input-group-text w-100" id="inputGroupPrepend2">Mobile</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input value="<%= myresume.mobile %>" type="text" class="form-control" name="mobile" id="id_mobile"
+                                                   placeholder="Enter mobile number"
+                                                   aria-describedby="inputGroupPrepend2" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row mb-3">
+                                <!-- <label class="col-md-2 mt-2" for="linkedin">LINKEDIN ID: </label> -->
+                                <div class="col-md-12">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-2">
+                                            <span class="input-group-text w-100"
+                                                  id="inputGroupPrepend2">Linkedin Id</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input value="<%= myresume.linkedin %>" type="text" class="form-control" name="linkedin" id="id_linkedin"
+                                                   placeholder="Enter your linkedin id"
+                                                   aria-describedby="inputGroupPrepend2">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row mb-3">
+                                <!-- <label class="col-md-2 mt-2" for="address">ADDRESS: </label> -->
+                                <div class="col-md-12">
+                                    <div class="input-group form-row">
+                                        <div class="input-group-prepend col-md-2">
+                                            <span class="input-group-text w-100" id="inputGroupPrepend2">Address</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" name="address" id="id_address"
+                                                      placeholder="Enter your full address"
+                                                      aria-describedby="inputGroupPrepend2" required><%= myresume.address %></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row mb-3">
+                                <a class="btn btn-primary text-white btnPrevious mr-3">Previous</a>
+                                <a class="btn btn-primary text-white btnNext">Next</a>
+                            </div>
+                        </div>
+                        <!-- Education tab -->
+                        <div class="tab-pane fade" id="pills-education" role="tabpanel"
+                             aria-labelledby="pills-education-tab">
+                            <div id="education_field"></div>
+                            <div class="row mb-3">
+                                <div class="col-md-8 text-left"></div>
+                                <div class="col-md-2">
+                                    <a class="btn btn-block btn-secondary mb-3" href="#" id="education_add">Add More</a>
+                                </div>
+                                <div class="col-md-2">
+                                    <a class="btn btn-block btn-danger mb-3" href="#" id="education_remove">Remove</a>
+                                </div>
+                            </div>
+                            <div class="form-row mb-3">
+                                <a class="btn btn-primary text-white btnPrevious mr-3">Previous</a>
+                                <a class="btn btn-primary text-white btnNext">Next</a>
+                            </div>
+                        </div>
+                        <!-- Project tab -->
+                        <div class="tab-pane fade" id="pills-project" role="tabpanel"
+                             aria-labelledby="pills-project-tab">
+                            <div id="project_field"></div>
+                            <div class="row mb-3">
+                                <div class="col-md-8 text-left"></div>
+                                <div class="col-md-2">
+                                    <a class="btn btn-block btn-secondary mb-3" href="#" id="project_add">Add More</a>
+                                </div>
+                                <div class="col-md-2">
+                                    <a class="btn btn-block btn-danger mb-3" href="#" id="project_remove">Remove</a>
+                                </div>
+                            </div>
+                            <div class="form-row mb-3">
+                                <a class="btn btn-primary text-white btnPrevious mr-3">Previous</a>
+                                <a class="btn btn-primary text-white btnNext">Next</a>
+                            </div>
+                        </div>
+                        <!-- Experience tab -->
+                        <div class="tab-pane fade" id="pills-experience" role="tabpanel"
+                             aria-labelledby="pills-experience-tab">
+                            <div id="experience_field"></div>
+                            <div class="row mb-3">
+                                <div class="col-md-8 text-left"></div>
+                                <div class="col-md-2">
+                                    <a class="btn btn-block btn-secondary mb-3" href="#" id="experience_add">Add
+                                        More</a>
+                                </div>
+                                <div class="col-md-2">
+                                    <a class="btn btn-block btn-danger mb-3" href="#" id="experience_remove">Remove</a>
+                                </div>
+                            </div>
+                            <div class="form-row mb-3">
+                                <a class="btn btn-primary text-white btnPrevious mr-3">Previous</a>
+                                <a class="btn btn-primary text-white btnNext">Next</a>
+                            </div>
+                        </div>
+                        <!-- Skills tab -->
+                        <div class="tab-pane fade" id="pills-skills" role="tabpanel" aria-labelledby="pills-skills-tab">
+                            <div id="skill_field"></div>
+                            <div class="row mb-3">
+                                <div class="col-md-8 text-left"></div>
+                                <div class="col-md-2">
+                                    <a class="btn btn-block btn-secondary mb-3" href="#" id="skill_add">Add More</a>
+                                </div>
+                                <div class="col-md-2">
+                                    <a class="btn btn-block btn-danger mb-3" href="#" id="skill_remove">Remove</a>
+                                </div>
+                            </div>
+                            <div class="form-row mb-3">
+                                <fiv class="float-left">
+                                    <a class="btn btn-primary text-white btnPrevious mr-3">Previous</a>
+                                </fiv>
+                                <div class="float-right">
+                                    <input class="btn btn-success" type="submit" value="Submit">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            <% } %>
         </div>
     </div>
 </div>

@@ -10,69 +10,75 @@
     <div class="row m-4">
         <div class="col-md-4 mb-4">
             <div class="dbAnchor" data-toggle="modal" data-target="#exampleModal">
-                    <% if(user.resume.length > 0) { %>
-                        <a href="/otherFormats/resume?rank=1">
-                        <% } else { %>
-                        <a class="resume-form" href="#animatedModal">
-                    <% } %>
-                    <div class="card">
-                        <img style="max-height: 14em;" class="card-img-top" src="/img/sick_leave.jpg" alt="Resume 1">
-                        <div class="card-body">
-                            <p class="card-text">Resume 1</p>
+                <% if(user.resume.length > 0) { %>
+                <a href="/otherFormats/resume?rank=1">
+                    <% } else { %>
+                    <a class="resume-form" href="#animatedModal">
+                        <% } %>
+                        <div class="card">
+                            <img style="max-height: 14em;" class="card-img-top" src="/img/sick_leave.jpg"
+                                 alt="Resume 1">
+                            <div class="card-body">
+                                <p class="card-text">Resume 1</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="overLay">
-                        <div class="text">Resume</div>
-                    </div>
-                </a>
+                        <div class="overLay">
+                            <div class="text">Resume</div>
+                        </div>
+                    </a>
             </div>
         </div>
         <div class="col-md-4 mb-4">
             <div class="dbAnchor">
-                    <% if(user.resume.length > 0) { %>
-                        <a href="/otherFormats/resume?rank=2">
-                        <% } else { %>
-                        <a class="resume-form" href="#animatedModal">
-                    <% } %>
-                    <div class="card">
-                        <img style="max-height: 14em;" class="card-img-top" src="/img/application_form.jpg"
-                             alt="Resume 2">
-                        <div class="card-body">
-                            <p class="card-text">Resume 2</p>
+                <% if(user.resume.length > 0) { %>
+                <a href="/otherFormats/resume?rank=2">
+                    <% } else { %>
+                    <a class="resume-form" href="#animatedModal">
+                        <% } %>
+                        <div class="card">
+                            <img style="max-height: 14em;" class="card-img-top" src="/img/application_form.jpg"
+                                 alt="Resume 2">
+                            <div class="card-body">
+                                <p class="card-text">Resume 2</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="overLay">
-                        <div class="text">Coming Soon!</div>
-                    </div>
-                </a>
+                        <div class="overLay">
+                            <div class="text">Coming Soon!</div>
+                        </div>
+                    </a>
             </div>
         </div>
         <div class="col-md-4 mb-4">
             <div class="dbAnchor">
-                    <% if(user.resume.length > 0) { %>
-                        <a href="/otherFormats/resume?rank=3">
-                        <% } else { %>
-                        <a class="resume-form" href="#animatedModal">
-                    <% } %>
-                    <div class="card">
-                        <img style="max-height: 14em;" class="card-img-top" src="/img/general_leave.jpg" alt="Resume 3">
-                        <div class="card-body">
-                            <p class="card-text">Resume 3</p>
+                <% if(user.resume.length > 0) { %>
+                <a href="/otherFormats/resume?rank=3">
+                    <% } else { %>
+                    <a class="resume-form" href="#animatedModal">
+                        <% } %>
+                        <div class="card">
+                            <img style="max-height: 14em;" class="card-img-top" src="/img/general_leave.jpg"
+                                 alt="Resume 3">
+                            <div class="card-body">
+                                <p class="card-text">Resume 3</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="overLay">
-                        <div class="text">Coming Soon!</div>
-                    </div>
-                </a>
+                        <div class="overLay">
+                            <div class="text">Coming Soon!</div>
+                        </div>
+                    </a>
             </div>
         </div>
     </div>
 
     <!--Call your modal-->
-    <a class="resume-form" href="#animatedModal">Enter Details for Resume</a>
+    <a class="resume-form" href="#animatedModal">Edit Resume</a>
     <!-- Modal Added -->
     <% include partials/resume_modal %>
     <!-- Modal ends -->
+
+    <span id='resume-data' hidden>
+        <%= JSON.stringify(user.resume); %>
+    </span>
 
 
 </div>
@@ -91,201 +97,811 @@
 </script>
 
 <script>
-
+    var rData = JSON.parse($('#resume-data').text());
+    var resumeData = rData[rData.length - 1] || 0;
+    $('#resume-data').remove();
     // Education field handled
-    var count = 1;
+    console.log(count);
+    console.log(resumeData);
 
-    $('#education_field').append(educationNumber('first'));
 
-    $('#education_add').click(function (e) {
-        if (count == 0) {
-            count++;
-            var name = 'first';
-            var firstfield = educationNumber(name);
-            $('#education_field').append(firstfield);
-        } else if (count == 1) {
-            count++;
-            var name = 'second';
-            var secondfield = educationNumber(name);
-            $('#education_field').append(secondfield);
-        } else if (count == 2) {
-            count++;
-            var name = 'third';
-            var thirdfield = educationNumber(name);
-            $('#education_field').append(thirdfield);
-        } else if (count == 3) {
-            alert("Maximum 3 education field is required.");
+    if(resumeData) {
+
+        // EDUCATION TAB STARTS
+        var count = 0;
+        resumeData.degree && resumeData.degree.map(function(degree) {
+            console.log("Hello");
+            if (count == 0) {
+                count++;
+                var name = 'first';
+                var firstfield = educationNumberData(name, degree);
+                $('#education_field').append(firstfield);
+            } else if (count == 1) {
+                count++;
+                var name = 'second';
+                var secondfield = educationNumberData(name, degree);
+                $('#education_field').append(secondfield);
+            } else if (count == 2) {
+                count++;
+                var name = 'third';
+                var thirdfield = educationNumberData(name, degree);
+                $('#education_field').append(thirdfield);
+            }
+        })
+
+        $('#education_add').click(function (e) {
+            if (count == 0) {
+                count++;
+                var name = 'first';
+                var firstfield = educationNumber(name);
+                $('#education_field').append(firstfield);
+            } else if (count == 1) {
+                count++;
+                var name = 'second';
+                var secondfield = educationNumber(name);
+                $('#education_field').append(secondfield);
+            } else if (count == 2) {
+                count++;
+                var name = 'third';
+                var thirdfield = educationNumber(name);
+                $('#education_field').append(thirdfield);
+            } else if (count == 3) {
+                alert("Maximum 3 education field is required.");
+            }
+        });
+
+        $('body').on('click', '#education_remove', function (e) {
+            if (count == 2) {
+                // $(this).parent('#company_two').remove();
+                $('div').remove('#second_education');
+                count--;
+            } else if (count == 3) {
+                // $(this).parent('#company_three').remove();
+                $('div').remove('#third_education');
+                count--;
+            } else {
+                alert("Minimum one education field is required.");
+            }
+        });
+
+
+
+        function educationNumberData(name, degree) {
+            return `
+            <div id="${name}_education">
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Degree/Course</span></div>
+                            <div class="col-md-10"><input value="${degree.degree}" type="text" class="form-control" name="${name}_degree[degree]" id="id_${name}_degree" placeholder="Degree name" aria-describedby="inputGroupPrepend2" required></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Institution</span></div>
+                            <div class="col-md-10"><input value="${degree.institution}" type="text" class="form-control" name="${name}_degree[institution]" id="id_${name}_institution" placeholder="Name of Institution" aria-describedby="inputGroupPrepend2" required></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Passing Year</span></div>
+                            <div class="col-md-10"><input value="${degree.passingyear}" type="text" class="form-control" name="${name}_degree[passingyear]" id="id_${name}_passingyear" placeholder="passing year" aria-describedby="inputGroupPrepend2" required></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Enter Details</span></div>
+                            <div class="col-md-10"><textarea class="form-control" name="${name}_degree[details]" id="id_${name}_details" placeholder="e.g. completed with 66% marks" aria-describedby="inputGroupPrepend2" required>${degree.details}</textarea></div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        `;
         }
-    });
 
-    // Remove rows
-    $('body').on('click', '#education_remove', function (e) {
-
-        // if(count == 1){
-        //     $('div').remove('#first_education');
-        //     count--;
-        // }else
-        if (count == 2) {
-            // $(this).parent('#company_two').remove();
-            $('div').remove('#second_education');
-            count--;
-        } else if (count == 3) {
-            // $(this).parent('#company_three').remove();
-            $('div').remove('#third_education');
-            count--;
-        } else {
-            alert("Minimum one education field is required.");
+        function educationNumber(name) {
+            return `
+            <div id="${name}_education">
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Degree/Course</span></div>
+                            <div class="col-md-10"><input type="text" class="form-control" name="${name}_degree[degree]" id="id_${name}_degree" placeholder="Degree name" aria-describedby="inputGroupPrepend2" required></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Institution</span></div>
+                            <div class="col-md-10"><input type="text" class="form-control" name="${name}_degree[institution]" id="id_${name}_institution" placeholder="Name of Institution" aria-describedby="inputGroupPrepend2" required></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Passing Year</span></div>
+                            <div class="col-md-10"><input type="text" class="form-control" name="${name}_degree[passingyear]" id="id_${name}_passingyear" placeholder="passing year" aria-describedby="inputGroupPrepend2" required></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Enter Details</span></div>
+                            <div class="col-md-10"><textarea class="form-control" name="${name}_degree[details]" id="id_${name}_details" placeholder="e.g. completed with 66% marks" aria-describedby="inputGroupPrepend2" required></textarea></div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        `;
         }
-    });
 
-    function educationNumber(name) {
-        return '<div id="' + name + '_education" ><div class="form-row mb-3"><div class="col-md-12"><div class="input-group form-row"><div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Degree/Course</span></div><div class="col-md-10"><input type="text" class="form-control" name="' + name + '_degree[degree]" id="id_' + name + '_degree" placeholder="Degree name" aria-describedby="inputGroupPrepend2" required></div></div></div></div><div class="form-row mb-3"><div class="col-md-12"><div class="input-group form-row"><div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Institution</span></div><div class="col-md-10"><input type="text" class="form-control" name="' + name + '_degree[institution]" id="id_' + name + '_institution" placeholder="Name of Institution" aria-describedby="inputGroupPrepend2" required></div></div></div></div><div class="form-row mb-3"><div class="col-md-12"><div class="input-group form-row"><div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Passing Year</span></div><div class="col-md-10"><input type="text" class="form-control" name="' + name + '_degree[passingyear]" id="id_' + name + '_passingyear" placeholder="passing year" aria-describedby="inputGroupPrepend2" required></div></div></div></div><div class="form-row mb-3"><div class="col-md-12"><div class="input-group form-row"><div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Enter Details</span></div><div class="col-md-10"><textarea class="form-control" name="' + name + '_degree[details]" id="id_' + name + '_details" placeholder="e.g. completed with 66% marks" aria-describedby="inputGroupPrepend2" required></textarea></div></div></div></div><hr></div>';
+        // EDUCATION TAB ENDS
+
+        // PROJECT TAB STARTS
+
+        var project_count = 0;
+        resumeData.project && resumeData.project.map(function(project) {
+            if (project_count == 0) {
+                project_count++;
+                var name = 'first';
+                var firstfield = projectNumberData(name, project);
+                $('#project_field').append(firstfield);
+            } else if (project_count == 1) {
+                project_count++;
+                var name = 'second';
+                var secondfield = projectNumberData(name, project);
+                $('#project_field').append(secondfield);
+            } else if (project_count == 2) {
+                alert("Maximum 2 Project field is required.");
+            }
+        })
+
+        $('#project_add').click(function (e) {
+            if (project_count == 0) {
+                project_count++;
+                var name = 'first';
+                var firstfield = projectNumber(name);
+                $('#project_field').append(firstfield);
+            } else if (project_count == 1) {
+                project_count++;
+                var name = 'second';
+                var secondfield = projectNumber(name);
+                $('#project_field').append(secondfield);
+            } else if (project_count == 2) {
+                alert("Maximum 2 Project field is required.");
+            }
+        });
+
+        $('body').on('click', '#project_remove', function (e) {
+
+            if (project_count == 2) {
+                // $(this).parent('#company_two').remove();
+                $('div').remove('#second_project');
+                project_count--;
+            } else {
+                alert("Minimum one Project field is required.");
+            }
+        });
+
+        function projectNumberData(name, project) {
+            return `
+            <div id="${name}_project">
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Title</span></div>
+                            <div class="col-md-10"><input value="${project.title}" type="text" class="form-control" name="${name}_project[title]" id="id_${name}_projecttitle" placeholder="Enter Project Title" aria-describedby="inputGroupPrepend2" required></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Organization</span></div>
+                            <div class="col-md-10"><input value="${project.organization}" type="text" class="form-control" name="${name}_project[organization]" id="id_${name}_projectorganization" placeholder="Enter Project Organization or Self" aria-describedby="inputGroupPrepend2" required></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Enter Details</span></div>
+                            <div class="col-md-10"><textarea class="form-control" name="${name}_project[details]" id="id_${name}_projectdetails" placeholder="DESCRIBE YOUR PROJECT" aria-describedby="inputGroupPrepend2" required>${project.details}</textarea></div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        `;
+        }
+
+        function projectNumber(name) {
+            return `
+            <div id="${name}_project">
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Title</span></div>
+                            <div class="col-md-10"><input type="text" class="form-control" name="${name}_project[title]" id="id_${name}_projecttitle" placeholder="Enter Project Title" aria-describedby="inputGroupPrepend2" required></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Organization</span></div>
+                            <div class="col-md-10"><input type="text" class="form-control" name="${name}_project[organization]" id="id_${name}_projectorganization" placeholder="Enter Project Organization or Self" aria-describedby="inputGroupPrepend2" required></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Enter Details</span></div>
+                            <div class="col-md-10"><textarea class="form-control" name="${name}_project[details]" id="id_${name}_projectdetails" placeholder="DESCRIBE YOUR PROJECT" aria-describedby="inputGroupPrepend2" required></textarea></div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        `;
+        }
+
+        // PROJECT TAB ENDS
+
+        // EXPERIENCE TAB STARTS
+
+        var experience_count = 0;
+        resumeData.experience && resumeData.experience.map(function(experience) {
+            if (experience_count == 0) {
+                experience_count++;
+                var name = 'first';
+                var firstfield = experienceNumberData(name, experience);
+                $('#experience_field').append(firstfield);
+            } else if (experience_count == 1) {
+                experience_count++;
+                var name = 'second';
+                var secondfield = experienceNumberData(name, experience);
+                $('#experience_field').append(secondfield);
+            } else if (experience_count == 2) {
+                alert("Maximum 2 Experience field is required.");
+            }
+        })
+
+        $('#experience_add').click(function (e) {
+            if (experience_count == 0) {
+                experience_count++;
+                var name = 'first';
+                var firstfield = experienceNumber(name);
+                $('#experience_field').append(firstfield);
+            } else if (experience_count == 1) {
+                experience_count++;
+                var name = 'second';
+                var secondfield = experienceNumber(name);
+                $('#experience_field').append(secondfield);
+            } else if (experience_count == 2) {
+                alert("Maximum 2 Experience field is required.");
+            }
+        });
+
+        $('body').on('click', '#experience_remove', function (e) {
+
+            if (experience_count == 1) {
+                $('div').remove('#first_experience');
+                experience_count--;
+            } else if (experience_count == 2) {
+                // $(this).parent('#company_two').remove();
+                $('div').remove('#second_experience');
+                experience_count--;
+            } else {
+                alert("No field to remove.");
+            }
+        });
+
+        function experienceNumberData(name, experience) {
+            return `
+            <div id="${name}_experience">
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Title/Designation</span></div>
+                            <div class="col-md-10"><input value="${experience.title}" type="text" class="form-control" name="${name}_experience[title]" id="id_${name}_exptitle" placeholder="Enter experience field title" aria-describedby="inputGroupPrepend2" required></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Organization</span></div>
+                            <div class="col-md-10"><input value="${experience.organization}" type="text" class="form-control" name="${name}_experience[organization]" id="id_${name}_exporganization" placeholder="Enter Organization name" aria-describedby="inputGroupPrepend2" required></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Enter Details</span></div>
+                            <div class="col-md-10"><textarea class="form-control" name="${name}_experience[details]" id="id_${name}_expdetails" placeholder="Describe your experience" aria-describedby="inputGroupPrepend2" required>${experience.details}</textarea></div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        `;
+        }
+
+        function experienceNumber(name) {
+            return `
+            <div id="${name}_experience">
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Title/Designation</span></div>
+                            <div class="col-md-10"><input type="text" class="form-control" name="${name}_experience[title]" id="id_${name}_exptitle" placeholder="Enter experience field title" aria-describedby="inputGroupPrepend2" required></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Organization</span></div>
+                            <div class="col-md-10"><input type="text" class="form-control" name="${name}_experience[organization]" id="id_${name}_exporganization" placeholder="Enter Organization name" aria-describedby="inputGroupPrepend2" required></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Enter Details</span></div>
+                            <div class="col-md-10"><textarea class="form-control" name="${name}_experience[details]" id="id_${name}_expdetails" placeholder="Describe your experience" aria-describedby="inputGroupPrepend2" required></textarea></div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        `;
+        }
+
+        // EXPERIENCE TAB ENDS
+
+        // SKILLS TAB STARTS
+
+        var skill_count = 0;
+        resumeData.skill && resumeData.skill.map(function(skill) {
+            if (skill_count == 0) {
+                skill_count++;
+                var name = 'first';
+                var firstfield = skillNumberData(name, skill);
+                $('#skill_field').append(firstfield);
+            } else if (skill_count == 1) {
+                skill_count++;
+                var name = 'second';
+                var secondfield = skillNumberData(name, skill);
+                $('#skill_field').append(secondfield);
+            } else if (skill_count == 2) {
+                skill_count++;
+                var name = 'third';
+                var thirdfield = skillNumberData(name, skill);
+                $('#skill_field').append(thirdfield);
+            } else if (skill_count == 3) {
+                skill_count++;
+                var name = 'fourth';
+                var thirdfield = skillNumberData(name, skill);
+                $('#skill_field').append(thirdfield);
+            } else if (skill_count == 4) {
+                skill_count++;
+                var name = 'fifth';
+                var thirdfield = skillNumberData(name, skill);
+                $('#skill_field').append(thirdfield);
+            } else if (skill_count == 5) {
+                alert("Maximum 5 skill field is required.");
+            }
+        })
+
+        $('#skill_add').click(function (e) {
+            if (skill_count == 0) {
+                skill_count++;
+                var name = 'first';
+                var firstfield = skillNumber(name);
+                $('#skill_field').append(firstfield);
+            } else if (skill_count == 1) {
+                skill_count++;
+                var name = 'second';
+                var secondfield = skillNumber(name);
+                $('#skill_field').append(secondfield);
+            } else if (skill_count == 2) {
+                skill_count++;
+                var name = 'third';
+                var thirdfield = skillNumber(name);
+                $('#skill_field').append(thirdfield);
+            } else if (skill_count == 3) {
+                skill_count++;
+                var name = 'fourth';
+                var thirdfield = skillNumber(name);
+                $('#skill_field').append(thirdfield);
+            } else if (skill_count == 4) {
+                skill_count++;
+                var name = 'fifth';
+                var thirdfield = skillNumber(name);
+                $('#skill_field').append(thirdfield);
+            } else if (skill_count == 5) {
+                alert("Maximum 5 skill field is required.");
+            }
+        });
+
+        // Remove rows
+        $('body').on('click', '#skill_remove', function (e) {
+
+            if (skill_count == 2) {
+                // $(this).parent('#company_two').remove();
+                $('div').remove('#second_skill');
+                skill_count--;
+            } else if (skill_count == 3) {
+                // $(this).parent('#company_three').remove();
+                $('div').remove('#third_skill');
+                skill_count--;
+            } else if (skill_count == 4) {
+                // $(this).parent('#company_three').remove();
+                $('div').remove('#fourth_skill');
+                skill_count--;
+            } else if (skill_count == 5) {
+                // $(this).parent('#company_three').remove();
+                $('div').remove('#fifth_skill');
+                skill_count--;
+            } else {
+                alert("Minimum one skill field is required.");
+            }
+        });
+
+        function skillNumberData(name, skill) {
+            return `
+            <div id="${name}_skill">
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Skill</span></div>
+                            <div class="col-md-10"><input value="${skill}" type="text" class="form-control" name="skill[]" id="id_${name}_skill" placeholder="Enter your skill" aria-describedby="inputGroupPrepend2" required></div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        `;
+        }
+
+        function skillNumber(name) {
+            return `
+            <div id="${name}_skill">
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Skill</span></div>
+                            <div class="col-md-10"><input type="text" class="form-control" name="skill[]" id="id_${name}_skill" placeholder="Enter your skill" aria-describedby="inputGroupPrepend2" required></div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        `;
+        }
+
+
+
+    } else {
+
+        var count = 1;
+        $('#education_field').append(educationNumber('first'));
+
+        $('#education_add').click(function (e) {
+            if (count == 0) {
+                count++;
+                var name = 'first';
+                var firstfield = educationNumber(name);
+                $('#education_field').append(firstfield);
+            } else if (count == 1) {
+                count++;
+                var name = 'second';
+                var secondfield = educationNumber(name);
+                $('#education_field').append(secondfield);
+            } else if (count == 2) {
+                count++;
+                var name = 'third';
+                var thirdfield = educationNumber(name);
+                $('#education_field').append(thirdfield);
+            } else if (count == 3) {
+                alert("Maximum 3 education field is required.");
+            }
+        });
+
+        // Remove rows
+        $('body').on('click', '#education_remove', function (e) {
+
+            if (count == 2) {
+                // $(this).parent('#company_two').remove();
+                $('div').remove('#second_education');
+                count--;
+            } else if (count == 3) {
+                // $(this).parent('#company_three').remove();
+                $('div').remove('#third_education');
+                count--;
+            } else {
+                alert("Minimum one education field is required.");
+            }
+        });
+
+        function educationNumber(name) {
+            return `
+            <div id="${name}_education">
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Degree/Course</span></div>
+                            <div class="col-md-10"><input type="text" class="form-control" name="${name}_degree[degree]" id="id_${name}_degree" placeholder="Degree name" aria-describedby="inputGroupPrepend2" required></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Institution</span></div>
+                            <div class="col-md-10"><input type="text" class="form-control" name="${name}_degree[institution]" id="id_${name}_institution" placeholder="Name of Institution" aria-describedby="inputGroupPrepend2" required></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Passing Year</span></div>
+                            <div class="col-md-10"><input type="text" class="form-control" name="${name}_degree[passingyear]" id="id_${name}_passingyear" placeholder="passing year" aria-describedby="inputGroupPrepend2" required></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Enter Details</span></div>
+                            <div class="col-md-10"><textarea class="form-control" name="${name}_degree[details]" id="id_${name}_details" placeholder="e.g. completed with 66% marks" aria-describedby="inputGroupPrepend2" required></textarea></div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        `;
+        }
+
+        // Project section handled
+        var project_count = 1;
+
+        $('#project_field').append(projectNumber('first'));
+
+        $('#project_add').click(function (e) {
+            if (project_count == 0) {
+                project_count++;
+                var name = 'first';
+                var firstfield = projectNumber(name);
+                $('#project_field').append(firstfield);
+            } else if (project_count == 1) {
+                project_count++;
+                var name = 'second';
+                var secondfield = projectNumber(name);
+                $('#project_field').append(secondfield);
+            } else if (project_count == 2) {
+                alert("Maximum 2 Project field is required.");
+            }
+        });
+
+        $('body').on('click', '#project_remove', function (e) {
+
+            // if(project_count == 1){
+            //     $('div').remove('#first_project');
+            //     project_count--;
+            // }else
+            if (project_count == 2) {
+                // $(this).parent('#company_two').remove();
+                $('div').remove('#second_project');
+                project_count--;
+            } else {
+                alert("Minimum one Project field is required.");
+            }
+        });
+
+        function projectNumber(name) {
+            return `
+            <div id="${name}_project">
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Title</span></div>
+                            <div class="col-md-10"><input type="text" class="form-control" name="${name}_project[title]" id="id_${name}_projecttitle" placeholder="Enter Project Title" aria-describedby="inputGroupPrepend2" required></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Organization</span></div>
+                            <div class="col-md-10"><input type="text" class="form-control" name="${name}_project[organization]" id="id_${name}_projectorganization" placeholder="Enter Project Organization or Self" aria-describedby="inputGroupPrepend2" required></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Enter Details</span></div>
+                            <div class="col-md-10"><textarea class="form-control" name="${name}_project[details]" id="id_${name}_projectdetails" placeholder="DESCRIBE YOUR PROJECT" aria-describedby="inputGroupPrepend2" required></textarea></div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        `;
+        }
+
+        // Experience section handled
+        var experience_count = 0;
+
+        $('#experience_add').click(function (e) {
+            if (experience_count == 0) {
+                experience_count++;
+                var name = 'first';
+                var firstfield = experienceNumber(name);
+                $('#experience_field').append(firstfield);
+            } else if (experience_count == 1) {
+                experience_count++;
+                var name = 'second';
+                var secondfield = experienceNumber(name);
+                $('#experience_field').append(secondfield);
+            } else if (experience_count == 2) {
+                alert("Maximum 2 Experience field is required.");
+            }
+        });
+
+        $('body').on('click', '#experience_remove', function (e) {
+
+            if (experience_count == 1) {
+                $('div').remove('#first_experience');
+                experience_count--;
+            } else if (experience_count == 2) {
+                // $(this).parent('#company_two').remove();
+                $('div').remove('#second_experience');
+                experience_count--;
+            } else {
+                alert("No field to remove.");
+            }
+        });
+
+        function experienceNumber(name) {
+            return `
+            <div id="${name}_experience">
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Title/Designation</span></div>
+                            <div class="col-md-10"><input type="text" class="form-control" name="${name}_experience[title]" id="id_${name}_exptitle" placeholder="Enter experience field title" aria-describedby="inputGroupPrepend2" required></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Organization</span></div>
+                            <div class="col-md-10"><input type="text" class="form-control" name="${name}_experience[organization]" id="id_${name}_exporganization" placeholder="Enter Organization name" aria-describedby="inputGroupPrepend2" required></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Enter Details</span></div>
+                            <div class="col-md-10"><textarea class="form-control" name="${name}_experience[details]" id="id_${name}_expdetails" placeholder="Describe your experience" aria-describedby="inputGroupPrepend2" required></textarea></div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        `;
+        }
+
+        // Skill field handled
+        var skill_count = 1;
+
+        $('#skill_field').append(skillNumber('first'));
+
+        $('#skill_add').click(function (e) {
+            if (skill_count == 0) {
+                skill_count++;
+                var name = 'first';
+                var firstfield = skillNumber(name);
+                $('#skill_field').append(firstfield);
+            } else if (skill_count == 1) {
+                skill_count++;
+                var name = 'second';
+                var secondfield = skillNumber(name);
+                $('#skill_field').append(secondfield);
+            } else if (skill_count == 2) {
+                skill_count++;
+                var name = 'third';
+                var thirdfield = skillNumber(name);
+                $('#skill_field').append(thirdfield);
+            } else if (skill_count == 3) {
+                skill_count++;
+                var name = 'fourth';
+                var thirdfield = skillNumber(name);
+                $('#skill_field').append(thirdfield);
+            } else if (skill_count == 4) {
+                skill_count++;
+                var name = 'fifth';
+                var thirdfield = skillNumber(name);
+                $('#skill_field').append(thirdfield);
+            } else if (skill_count == 5) {
+                alert("Maximum 5 skill field is required.");
+            }
+        });
+
+        // Remove rows
+        $('body').on('click', '#skill_remove', function (e) {
+
+            // if(skill_count == 1){
+            //     $('div').remove('#first_skill');
+            //     skill_count--;
+            // }else
+            if (skill_count == 2) {
+                // $(this).parent('#company_two').remove();
+                $('div').remove('#second_skill');
+                skill_count--;
+            } else if (skill_count == 3) {
+                // $(this).parent('#company_three').remove();
+                $('div').remove('#third_skill');
+                skill_count--;
+            } else if (skill_count == 4) {
+                // $(this).parent('#company_three').remove();
+                $('div').remove('#fourth_skill');
+                skill_count--;
+            } else if (skill_count == 5) {
+                // $(this).parent('#company_three').remove();
+                $('div').remove('#fifth_skill');
+                skill_count--;
+            } else {
+                alert("Minimum one skill field is required.");
+            }
+        });
+
+        function skillNumber(name) {
+            return `
+            <div id="${name}_skill">
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group form-row">
+                            <div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Skill</span></div>
+                            <div class="col-md-10"><input type="text" class="form-control" name="skill[]" id="id_${name}_skill" placeholder="Enter your skill" aria-describedby="inputGroupPrepend2" required></div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        `;
+        }
     }
 
-    // Project section handled
-    var project_count = 1;
 
-    $('#project_field').append(projectNumber('first'));
 
-    $('#project_add').click(function (e) {
-        if (project_count == 0) {
-            project_count++;
-            var name = 'first';
-            var firstfield = projectNumber(name);
-            $('#project_field').append(firstfield);
-        } else if (project_count == 1) {
-            project_count++;
-            var name = 'second';
-            var secondfield = projectNumber(name);
-            $('#project_field').append(secondfield);
-        } else if (project_count == 2) {
-            alert("Maximum 2 Project field is required.");
-        }
-    });
 
-    $('body').on('click', '#project_remove', function (e) {
 
-        // if(project_count == 1){
-        //     $('div').remove('#first_project');
-        //     project_count--;
-        // }else
-        if (project_count == 2) {
-            // $(this).parent('#company_two').remove();
-            $('div').remove('#second_project');
-            project_count--;
-        } else {
-            alert("Minimum one Project field is required.");
-        }
-    });
 
-    function projectNumber(name) {
-        return '<div id="' + name + '_project" ><div class="form-row mb-3"><div class="col-md-12"><div class="input-group form-row"><div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Title</span></div><div class="col-md-10"><input type="text" class="form-control" name="' + name + '_project[title]" id="id_' + name + '_projecttitle" placeholder="Enter Project Title" aria-describedby="inputGroupPrepend2" required></div></div></div></div><div class="form-row mb-3"><div class="col-md-12"><div class="input-group form-row"><div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Organization</span></div><div class="col-md-10"><input type="text" class="form-control" name="' + name + '_project[organization]" id="id_' + name + '_projectorganization" placeholder="Enter Project Organization or Self" aria-describedby="inputGroupPrepend2" required></div></div></div></div><div class="form-row mb-3"><div class="col-md-12"><div class="input-group form-row"><div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Enter Details</span></div><div class="col-md-10"><textarea class="form-control" name="' + name + '_project[details]" id="id_' + name + '_projectdetails" placeholder="DESCRIBE YOUR PROJECT" aria-describedby="inputGroupPrepend2" required></textarea></div></div></div></div><hr></div>';
-    }
 
-    // Experience section handled
-    var experience_count = 0;
 
-    $('#experience_add').click(function (e) {
-        if (experience_count == 0) {
-            experience_count++;
-            var name = 'first';
-            var firstfield = experienceNumber(name);
-            $('#experience_field').append(firstfield);
-        } else if (experience_count == 1) {
-            experience_count++;
-            var name = 'second';
-            var secondfield = experienceNumber(name);
-            $('#experience_field').append(secondfield);
-        } else if (experience_count == 2) {
-            alert("Maximum 2 Experience field is required.");
-        }
-    });
 
-    $('body').on('click', '#experience_remove', function (e) {
-
-        if (experience_count == 1) {
-            $('div').remove('#first_experience');
-            experience_count--;
-        } else if (experience_count == 2) {
-            // $(this).parent('#company_two').remove();
-            $('div').remove('#second_experience');
-            experience_count--;
-        } else {
-            alert("No field to remove.");
-        }
-    });
-
-    function experienceNumber(name) {
-        return '<div id="' + name + '_experience" ><div class="form-row mb-3"><div class="col-md-12"><div class="input-group form-row"><div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Title/Designation</span></div><div class="col-md-10"><input type="text" class="form-control" name="' + name + '_experience[title]" id="id_' + name + '_exptitle" placeholder="Enter experience field title" aria-describedby="inputGroupPrepend2" required></div></div></div></div><div class="form-row mb-3"><div class="col-md-12"><div class="input-group form-row"><div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Organization</span></div><div class="col-md-10"><input type="text" class="form-control" name="' + name + '_experience[organization]" id="id_' + name + '_exporganization" placeholder="Enter Organization name" aria-describedby="inputGroupPrepend2" required></div></div></div></div><div class="form-row mb-3"><div class="col-md-12"><div class="input-group form-row"><div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Enter Details</span></div><div class="col-md-10"><textarea class="form-control" name="' + name + '_experience[details]" id="id_' + name + '_expdetails" placeholder="Describe your experience" aria-describedby="inputGroupPrepend2" required></textarea></div></div></div></div><hr></div>';
-    }
-
-    // Skill field handled
-    var skill_count = 1;
-
-    $('#skill_field').append(skillNumber('first'));
-
-    $('#skill_add').click(function (e) {
-        if (skill_count == 0) {
-            skill_count++;
-            var name = 'first';
-            var firstfield = skillNumber(name);
-            $('#skill_field').append(firstfield);
-        } else if (skill_count == 1) {
-            skill_count++;
-            var name = 'second';
-            var secondfield = skillNumber(name);
-            $('#skill_field').append(secondfield);
-        } else if (skill_count == 2) {
-            skill_count++;
-            var name = 'third';
-            var thirdfield = skillNumber(name);
-            $('#skill_field').append(thirdfield);
-        } else if (skill_count == 3) {
-            skill_count++;
-            var name = 'fourth';
-            var thirdfield = skillNumber(name);
-            $('#skill_field').append(thirdfield);
-        } else if (skill_count == 4) {
-            skill_count++;
-            var name = 'fifth';
-            var thirdfield = skillNumber(name);
-            $('#skill_field').append(thirdfield);
-        } else if (skill_count == 5) {
-            alert("Maximum 5 skill field is required.");
-        }
-    });
-
-    // Remove rows
-    $('body').on('click', '#skill_remove', function (e) {
-
-        // if(skill_count == 1){
-        //     $('div').remove('#first_skill');
-        //     skill_count--;
-        // }else
-        if (skill_count == 2) {
-            // $(this).parent('#company_two').remove();
-            $('div').remove('#second_skill');
-            skill_count--;
-        } else if (skill_count == 3) {
-            // $(this).parent('#company_three').remove();
-            $('div').remove('#third_skill');
-            skill_count--;
-        } else if (skill_count == 4) {
-            // $(this).parent('#company_three').remove();
-            $('div').remove('#fourth_skill');
-            skill_count--;
-        } else if (skill_count == 5) {
-            // $(this).parent('#company_three').remove();
-            $('div').remove('#fifth_skill');
-            skill_count--;
-        } else {
-            alert("Minimum one skill field is required.");
-        }
-    });
-
-    function skillNumber(name) {
-        return '<div id="' + name + '_skill" ><div class="form-row mb-3"><div class="col-md-12"><div class="input-group form-row"><div class="input-group-prepend col-md-2"><span class="input-group-text w-100" id="inputGroupPrepend2">Skill</span></div><div class="col-md-10"><input type="text" class="form-control" name="skill[]" id="id_' + name + '_skill" placeholder="Enter your skill" aria-describedby="inputGroupPrepend2" required></div></div></div></div><hr></div>';
-    }
 </script>
 </body>
 </html>
