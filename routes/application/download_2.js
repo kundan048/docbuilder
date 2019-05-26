@@ -29,7 +29,7 @@ router.get('/download_2/:id', isLoggedIn, function (req, res) {
             var manager_name = docx.createText(downUser.manager_name + ",").break().break();
             var manager = docx.createText("Regional Manager,").break();
             var company_name = docx.createText(downUser.company_name).break();
-            var subject = docx.createText("Subjetc : " + downUser.subject + ".").break().break();
+            var subject = docx.createText("Subject : " + downUser.subject + ".").break().break();
             var date = docx.createText(downUser.date).break().break();
             var content1 = docx.createText("My purpose of writing this email is to apply for maternity leave as mentioned in our organization’s policy for female employees. I want to avail the leaves for a period of " + downUser.no_of_weeks + " weeks, with effect from " + downUser.start_date + " to " + downUser.end_date + ". I hope that this request will be sanctioned.").break().break();
             var content2 = docx.createText("As I will be away for a considerably long period, I have entrusted " + downUser.colleague_name + " with my responsibilities and duties. In the case of an unmanageable emergency, please contact me at " + downUser.email +  ".").break().break();
