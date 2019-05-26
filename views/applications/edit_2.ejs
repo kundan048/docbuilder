@@ -1,0 +1,375 @@
+<% include ../partials/home_header %>
+<link rel="stylesheet" href="/css/suggestions.css">
+<% include ../partials/home_navbar %>
+<main role="main">
+    <a class="btn btn-danger btn-outline-danger m-3" href="javascript:history.back()">Back</a>
+    <a class="btn btn-primary btn-outline-primary m-3" href="application/recentdoc_2">Recent Maternity Leave Applications</a>
+    <div class="h2 text-center mb-5">Application for Maternity Leave.</div>
+
+    <div class="container">
+        <div class="row">
+            <!-- first column starts -->
+
+            <div class="col-md-6 " style="border: 1px solid black; border-right: none; border-radius: 5px;">
+                <div class="album py-2">
+                    <div class="container">
+
+                        <form action="/application_2" method="post">
+
+                            <div class="form-group kkmain">
+
+                                <input value="<%= application.name %>" class="kki form-control" type="text" name="application[name]" id="name" pattern=".{3,}" required title="Name must be atleast three characters!"
+                                unselectable="on" autocomplete="off">
+                                <label for="name" class="kkl col-form-label">Full Name</label>
+                            </div>
+                            <div class="form-group kkmain">
+
+                                <input value="<%= application.email %>" class="kki form-control" type="text" name="application[email]" id="email" pattern=".{3,}" type="email" required unselectable="on" autocomplete="off">
+                                <label for="email" class="kkl col-form-label">Email Id</label>
+                            </div>
+                            <div class="form-group kkmain">
+
+                                <input value="<%= application.company_name %>" class="kki form-control" type="text" name="application[company_name]" id="companyname" pattern=".{3,}" required title="Must be atleast three characters!" autocomplete="off" required>
+                                <label for="Company" class="kkl col-form-label">Company Name</label>
+                            </div>
+
+                            <div class="form-group kkmain">
+                                <input value="<%= application.subject %>" class="kki form-control" type="text" name="application[subject]" id="subject" pattern=".{3,}" required title="Must be atleast three characters!" autocomplete="off" required>
+                                <label for="Subject" class="kkl col-form-label">Subject</label>
+                            </div>
+
+                            <div class="form-group kkmain">
+                                <input value="<%= application.manager_name %>" class="kki form-control" type="text" name="application[manager_name]" id="managername" pattern=".{3,}" required title="Must be atleast three characters!" autocomplete="off" required>
+                                <label for="manager" class="kkl col-form-label">Name of the Manager</label>
+                            </div>
+                            <div class="form-group kkmain">
+
+                                <input value="<%= application.date %>" class="kki form-control" type="date" min="2010-10-01" max="2025-10-20" name="application[date]" id="date"
+                                       autocomplete="off" required>
+                                <!-- <label for="date" class="kkl col-form-label">Date</label> -->
+                            </div>
+                            <div class="form-group kkmain">
+
+                                <input value="<%= application.cooleague_name %>" class="kki form-control" type="text" name="application[colleague_name]" id="colleaguename" pattern=".{3,}" required title="Reason must be atleast three characters!" autocomplete="off" required>
+                                <label for="reason" class="kkl col-form-label">Colleague's Name</label>
+                            </div>
+                            <div class="form-group kkmain">
+
+                                <input value="<%= application.no_of_weeks %>" class="kki form-control" type="number" min="1" max="50" name="application[no_of_weeks]" id="no_of_weeks" maxlength="2" autocomplete="off" required>
+                                <label for="no_of_weeks" class="kkl col-form-label">No. of Weeks</label>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Start Date of Leave:</label>
+                                <div class="col-sm-9">
+                                    <input value="<%= application.start_date %>" class="form-control" id="startdate" type="date" name="application[start_date]" min="2010-10-01" max="2025-10-20" placeholder="" autocomplete="off">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">End Date of Leave:</label>
+                                <div class="col-sm-9">
+                                    <input value="<%= application.end_date %>" class="form-control" id="enddate" type="date" name="application[end_date]" min="2010-10-01" max="2025-10-20" placeholder="" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12 mt-3">
+                                    <input class="btn btn-block btn-outline-success" type="submit"
+                                           value="Save & Download">
+                                </div>
+                                <!-- <div class="col-sm-12 mt-3">
+                                        <a class="btn btn-block btn-primary" href="/application/recentdoc">Recent documents</a>
+                                </div> -->
+                                <!--  <div class="col-sm-6 mt-3">
+                                   <a href="#" class="btn btn-block btn-success" type="button">Download Without Saving &rarr;</a>
+                                 </div> -->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- first column ends -->
+            <div class="col-md-6 py-4" style="border: 1px solid black; border-radius: 5px;">
+
+
+                <p>To,</p>
+                <p id="managernamep"></p>
+                <p> Regional manager,</p>
+                <p id="companynamep"></p>
+                <br>
+                <p id="datep"></p>
+                <br>
+                <p>Subject : <span id="subjectp"></span></p>
+                <p>Sir/Ma'am',</p>
+                <p>
+                    My purpose of writing this email is to apply for maternity leave as mentioned in our organization’s policy for female employees. I want to avail the leaves for a period of <span id="no_of_weeksp"></span> weeks, with effect from <span id="startdatep"></span> to <span id="enddatep"></span>. I hope that this request will be sanctioned.
+                </p>
+                <p>
+                    As I will be away for a considerably long period, I have entrusted <span id="colleaguenamep"></span> with my responsibilities and duties. In the case of an unmanageable emergency, please contact me at <span id="emailp"></span>.
+                </p>
+                <p>Sincerely</p>
+                <p id="namep"></p>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- <span id='data' hidden>
+        <%= JSON.stringify(data.application_t1_t1); %>
+    </span> -->
+
+</main>
+
+
+<% include ../partials/footer_script %>
+
+<!-- <script>
+    $(document).ready(function () {
+        var data = JSON.parse($('#data').text());
+        $('#data').remove();
+        var i;
+        for (i = 0; i < data.length; i++) {
+            // console.log(data[i]['schoolname']);
+            data[i].schoolname = data[i]['school'];
+            delete data[i].school;
+        }
+        let name = document.getElementById("name")
+        let schoolname = document.getElementById("schoolname");
+        let address = document.getElementById("address");
+        let reason = document.getElementById("reason");
+        let no_of_days = document.getElementById("no_of_days");
+
+        let namehead = new Suggestions(name, data, {
+            minLength: 1, // Number of characters typed into an input to trigger suggestions.
+            limit: 3 //  Max number of results to display.
+        })
+
+        namehead.getItemValue = function (item) {
+            return item.name
+        }
+
+        let schoolnamehead = new Suggestions(schoolname, data, {
+            minLength: 1, // Number of characters typed into an input to trigger suggestions.
+            limit: 3 //  Max number of results to display.
+        })
+
+        schoolnamehead.getItemValue = function (item) {
+            return item.schoolname
+        }
+
+        let addresshead = new Suggestions(address, data, {
+            minLength: 1, // Number of characters typed into an input to trigger suggestions.
+            limit: 3 //  Max number of results to display.
+        })
+
+        addresshead.getItemValue = function (item) {
+            return item.address
+        }
+
+        let reasonhead = new Suggestions(reason, data, {
+            minLength: 1, // Number of characters typed into an input to trigger suggestions.
+            limit: 3 //  Max number of results to display.
+        })
+
+        reasonhead.getItemValue = function (item) {
+            return item.reason
+        }
+
+        let no_of_dayshead = new Suggestions(no_of_days, data, {
+            minLength: 1, // Number of characters typed into an input to trigger suggestions.
+            limit: 3 //  Max number of results to display.
+        })
+
+        no_of_dayshead.getItemValue = function (item) {
+            return item.no_of_days
+        }
+
+    })
+</script> -->
+
+<script>
+    $(document).ready(function () {
+        $(".kki").each(function () {
+            if ($(this).val() != "") {
+                $(this).parent().addClass("animation");
+            }
+        });
+    });
+
+    //Add animation when input is focused
+    $(".kki").focus(function () {
+        $(this).parent().addClass("animation animation-color");
+    });
+
+    //Remove animation(s) when input is no longer focused
+    $(".kki").focusout(function () {
+        if ($(this).val() === "")
+            $(this).parent().removeClass("animation");
+        $(this).parent().removeClass("animation-color");
+    })
+</script>
+
+<script>
+    $(document).ready(function () {
+        var name = $("#name");
+        var companyname = $("#companyname");
+        var managername = $("#managername");
+        var date = $("#date");
+        var subject = $("#subject");
+        var no_of_weeks = $("#no_of_weeks");
+        var startdate = $("#startdate");
+        var enddate = $("#enddate");
+        var colleaguename = $("#colleaguename");
+        var email = $("#email");
+
+        var namep = $("#namep");
+        var companynamep = $("#companynamep");
+        var managernamep = $("#managernamep");
+        var datep = $("#datep");
+        var subjectp = $("#subjectp");
+        var no_of_weeksp = $("#no_of_weeksp");
+        var startdatep = $("#startdatep");
+        var enddatep = $("#enddatep");
+        var colleaguenamep = $("#colleaguenamep");
+        var emailp = $("#emailp");
+        var monthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        if (name.val() == "") {
+            namep.html("____");
+        }
+        if (companyname.val() == "") {
+            companynamep.html("____");
+        }
+        if (managername.val() == "") {
+            managernamep.html("____");
+        }
+        if (date.val() == "") {
+            datep.html("____");
+        }
+        if (colleaguename.val() == "") {
+            colleaguenamep.html("____");
+        }
+        if (no_of_weeks.val() == "") {
+            no_of_weeksp.html("____");
+        }
+        if (startdate.val() == "") {
+            startdatep.html("____");
+        }
+        if (enddate.val() == "") {
+            enddatep.html("____");
+        }
+        if (subject.val() == "") {
+            subjectp.html("____");
+        }
+        if (email.val() == "") {
+            emailp.html("____");
+        }
+
+        name.on('keyup mouseup focus mouseleave change', function (e) {
+            var namehere = name.val();
+            if (namehere.length == 0) {
+                namep.html("____");
+            } else {
+                namep.html(namehere);
+            }
+        })
+        companyname.on('keyup mouseup focus mouseleave change', function (e) {
+            var companynamehere = companyname.val();
+            if (companynamehere.length == 0) {
+                companynamep.html("____");
+            } else {
+                companynamep.html(companynamehere);
+            }
+        });
+        managername.on('keyup mouseup focus mouseleave change', function (e) {
+            var managernamehere = managername.val();
+            if (managernamehere.length == 0) {
+                managernamep.html("____");
+            } else {
+                managernamep.html(managernamehere);
+            }
+        });
+        colleaguename.on('keyup mouseup focus mouseleave change', function (e) {
+            var colleaguenamehere = colleaguename.val();
+            if (colleaguenamehere.length == 0) {
+                colleaguenamep.html("____");
+            } else {
+                colleaguenamep.html(colleaguenamehere);
+            }
+        });
+        subject.on('keyup mouseup focus mouseleave change', function (e) {
+            var subjecthere = subject.val();
+            if (subjecthere.length == 0) {
+                subjectp.html("____");
+            } else {
+                subjectp.html(subjecthere);
+            }
+        });
+        date.on('keyup mouseup focus mouseleave mouseout change', function (e) {
+            var datehere = date.val();
+
+            if (datehere.length == 0) {
+                datep.html("____");
+            } else {
+                var datehere = new Date(date.val());
+                day = datehere.getDate();
+                month = datehere.getMonth();
+                year = datehere.getFullYear();
+                var finaldate = day + " - " + monthName[month] + " - " + year;
+                datep.html(finaldate);
+            }
+        });
+
+        startdate.on('keyup mouseup focus mouseleave mouseout change', function (e) {
+            var startdatehere = startdate.val();
+
+            if (startdatehere.length == 0) {
+                startdatep.html("____");
+            } else {
+                var startdatehere = new Date(startdate.val());
+                startday = startdatehere.getDate();
+                startmonth = startdatehere.getMonth();
+                startyear = startdatehere.getFullYear();
+                var finalstartdate = startday + " " + monthName[startmonth] + " " + startyear;
+                startdatep.html(finalstartdate);
+            }
+        });
+        enddate.on('keyup mouseup focus mouseleave mouseout change', function (e) {
+            var enddatehere = enddate.val();
+
+            if (enddatehere.length == 0) {
+                enddatep.html("____");
+            } else {
+                var enddatehere = new Date(enddate.val());
+                endday = enddatehere.getDate();
+                endmonth = enddatehere.getMonth();
+                endyear = enddatehere.getFullYear();
+                var finalenddate = endday + " " + monthName[endmonth] + " " + endyear;
+                enddatep.html(finalenddate);
+            }
+        });
+
+        email.on('keyup mouseup focus mouseleave change', function (e) {
+            var emailhere = email.val();
+            if (emailhere.length == 0) {
+                emailp.html("____");
+            } else {
+                emailp.html(emailhere);
+            }
+        });
+
+
+        no_of_weeks.on('keyup mouseup focus mouseleave change', function (e) {
+            var no_of_weeks_here = no_of_weeks.val();
+            if (no_of_weeks_here.length == 0) {
+                no_of_weeksp.html("____");
+            } else {
+                no_of_weeksp.html(no_of_weeks_here);
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
