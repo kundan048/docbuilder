@@ -24,6 +24,7 @@ router.get("/resumeFormats", isLoggedIn, function (req, res) {
 router.get("/resume", isLoggedIn, function (req, res) {
     console.log(req.query.rank);
     User.findById(req.user._id).populate("resume").exec(function (err, user) {
+        console.log(user.resume);
         if (err) {
             //console.log(err);
             res.redirect("/otherFormats/resumeFormats");
@@ -67,4 +68,17 @@ router.post("/resumeFormats", isLoggedIn, function (req, res) {
         }
     });
 });
+
+router.put("/resumeFormats/:id", isLoggedIn, function (req, res) {
+
+    Resume.findByIdAndUpdate(req.params.id, req.body, function (err, updatedResume) {
+        if (err) {
+            console.log(err);
+            res.redirect("/otherFormats");
+        } else {
+            res.redirect("/otherFormats/resumeFormats");
+        }
+    });
+});
+
 module.exports = router;
