@@ -4,10 +4,12 @@
 <% include partials/home_navbar %>
 <a class="btn btn-danger btn-outline-danger m-3" href="javascript:history.back()">Back</a>
 <!--<a class="btn btn-primary btn-outline-primary m-3" href="/otherFormats/resume">Recent Resumes</a>-->
+<a class="btn btn-primary btn-outline-primary m-3 resume-form" href="#animatedModal">Edit Resume</a>
 <hr class="prettyline">
 
 <div class="container text-center">
-    <div class="row m-4">
+    <div class="h2 text-center mb-5">Resume Formats</div>
+    <div class="row">
         <div class="col-md-4 mb-4">
             <div class="dbAnchor" data-toggle="modal" data-target="#exampleModal">
                 <% if(user.resume.length > 0) { %>
@@ -43,7 +45,7 @@
                             </div>
                         </div>
                         <div class="overLay">
-                            <div class="text">Coming Soon!</div>
+                            <div class="text">Resume</div>
                         </div>
                     </a>
             </div>
@@ -59,7 +61,7 @@
                             <img style="max-height: 14em;" class="card-img-top" src="/img/general_leave.jpg"
                                  alt="Resume 3">
                             <div class="card-body">
-                                <p class="card-text">Resume 3</p>
+                                <p class="card-text">Coming Soon</p>
                             </div>
                         </div>
                         <div class="overLay">
