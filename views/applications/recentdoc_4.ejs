@@ -1,0 +1,95 @@
+<% include ../partials/home_header %>
+<script>
+    function printContent(el) {
+        var restorepage = document.body.innerHTML;
+        var printcontent = document.getElementById(el).innerHTML;
+        document.body.innerHTML = printcontent;
+        window.print();
+        document.body.innerHTML = restorepage;
+    }
+</script>
+<% include ../partials/home_navbar %>
+<% var item; %>
+<% if(myid == 0){ %>
+    <% item = user.application_4[user.application_4.length - 1]; %>
+<% }else{ %>
+    <% item = myid %>
+<% } %>
+
+<main role="main">
+    <a class="btn btn-danger btn-outline-danger m-3" href="javascript:history.back()">Back</a>
+    <div class="container">
+
+
+        <div class="    ">
+            <div class="row">
+                <div class="col-md-8 bg-light pb-2 left-section">
+
+                    <div class="h2 text-center mb-5 pt-5">Transfer Application</div>
+                    <div id="hello">
+                        <div class="pl-5 pr-5 pt-3">
+                            <p>To</p>
+                            <p><%= item.supervisor_name %></p>
+                            <p><%= item.supervisor_designation %></p>
+                            <p><%= item.company_name %></p>
+                            <br>
+                            <p><%= item.date %></p>
+                            <br>
+                            <p>Subject: Transfer Application Letter.</p>
+                            <p>Sir/Ma'am',</p>
+                            <p>I, <%= item.name %>, am working for your company, <%= item.company_name %>, as a <%= item.designation %>. With this letter, I wish to convey my request to you for a transfer at our <%= item.branch %> branch. This is because <%= item.reason %>.</p>
+                            
+                            <p>
+                                I have made quite a few good memories and befriended all of my colleagues at the current office branch. I will miss them dearly. I can’t help the circumstances. I have no other option but to work at the <%= item.branch %>. I solemnly swear to show the same performance as I have demonstrated here. I wish you will consider my request for this transfer and do the needful. In anticipation of a favorable reply.
+                            </p>
+                
+                            <p>
+                                Thanking You.
+                            </p>
+                            <p>Sincerely</p>
+                            <p><%= item.name %></p>
+                            
+                        </div>
+
+                    </div>
+
+                    
+                    <form action="/application/download_4/<%= item._id %>" method="GET">
+                        <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="submit"><i class="fa fa-file-download"></i>&nbsp;Download Docx</button>
+                        <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="button"onclick="printContent('hello')"><i class="fa fa-print"></i>&nbsp;Download Pdf</button>
+                    </form>
+                    <a href="/application_4" class="btn btn-success btn-outline-dark btn-sm mb-2">New Application</a>
+
+                </div>
+                <div class="col-md-4 right-section">
+                    <div class="h2 text-center section-heading p-3">Recent Commits</div>
+                    <hr>
+                    <% user.application_4.reverse().forEach(function(dates){ %>
+                        <div class="pt-3 m-1 rounded text-dark section-box">
+                            <div class="file-date"><%= moment(dates.committed).format('MMMM DD, h:mm a'); %></div>
+                            <!-- <div class="file-reason">Name : <%= dates.name %></div> -->
+                            <div class="file-name"><%= dates.name %></div>
+                            <p>
+                                <a class="btn btn-outline-dark btn-sm pl-4 pr-4" href="/application/recentdoc_4/<%= dates._id %>">See </a>
+                                <a class="btn btn-outline-info btn-sm pl-4 pr-4"
+                                href="/application/<%= dates._id %>/edit_4">Edit </a>
+                                <form action="/application/<%= dates._id %>/delete_4?_method=DELETE" method="POST">
+                                    <button class="btn btn-outline-info btn-sm pl-4 pr-4"
+                                    >Delete </button>
+                                </form>    
+                            </p>
+                        </div>
+                        <hr>
+                    <% }); %>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+<% include ../partials/footer_script %>
+
+</body>
+</html>
