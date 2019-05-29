@@ -36,7 +36,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">College Address:</label>
                                 <div class="col-sm-9">
-                                    <input value="<%= letter.address %>" class="form-control" id="college_address" type="text" name="reference[College_address]" pattern=".{3,}" required title="College address must be atleast three characters!"placeholder="e.g. Street no. 3, Gole Market, New Delhi-110043" autocomplete="off">
+                                    <input value="<%= letter.address %>" class="form-control" id="college_address" type="text" name="reference[address]" pattern=".{3,}" required title="College address must be atleast three characters!"placeholder="e.g. Street no. 3, Gole Market, New Delhi-110043" autocomplete="off">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -49,7 +49,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Student's Name:</label>
                                 <div class="col-sm-9">
-                                    <input value="<%= letter.student_name %>" class="form-control" id="student_name" type="text" name="reference[student_name]" pattern=".{3,}" required title="Must be atleast three characters!" placeholder="e.g GBPEC" autocomplete="off">
+                                    <input value="<%= letter.student_name %>" class="form-control" id="student_name" type="text" name="reference[student_name]" pattern=".{3,}" required title="Must be atleast three characters!" placeholder="John Doe" autocomplete="off">
                                 </div>
                             </div>
 
@@ -93,12 +93,16 @@
 
 
                 <br>
-                <p><span id="college_namep"></span></p>
-                <p><span id="namep"></span>, <span id="designationp"></span></p>
-                <p id="addressp"></p>
-                <p id="datep"></p>
-                <p id="namep"></p>
+                <p><span id="college_namep">,</span></p>
                 <p id="college_addressp"></p>
+                <br>
+                <p><span id="namep"></span></p>
+                <p><span id="designationp"></span></p>
+                <br>
+                
+                <p id="datep"></p>
+                <br>
+                
                 <p>Mr. or Ms.</span>:</p>
                 <p>To Whom It May Concern:</p>
                 <p> I am writing this reference at the request of <span id="student_namep"></span>, who is applying for admission at <span id="applied_college_namep"></span>. I have known him for <span id="durationp"></span> in my capacity as a professor at <span id="college_namep1"></span>></span>. [Student] took [Course Name] course from me and earned superior grades in those classes. Based on his grades, attendance, and class participation, I’d rate his academic performance in my class as exceptional.</p>

@@ -3,8 +3,8 @@
 <% include ../partials/home_navbar %>
 <main role="main">
     <a class="btn btn-danger btn-outline-danger m-3" href="javascript:history.back()">Back</a>
-    <a class="btn btn-primary btn-outline-primary m-3" href="/application/recentdoc_3">Recent Paternity Leave Applications</a>
-    <div class="h2 text-center mb-5">Application for Paternity Leave</div>
+    <a class="btn btn-primary btn-outline-primary m-3" href="/application/recentdoc_4">Recent Transfer Applications</a>
+    <div class="h2 text-center mb-5">Transfer Application</div>
 
     <div class="container">
         <div class="row">
@@ -14,7 +14,7 @@
                 <div class="album py-2">
                     <div class="container">
 
-                        <form action="/application_3" method="post">
+                        <form action="/application_4" method="post">
 
                             <div class="form-group kkmain">
 
@@ -24,8 +24,8 @@
                             </div>
                             <div class="form-group kkmain">
 
-                                <input class="kki form-control" name="application[email]" id="email" type="email" required unselectable="on" autocomplete="off">
-                                <label for="email" class="kkl col-form-label">Email Id</label>
+                                <input class="kki form-control" name="application[designation]" id="designation" type="string" required unselectable="on" autocomplete="off">
+                                <label for="designation" class="kkl col-form-label">Designation</label>
                             </div>
                             <div class="form-group kkmain">
 
@@ -34,14 +34,15 @@
                             </div>
 
                             <div class="form-group kkmain">
-                                <input class="kki form-control" type="text" name="application[subject]" id="subject" pattern=".{3,}" required title="Must be atleast three characters!" autocomplete="off" required>
-                                <label for="Subject" class="kkl col-form-label">Subject</label>
+                                <input class="kki form-control" type="text" name="application[supervisor_name]" id="supervisorname" pattern=".{3,}" required title="Must be atleast three characters!" autocomplete="off" required>
+                                <label for="supervisor" class="kkl col-form-label">Name of the Supervisor</label>
                             </div>
 
                             <div class="form-group kkmain">
-                                <input class="kki form-control" type="text" name="application[manager_name]" id="managername" pattern=".{3,}" required title="Must be atleast three characters!" autocomplete="off" required>
-                                <label for="manager" class="kkl col-form-label">Name of the Manager</label>
+                                <input class="kki form-control" type="text" name="application[supervisor_designation]" id="supervisordesignation" pattern=".{3,}" required title="Must be atleast three characters!" autocomplete="off" required>
+                                <label for="supervisor_designation" class="kkl col-form-label">Designation of the Supervisor</label>
                             </div>
+
                             <div class="form-group kkmain">
 
                                 <input class="kki form-control" type="date" min="2010-10-01" max="2025-10-20" name="application[date]" id="date"
@@ -50,28 +51,15 @@
                             </div>
                             <div class="form-group kkmain">
 
-                                <input class="kki form-control" type="text" name="application[colleague_name]" id="colleaguename" pattern=".{3,}" required title="Must be atleast three characters!" autocomplete="off" required>
-                                <label for="reason" class="kkl col-form-label">Colleague's Name</label>
+                                <input class="kki form-control" type="text" name="application[reason]" id="reason" pattern=".{3,}" required title="Must be atleast three characters!" autocomplete="off" required>
+                                <label for="reason" class="kkl col-form-label">Reason</label>
                             </div>
                             <div class="form-group kkmain">
 
-                                <input class="kki form-control" type="number" min="1" max="50" name="application[no_of_weeks]" id="no_of_weeks" maxlength="2" autocomplete="off" required>
-                                <label for="no_of_weeks" class="kkl col-form-label">No. of Weeks</label>
+                                <input class="kki form-control" type="text"  name="application[branch]" id="branch" autocomplete="off" required>
+                                <label for="branch" class="kkl col-form-label">Desired Branch</label>
                             </div>
 
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Start Date of Leave:</label>
-                                <div class="col-sm-9">
-                                    <input class="form-control" id="startdate" type="date" name="application[start_date]" min="2010-10-01" max="2025-10-20" placeholder="" autocomplete="off">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">End Date of Leave:</label>
-                                <div class="col-sm-9">
-                                    <input class="form-control" id="enddate" type="date" name="application[end_date]" min="2010-10-01" max="2025-10-20" placeholder="" autocomplete="off">
-                                </div>
-                            </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mt-3">
                                     <input class="btn btn-block btn-outline-success" type="submit"
@@ -93,24 +81,25 @@
 
 
                 <p>To</p>
-                <p id="managernamep"></p>
-                <p> Regional manager,</p>
+                <p id="supervisornamep"></p>
+                <p id="supervisordesignationp"></p>
                 <p id="companynamep"></p>
                 <br>
                 <p id="datep"></p>
                 <br>
-                <p>Subject : <span id="subjectp"></span>.</p>
+                <p>Subject: Transfer Application.</p>
                 <p>Sir/Ma'am',</p>
-                <p>This is to inform you that my wife is in her final stages of pregnancy and is due to deliver by the end of this month.</p>
-                <p>She has been facing some minor complications and has been unwell for the past few days. As we do not have parental support at this time, I need to stay with her until she delivers, and for the next few weeks after delivery.</p>
+                <p>I, <span id="namep"></span>, am working for your company, <span id="companynamep1"></span>, as a <span id="designationp"></span>. With this letter, I wish to convey my request to you for a transfer at our <span id="branchp"></span> branch. This is because <span id="reasonp"></span>.</p>
                 
-                <p>I, therefore, request you for paternity leave for a period of <span id="no_of_weeksp"></span> weeks, with effect from <span id="startdatep"></span> to <span id="enddatep"></span>. I hope that this request will be sanctioned.</p>
-            
                 <p>
-                    As I will be away for a considerably long period, I have entrusted <span id="colleaguenamep"></span> with my responsibilities and duties. In the case of an unmanageable emergency, please contact me at <span id="emailp"></span>.
+                    I have made quite a few good memories and befriended all of my colleagues at the current office branch. I will miss them dearly. I can’t help the circumstances. I have no other option but to work at the <span id="branchp1"></span>. I solemnly swear to show the same performance as I have demonstrated here. I wish you will consider my request for this transfer and do the needful. In anticipation of a favorable reply.
+                </p>
+    
+                <p>
+                    Thanking You.
                 </p>
                 <p>Sincerely</p>
-                <p id="namep"></p>
+                <p id="namep1"></p>
 
 
             </div>
@@ -216,98 +205,102 @@
     $(document).ready(function () {
         var name = $("#name");
         var companyname = $("#companyname");
-        var managername = $("#managername");
+        var supervisorname = $("#supervisorname");
         var date = $("#date");
-        var subject = $("#subject");
-        var no_of_weeks = $("#no_of_weeks");
-        var startdate = $("#startdate");
-        var enddate = $("#enddate");
-        var colleaguename = $("#colleaguename");
-        var email = $("#email");
+        var designation = $("#designation");
+        var supervisordesignation = $("#supervisordesignation");
+        var reason = $("#reason");
+        var branch = $("#branch");
+
 
         var namep = $("#namep");
+        var namep1 = $("#namep1");
         var companynamep = $("#companynamep");
-        var managernamep = $("#managernamep");
+        var companynamep1 = $("#companynamep1");
+        var supervisornamep = $("#supervisornamep");
         var datep = $("#datep");
-        var subjectp = $("#subjectp");
-        var no_of_weeksp = $("#no_of_weeksp");
-        var startdatep = $("#startdatep");
-        var enddatep = $("#enddatep");
-        var colleaguenamep = $("#colleaguenamep");
-        var emailp = $("#emailp");
+        var designationp= $("#designationp");
+        var supervisordesignationp = $("#supervisordesignationp");
+        var reasonp = $("#reasonp");
+        var branchp = $("#branchp");
+        var branchp1 = $("#branchp1");
+        
         var monthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
         if (name.val() == "") {
             namep.html("____");
+            namep1.html("____");
         }
         if (companyname.val() == "") {
             companynamep.html("____");
+            companynamep1.html("____");
         }
-        if (managername.val() == "") {
-            managernamep.html("____");
+        if (supervisorname.val() == "") {
+            supervisornamep.html("____");
+        }
+        if (designation.val() == "") {
+            designationp.html("____");
         }
         if (date.val() == "") {
             datep.html("____");
         }
-        if (colleaguename.val() == "") {
-            colleaguenamep.html("____");
+        if (reason.val() == "") {
+            reasonp.html("____");
         }
-        if (no_of_weeks.val() == "") {
-            no_of_weeksp.html("____");
+        if (supervisordesignation.val() == "") {
+            supervisordesignationp.html("____");
         }
-        if (startdate.val() == "") {
-            startdatep.html("____");
+        if (branch.val() == "") {
+            branchp.html("____");
+            branchp1.html("____");
         }
-        if (enddate.val() == "") {
-            enddatep.html("____");
-        }
-        if (subject.val() == "") {
-            subjectp.html("____");
-        }
-        if (email.val() == "") {
-            emailp.html("____");
-        }
+        
 
         name.on('keyup mouseup focus mouseleave change', function (e) {
             var namehere = name.val();
             if (namehere.length == 0) {
                 namep.html("____");
+                namep1.html("____");
             } else {
                 namep.html(namehere);
+                namep1.html(namehere);
             }
-        })
+        });
+        designation.on('keyup mouseup focus mouseleave change', function (e) {
+            var designationhere = designation.val();
+            if (designationhere.length == 0) {
+                designationp.html("____");
+            } else {
+                designationp.html(designationhere);
+            }
+        });
         companyname.on('keyup mouseup focus mouseleave change', function (e) {
             var companynamehere = companyname.val();
             if (companynamehere.length == 0) {
                 companynamep.html("____");
+                companynamep1.html("____");
             } else {
                 companynamep.html(companynamehere);
+                companynamep1.html(companynamehere);
             }
         });
-        managername.on('keyup mouseup focus mouseleave change', function (e) {
-            var managernamehere = managername.val();
-            if (managernamehere.length == 0) {
-                managernamep.html("____");
+        supervisorname.on('keyup mouseup focus mouseleave change', function (e) {
+            var supervisornamehere = supervisorname.val();
+            if (supervisornamehere.length == 0) {
+                supervisornamep.html("____");
             } else {
-                managernamep.html(managernamehere);
+                supervisornamep.html(supervisornamehere);
             }
         });
-        colleaguename.on('keyup mouseup focus mouseleave change', function (e) {
-            var colleaguenamehere = colleaguename.val();
-            if (colleaguenamehere.length == 0) {
-                colleaguenamep.html("____");
+        supervisordesignation.on('keyup mouseup focus mouseleave change', function (e) {
+            var supervisordesignationhere = supervisordesignation.val();
+            if (supervisordesignationhere.length == 0) {
+                supervisordesignationp.html("____");
             } else {
-                colleaguenamep.html(colleaguenamehere);
+                supervisordesignationp.html(supervisordesignationhere);
             }
         });
-        subject.on('keyup mouseup focus mouseleave change', function (e) {
-            var subjecthere = subject.val();
-            if (subjecthere.length == 0) {
-                subjectp.html("____");
-            } else {
-                subjectp.html(subjecthere);
-            }
-        });
+        
         date.on('keyup mouseup focus mouseleave mouseout change', function (e) {
             var datehere = date.val();
 
@@ -322,54 +315,25 @@
                 datep.html(finaldate);
             }
         });
-
-        startdate.on('keyup mouseup focus mouseleave mouseout change', function (e) {
-            var startdatehere = startdate.val();
-
-            if (startdatehere.length == 0) {
-                startdatep.html("____");
+        reason.on('keyup mouseup focus mouseleave change', function (e) {
+            var reasonhere = reason.val();
+            if (reasonhere.length == 0) {
+                reasonp.html("____");
             } else {
-                var startdatehere = new Date(startdate.val());
-                startday = startdatehere.getDate();
-                startmonth = startdatehere.getMonth();
-                startyear = startdatehere.getFullYear();
-                var finalstartdate = startday + " " + monthName[startmonth] + " " + startyear;
-                startdatep.html(finalstartdate);
+                reasonp.html(reasonhere);
             }
         });
-        enddate.on('keyup mouseup focus mouseleave mouseout change', function (e) {
-            var enddatehere = enddate.val();
-
-            if (enddatehere.length == 0) {
-                enddatep.html("____");
+        branch.on('keyup mouseup focus mouseleave change', function (e) {
+            var branchhere = branch.val();
+            if (branchhere.length == 0) {
+                branchp.html("____");
+                branchp1.html("____");
             } else {
-                var enddatehere = new Date(enddate.val());
-                endday = enddatehere.getDate();
-                endmonth = enddatehere.getMonth();
-                endyear = enddatehere.getFullYear();
-                var finalenddate = endday + " " + monthName[endmonth] + " " + endyear;
-                enddatep.html(finalenddate);
+                branchp.html(branchhere);
+                branchp1.html(branchhere);
             }
         });
-
-        email.on('keyup mouseup focus mouseleave change', function (e) {
-            var emailhere = email.val();
-            if (emailhere.length == 0) {
-                emailp.html("____");
-            } else {
-                emailp.html(emailhere);
-            }
-        });
-
-
-        no_of_weeks.on('keyup mouseup focus mouseleave change', function (e) {
-            var no_of_weeks_here = no_of_weeks.val();
-            if (no_of_weeks_here.length == 0) {
-                no_of_weeksp.html("____");
-            } else {
-                no_of_weeksp.html(no_of_weeks_here);
-            }
-        });
+        
     });
 </script>
 

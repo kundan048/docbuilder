@@ -30,9 +30,14 @@
                     <div id="hello">
                         <div class="pl-5 pr-5 pt-3">
                             <p><%= item.college_name %></p>
-                            <p><%= item.name + ", " + item.designation %></p>
                             <p><%= item.address %></p>
+                            <br>
+                            <p><%= item.name %><p>
+                            <p><%= item.designation %></p>
+                            <br>
+                            
                             <p><%= item.date %></p>
+                            <br>
                             <p>To Whom It May Concern:</p>
                             <p> I am writing this reference at the request of <span><%= item.student_name %></span>, who is applying for admission at <span><%= item.applied_college_name %></span>. I have known him for <span><%= item.duration %></span> in my capacity as a professor at <span><%= item.college_name %></span>. <span><%= item.student_name %></span> took <span><%= item.course_name %></span> course from me and earned superior grades in those classes. Based on his grades, attendance, and class participation, I’d rate his academic performance in my class as exceptional.</p>
                             <p><span><%= item.student_name %></span> has a number of strengths. He is always interested in helping others. He is also a very fast learner. </p>
@@ -42,8 +47,8 @@
                             <p><%= item.designation %></p>
                         </div>
                     </div>
-                    <form action="/download" method="GET">
-                        <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="submit" disabled><i
+                    <form action="/download_2" method="GET">
+                        <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="submit"><i
                                     class="fa fa-file-download"></i>&nbsp;Download Docx
                         </button>
                         <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="button"
