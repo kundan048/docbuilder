@@ -35,7 +35,7 @@
                             <p><%= item.name %><p>
                             <p><%= item.designation %></p>
                             <br>
-                            
+
                             <p><%= item.date %></p>
                             <br>
                             <p>To Whom It May Concern:</p>
@@ -47,7 +47,7 @@
                             <p><%= item.designation %></p>
                         </div>
                     </div>
-                    <form action="/download_2" method="GET">
+                    <form action="/letter/download_2/<%= item._id %>" method="GET">
                         <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="submit"><i
                                     class="fa fa-file-download"></i>&nbsp;Download Docx
                         </button>
