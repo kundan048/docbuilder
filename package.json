@@ -22,7 +22,7 @@
     "convert-excel-to-json": "^1.6.1",
     "cookie-parser": "^1.4.3",
     "crypto": "^1.0.1",
-    "docx": "^4.6.0",
+    "docx": "^4.7.1",
     "dotenv": "^6.2.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
@@ -42,7 +42,8 @@
     "passport-local-mongoose": "^5.0.1",
     "pdfkit": "^0.9.1",
     "request": "^2.88.0",
-    "suggestions": "^1.5.0"
+    "suggestions": "^1.5.0",
+    "zip-a-folder": "0.0.8"
   },
   "repository": {
     "type": "git",

@@ -26,26 +26,26 @@
             <div id="download_pdf" class="card-container">
                 <section class="student-id">
                     <div class="container-fluid">
-                        <div class="row">
+                        <div class="row" style="padding: 10px 5px 5px 5px;">
                             <div class="col-sm-2" style="padding: 0px; height: 20px;">
                                 <img style="height: 50px; width: 50px; border-radius: 5px;" class=""
                                      src="<%= cards.logoimage %>" alt="">
                             </div>
                             <div class="col-sm-10">
-                                <div><%= cards.collegename %></div>
-                                <div><%= cards.collegeaddress %></div>
-                                <div><%= cards.collegenumber %></div>
+                                <div><%= cards.collegename.length > 38 ? cards.collegename.substring(0,37) + "..." : cards.collegename %></div>
+                                <div><%= cards.collegeaddress.length > 38 ? cards.collegeaddress.substring(0,37) + "..." : cards.collegeaddress %></div>
+                                <div>Tel.: <%= cards.collegenumber.length > 38 ? cards.collegenumber.substring(0,37) + "..." : cards.collegenumber %></div>
                             </div>
                         </div>
-                        <hr>
+                        <hr style="margin: 5px;">
                         <div class="text-center">STUDENT ID CARD</div>
                         <div class="row">
 
                             <div class="col-sm-8" style="line-height: 1.7">
-                                <div>Name: <%= cards.studentname %></div>
-                                <div>Roll no.: <%= cards.rollnumber %></div>
-                                <div>Branch <%= cards.branch %></div>
-                                <div>Mobile: <%= cards.studentmobile %></div>
+                                <div>Name: <%= cards.studentname.length > 21 ? cards.studentname.substring(0,20) + "..." : cards.studentname %></div>
+                                <div>Roll no.: <%= cards.rollnumber.length > 20 ? cards.rollnumber.substring(0,19) + "..." : cards.rollnumber %></div>
+                                <div>Branch : <%= cards.branch.length > 20 ? cards.branch.substring(0,19) + "..." : cards.branch %></div>
+                                <div>Mobile no.: <%= cards.studentmobile.length > 20 ? cards.studentmobile.substring(0,19) + "..." : cards.studentmobile %></div>
                             </div>
                             <div class="col-sm-4">
                                 <img style="height: 80px; width: 70px; border-radius: 5px;" class=""
@@ -62,8 +62,8 @@
 
                         <div class="row">
                             <div class="col-sm-12" style="line-height: 1.7">
-                                <div class="text-center">OTHER DETAILS</div>
-                                <hr>
+                                <div class="text-center pt-2">OTHER DETAILS</div>
+                                <hr style="margin: 5px;">
                                 <div>Address: <%= cards.address %></div>
                                 <div>Joining Date: <%= cards.yrofjoining %></div>
                                 <div>Valid Upto: <%= cards.validupto %></div>

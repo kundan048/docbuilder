@@ -37,13 +37,14 @@ var application_edit_2 = require('./routes/application/edit_2');
 var application_edit_3 = require('./routes/application/edit_3');
 var application_delete = require('./routes/application/delete');
 var application_delete_2 = require('./routes/application/delete_2');
-var application_delete_3 = require('./routes/application/delete_3')
+var application_delete_3 = require('./routes/application/delete_3');
 
 //college specific section
 let college_specific = require('./routes/application/CollegeSpecific/collegeSpecific');
 
 
 //letter section
+var bulk_letter = require('./routes/letter/bulk_letter');
 var letter = require('./routes/letter/letter');
 var letter_2 = require('./routes/letter/letter_2');
 var letter_3 = require('./routes/letter/letter_3');
@@ -167,6 +168,7 @@ app.use('/', letter_3);
 app.use('/letter', recentletter_3);
 app.use('/letter', letter_edit_3);
 app.use('/letter', letter_delete_3);
+app.use('/letterTypes', bulk_letter);
 
 
 // Other Format section

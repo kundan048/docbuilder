@@ -1,0 +1,121 @@
+<% include ../partials/home_header %>
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.1.220/styles/kendo.common-material.min.css"/>
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.1.220/styles/kendo.material.min.css"/>
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.1.220/styles/kendo.material.mobile.min.css"/>
+<!-- <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2019.1.220/styles/kendo.common.min.css"> -->
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.1.220/styles/kendo.blueopal.min.css"/>
+
+<script src="http://kendo.cdn.telerik.com/2019.1.220/js/jquery.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2019.1.220/js/kendo.all.min.js"></script>
+<script>
+    if (typeof jQuery == "undefined") {
+        // fallback to local jQuery
+        document.write(decodeURIComponent('%3Cscript src="/path/to/local/jquery.min.js" %3E%3C/script%3E'));
+    }
+</script>
+
+<script src="http://kendo.cdn.telerik.com/2019.1.220/js/kendo.all.min.js"></script>
+
+
+<link rel="stylesheet" href="../../css/suggestions.css">
+<link rel="stylesheet" href="../../css/homepage.css">
+
+<link rel="stylesheet" href="../../css/card.css">
+
+<% include ../partials/home_navbar %>
+<main role="main">
+    <a class="btn btn-danger btn-outline-danger m-3" href="javascript:history.back()">Back</a>
+    <a class="btn btn-primary btn-outline-primary m-3" href="/letterTypes/bulkLetter">Bulk Letter</a>
+    <div class="h2 text-center mb-5">Uploaded Data</div>
+
+    <div class="container">
+
+        <div class="container">
+            <div class="text-center h4">Sample Letter</div>
+            <div class="row">
+                <div class="col-md-12">
+                    <section class="letter-id">
+                        <div>
+                            <img src="../../img/letters/short_attendance.jpg" style="height: 100%; width: 100%;" alt="Sample">
+                        </div>
+                    </section>
+                    <div class="text-center">
+                        <a href="/letterTypes/download/shortAttendance" class="btn btn-outline-primary">Download It</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="text-center h3">
+            Uploaded List
+        </div>
+        <div id="grid"></div>
+        <br>
+        <br>
+        <!--<a href="/otherFormats/download/docsbuilder" class="btn btn-success"> Download All</a>-->
+        <!--<input type="button" onclick="printDivMain()" class="btn btn-success" value="Download All">-->
+        <br>
+        <br>
+        <br>
+
+        <span id='variableJSON' hidden>
+            <%= JSON.stringify(result); %>
+        </span>
+    </div>
+
+
+</main>
+
+<% include ../partials/footer_script %>
+
+<script src="https://kendo.cdn.telerik.com/2019.1.220/js/kendo.all.min.js"></script>
+<script>
+    var data = JSON.parse($('#variableJSON').text());
+    console.log(data);
+    $('#variableJSON').remove();
+    $(document).ready(function () {
+        $("#grid").kendoGrid({
+            dataSource: {
+                data: data,
+                schema: {
+                    model: {
+                        fields: {
+                            name: {type: "string"},
+                            organization: {type: "string"},
+                            designation: {type: "string"},
+                            contact_number: {type: "string"},
+                            address: {type: "string"},
+                        }
+                    }
+                },
+                pageSize: 10
+            },
+            tooltip: true,
+            scrollable: true,
+            sortable: true,
+            filterable: true,
+            reorderable: true,
+            resizable: true,
+            pageable: {
+                input: true,
+                numeric: false,
+                refresh: true,
+                pageSizes: true,
+                buttonCount: 5
+            },
+            // editable: "incell",
+            columns: [
+                {field: "fatherName", title: "Father Name"},
+                {field: "studentName", title: "Student Name"},
+                {field: "shortAttendanceDate", title: "Short Attendance Date", template: "#= kendo.toString(kendo.parseDate(shortAttendanceDate, 'yyyy-MM-dd'), 'dd MMMM yyyy') #"},
+                {field: "Designation", title: "Designation"},
+                {field: "Department", title: "Department"},
+            ]
+        });
+    });
+</script>
+
+</body>
+</html>
