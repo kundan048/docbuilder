@@ -1,0 +1,34 @@
+<% include ../partials/home_header %>
+<link rel="stylesheet" href="../../css/suggestions.css">
+<link rel="stylesheet" href="../../css/homepage.css">
+
+<% include ../partials/home_navbar %>
+<main role="main">
+    <a class="btn btn-danger btn-outline-danger m-3" href="javascript:history.back()">Back</a>
+    <a class="btn btn-primary btn-outline-primary m-3" href="/letterTypes">Letter Types</a>
+    <div class="h2 text-center mb-5">Bulk Short Attendance Letter</div>
+
+    <div class="container">
+
+        <div class="container">
+
+            <a href="bulkLetter/download" class="btn btn-lg btn-success text-uppercase mb-5">Download Sample file</a>
+
+            <!-- Uploading file for Bulk Generator -->
+            <form ref='uploadForm' id='uploadForm' class="form-signin" action="/letterTypes/bulkLetter"
+                  method="POST"
+                  encType="multipart/form-data">
+
+                <input type="file" name="uploaded_file">
+                <!-- <input type="text" name="fileName"> -->
+
+                <button class="btn btn-lg btn-primary btn-block text-uppercase mt-3" type="submit">Upload</button>
+            </form>
+        </div>
+    </div>
+</main>
+
+<% include ../partials/footer_script %>
+
+</body>
+</html>
