@@ -109,7 +109,7 @@
             columns: [
                 {field: "fatherName", title: "Father Name"},
                 {field: "studentName", title: "Student Name"},
-                {field: "shortAttendanceDate", title: "Short Attendance Date"},
+                {field: "shortAttendanceDate", title: "Short Attendance Date", template: "#= kendo.toString(kendo.parseDate(shortAttendanceDate, 'yyyy-MM-dd'), 'dd MMMM yyyy') #"},
                 {field: "Designation", title: "Designation"},
                 {field: "Department", title: "Department"},
             ]
