@@ -8,6 +8,8 @@ var exporter = officeClippy.exporter;
 // Load Model
 var User = require('../../models/user');
 var Letter_type1_template1 = require('../../models/letter_type1_template1');
+var Letter_2 = require('../../models/letter_2');
+var Letter_3 = require('../../models/letter_3');
 
 // Load Helpers
 var {isLoggedIn} = require('../../helpers/auth');
@@ -37,19 +39,77 @@ router.get('/download/:id', isLoggedIn, function (req, res) {
             var regard = docx.createText("Regards,").break().break();
             var signature = docx.createText(downUser.name);
 
-            // var to = docx.createText("To,").break().break();
-            // var thePrincipal = docx.createText("The Principal,").break().break();
-            // var schoolName = docx.createText(downUser.school + ",").break().break();
-            // var Address = docx.createText(downUser.address + ",").break().break();
-            
-            // var greeting = docx.createText("Sir/Ma'am',").break().break();
-            // var paragraph = docx.createText("With due respect I beg to state that I am not in a position to attend the school as I am down with " + downUser.reason + ". Since it is a communicable disease, I have been advised quarantine and a few days complete rest. Therefore kindly grant me leave for " + downUser.no_of_days + " days.").break().break();
-            // var thanku = docx.createText("Thanking you,").break().break();
-            // var yoursobe = docx.createText("Yours obediently,").break().break();
-            // var name = docx.createText(downUser.name).break().break();
-            // var para2 = docx.createParagraph().addText(to).left().addText(thePrincipal).left().addText(schoolName).left().addText(Address).left().addText(date).left().addText(greeting).left().addText(paragraph).left().addText(thanku).left().addText(yoursobe).left().addText(name).left();
             var para1 = docx.createParagraph().addText(name).left().addText(address).left().addText(date).left().addText(supervisor).left().addText(company_name).left().addText(company_address).left().addText(salutation).left().addText(content1).left().addText(content2).left().addText(regard).left().addText(signature).left();
             doc.addParagraph(para1);
+            var docname = downUser.name + "_letter";
+            exporter.express(res, doc, docname);
+        }
+    });
+
+
+});
+
+router.get('/download_2/:id', isLoggedIn, function (req, res) {
+
+    var myid = req.params.id;
+    // console.log(myid);
+    Letter_2.findById(myid, function (err, foundLetter) {
+        if (err) {
+            console.log(err);
+            res.redirect("/letter");
+        } else {
+            var downUser = foundLetter;
+            var dateFormat = moment(downUser.date).format("Do MMM YYYY");
+            var doc = docx.create();
+
+            var college_name = docx.createText(downUser.college_name).break().break();
+            var name = docx.createText(downUser.name).break().break();
+            var designation = docx.createText(downUser.designation).break().break();
+            var date = docx.createText(downUser.date).break().break();
+            var concern = docx.createText("To Whom It May Concern:").break().break();
+            var para = docx.createText(`I am writing this reference at the request of ${downUser.student_name}, who is applying for admission at ${downUser.applied_college_name}. I have known him for ${downUser.duration} in my capacity as a professor at ${downUser.college_name}. ${downUser.student_name} took course from me and earned superior grades in those classes. Based on his grades, attendance, and class participation, I’d rate his academic performance in my class as exceptional.`).break().break();
+            var para1 = docx.createText(`${downUser.student_name} has a number of strengths. He is always interested in helping others. He is also a very fast learner.`).break().break();
+            var para2 = docx.createText(`In conclusion, I would highly recommend ${downUser.student_name}. If his performance in my class is any indication of how he’d perform in future, he will be an extremely positive addition to your institute. If you need any additional information, feel free to contact me. You can email me at ${downUser.email}.`).break().break();
+            var sincerely = docx.createText('Sincerely').break().break();
+
+            var paragraph = docx.createParagraph().addText(college_name).left().addText(name).left().addText(designation).left().addText(date).left().addText(concern).left().addText(para).left().addText(para1).left().addText(para2).left().addText(sincerely).left().addText(name).left().addText(designation).left();
+
+            doc.addParagraph(paragraph);
+            var docname = downUser.name + "_letter";
+            exporter.express(res, doc, docname);
+        }
+    });
+
+
+});
+
+router.get('/download_3/:id', isLoggedIn, function (req, res) {
+
+    var myid = req.params.id;
+    // console.log(myid);
+    Letter_3.findById(myid, function (err, foundLetter) {
+        if (err) {
+            console.log(err);
+            res.redirect("/letter");
+        } else {
+            var downUser = foundLetter;
+            var dateFormat = moment(downUser.date).format("Do MMM YYYY");
+            var doc = docx.create();
+            console.log(downUser);
+
+            // var college_name = docx.createText(downUser.college_name).break().break();
+            // var name = docx.createText(downUser.name).break().break();
+            // var designation = docx.createText(downUser.designation).break().break();
+            // var date = docx.createText(downUser.date).break().break();
+            // var concern = docx.createText("To Whom It May Concern:").break().break();
+            // var para = docx.createText(`I am writing this reference at the request of ${downUser.student_name}, who is applying for admission at ${downUser.applied_college_name}. I have known him for ${downUser.duration} in my capacity as a professor at ${downUser.college_name}. ${downUser.student_name} took course from me and earned superior grades in those classes. Based on his grades, attendance, and class participation, I’d rate his academic performance in my class as exceptional.`).break().break();
+            // var para1 = docx.createText(`${downUser.student_name} has a number of strengths. He is always interested in helping others. He is also a very fast learner.`).break().break();
+            // var para2 = docx.createText(`In conclusion, I would highly recommend ${downUser.student_name}. If his performance in my class is any indication of how he’d perform in future, he will be an extremely positive addition to your institute. If you need any additional information, feel free to contact me. You can email me at ${downUser.email}.`).break().break();
+            // var sincerely = docx.createText('Sincerely').break().break();
+            //
+            // var paragraph = docx.createParagraph().addText(college_name).left().addText(name).left().addText(designation).left().addText(date).left().addText(concern).left().addText(para).left().addText(para1).left().addText(para2).left().addText(sincerely).left().addText(name).left().addText(designation).left();
+            var paragraph = docx.createText("sadf");
+            doc.addParagraph(paragraph);
             var docname = downUser.name + "_letter";
             exporter.express(res, doc, docname);
         }
