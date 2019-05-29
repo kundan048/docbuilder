@@ -95,20 +95,22 @@ router.get('/download_3/:id', isLoggedIn, function (req, res) {
             var downUser = foundLetter;
             var dateFormat = moment(downUser.date).format("Do MMM YYYY");
             var doc = docx.create();
-            console.log(downUser);
 
-            // var college_name = docx.createText(downUser.college_name).break().break();
-            // var name = docx.createText(downUser.name).break().break();
-            // var designation = docx.createText(downUser.designation).break().break();
-            // var date = docx.createText(downUser.date).break().break();
-            // var concern = docx.createText("To Whom It May Concern:").break().break();
-            // var para = docx.createText(`I am writing this reference at the request of ${downUser.student_name}, who is applying for admission at ${downUser.applied_college_name}. I have known him for ${downUser.duration} in my capacity as a professor at ${downUser.college_name}. ${downUser.student_name} took course from me and earned superior grades in those classes. Based on his grades, attendance, and class participation, I’d rate his academic performance in my class as exceptional.`).break().break();
-            // var para1 = docx.createText(`${downUser.student_name} has a number of strengths. He is always interested in helping others. He is also a very fast learner.`).break().break();
-            // var para2 = docx.createText(`In conclusion, I would highly recommend ${downUser.student_name}. If his performance in my class is any indication of how he’d perform in future, he will be an extremely positive addition to your institute. If you need any additional information, feel free to contact me. You can email me at ${downUser.email}.`).break().break();
-            // var sincerely = docx.createText('Sincerely').break().break();
-            //
-            // var paragraph = docx.createParagraph().addText(college_name).left().addText(name).left().addText(designation).left().addText(date).left().addText(concern).left().addText(para).left().addText(para1).left().addText(para2).left().addText(sincerely).left().addText(name).left().addText(designation).left();
-            var paragraph = docx.createText("sadf");
+            var name = docx.createText(downUser.name).break().break();
+            var designation = docx.createText(downUser.designation).break().break();
+            var date = docx.createText(downUser.date).break().break();
+            var dear = docx.createText(`Dear ${downUser.candidate_name}`).break().break();
+            var para = docx.createText(`${downUser.company_name} is excited to bring you on board as ${downUser.job_title}.`).break().break();
+
+            var para1 = docx.createText(`We’re just a few formalities away from getting down to work. Please take the time to review our offer. It includes important details about your compensation, benefits and the terms and conditions of your anticipated employment with .`).break().break();
+            var para2 = docx.createText(`${downUser.company_name} is offering a full time position for you as ${downUser.job_title}, reporting to immediate ${downUser.supervisor} starting on ${downUser.joining_date} at ${downUser.job_location}.`).break().break();
+            var para3 = docx.createText(`In this position, is offering to start you at a pay rate of Rs. ${downUser.package} per annum. You will be paid on a monthly basis, starting ${downUser.first_pay_date}.`).break().break();
+            var para4 = docx.createText(`As an employee of you will be eligible for health insurance, stock plans and dental insurance.`).break().break();
+            var para5 = docx.createText(`Please indicate your agreement with these terms and accept this offer by signing and dating this agreement on or before ${downUser.end_date}.`).break().break();
+            var regard = docx.createText("Regards,").break().break();
+
+            var paragraph = docx.createParagraph().addText(name).left().addText(designation).left().addText(date).left().addText(dear).left().left().addText(para).left().addText(para1).left().addText(para2).left().addText(para3).addText(para4).left().addText(para5).left().left().addText(regard).left().addText(name).left().addText(designation).left();
+
             doc.addParagraph(paragraph);
             var docname = downUser.name + "_letter";
             exporter.express(res, doc, docname);
