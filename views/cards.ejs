@@ -34,7 +34,7 @@
                             <div class="col-sm-10">
                                 <div><%= cards.collegename.length > 38 ? cards.collegename.substring(0,37) + "..." : cards.collegename %></div>
                                 <div><%= cards.collegeaddress.length > 38 ? cards.collegeaddress.substring(0,37) + "..." : cards.collegeaddress %></div>
-                                <div><%= cards.collegenumber.length > 38 ? cards.collegenumber.substring(0,37) + "..." : cards.collegenumber %></div>
+                                <div>Tel.: <%= cards.collegenumber.length > 38 ? cards.collegenumber.substring(0,37) + "..." : cards.collegenumber %></div>
                             </div>
                         </div>
                         <hr style="margin: 5px;">
@@ -44,8 +44,8 @@
                             <div class="col-sm-8" style="line-height: 1.7">
                                 <div>Name: <%= cards.studentname.length > 21 ? cards.studentname.substring(0,20) + "..." : cards.studentname %></div>
                                 <div>Roll no.: <%= cards.rollnumber.length > 20 ? cards.rollnumber.substring(0,19) + "..." : cards.rollnumber %></div>
-                                <div>Roll no.: <%= cards.branch.length > 20 ? cards.branch.substring(0,19) + "..." : cards.branch %></div>
-                                <div>Roll no.: <%= cards.studentmobile.length > 20 ? cards.studentmobile.substring(0,19) + "..." : cards.studentmobile %></div>
+                                <div>Branch : <%= cards.branch.length > 20 ? cards.branch.substring(0,19) + "..." : cards.branch %></div>
+                                <div>Mobile no.: <%= cards.studentmobile.length > 20 ? cards.studentmobile.substring(0,19) + "..." : cards.studentmobile %></div>
                             </div>
                             <div class="col-sm-4">
                                 <img style="height: 80px; width: 70px; border-radius: 5px;" class=""
