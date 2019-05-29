@@ -60,7 +60,7 @@
 
                 </div>
                 <div class="col-md-4 right-section">
-                    <div class="h2 text-center section-heading p-3">Recent Commits</div>
+                    <div class="h2 text-center section-heading p-3">Recently Added</div>
                     <hr>
                     <% user.application_t1_t1.reverse().forEach(function(dates){ %>
                         <div class="pt-3 m-1 rounded text-dark section-box">
@@ -74,7 +74,7 @@
                                 <form action="/application/<%= dates._id %>/delete?_method=DELETE" method="POST">
                                     <button class="btn btn-outline-info btn-sm pl-4 pr-4"
                                     >Delete </button>
-                                </form>    
+                                </form>
                             </p>
                         </div>
                         <hr>

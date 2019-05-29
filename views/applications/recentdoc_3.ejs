@@ -52,7 +52,7 @@
 
                     </div>
 
-                    
+
                     <form action="/application/download_3/<%= item._id %>" method="GET">
                         <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="submit"><i class="fa fa-file-download"></i>&nbsp;Download Docx</button>
                         <button class="btn btn-success btn-outline-dark btn-sm mb-2" type="button"onclick="printContent('hello')"><i class="fa fa-print"></i>&nbsp;Download Pdf</button>
@@ -61,7 +61,7 @@
 
                 </div>
                 <div class="col-md-4 right-section">
-                    <div class="h2 text-center section-heading p-3">Recent Commits</div>
+                    <div class="h2 text-center section-heading p-3">Recently Added</div>
                     <hr>
                     <% user.application_3.reverse().forEach(function(dates){ %>
                         <div class="pt-3 m-1 rounded text-dark section-box">
@@ -75,7 +75,7 @@
                                 <form action="/application/<%= dates._id %>/delete_3?_method=DELETE" method="POST">
                                     <button class="btn btn-outline-info btn-sm pl-4 pr-4"
                                     >Delete </button>
-                                </form>    
+                                </form>
                             </p>
                         </div>
                         <hr>
