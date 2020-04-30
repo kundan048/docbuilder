@@ -29,7 +29,7 @@
     "express-fileupload": "^1.1.4",
     "express-session": "^1.15.6",
     "fs": "0.0.1-security",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "kendo-ui-core": "^2019.1.327",
     "method-override": "^3.0.0",
     "moment": "^2.23.0",
