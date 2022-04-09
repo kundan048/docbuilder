@@ -32,7 +32,7 @@
     "jquery": "^3.3.1",
     "kendo-ui-core": "^2019.1.327",
     "method-override": "^3.0.0",
-    "moment": "^2.23.0",
+    "moment": "^2.29.2",
     "mongoose": "^5.4.3",
     "multer": "^1.4.1",
     "nodemailer": "^5.1.1",
